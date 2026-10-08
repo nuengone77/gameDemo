@@ -1,0 +1,756 @@
+fileFormatVersion: 2
+guid: f8678b7ab321641e1ab2831709409223
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -402727028447502789
+    second: nae_animation_walk_0
+  - first:
+      213: -3513509572531600491
+    second: nae_animation_walk_1
+  - first:
+      213: -2691395658023783889
+    second: nae_animation_walk_2
+  - first:
+      213: 286718896881128623
+    second: nae_animation_walk_3
+  - first:
+      213: -4556336094648353752
+    second: nae_animation_walk_4
+  - first:
+      213: -595126218254382966
+    second: nae_animation_walk_5
+  - first:
+      213: 6867169096373547149
+    second: nae_animation_walk_6
+  - first:
+      213: -5535666768066678399
+    second: nae_animation_walk_7
+  - first:
+      213: 7701289628390101223
+    second: nae_animation_walk_8
+  - first:
+      213: -3408643887578951113
+    second: nae_animation_walk_9
+  - first:
+      213: 1577368123276966533
+    second: nae_animation_walk_10
+  - first:
+      213: -6429132995961956232
+    second: nae_animation_walk_11
+  - first:
+      213: -3329631599064506550
+    second: nae_animation_walk_12
+  - first:
+      213: 1412622979061258826
+    second: nae_animation_walk_13
+  - first:
+      213: -4487964561026528485
+    second: nae_animation_walk_14
+  - first:
+      213: -5211091996935819265
+    second: nae_animation_walk_15
+  - first:
+      213: 72721982839971698
+    second: nae_animation_walk_16
+  - first:
+      213: -216281706920521784
+    second: nae_animation_walk_17
+  - first:
+      213: 7669359156856370607
+    second: nae_animation_walk_18
+  - first:
+      213: 4848915857721319369
+    second: nae_animation_walk_19
+  - first:
+      213: -3297346945268199415
+    second: nae_animation_walk_20
+  - first:
+      213: -4987493569805509159
+    second: nae_animation_walk_21
+  - first:
+      213: -4422804632327744967
+    second: nae_animation_walk_22
+  - first:
+      213: 6916797250161763527
+    second: nae_animation_walk_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 226.78572
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 822
+        width: 205
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0193bb606f342929643e26397f27dd
+      internalID: 1673638202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 822
+        width: 201
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935154b42164c42ae94cbf1eabd24626
+      internalID: -1797871488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 822
+        width: 201
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd13d923ee44f4e749006055b2f76dac
+      internalID: -1281672495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 822
+        width: 207
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea11d74879d9340ea9bdca9658829bc7
+      internalID: -715592856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 822
+        width: 199
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688411541983c40c1b3eb8a420b619cb
+      internalID: -753558379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r0_c5
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 822
+        width: 203
+        height: 258
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1d862d32641442b588b750ebe9b4c71
+      internalID: 754499470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 550
+        width: 201
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cba3e8383b9041f8956f83dd03205a2
+      internalID: -1915642432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 550
+        width: 202
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a13754a7fe80453db16c41a96eb3cd1
+      internalID: -409467459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 550
+        width: 195
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9103717c8e5046bdaf1272fd0298d6d
+      internalID: 631061994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 550
+        width: 201
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af18c1b2122b414ea409a2569a700dc
+      internalID: 357324488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 550
+        width: 194
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac3854aa41fc04bb7b7d4a492aa24e33
+      internalID: 1678031424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r1_c5
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 550
+        width: 205
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4006142c6ba1a406cb2c09c48de650c8
+      internalID: 1062263262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 278
+        width: 201
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12d7b5ed758e4ecbb6b7ef41b09ebb9
+      internalID: 1796902403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 278
+        width: 212
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ed367c081ad49f48d3c5256eb33bc0
+      internalID: 1280733667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 278
+        width: 218
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432bc310e482941c69606f13ecb65f95
+      internalID: -1621275826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 278
+        width: 213
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2806b36d7a44457b03c8b1597b346f
+      internalID: 91046039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c4
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 278
+        width: 210
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4b74646b18e48f69164171e09260c7
+      internalID: -487680674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r2_c5
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 278
+        width: 210
+        height: 242
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0344c6a09cb54f9a8190cf227862d23
+      internalID: -775002559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 6
+        width: 218
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d70d5a196784217bfa6e591bca8fcf
+      internalID: 224815548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 6
+        width: 214
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf444d386c5e34dc0a0fa81c442df78a
+      internalID: -1824337225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 6
+        width: 216
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7db418f46dfe47af882f7dbf2ead15e
+      internalID: 1968098888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 6
+        width: 223
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd680e311144480cb99ab289d9dc0bd
+      internalID: -788364081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c4
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 6
+        width: 218
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f453f08b7ca0745e7afbbfc2ce587b67
+      internalID: 307630976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nae_animation_walk_r3_c5
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 6
+        width: 219
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66bc327205445413d9216b38a23d1f93
+      internalID: -76905182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0f5e5f7dca90d489f9bbd2c2b434c7ac
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nae_animation_walk_r0_c0: 1673638202
+      nae_animation_walk_r0_c1: -1797871488
+      nae_animation_walk_r0_c2: -1281672495
+      nae_animation_walk_r0_c3: -715592856
+      nae_animation_walk_r0_c4: -753558379
+      nae_animation_walk_r0_c5: 754499470
+      nae_animation_walk_r1_c0: -1915642432
+      nae_animation_walk_r1_c1: -409467459
+      nae_animation_walk_r1_c2: 631061994
+      nae_animation_walk_r1_c3: 357324488
+      nae_animation_walk_r1_c4: 1678031424
+      nae_animation_walk_r1_c5: 1062263262
+      nae_animation_walk_r2_c0: 1796902403
+      nae_animation_walk_r2_c1: 1280733667
+      nae_animation_walk_r2_c2: -1621275826
+      nae_animation_walk_r2_c3: 91046039
+      nae_animation_walk_r2_c4: -487680674
+      nae_animation_walk_r2_c5: -775002559
+      nae_animation_walk_r3_c0: 224815548
+      nae_animation_walk_r3_c1: -1824337225
+      nae_animation_walk_r3_c2: 1968098888
+      nae_animation_walk_r3_c3: -788364081
+      nae_animation_walk_r3_c4: 307630976
+      nae_animation_walk_r3_c5: -76905182
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,756 @@
+fileFormatVersion: 2
+guid: 0025ca2abf16b430ba477db5d7ade238
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6833711073799047345
+    second: ling_animation_walk_0
+  - first:
+      213: -7750868103382500535
+    second: ling_animation_walk_1
+  - first:
+      213: -4063377900039136514
+    second: ling_animation_walk_2
+  - first:
+      213: -1087568951002881164
+    second: ling_animation_walk_3
+  - first:
+      213: 8758433222201059523
+    second: ling_animation_walk_4
+  - first:
+      213: -1807811960839687348
+    second: ling_animation_walk_5
+  - first:
+      213: 8172446673972555150
+    second: ling_animation_walk_6
+  - first:
+      213: 9178778780185890511
+    second: ling_animation_walk_7
+  - first:
+      213: -941330404263744148
+    second: ling_animation_walk_8
+  - first:
+      213: 3589621263970373079
+    second: ling_animation_walk_9
+  - first:
+      213: 3588392239376080457
+    second: ling_animation_walk_10
+  - first:
+      213: 7881379679006178042
+    second: ling_animation_walk_11
+  - first:
+      213: 5399071394093020074
+    second: ling_animation_walk_12
+  - first:
+      213: -5738226252455668689
+    second: ling_animation_walk_13
+  - first:
+      213: 8728279096676986999
+    second: ling_animation_walk_14
+  - first:
+      213: 2827501550712016003
+    second: ling_animation_walk_15
+  - first:
+      213: 211716405902173905
+    second: ling_animation_walk_16
+  - first:
+      213: -5842480425373953380
+    second: ling_animation_walk_17
+  - first:
+      213: -543537428825428765
+    second: ling_animation_walk_18
+  - first:
+      213: -1626217201579623052
+    second: ling_animation_walk_19
+  - first:
+      213: 8184791747527044879
+    second: ling_animation_walk_20
+  - first:
+      213: -1432906622387783038
+    second: ling_animation_walk_21
+  - first:
+      213: 2974520199132879477
+    second: ling_animation_walk_22
+  - first:
+      213: -1301995776299515840
+    second: ling_animation_walk_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 222.32143
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 822
+        width: 208
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f53d374c33b4bedba38286d1a1fcf2
+      internalID: -1871053955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 822
+        width: 212
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04abc3caf1b5840f79562b93a152692b
+      internalID: 1379949021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 822
+        width: 200
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 157db97691b404818adec1d94c3afd29
+      internalID: -1614668052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 822
+        width: 203
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98245aa8ea7574187b47366dbb996ada
+      internalID: -850449872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 822
+        width: 206
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b99d104fe4f4a718eead03a595c3b6
+      internalID: 798132981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r0_c5
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 822
+        width: 203
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1916647e91d8e4cdfa7a3250f7077c8f
+      internalID: 1529319946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 550
+        width: 216
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539149b64558c43b881d4a3a00759d28
+      internalID: -670102730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 550
+        width: 210
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fcc4cd832da4c028433d700555585f
+      internalID: 1716773502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 550
+        width: 210
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3afacc758db5c423b9f04c61967fae0a
+      internalID: 222231899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 550
+        width: 209
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96df261fb2de4928b74661a2f90f3d8
+      internalID: -810585559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 550
+        width: 205
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a146a04e39e4021b13835a33801cb3
+      internalID: -771305677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r1_c5
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 550
+        width: 205
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e7a472457f5a4e308609a30e389541e
+      internalID: 724442392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 278
+        width: 223
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13551b67fbd84b06ae1de154e802507
+      internalID: 1829578519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 278
+        width: 233
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f9b975173534b7baaec205f0536cf8
+      internalID: 937276067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 278
+        width: 226
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6111eaedc3b04403ea42ce57dc85688a
+      internalID: -1990207916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 278
+        width: 232
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737b60982b0e8476f8e16c7d1f80ca66
+      internalID: -676657882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c4
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 278
+        width: 229
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293d5dc282d7d4fbfad5c651c8d8e207
+      internalID: 191255814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r2_c5
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 278
+        width: 217
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45b88b88bcc04bdcbb746aea2f68abe
+      internalID: -1920791005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 6
+        width: 245
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036ae01dbbcbc462da32587071398ee1
+      internalID: -256842261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 6
+        width: 233
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16ef3ea4dbcb9481082491304da06bb1
+      internalID: 331506682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 6
+        width: 234
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5aa80acf3c784fb19538daa4afaf5a5
+      internalID: -555665878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 6
+        width: 232
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2835ada9c83a14b44a82e3f406c5b4e4
+      internalID: -1099233495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c4
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 6
+        width: 228
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7078860f84d4b70ae03451119cede2
+      internalID: -1316331369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ling_animation_walk_r3_c5
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 6
+        width: 222
+        height: 245
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead3d61ec91284a00b7ca0d35410880c
+      internalID: -159156309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 218c927b1f67149c99834800ea941068
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ling_animation_walk_r0_c0: -1871053955
+      ling_animation_walk_r0_c1: 1379949021
+      ling_animation_walk_r0_c2: -1614668052
+      ling_animation_walk_r0_c3: -850449872
+      ling_animation_walk_r0_c4: 798132981
+      ling_animation_walk_r0_c5: 1529319946
+      ling_animation_walk_r1_c0: -670102730
+      ling_animation_walk_r1_c1: 1716773502
+      ling_animation_walk_r1_c2: 222231899
+      ling_animation_walk_r1_c3: -810585559
+      ling_animation_walk_r1_c4: -771305677
+      ling_animation_walk_r1_c5: 724442392
+      ling_animation_walk_r2_c0: 1829578519
+      ling_animation_walk_r2_c1: 937276067
+      ling_animation_walk_r2_c2: -1990207916
+      ling_animation_walk_r2_c3: -676657882
+      ling_animation_walk_r2_c4: 191255814
+      ling_animation_walk_r2_c5: -1920791005
+      ling_animation_walk_r3_c0: -256842261
+      ling_animation_walk_r3_c1: 331506682
+      ling_animation_walk_r3_c2: -555665878
+      ling_animation_walk_r3_c3: -1099233495
+      ling_animation_walk_r3_c4: -1316331369
+      ling_animation_walk_r3_c5: -159156309
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

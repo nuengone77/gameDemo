@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Nae
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Nae
+  walkDown:
+  - {fileID: 1673638202, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -1797871488, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -1281672495, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -715592856, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -753558379, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 754499470, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  walkUp:
+  - {fileID: -1915642432, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -409467459, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 631061994, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 357324488, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 1678031424, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 1062263262, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  walkLeft:
+  - {fileID: 1796902403, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 1280733667, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -1621275826, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 91046039, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -487680674, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -775002559, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  walkRight:
+  - {fileID: 224815548, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -1824337225, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 1968098888, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -788364081, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: 307630976, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  - {fileID: -76905182, guid: f8678b7ab321641e1ab2831709409223, type: 3}
+  standDown:
+  - {fileID: -128494639, guid: 0a9ac12c0fe7c45eaab74ccf5df14cc5, type: 3}
+  standUp:
+  - {fileID: 1014083353, guid: 0a9ac12c0fe7c45eaab74ccf5df14cc5, type: 3}
+  standLeft:
+  - {fileID: 450557934, guid: 0a9ac12c0fe7c45eaab74ccf5df14cc5, type: 3}
+  standRight:
+  - {fileID: -524719854, guid: 0a9ac12c0fe7c45eaab74ccf5df14cc5, type: 3}
+  attackProjectile: {fileID: 5352731370530956506, guid: c5763a4fa43e24fcd9de204338686e77, type: 3}
+  walkFps: 10
+  standFps: 6

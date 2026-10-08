@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Nueng
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Nueng
+  walkDown:
+  - {fileID: -556152856, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1000596445, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1876697014, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1321642306, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1647508381, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 1876412195, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  walkUp:
+  - {fileID: -1692368858, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 694151294, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 2032245718, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -898006869, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -140530479, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 1489927282, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  walkLeft:
+  - {fileID: 176359451, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 1823437197, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1609993736, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 206987748, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -235366250, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1345352086, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 1855744821, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1313208247, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  walkRight:
+  - {fileID: 531016420, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1124945910, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -686525255, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -361240915, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -1271830870, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 1498088161, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: -183157227, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  - {fileID: 793968423, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
+  standDown:
+  - {fileID: -1716412759, guid: 1436a592b715f42178bbf754b2756535, type: 3}
+  standUp:
+  - {fileID: 2055612687, guid: 1436a592b715f42178bbf754b2756535, type: 3}
+  standLeft:
+  - {fileID: -670870311, guid: 1436a592b715f42178bbf754b2756535, type: 3}
+  standRight:
+  - {fileID: -2100564712, guid: 1436a592b715f42178bbf754b2756535, type: 3}
+  attackProjectile: {fileID: 8626366950393948766, guid: 17b2b1e06d0ea4dc8835d9d4c9c24863, type: 3}
+  walkFps: 10
+  standFps: 6

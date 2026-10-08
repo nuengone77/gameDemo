@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Skeleton
+  walkDown:
+  - {fileID: 825682209, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 127442560, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: -927958042, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1005670430, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1277768152, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  walkUp:
+  - {fileID: 241588008, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 527676964, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 4111873, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: -1562248860, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 49306793, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  walkLeft:
+  - {fileID: -1105335090, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1545817162, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 458974820, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 693080004, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1175971143, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  walkRight:
+  - {fileID: 1912154611, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1846768636, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 1693855453, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: 211052909, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  - {fileID: -660419902, guid: b65b9465b7e014cf6bb1a0ab27f6f2aa, type: 3}
+  standDown: []
+  standUp: []
+  standLeft: []
+  standRight: []
+  walkFps: 8
+  standFps: 6

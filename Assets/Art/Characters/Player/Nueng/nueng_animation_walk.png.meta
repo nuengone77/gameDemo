@@ -1,0 +1,860 @@
+fileFormatVersion: 2
+guid: 4ea7d2d0a57574a9ea60d364684dbf30
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1337189948928975662
+    second: nueng_animation_walk_0
+  - first:
+      213: -4148837708847697385
+    second: nueng_animation_walk_1
+  - first:
+      213: 6392657995290176255
+    second: nueng_animation_walk_2
+  - first:
+      213: 5395573218723042678
+    second: nueng_animation_walk_3
+  - first:
+      213: 7766179248633947402
+    second: nueng_animation_walk_4
+  - first:
+      213: -5956492175317402748
+    second: nueng_animation_walk_5
+  - first:
+      213: -1551835428946635745
+    second: nueng_animation_walk_6
+  - first:
+      213: -1446052615690014452
+    second: nueng_animation_walk_7
+  - first:
+      213: 8603918691532081956
+    second: nueng_animation_walk_8
+  - first:
+      213: -647380308450736994
+    second: nueng_animation_walk_9
+  - first:
+      213: -5359537026455865660
+    second: nueng_animation_walk_10
+  - first:
+      213: -5642426933748480187
+    second: nueng_animation_walk_11
+  - first:
+      213: 3363975106164885598
+    second: nueng_animation_walk_12
+  - first:
+      213: 4255942529134640962
+    second: nueng_animation_walk_13
+  - first:
+      213: -5919975940756599737
+    second: nueng_animation_walk_14
+  - first:
+      213: -1789959079770615190
+    second: nueng_animation_walk_15
+  - first:
+      213: 8302679132198420533
+    second: nueng_animation_walk_16
+  - first:
+      213: 5716447546226062801
+    second: nueng_animation_walk_17
+  - first:
+      213: 8235517015378909146
+    second: nueng_animation_walk_18
+  - first:
+      213: -1438371483622395179
+    second: nueng_animation_walk_19
+  - first:
+      213: -862820663448077726
+    second: nueng_animation_walk_20
+  - first:
+      213: 3531539898694004951
+    second: nueng_animation_walk_21
+  - first:
+      213: 6553274714429988228
+    second: nueng_animation_walk_22
+  - first:
+      213: -3304182804611838800
+    second: nueng_animation_walk_23
+  - first:
+      213: 2906073442101618311
+    second: nueng_animation_walk_24
+  - first:
+      213: 3303379159287569848
+    second: nueng_animation_walk_25
+  - first:
+      213: -2428983178236664399
+    second: nueng_animation_walk_26
+  - first:
+      213: -5671280820542072387
+    second: nueng_animation_walk_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 211.60715
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 774
+        width: 145
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8204a647b0d834a279fea44e78148edc
+      internalID: -556152856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 774
+        width: 143
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1faa090ad2942899c986e2c4c646a4
+      internalID: -1000596445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 774
+        width: 145
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96341e7b348446839cb359d6f91adeb
+      internalID: -1876697014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 774
+        width: 143
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34536247fcc6948cea6f76c0fb53ea01
+      internalID: -1321642306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 774
+        width: 143
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8fcbfe9d45e43acb3d30f15a90f2f4
+      internalID: -1647508381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r0_c5
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 774
+        width: 144
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af198b7972c4845ca8eab308b9d5bf9e
+      internalID: 1876412195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 518
+        width: 138
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea0ba4d2bb0747c18b15f76de635905
+      internalID: -1692368858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 518
+        width: 138
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba2aa585bf6a4c049234e7f9c3e0db0
+      internalID: 694151294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 518
+        width: 138
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffee1d7488c144653a63294fd5c9e0d5
+      internalID: 2032245718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 518
+        width: 136
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea77b0491060b43adae21fd2c5f4d80f
+      internalID: -898006869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 518
+        width: 137
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937c41ae998db49c7a76017edb78c446
+      internalID: -140530479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r1_c5
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 518
+        width: 137
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4201d1d98507843c7a6e8451d6010b73
+      internalID: 1489927282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 262
+        width: 145
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4615a96d697564c78955eb4f4a3a757f
+      internalID: 176359451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 262
+        width: 140
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318640f890dc34e77be849264a295610
+      internalID: 1823437197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 262
+        width: 163
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f720a2089e74e54bec8d0cdcca1114
+      internalID: -1609993736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 262
+        width: 154
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00da0048ae40a4535919a75ae43e4b9f
+      internalID: 206987748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c4
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 262
+        width: 154
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a467179ff8bf745638c08c89b6d74563
+      internalID: -235366250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c5
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 262
+        width: 157
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 346d5aacde16b4139a0ba3df50e0b57c
+      internalID: -1345352086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c6
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 262
+        width: 155
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2e8c9f6e5b2145cb9884c79f6413737
+      internalID: 1855744821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r2_c7
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 262
+        width: 154
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607d0091cf46743dc8eb1a6ad25b9395
+      internalID: -1313208247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 6
+        width: 141
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f9df1c1a5ff4136b8890d86e113a8d
+      internalID: 531016420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 6
+        width: 152
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71127629664d544e3a4002be7599c41c
+      internalID: -1124945910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 6
+        width: 151
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920e12dc835914c058457b743dff2806
+      internalID: -686525255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 6
+        width: 162
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11752e4537ae743a692877139920c084
+      internalID: -361240915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c4
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 6
+        width: 163
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222f4b3d8defc48ef931d7e743d9d060
+      internalID: -1271830870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c5
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 6
+        width: 157
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd870be463744214a814e2fb2119c66
+      internalID: 1498088161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c6
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 6
+        width: 158
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17280015b70f45bbb49ebfd540d693b
+      internalID: -183157227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nueng_animation_walk_r3_c7
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 6
+        width: 156
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d24e997513a46c0bf54932480ff97d
+      internalID: 793968423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a74d502f167b4485a82113e90e7c2030
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nueng_animation_walk_r0_c0: -556152856
+      nueng_animation_walk_r0_c1: -1000596445
+      nueng_animation_walk_r0_c2: -1876697014
+      nueng_animation_walk_r0_c3: -1321642306
+      nueng_animation_walk_r0_c4: -1647508381
+      nueng_animation_walk_r0_c5: 1876412195
+      nueng_animation_walk_r1_c0: -1692368858
+      nueng_animation_walk_r1_c1: 694151294
+      nueng_animation_walk_r1_c2: 2032245718
+      nueng_animation_walk_r1_c3: -898006869
+      nueng_animation_walk_r1_c4: -140530479
+      nueng_animation_walk_r1_c5: 1489927282
+      nueng_animation_walk_r2_c0: 176359451
+      nueng_animation_walk_r2_c1: 1823437197
+      nueng_animation_walk_r2_c2: -1609993736
+      nueng_animation_walk_r2_c3: 206987748
+      nueng_animation_walk_r2_c4: -235366250
+      nueng_animation_walk_r2_c5: -1345352086
+      nueng_animation_walk_r2_c6: 1855744821
+      nueng_animation_walk_r2_c7: -1313208247
+      nueng_animation_walk_r3_c0: 531016420
+      nueng_animation_walk_r3_c1: -1124945910
+      nueng_animation_walk_r3_c2: -686525255
+      nueng_animation_walk_r3_c3: -361240915
+      nueng_animation_walk_r3_c4: -1271830870
+      nueng_animation_walk_r3_c5: 1498088161
+      nueng_animation_walk_r3_c6: -183157227
+      nueng_animation_walk_r3_c7: 793968423
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

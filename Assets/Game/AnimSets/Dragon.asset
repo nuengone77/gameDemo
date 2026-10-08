@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Dragon
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Dragon
+  walkDown: []
+  walkUp: []
+  walkLeft: []
+  walkRight: []
+  standDown:
+  - {fileID: 1742302769, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1292906707, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1410841486, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: -1679825778, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  standUp:
+  - {fileID: 1742302769, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1292906707, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1410841486, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: -1679825778, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  standLeft:
+  - {fileID: 1742302769, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1292906707, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1410841486, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: -1679825778, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  standRight:
+  - {fileID: 1742302769, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1292906707, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: 1410841486, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  - {fileID: -1679825778, guid: 055fef68a2df8490280ff358b27d80e0, type: 3}
+  walkFps: 10
+  standFps: 6

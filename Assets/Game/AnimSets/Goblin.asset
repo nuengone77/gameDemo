@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Goblin
+  walkDown:
+  - {fileID: 63405758, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 1393030362, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 1948708559, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: -240814767, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  walkUp:
+  - {fileID: -2081499934, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 798968709, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: -811914993, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: -71520322, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  walkLeft:
+  - {fileID: -1926214845, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: -376355666, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 1100248637, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 28154701, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  walkRight:
+  - {fileID: -213051300, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: -9060851, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 1327213112, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  - {fileID: 1872179802, guid: 7a6194a16da0f4b09aea4b600187b7ec, type: 3}
+  standDown: []
+  standUp: []
+  standLeft: []
+  standRight: []
+  walkFps: 8
+  standFps: 6

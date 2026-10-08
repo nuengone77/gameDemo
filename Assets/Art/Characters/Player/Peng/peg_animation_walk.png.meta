@@ -1,0 +1,756 @@
+fileFormatVersion: 2
+guid: d34fa0a08a7764e18b897c7d565631b1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6140875620897562795
+    second: peg_animation_walk_0
+  - first:
+      213: -2188173828484971505
+    second: peg_animation_walk_1
+  - first:
+      213: -6836908273893258279
+    second: peg_animation_walk_2
+  - first:
+      213: 353567607149604377
+    second: peg_animation_walk_3
+  - first:
+      213: -3662414752663864016
+    second: peg_animation_walk_4
+  - first:
+      213: -1976034471145750211
+    second: peg_animation_walk_5
+  - first:
+      213: -1459322381550242133
+    second: peg_animation_walk_6
+  - first:
+      213: -1666113319244922542
+    second: peg_animation_walk_7
+  - first:
+      213: 9132578879231758584
+    second: peg_animation_walk_8
+  - first:
+      213: -4813066904271399876
+    second: peg_animation_walk_9
+  - first:
+      213: -570742442582349299
+    second: peg_animation_walk_10
+  - first:
+      213: -7080069044660271751
+    second: peg_animation_walk_11
+  - first:
+      213: 2511456323334023439
+    second: peg_animation_walk_12
+  - first:
+      213: -8670899191118255630
+    second: peg_animation_walk_13
+  - first:
+      213: 8261027158723374772
+    second: peg_animation_walk_14
+  - first:
+      213: 2260888611388336944
+    second: peg_animation_walk_15
+  - first:
+      213: 1809933858150798532
+    second: peg_animation_walk_16
+  - first:
+      213: 5182784880463816916
+    second: peg_animation_walk_17
+  - first:
+      213: 1244042160247850493
+    second: peg_animation_walk_18
+  - first:
+      213: 2679705133615050140
+    second: peg_animation_walk_19
+  - first:
+      213: 6312438391197566427
+    second: peg_animation_walk_20
+  - first:
+      213: -6524368879060209655
+    second: peg_animation_walk_21
+  - first:
+      213: -2573158412790989983
+    second: peg_animation_walk_22
+  - first:
+      213: 3802791912364277326
+    second: peg_animation_walk_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 238.39285
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 870
+        width: 183
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5136a2a046c4fd897d1581429f254d
+      internalID: 18424643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 870
+        width: 187
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc222797a17547b09705a5b6236476d
+      internalID: -737816939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 870
+        width: 185
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c44383ca7284a14ab03798b99d2a65
+      internalID: -1644246788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 870
+        width: 188
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75632bd1e3fbe402db7004d779286af7
+      internalID: -354927026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 870
+        width: 185
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd7ba590123d404396a0f9a34a763e6
+      internalID: 817128067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r0_c5
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 870
+        width: 185
+        height: 271
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1a93395fc71489dbe084a15cf6dccb
+      internalID: -19262137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 582
+        width: 174
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1510b0825d701423d8678156f8b665bb
+      internalID: -1347203094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 582
+        width: 173
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9043da2d6324105957ec045b4a7d8f
+      internalID: 834442581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 582
+        width: 172
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9625da3458f442fb76b792c29fc6bd
+      internalID: 917401725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 582
+        width: 171
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e945507c92a67477d802cd357f9a7a49
+      internalID: -440200631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 582
+        width: 172
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e68b4d3e5a4496da49f3783fc3d09a
+      internalID: 894080013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r1_c5
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 582
+        width: 171
+        height: 250
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa06258399af4faa8d19a005978beb0
+      internalID: -761385547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 294
+        width: 193
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5856d5e19cf50481a89a8dc7619a42bc
+      internalID: 1544318742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 294
+        width: 197
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642d7df850a5a4a2898d1ec09ae39754
+      internalID: 1201951281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 294
+        width: 201
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c6d85e4fbdf43a9b906dceca9e74ad
+      internalID: 1564860961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 294
+        width: 198
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f11173a666e4f519aff7f9fddbd263
+      internalID: -1023028954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c4
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 294
+        width: 200
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb2b760265b5428cae655ff4b5e375e
+      internalID: 923237055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r2_c5
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 294
+        width: 199
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc269a9087467417a8b9ce4dbb6103ed
+      internalID: -904127192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 6
+        width: 194
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7ec639e5db5457b84a87c7d7a00858
+      internalID: -1105316215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 6
+        width: 198
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad7b71b22c7e94d65a486857a840e130
+      internalID: 860170134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 6
+        width: 196
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f385adbf2ca0487f8b45985a1ce01e8
+      internalID: -605547854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 6
+        width: 198
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f2580fd1faf496da190b8122c7ec89
+      internalID: -387506158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c4
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 6
+        width: 203
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff67c83a496647d1a9070c1f11356dc
+      internalID: 2055378988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: peg_animation_walk_r3_c5
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 6
+        width: 201
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 173551198f69f428aa60a728a08144b3
+      internalID: -617723256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9a20476c6ae544ab0a30e2e12b417d96
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      peg_animation_walk_r0_c0: 18424643
+      peg_animation_walk_r0_c1: -737816939
+      peg_animation_walk_r0_c2: -1644246788
+      peg_animation_walk_r0_c3: -354927026
+      peg_animation_walk_r0_c4: 817128067
+      peg_animation_walk_r0_c5: -19262137
+      peg_animation_walk_r1_c0: -1347203094
+      peg_animation_walk_r1_c1: 834442581
+      peg_animation_walk_r1_c2: 917401725
+      peg_animation_walk_r1_c3: -440200631
+      peg_animation_walk_r1_c4: 894080013
+      peg_animation_walk_r1_c5: -761385547
+      peg_animation_walk_r2_c0: 1544318742
+      peg_animation_walk_r2_c1: 1201951281
+      peg_animation_walk_r2_c2: 1564860961
+      peg_animation_walk_r2_c3: -1023028954
+      peg_animation_walk_r2_c4: 923237055
+      peg_animation_walk_r2_c5: -904127192
+      peg_animation_walk_r3_c0: -1105316215
+      peg_animation_walk_r3_c1: 860170134
+      peg_animation_walk_r3_c2: -605547854
+      peg_animation_walk_r3_c3: -387506158
+      peg_animation_walk_r3_c4: 2055378988
+      peg_animation_walk_r3_c5: -617723256
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

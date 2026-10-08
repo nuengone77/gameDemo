@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: b65b9465b7e014cf6bb1a0ab27f6f2aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7694609711213636543
+    second: skeleton_animation_walk_0
+  - first:
+      213: 4728178842386968662
+    second: skeleton_animation_walk_1
+  - first:
+      213: -3611056636208766750
+    second: skeleton_animation_walk_2
+  - first:
+      213: 7407269517841481277
+    second: skeleton_animation_walk_3
+  - first:
+      213: -4584367444043892909
+    second: skeleton_animation_walk_4
+  - first:
+      213: -5671717045706688181
+    second: skeleton_animation_walk_5
+  - first:
+      213: 6345506135772038522
+    second: skeleton_animation_walk_6
+  - first:
+      213: 219487770786707006
+    second: skeleton_animation_walk_7
+  - first:
+      213: -1362038746149043493
+    second: skeleton_animation_walk_8
+  - first:
+      213: -8124927805058691535
+    second: skeleton_animation_walk_9
+  - first:
+      213: 8115299735258181792
+    second: skeleton_animation_walk_10
+  - first:
+      213: -3727901926136290727
+    second: skeleton_animation_walk_11
+  - first:
+      213: 1707932997295120240
+    second: skeleton_animation_walk_12
+  - first:
+      213: 3424312460395977364
+    second: skeleton_animation_walk_13
+  - first:
+      213: 7451169265712737660
+    second: skeleton_animation_walk_14
+  - first:
+      213: 2024956662021528142
+    second: skeleton_animation_walk_15
+  - first:
+      213: -335237888920068090
+    second: skeleton_animation_walk_16
+  - first:
+      213: 8260708964271063045
+    second: skeleton_animation_walk_17
+  - first:
+      213: -1052253032830859230
+    second: skeleton_animation_walk_18
+  - first:
+      213: 4705868990025333948
+    second: skeleton_animation_walk_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 350
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 1230
+        width: 312
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0981e1ade2bf84fa997a14ed2ccbc384
+      internalID: 825682209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1230
+        width: 312
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75faa4e67ed3849d3b04857966758194
+      internalID: 127442560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1230
+        width: 310
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7b29b728a0749eabbcc25150b93275
+      internalID: -927958042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1230
+        width: 309
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecedc61efeb644b71bb3e39261fab036
+      internalID: 1005670430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 1230
+        width: 308
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6c201a046304403ad816c859853bd9
+      internalID: 1277768152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 822
+        width: 271
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd7c4159713f414f844418665cfb115
+      internalID: 241588008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 822
+        width: 281
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dcf2786acae3437ea6953af7d546b9f
+      internalID: 527676964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 822
+        width: 272
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4575e7dce8fbf48a5bb52797401a82a4
+      internalID: 4111873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 822
+        width: 279
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6831baba9ea3f463f865a4e852d7e124
+      internalID: -1562248860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1537
+        y: 822
+        width: 272
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9779b2f7144094b208300aa145df64c5
+      internalID: 49306793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 415
+        width: 342
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b5211f8011c44f9a0e3241cdf8fff8
+      internalID: -1105335090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 415
+        width: 344
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c9b29ed867974aecacc2147cf63adc4
+      internalID: 1545817162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 415
+        width: 343
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e77e22d92064ff0a6ec93bd04fff8f
+      internalID: 458974820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 415
+        width: 346
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ef6cf16bfa54ba9afc5fe9732a1200
+      internalID: 693080004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r2_c4
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 415
+        width: 350
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878bc78df1bad443c8ee2699e2ab23cd
+      internalID: 1175971143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 7
+        width: 342
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b2f8a5d95d44f0896a5e8baef2b65a
+      internalID: 1912154611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 7
+        width: 344
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4206fc70822e411ebafb5ad30e625b1
+      internalID: 1846768636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 7
+        width: 343
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5bd2993d29e14b0b88ba7d0da363a00
+      internalID: 1693855453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 7
+        width: 346
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b804d25731948c49f2510f2114b74d
+      internalID: 211052909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_animation_walk_r3_c4
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 7
+        width: 350
+        height: 393
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbe534c0df784063b0dbccadc1c3897
+      internalID: -660419902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7ff3e2faa5b6c46b8a42af7134284c9a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      skeleton_animation_walk_r0_c0: 825682209
+      skeleton_animation_walk_r0_c1: 127442560
+      skeleton_animation_walk_r0_c2: -927958042
+      skeleton_animation_walk_r0_c3: 1005670430
+      skeleton_animation_walk_r0_c4: 1277768152
+      skeleton_animation_walk_r1_c0: 241588008
+      skeleton_animation_walk_r1_c1: 527676964
+      skeleton_animation_walk_r1_c2: 4111873
+      skeleton_animation_walk_r1_c3: -1562248860
+      skeleton_animation_walk_r1_c4: 49306793
+      skeleton_animation_walk_r2_c0: -1105335090
+      skeleton_animation_walk_r2_c1: 1545817162
+      skeleton_animation_walk_r2_c2: 458974820
+      skeleton_animation_walk_r2_c3: 693080004
+      skeleton_animation_walk_r2_c4: 1175971143
+      skeleton_animation_walk_r3_c0: 1912154611
+      skeleton_animation_walk_r3_c1: 1846768636
+      skeleton_animation_walk_r3_c2: 1693855453
+      skeleton_animation_walk_r3_c3: 211052909
+      skeleton_animation_walk_r3_c4: -660419902
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
