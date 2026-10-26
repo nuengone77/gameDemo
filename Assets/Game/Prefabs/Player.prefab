@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5116363}
+  m_Offset: {x: 0, y: 0.5094339}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.532, y: 0.90957576}
+  m_Size: {x: 0.40513209, y: 0.90566033}
   m_EdgeRadius: 0
 --- !u!1 &7440076372230328900
 GameObject:
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 758428085, guid: b5d46c93e3d4e4fc38f4c29afc610729, type: 3}
+  m_Sprite: {fileID: -1841580846, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -265,8 +265,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21280001}
-  m_Radius: 0.21280001
+  m_Offset: {x: 0, y: 0.16205284}
+  m_Radius: 0.16205284
 --- !u!114 &7273929372369841943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,4 +305,4 @@ MonoBehaviour:
   magicRingPrefab: {fileID: 8319406524202892200, guid: 3a294bb027ba149888e6ba31a73f71e5, type: 3}
   ringDamage: 25
   attackCooldown: 0.35
-  castHeight: 0.56848484
+  castHeight: 0.5660377

@@ -1,0 +1,407 @@
+fileFormatVersion: 2
+guid: 0a645cabfc66d48858a1ba5530183fef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 597345317599099831
+    second: golem_leftright_nobg_0
+  - first:
+      213: 5054747462717002535
+    second: golem_leftright_nobg_1
+  - first:
+      213: 837926863074254380
+    second: golem_leftright_nobg_2
+  - first:
+      213: 4877700681877601813
+    second: golem_leftright_nobg_3
+  - first:
+      213: -7111261100453442391
+    second: golem_leftright_nobg_4
+  - first:
+      213: 9135020771137799521
+    second: golem_leftright_nobg_5
+  - first:
+      213: -8623986226054405562
+    second: golem_leftright_nobg_6
+  - first:
+      213: -936931773577720110
+    second: golem_leftright_nobg_7
+  - first:
+      213: -1709528562447177612
+    second: golem_leftright_nobg_8
+  - first:
+      213: 7786739282681223571
+    second: golem_leftright_nobg_9
+  - first:
+      213: -8690660575391890840
+    second: golem_leftright_nobg_10
+  - first:
+      213: 5139731108137693273
+    second: golem_leftright_nobg_11
+  - first:
+      213: 1591549201559369005
+    second: golem_leftright_nobg_12
+  - first:
+      213: 9179832241509255171
+    second: golem_leftright_nobg_13
+  - first:
+      213: 3752607141048618952
+    second: golem_leftright_nobg_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 73.84615
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 345
+        width: 105
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40101e287149447759449d7f7c052a20
+      internalID: -1071092001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 345
+        width: 145
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d31ebd9a956f46e88f0070d250bed3d
+      internalID: 731305188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 345
+        width: 144
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e55372e05ce346fc968fc70f4b1bb0a
+      internalID: 138164973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 345
+        width: 141
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289bcc4fbda64415ea747f05de0f3d22
+      internalID: 1602376808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 345
+        width: 147
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60ee64cf827fd421e988c161985d252c
+      internalID: 1540686869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 50
+        width: 102
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e549988416004d8daff9546604360cc
+      internalID: -1743826950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 50
+        width: 139
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13bc942c2768543baa74d36301511945
+      internalID: -1618618830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 50
+        width: 144
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3dc32aa918d4f2b904494c0ec7ad75
+      internalID: 796988515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 50
+        width: 140
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a2012073b4c45b6bb07cc38b7c3a6a
+      internalID: 1280014442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_leftright_nobg_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 50
+        width: 146
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5065621aa4c74e79b7e41c8ee222553
+      internalID: -1669858180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c1914af2f341a41d097a91faa6ab3267
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      golem_leftright_nobg_r0_c0: -1071092001
+      golem_leftright_nobg_r0_c1: 731305188
+      golem_leftright_nobg_r0_c2: 138164973
+      golem_leftright_nobg_r0_c3: 1602376808
+      golem_leftright_nobg_r0_c4: 1540686869
+      golem_leftright_nobg_r1_c0: -1743826950
+      golem_leftright_nobg_r1_c1: -1618618830
+      golem_leftright_nobg_r1_c2: 796988515
+      golem_leftright_nobg_r1_c3: 1280014442
+      golem_leftright_nobg_r1_c4: -1669858180
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

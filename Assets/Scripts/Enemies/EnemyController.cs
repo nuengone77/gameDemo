@@ -25,6 +25,16 @@ namespace MagicGame
         public float damage = 10f;
         public float castHeight = 0.6f;
 
+        [Header("Flying (dragon stage)")]
+        [Tooltip("Hover inside the sky band instead of walking: drifts above the player and ignores walls.")]
+        public bool flyInSky;
+        public float skyMinY = 1f;
+        public float skyMaxY = 3f;
+        public float skyMinX = -10f;
+        public float skyMaxX = 10f;
+        [Tooltip("How far left/right of the player the flyer sways.")]
+        public float swayDistance = 3f;
+
         [Header("Ranged")]
         public Projectile projectilePrefab;
         public float projectileSpeed = 6f;
@@ -52,6 +62,8 @@ namespace MagicGame
             _animator = GetComponent<DirectionalSpriteAnimator>();
             Health = GetComponent<Health>();
             Health.team = Team.Enemy;
+            // Kinematic bodies are not pushed by walls or the player, so the flyer stays in the sky.
+            if (flyInSky) _rb.bodyType = RigidbodyType2D.Kinematic;
             _nextAttack = Time.time + Random.Range(0.5f, 1.5f);
         }
 
@@ -89,10 +101,8 @@ namespace MagicGame
                 return;
             }
 
-            Vector2 dir = dist > 0.001f ? toPlayer / dist : Vector2.zero;
-            float stopAt = chaseDistance > 0f ? chaseDistance : attackRange * 0.9f;
-            if (dist > stopAt) _velocity = dir * moveSpeed;
-            else if (style == AttackStyle.Ranged && dist < preferredDistance) _velocity = -dir * moveSpeed * 0.8f;
+            if (flyInSky) _velocity = FlyVelocity(player);
+            else _velocity = ChaseVelocity(toPlayer, dist);
 
             _animator.SetMovement(_velocity);
             if (_velocity == Vector2.zero) _animator.FaceTowards(toPlayer);
@@ -105,9 +115,36 @@ namespace MagicGame
             }
         }
 
+        Vector2 ChaseVelocity(Vector2 toPlayer, float dist)
+        {
+            Vector2 dir = dist > 0.001f ? toPlayer / dist : Vector2.zero;
+            float stopAt = chaseDistance > 0f ? chaseDistance : attackRange * 0.9f;
+            if (dist > stopAt) return dir * moveSpeed;
+            if (style == AttackStyle.Ranged && dist < preferredDistance) return -dir * moveSpeed * 0.8f;
+            return Vector2.zero;
+        }
+
+        // Sways left/right around the player's x and bobs up and down within the sky band.
+        Vector2 FlyVelocity(PlayerController player)
+        {
+            float t = Time.time;
+            var target = new Vector2(
+                player.transform.position.x + Mathf.Sin(t * 0.4f) * swayDistance,
+                Mathf.Lerp(skyMinY, skyMaxY, 0.5f + 0.5f * Mathf.Sin(t * 0.9f)));
+            Vector2 delta = target - (Vector2)transform.position;
+            return delta.magnitude > 0.05f ? Vector2.ClampMagnitude(delta * 2f, moveSpeed) : Vector2.zero;
+        }
+
         void FixedUpdate()
         {
-            _rb.linearVelocity = _velocity;
+            if (flyInSky)
+            {
+                var next = _rb.position + _velocity * Time.fixedDeltaTime;
+                next.x = Mathf.Clamp(next.x, skyMinX, skyMaxX);
+                next.y = Mathf.Clamp(next.y, skyMinY, skyMaxY);
+                _rb.MovePosition(next);
+            }
+            else _rb.linearVelocity = _velocity;
         }
 
         void PerformAttack(PlayerController player, float dist)

@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1626191710, guid: f4e8e62b5defa40139e2caafe56401ea, type: 3}
+  m_Sprite: {fileID: 120449461, guid: 28dd1b3c5d6e94938a704f96c6d87365, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,8 +187,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.50992244}
-  m_Radius: 0.50992244
+  m_Offset: {x: 0, y: 0.5309333}
+  m_Radius: 0.5309333
 --- !u!114 &6662468858157004623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,13 @@ MonoBehaviour:
   attackCooldown: 2
   windUp: 0.6
   damage: 25
-  castHeight: 1.2677519
+  castHeight: 1.3266667
+  flyInSky: 0
+  skyMinY: 1
+  skyMaxY: 3
+  skyMinX: -10
+  skyMaxX: 10
+  swayDistance: 3
   projectilePrefab: {fileID: 2203195534037301685, guid: a42afa7251307409f87021e1d57b3898, type: 3}
   projectileSpeed: 4.5
   projectilesPerShot: 1
@@ -301,7 +307,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.1409767}
+  m_Offset: {x: 0, y: 1.194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -311,5 +317,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2748061, y: 2.028403}
+  m_Size: {x: 1.3273335, y: 2.1226668}
   m_EdgeRadius: 0

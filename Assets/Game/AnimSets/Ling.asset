@@ -14,41 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: Ling
   walkDown:
-  - {fileID: -1871053955, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 1379949021, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -1614668052, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -850449872, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 798132981, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 1529319946, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
+  - {fileID: 1431504620, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: 604162595, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: -855528575, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: 130424717, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
   walkUp:
-  - {fileID: -670102730, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 1716773502, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 222231899, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -810585559, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -771305677, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 724442392, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
+  - {fileID: 1054655569, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: -1612522522, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: -1540568367, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
+  - {fileID: -2047331736, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
   walkLeft:
-  - {fileID: 1829578519, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 937276067, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -1990207916, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -676657882, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 191255814, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -1920791005, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
+  - {fileID: -806166095, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -1333412324, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -1384646424, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -1590857777, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
   walkRight:
-  - {fileID: -256842261, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: 331506682, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -555665878, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -1099233495, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -1316331369, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
-  - {fileID: -159156309, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
+  - {fileID: 1892569425, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -1661526096, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -699853578, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  - {fileID: -2003338532, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
   standDown:
-  - {fileID: 758428085, guid: b5d46c93e3d4e4fc38f4c29afc610729, type: 3}
+  - {fileID: -1841580846, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
   standUp:
-  - {fileID: -1408124721, guid: b5d46c93e3d4e4fc38f4c29afc610729, type: 3}
+  - {fileID: 1636222368, guid: 2ac035cdc987c4ee9aed8a40df7bf6c5, type: 3}
   standLeft:
-  - {fileID: 1813587122, guid: b5d46c93e3d4e4fc38f4c29afc610729, type: 3}
+  - {fileID: -1353982871, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
   standRight:
-  - {fileID: -1805491553, guid: b5d46c93e3d4e4fc38f4c29afc610729, type: 3}
-  attackProjectile: {fileID: 944086260753090452, guid: bcadeb4b5282e4888833dffa221674c8, type: 3}
-  walkFps: 10
+  - {fileID: -628810501, guid: 17df4dfe1770d41529549ba7ff6d2b00, type: 3}
+  attackProjectile: {fileID: 773738449636141174, guid: d7f96d90379564ce69b7b05ba15d8077, type: 3}
+  attackDown:
+  - {fileID: -1154281230, guid: b5c49149b68c145da8806c1456bf23ab, type: 3}
+  attackUp:
+  - {fileID: 1665267891, guid: b5c49149b68c145da8806c1456bf23ab, type: 3}
+  attackLeft:
+  - {fileID: 1997194132, guid: b5c49149b68c145da8806c1456bf23ab, type: 3}
+  attackRight:
+  - {fileID: -1842662898, guid: b5c49149b68c145da8806c1456bf23ab, type: 3}
+  attackPoseTime: 0.3
+  die:
+  - {fileID: 21300000, guid: 847e4fd6d0dae41fda69732f7a4250d1, type: 3}
+  dieFps: 8
+  walkFps: 8
   standFps: 6

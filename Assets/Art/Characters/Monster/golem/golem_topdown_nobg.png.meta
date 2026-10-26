@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 28dd1b3c5d6e94938a704f96c6d87365
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3297159516281901669
+    second: golem_topdown_nobg_0
+  - first:
+      213: -7386954963318500647
+    second: golem_topdown_nobg_1
+  - first:
+      213: 2891777177736363782
+    second: golem_topdown_nobg_2
+  - first:
+      213: 7263651416777276410
+    second: golem_topdown_nobg_3
+  - first:
+      213: 3882987545408213890
+    second: golem_topdown_nobg_4
+  - first:
+      213: -4536877948138358276
+    second: golem_topdown_nobg_5
+  - first:
+      213: -4174835874479802361
+    second: golem_topdown_nobg_6
+  - first:
+      213: 853450308334085797
+    second: golem_topdown_nobg_7
+  - first:
+      213: 4653153315615541101
+    second: golem_topdown_nobg_8
+  - first:
+      213: 5736239421864949774
+    second: golem_topdown_nobg_9
+  - first:
+      213: 3229493930159489749
+    second: golem_topdown_nobg_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 75
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 349
+        width: 181
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237d3aca5942f4dc880957a4e28316a3
+      internalID: 120449461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 349
+        width: 156
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d2176e0fa96f45fcb4638716d3f262d
+      internalID: 718957431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 349
+        width: 159
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196be03ace66549fa9a0714929bd300c
+      internalID: -66449573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 349
+        width: 157
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f201259215754ceb8acae52d981c30a
+      internalID: 1312083300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 349
+        width: 159
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6eb49bcffe9492582eab89ccac11a6
+      internalID: -388509666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 69
+        width: 183
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce9e0b91dfc44d61b023ecacc112cf1
+      internalID: 88506547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 69
+        width: 154
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f0f8bfbf86145ac912376b4a5b6d8d
+      internalID: 2090610809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 69
+        width: 153
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d802e6b0298b54accbc619a197472bcc
+      internalID: 763031513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 69
+        width: 153
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 286f4bca539e04a95b9793964b062245
+      internalID: 436722115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem_topdown_nobg_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 69
+        width: 153
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac1c0b3d81964cc792b3205d6c48c64
+      internalID: -1256568634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fbbb90f8fe0854f668b96023419ab8f0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      golem_topdown_nobg_r0_c0: 120449461
+      golem_topdown_nobg_r0_c1: 718957431
+      golem_topdown_nobg_r0_c2: -66449573
+      golem_topdown_nobg_r0_c3: 1312083300
+      golem_topdown_nobg_r0_c4: -388509666
+      golem_topdown_nobg_r1_c0: 88506547
+      golem_topdown_nobg_r1_c1: 2090610809
+      golem_topdown_nobg_r1_c2: 763031513
+      golem_topdown_nobg_r1_c3: 436722115
+      golem_topdown_nobg_r1_c4: -1256568634
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

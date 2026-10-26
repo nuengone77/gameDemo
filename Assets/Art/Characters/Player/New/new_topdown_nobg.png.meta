@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 085b224a765634f41b4ddd43b6bcdfd4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8529992915997365533
+    second: new_topdown_nobg_0
+  - first:
+      213: 1729547536491398110
+    second: new_topdown_nobg_1
+  - first:
+      213: -5062120286201104167
+    second: new_topdown_nobg_2
+  - first:
+      213: 4535218013445313870
+    second: new_topdown_nobg_3
+  - first:
+      213: 4362198454877488087
+    second: new_topdown_nobg_4
+  - first:
+      213: -6475500550518199675
+    second: new_topdown_nobg_5
+  - first:
+      213: 3555791694533411344
+    second: new_topdown_nobg_6
+  - first:
+      213: 5007947080431074444
+    second: new_topdown_nobg_7
+  - first:
+      213: -488462009314497097
+    second: new_topdown_nobg_8
+  - first:
+      213: -5727915845762816190
+    second: new_topdown_nobg_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 359.82144
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: new_topdown_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 623
+        width: 222
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c1490eb30f549c6a0c5a3eda448883
+      internalID: 83367099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 623
+        width: 217
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5c86f3f54d741bead41b4e7ee5e9ef
+      internalID: -1377737294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 623
+        width: 216
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b26f7049dd8c4539b5677972a0c7715
+      internalID: -2056822742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 623
+        width: 217
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555c52baee4f54bcda21b45053158448
+      internalID: 891869348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 623
+        width: 216
+        height: 395
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f44975f4229442b487b55b05dab20f6
+      internalID: 1823390448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 140
+        width: 218
+        height: 407
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f70e40f5f6ee4311baf61925d0f2962
+      internalID: -1935309064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 140
+        width: 199
+        height: 407
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304c9b68a265c46f2b73da3d2d9b162d
+      internalID: -1099100738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 140
+        width: 201
+        height: 407
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8909fc069994996acd5e262cc15aee
+      internalID: -100003175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 140
+        width: 195
+        height: 407
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac5ae8d7047a54a18a1b3645a7b26ac2
+      internalID: -707877712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_topdown_nobg_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 140
+        width: 201
+        height: 407
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a5f82cec0e524b09bed5f5d6ff700ac
+      internalID: 419475316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 21e5da597d12644b2a69e008020528ac
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      new_topdown_nobg_r0_c0: 83367099
+      new_topdown_nobg_r0_c1: -1377737294
+      new_topdown_nobg_r0_c2: -2056822742
+      new_topdown_nobg_r0_c3: 891869348
+      new_topdown_nobg_r0_c4: 1823390448
+      new_topdown_nobg_r1_c0: -1935309064
+      new_topdown_nobg_r1_c1: -1099100738
+      new_topdown_nobg_r1_c2: -100003175
+      new_topdown_nobg_r1_c3: -707877712
+      new_topdown_nobg_r1_c4: 419475316
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

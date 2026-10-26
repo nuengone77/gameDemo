@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c814329c0210e4fbc8b65a1117651614, type: 3}
+  m_Name: Witch
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
+  displayName: Witch
+  walkDown:
+  - {fileID: -1638278983, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: -1881396383, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: -1320521304, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: 1851037526, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  walkUp:
+  - {fileID: 1749650427, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: 1627849564, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: 1575779914, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  - {fileID: -167247103, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  walkLeft:
+  - {fileID: -2081689982, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: 502915135, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: 1727251869, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: -616177508, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  walkRight:
+  - {fileID: 560566846, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: -1628826786, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: -193131179, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  - {fileID: 372800772, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  standDown:
+  - {fileID: -693464659, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  standUp:
+  - {fileID: -1810442095, guid: 36c05975937094f06a64ea6bb8bd49db, type: 3}
+  standLeft:
+  - {fileID: 661280846, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  standRight:
+  - {fileID: -179191309, guid: bdfdda27047c442c8bc1d927255ed0eb, type: 3}
+  attackProjectile: {fileID: 0}
+  attackDown: []
+  attackUp: []
+  attackLeft: []
+  attackRight: []
+  attackPoseTime: 0.3
+  die: []
+  dieFps: 8
+  walkFps: 8
+  standFps: 6

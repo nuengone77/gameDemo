@@ -52,7 +52,6 @@ namespace MagicGame
                 if (player != null && player.Health.IsDead)
                 {
                     _state = State.GameOver;
-                    player.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 0.8f);
                 }
                 else if (Time.timeSinceLevelLoad > 0.2f && s_enemies.Count == 0)
                 {

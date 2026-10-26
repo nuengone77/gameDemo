@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 36c05975937094f06a64ea6bb8bd49db
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5534632155495942494
+    second: witch-boss_topdown_nobg_0
+  - first:
+      213: 3387825270757625309
+    second: witch-boss_topdown_nobg_1
+  - first:
+      213: -4979383422528457567
+    second: witch-boss_topdown_nobg_2
+  - first:
+      213: -625401537234441537
+    second: witch-boss_topdown_nobg_3
+  - first:
+      213: 1075845627378541778
+    second: witch-boss_topdown_nobg_4
+  - first:
+      213: -2021044820263952747
+    second: witch-boss_topdown_nobg_5
+  - first:
+      213: 2815469600289665029
+    second: witch-boss_topdown_nobg_6
+  - first:
+      213: 2099934457411276528
+    second: witch-boss_topdown_nobg_7
+  - first:
+      213: 6142370706387534776
+    second: witch-boss_topdown_nobg_8
+  - first:
+      213: 3530041280644243546
+    second: witch-boss_topdown_nobg_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 178.33333
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 583
+        width: 266
+        height: 412
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f350fbd2213c43189a2fe9c3462b535
+      internalID: -1810442095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 583
+        width: 278
+        height: 412
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397983ad2465143a8a152e839373c9af
+      internalID: 1749650427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 583
+        width: 259
+        height: 412
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd84296055d414cb4a65bbcfa444bb1e
+      internalID: 1627849564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 583
+        width: 259
+        height: 412
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b01ea51f655b4b1bbe3365a97d0ce31
+      internalID: 1575779914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 583
+        width: 242
+        height: 412
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2cb00e8322842a38279e47138e61cc
+      internalID: -167247103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 95
+        width: 279
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4da8e5d6422f4150aa52528c450ebfe
+      internalID: -693464659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 95
+        width: 274
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736af362f6f5e47d6a860e702a8fc44f
+      internalID: -1638278983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 95
+        width: 273
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e00b63ca662457e9c44270d772efee
+      internalID: -1881396383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 95
+        width: 274
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b464e073ee0954495885e3934b6a2599
+      internalID: -1320521304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: witch-boss_topdown_nobg_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 95
+        width: 264
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49967cf568a6c4a8c99fcac9052d7113
+      internalID: 1851037526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f70eeb748752e405c9dda1bb6403523d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      witch-boss_topdown_nobg_r0_c0: -1810442095
+      witch-boss_topdown_nobg_r0_c1: 1749650427
+      witch-boss_topdown_nobg_r0_c2: 1627849564
+      witch-boss_topdown_nobg_r0_c3: 1575779914
+      witch-boss_topdown_nobg_r0_c4: -167247103
+      witch-boss_topdown_nobg_r1_c0: -693464659
+      witch-boss_topdown_nobg_r1_c1: -1638278983
+      witch-boss_topdown_nobg_r1_c2: -1881396383
+      witch-boss_topdown_nobg_r1_c3: -1320521304
+      witch-boss_topdown_nobg_r1_c4: 1851037526
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,6 +11,8 @@ namespace MagicGame
         public Vector2 mapCenter = Vector2.zero;
         [Tooltip("Fill the screen (crops the map edges). Off = show the whole map with black bars.")]
         public bool fillScreen = true;
+        [Tooltip("1 = just fill the screen; above 1 zooms in closer (the camera then scrolls more).")]
+        public float zoom = 1f;
         public bool followPlayer = true;
         public float followSmoothing = 8f;
 
@@ -44,7 +46,8 @@ namespace MagicGame
         {
             float aspect = Mathf.Max(0.1f, _camera.aspect);
             float fitHeight = mapSize.y / 2f, fitWidth = mapSize.x / 2f / aspect;
-            _camera.orthographicSize = fillScreen ? Mathf.Min(fitHeight, fitWidth) : Mathf.Max(fitHeight, fitWidth);
+            float size = fillScreen ? Mathf.Min(fitHeight, fitWidth) : Mathf.Max(fitHeight, fitWidth);
+            _camera.orthographicSize = size / Mathf.Max(1f, zoom);
         }
 
         Vector3 Clamp(Vector3 p)

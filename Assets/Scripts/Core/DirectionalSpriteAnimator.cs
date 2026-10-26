@@ -15,6 +15,8 @@ namespace MagicGame
         int _frame;
         float _timer;
         bool _moving;
+        bool _dead;
+        float _attackUntil = -1f;
 
         public FacingDir Facing => facing;
 
@@ -38,8 +40,29 @@ namespace MagicGame
             Refresh(0f);
         }
 
+        // Plays the death frames once and then keeps showing the last one.
+        public void PlayDeath()
+        {
+            _dead = true;
+            _moving = false;
+            _clip = null;
+            Refresh(0f);
+        }
+
+        // Shows the attack pose for the current facing for animSet.attackPoseTime seconds.
+        public void PlayAttack()
+        {
+            if (_dead || animSet == null) return;
+            var pose = animSet.GetAttack(facing);
+            if (pose == null || pose.Length == 0) return;
+            _attackUntil = Time.time + animSet.attackPoseTime;
+            _clip = null;
+            Refresh(0f);
+        }
+
         public void SetMovement(Vector2 velocity)
         {
+            if (_dead) return;
             _moving = velocity.sqrMagnitude > 0.0004f;
             if (_moving) facing = DirFromVector(velocity);
         }
@@ -63,6 +86,19 @@ namespace MagicGame
         void Refresh(float dt)
         {
             if (animSet == null || _renderer == null) return;
+
+            if (_dead && animSet.die != null && animSet.die.Length > 0)
+            {
+                PlayOnce(animSet.die, animSet.dieFps, dt);
+                return;
+            }
+
+            if (!_dead && Time.time < _attackUntil)
+            {
+                var pose = animSet.GetAttack(facing);
+                PlayOnce(pose, pose.Length / Mathf.Max(0.01f, animSet.attackPoseTime), dt);
+                return;
+            }
 
             var walk = animSet.GetWalk(facing);
             var stand = animSet.GetStand(facing);
@@ -101,6 +137,27 @@ namespace MagicGame
             }
 
             _renderer.sprite = clip[Mathf.Clamp(_frame, 0, clip.Length - 1)];
+        }
+
+        void PlayOnce(Sprite[] clip, float fps, float dt)
+        {
+            if (clip != _clip)
+            {
+                _clip = clip;
+                _frame = 0;
+                _timer = 0f;
+            }
+            else if (_frame < clip.Length - 1 && fps > 0f)
+            {
+                _timer += dt;
+                float step = 1f / fps;
+                while (_timer >= step && _frame < clip.Length - 1)
+                {
+                    _timer -= step;
+                    _frame++;
+                }
+            }
+            _renderer.sprite = clip[_frame];
         }
     }
 }

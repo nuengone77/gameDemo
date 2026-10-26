@@ -33,6 +33,7 @@ namespace MagicGame
             _rb = GetComponent<Rigidbody2D>();
             _animator = GetComponent<DirectionalSpriteAnimator>();
             Health = GetComponent<Health>();
+            Health.Died += _ => _animator.PlayDeath();
 
             if (characters != null && characters.Length > 0)
             {
@@ -100,6 +101,8 @@ namespace MagicGame
                 : magicRingPrefab;
             if (prefab == null) return;
             _nextAttack = Time.time + attackCooldown;
+            _animator.FaceTowards(direction);
+            _animator.PlayAttack();
             var ring = Instantiate(prefab, Center + direction.normalized * 0.4f, Quaternion.identity);
             ring.Launch(direction, Team.Player, ringDamage);
         }

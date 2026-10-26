@@ -18,6 +18,8 @@ namespace MagicGame
         [Header("Sprite animation (optional, loops)")]
         public Sprite[] frames;
         public float frameRate = 12f;
+        [Tooltip("Off = play the frames once and stay on the last one (e.g. a blast that grows as it flies).")]
+        public bool loopFrames = true;
 
         Team _team;
         float _damage;
@@ -55,7 +57,10 @@ namespace MagicGame
             }
 
             if (frames != null && frames.Length > 1 && _renderer != null)
-                _renderer.sprite = frames[(int)(_age * frameRate) % frames.Length];
+            {
+                int frame = (int)(_age * frameRate);
+                _renderer.sprite = frames[loopFrames ? frame % frames.Length : Mathf.Min(frame, frames.Length - 1)];
+            }
             if (spinSpeed != 0f) transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
             if (!Mathf.Approximately(growTo, 1f))
                 transform.localScale = _baseScale * Mathf.Lerp(1f, growTo, _age / lifetime);

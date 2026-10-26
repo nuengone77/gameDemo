@@ -26,6 +26,17 @@ namespace MagicGame
         [Tooltip("Projectile this character shoots (players). Empty = the player's default magic ring.")]
         public Projectile attackProjectile;
 
+        [Header("Attack pose (shown briefly when casting; empty = keep walking/standing)")]
+        public Sprite[] attackDown;
+        public Sprite[] attackUp;
+        public Sprite[] attackLeft;
+        public Sprite[] attackRight;
+        public float attackPoseTime = 0.3f;
+
+        [Header("Death (played once, last frame stays on screen)")]
+        public Sprite[] die;
+        public float dieFps = 8f;
+
         public float walkFps = 10f;
         public float standFps = 6f;
 
@@ -35,6 +46,14 @@ namespace MagicGame
             FacingDir.Left => walkLeft,
             FacingDir.Right => walkRight,
             _ => walkDown,
+        };
+
+        public Sprite[] GetAttack(FacingDir dir) => dir switch
+        {
+            FacingDir.Up => attackUp,
+            FacingDir.Left => attackLeft,
+            FacingDir.Right => attackRight,
+            _ => attackDown,
         };
 
         public Sprite[] GetStand(FacingDir dir) => dir switch

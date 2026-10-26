@@ -1,0 +1,548 @@
+fileFormatVersion: 2
+guid: 787541b43caba4afd8f4c83e76191ea2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7960195876771629021
+    second: goblin(new)_nobg_0
+  - first:
+      213: 3387536741091302917
+    second: goblin(new)_nobg_1
+  - first:
+      213: 4455144857846265230
+    second: goblin(new)_nobg_2
+  - first:
+      213: 3149880378828673464
+    second: goblin(new)_nobg_3
+  - first:
+      213: 907354165762666185
+    second: goblin(new)_nobg_4
+  - first:
+      213: -4880645406944965765
+    second: goblin(new)_nobg_5
+  - first:
+      213: 6421914740117441412
+    second: goblin(new)_nobg_6
+  - first:
+      213: 8603590197179387152
+    second: goblin(new)_nobg_7
+  - first:
+      213: 8955590577669474215
+    second: goblin(new)_nobg_8
+  - first:
+      213: -8799883347833121521
+    second: goblin(new)_nobg_9
+  - first:
+      213: -6319801806389243079
+    second: goblin(new)_nobg_10
+  - first:
+      213: -5222832021578374167
+    second: goblin(new)_nobg_11
+  - first:
+      213: 6359835386881179199
+    second: goblin(new)_nobg_12
+  - first:
+      213: 7526171160448678003
+    second: goblin(new)_nobg_13
+  - first:
+      213: -6261810345264159850
+    second: goblin(new)_nobg_14
+  - first:
+      213: -3614694581357639356
+    second: goblin(new)_nobg_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 180.90909
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 672
+        width: 143
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817d9c991b26540ee849f5b7bd6ef5bc
+      internalID: -714858704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 672
+        width: 141
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ad67bf9147b4c33bf4832d26293cb7
+      internalID: 566030332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 672
+        width: 143
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afbdfc5375e134c73beb05d5100cb5f5
+      internalID: 475365536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 672
+        width: 142
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 480e6eca4217b4cedb1da73e799d3f6e
+      internalID: -1361032012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 461
+        width: 143
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbf99f2ac35148a68895ae19cc186b2
+      internalID: 2051274687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 461
+        width: 142
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 175a05258eb564958b501beb8dc93568
+      internalID: 1299791360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 461
+        width: 144
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45341a4cac9134ddc93219b1b2ebf9fc
+      internalID: -934635792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 461
+        width: 143
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b989c9b52754418bbfc5c1fc2f03743
+      internalID: -763518240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r2_c0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 253
+        width: 101
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03705d3b55f694770a4417ba79d53a68
+      internalID: -4611062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r2_c1
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 253
+        width: 115
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f60ecd70d00644670b718cfd36094892
+      internalID: 862991437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r2_c2
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 253
+        width: 132
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5353027d55d64081a7951a48f10e118
+      internalID: 1403398721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r2_c3
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 253
+        width: 116
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e935aa21f5cc14b6787e91e19ff50991
+      internalID: 417308805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r3_c0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 47
+        width: 105
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de13abb487a2644eeb92e71a94f36c9f
+      internalID: 2026985628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r3_c1
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 47
+        width: 116
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a269d7015762d4a09a79d49d8faaf253
+      internalID: 479710698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r3_c2
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 47
+        width: 128
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd1a7bc21899418fa43cdb5f43ed76c
+      internalID: 1213221196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblin(new)_nobg_r3_c3
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 47
+        width: 114
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc47364383f3047b1b0d1bf39cabfbdd
+      internalID: -1949187195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 481bc4b1a39674f699a1994df5b6c123
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      goblin(new)_nobg_r0_c0: -714858704
+      goblin(new)_nobg_r0_c1: 566030332
+      goblin(new)_nobg_r0_c2: 475365536
+      goblin(new)_nobg_r0_c3: -1361032012
+      goblin(new)_nobg_r1_c0: 2051274687
+      goblin(new)_nobg_r1_c1: 1299791360
+      goblin(new)_nobg_r1_c2: -934635792
+      goblin(new)_nobg_r1_c3: -763518240
+      goblin(new)_nobg_r2_c0: -4611062
+      goblin(new)_nobg_r2_c1: 862991437
+      goblin(new)_nobg_r2_c2: 1403398721
+      goblin(new)_nobg_r2_c3: 417308805
+      goblin(new)_nobg_r3_c0: 2026985628
+      goblin(new)_nobg_r3_c1: 479710698
+      goblin(new)_nobg_r3_c2: 1213221196
+      goblin(new)_nobg_r3_c3: -1949187195
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

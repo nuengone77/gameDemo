@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: a72dc17407da04342889bca052b8798f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6581648651175682300
+    second: neung_leftright_nobg_0
+  - first:
+      213: -2051833146109617882
+    second: neung_leftright_nobg_1
+  - first:
+      213: 7196571999206834403
+    second: neung_leftright_nobg_2
+  - first:
+      213: 5915489189955284385
+    second: neung_leftright_nobg_3
+  - first:
+      213: -8588352451208565754
+    second: neung_leftright_nobg_4
+  - first:
+      213: 6092051752312885733
+    second: neung_leftright_nobg_5
+  - first:
+      213: 394378676091575631
+    second: neung_leftright_nobg_6
+  - first:
+      213: -5597342183550735541
+    second: neung_leftright_nobg_7
+  - first:
+      213: -81127827770762206
+    second: neung_leftright_nobg_8
+  - first:
+      213: 7058340701043381461
+    second: neung_leftright_nobg_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 336.60715
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r0_c0
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 584
+        width: 221
+        height: 381
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa20dedf3ae4f49eabbfc5966011477b
+      internalID: -978157010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r0_c1
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 584
+        width: 249
+        height: 381
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a20d12466f90243bd9e6a4c5dc010b2f
+      internalID: 939472447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r0_c2
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 584
+        width: 232
+        height: 381
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956be04e378cc46beae0c4807ab77042
+      internalID: -1729478827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r0_c3
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 584
+        width: 240
+        height: 381
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e39e48384aa9451db8b00c266c51b61
+      internalID: -1037745111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r0_c4
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 584
+        width: 232
+        height: 381
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11b4e0cd9760420e931ffe398484067
+      internalID: 2006456627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r1_c0
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 92
+        width: 221
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7062b400062be4c659aaa0c67c52ced0
+      internalID: -1654752558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r1_c1
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 92
+        width: 240
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e0a57a367c640b2aad7a23164a4cf2
+      internalID: 1016421812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r1_c2
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 92
+        width: 232
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba3785cdbee84e47875f9fca9438c87
+      internalID: -2068561583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r1_c3
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 92
+        width: 248
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29a482462e5c4c0fa062af4f20b815b
+      internalID: -1451588550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neung_leftright_nobg_r1_c4
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 92
+        width: 232
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e97c46cace884816a23265f26501e72
+      internalID: 1566590058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 26627e1f60cbe444ba9c41656b9ba160
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      neung_leftright_nobg_r0_c0: -978157010
+      neung_leftright_nobg_r0_c1: 939472447
+      neung_leftright_nobg_r0_c2: -1729478827
+      neung_leftright_nobg_r0_c3: -1037745111
+      neung_leftright_nobg_r0_c4: 2006456627
+      neung_leftright_nobg_r1_c0: -1654752558
+      neung_leftright_nobg_r1_c1: 1016421812
+      neung_leftright_nobg_r1_c2: -2068561583
+      neung_leftright_nobg_r1_c3: -1451588550
+      neung_leftright_nobg_r1_c4: 1566590058
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
