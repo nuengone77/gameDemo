@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Ling
   m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.CharacterCombatConfig
   role: 3
-  basicDamage: 35
-  basicInterval: 0.35
+  maxHp: 110
+  moveSpeed: 4
+  basicDamage: 48
+  basicInterval: 0.92
   activeDamage: 50
-  ultimateDamage: 100
-  activeCooldown: 10
+  ultimateDamage: 75
+  activeCooldown: 12
   ultimateCooldown: 30
-  duration: 4
-  radius: 2
+  duration: 3.5
+  radius: 1.6
   range: 6
   castDelay: 0.5
   tickInterval: 0.5
@@ -42,6 +44,7 @@ MonoBehaviour:
   fanAngle: 30
   dashDistance: 2
   dashDuration: 0.2
+  ultimateLeapHeight: 0.6
   bounces: 3
   bounceRadius: 3
   evasion: 0.15
@@ -51,7 +54,7 @@ MonoBehaviour:
   knockupHeight: 0.7
   orbSpeed: 4
   orbLifetime: 3
-  slow: 0.6
+  slow: 0.45
   lunarDamage: 35
   burnPerSecond: 5
   burnDuration: 3

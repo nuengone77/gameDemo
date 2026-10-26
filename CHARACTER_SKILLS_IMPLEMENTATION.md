@@ -30,13 +30,39 @@ The wall still blocks hostile projectiles approaching its front and ignores frie
 
 ## Configuration and Balance
 
-Edit the five assets in `Assets/Game/CombatConfigs/` in the Inspector. Each existing animation set references its corresponding combat asset. `CharacterCombatConfig` groups basic/active/ultimate damage, cooldowns, durations, radii, stacks, defense, healing, stance, and status settings. Projectile prefabs retain their existing speed, lifetime, and sprite configuration; Oracle overrides speed/lifetime through its combat config.
+**Balance round 1 (2026-10-26)** targets accessible solo play, a 45–75 second Dragon fight, and approximately 15–25% difference between the fastest and slowest boss clears at comparable familiarity. These are playtest targets, not measured human completion times. All attack patterns, targeting, damage types, status rules and stage rosters are retained.
 
-Unspecified numbers are **provisional balance values**, not finished tuning: basic damage 25 (Oracle 35; Daphne Lunar 35), active damage 50 where applicable, ultimate total damage 100 per target, active/ultimate cooldowns 10/30 seconds, typical duration 4 seconds, radius 2 units, stance cooldown 1 second, and Eclipse healing 30 HP. Storm damage is divided across ticks, rather than applying the total every tick.
+Edit the five assets in `Assets/Game/CombatConfigs/` in the Inspector. Each animation set references its corresponding combat asset. `CharacterCombatConfig` now also holds `maxHp` and `moveSpeed`: `PlayerController.Awake` applies them once after resolving the selected hero. `PlayerSkills.Initialize` never applies base stats or refills health. Unassigned/test configs retain defaults of 100 HP and speed 4; existing designer tuning is preserved by **Update Character Skills**. New configs use `CharacterSkillSetup.ApplyInitialBalance` only when created.
 
-Tanky retains the specified 30% distance-defense cap, 10% actual-damage conversion, 2.5-second meteor root, and 30% attack reduction. Shield capacity starts at 50 HP. Shadow stacks cap at 10 and reset after 2 seconds without successful hits. Reapplying the same buff refreshes it; it does not accumulate indefinitely. Area slow ends on exit or area destruction. Different slows use the strongest value.
+| Hero / asset | HP | Move speed | Basic damage / interval | Active cooldown | Ultimate damage / cooldown |
+|---|---:|---:|---|---:|---|
+| Tanky / New | 120 | 4.0 | 22 / 0.40s | 12s | 100 / 30s |
+| Shadow / Nueng | 110 | 4.3 | 12 per kunai / 0.30s | 18s | 70 / 30s |
+| Magician / Peng | 115 | 4.1 | 24 per target / 0.40s | 8s | 180 total / 30s |
+| Oracle Witch / Ling | 110 | 4.0 | 48 / 0.92s | 12s | 75 / 30s |
+| Daphne / Nae | 120 | 4.0 | Solar 19, Lunar 25 / 0.42s | 9s | 60 / 35s |
 
-Physical and magic defense start at zero to preserve existing balance. Mitigation uses `damage * 100 / (100 + defenseAfterPenetration)`, then percentage reduction, shields, and HP. Actual damage includes shield absorption and excludes overkill. Guaranteed hits ignore evasion while retaining general invulnerability. Enemy attack debuffs affect attacks when fired, rather than rewriting projectiles already in flight.
+The only calibration from the initial proposal is Daphne's Lunar damage **26 → 25**. The first aimed automated Dragon runs averaged 48.89s for Daphne versus 61.95s for the slowest hero (26.7% spread). Three calibrated repeats took 50.52/50.41/50.44s, reducing the spread to about 22.8% without changing the stance, root, healing or cooldown rules.
+
+- **Tanky:** distance reduction caps at 20% at 6 units; converts 2.5% of actual damage into shield, capped at 30 HP. Wall duration 3s, defense reduction 15%; meteor radius 2.4, root 2s and attack reduction 20% for 3s. The wall's projectile blocking and directional region checks are unchanged.
+- **Shadow:** 10 stacks, +3% attack speed each, reset after 3s without hits. Overdrive gives +20% attack speed for 2s; the three-kunai, 30-degree fan and 2-unit retreat over 0.2s remain unchanged. Armor penetration remains 20%.
+- **Magician:** three bounces within 3 units, 12% evasion; card lifetime 1.6s at its original speed 9. Trap damage 50, lifetime 8s, trigger radius 0.8, knock-up 0.7s. Trap explosion/storm radius 2.4. Storm lasts 4s, ticks every 0.5s and divides its 180 total damage across the eight ticks. Storm remains at the original location after teleport.
+- **Oracle:** orb speed 4, lifetime 3s, explosion/slow-field radius 1.6; slow 45% for a 3.5s field. Defense/obstacle bypass and guaranteed ultimate hit rules are unchanged.
+- **Daphne:** Solar burn 4 damage per second for 3s, explosion/active radius 1.4; Lunar active root 1.5s. Active damage 45 in either stance, stance cooldown 3s, transition buff 15% for 3s, Eclipse healing 20 HP. Stances share the active cooldown and retain the existing replacement/refresh rules.
+
+| Enemy | HP | Physical / magic defense | Damage | Attack interval | Wind-up | Projectile speed |
+|---|---:|---|---:|---:|---:|---:|
+| Goblin | 80 | 0 / 0 | 8 | 1.2s | 0.40s | unchanged (melee) |
+| Skeleton | 60 | 5 / 5 | 8 | 2.0s | 0.50s | 7 |
+| Frost Witch | 1,200 | 10 / 10 | 12 | 2.2s | 0.65s | 5 |
+| Golem | 1,600 | 35 / 35 | 20 | 2.6s | 0.80s | 4 |
+| Dragon | 2,800 | 20 / 20 | 18 | 3.0s | 0.65s | 3 |
+
+`GameBuilder.ApplyEnemyBalance` supplies the same values to regenerated enemies. The existing Level7 overrides already match the Dragon's interval 3 and projectile speed 3; authored scenes, sky movement, projectile counts and burst patterns are preserved. Player defenses remain zero and post-hit invulnerability remains 0.4s. Other unspecified stats are unchanged.
+
+Mitigation still uses `damage * 100 / (100 + defenseAfterPenetration)`, then percentage reduction, shields, and HP. All current hero attacks, including Shadow's kunai, use magic damage, so enemy magic defense now gives both penetration and bypass an actual benefit. Actual damage includes shield absorption and excludes overkill. Guaranteed hits ignore evasion while retaining general invulnerability. Enemy attack debuffs affect attacks when fired, rather than rewriting projectiles already in flight. Reapplying a buff refreshes it; different slows use the strongest value and area slow ends on exit/destruction.
+
+The rough model behind these starting numbers assumes successful basic-attack output for 80% of combat time, fully established Shadow stacks and one to three fan blades landing during Overdrive. It gives approximately 59–72 seconds against a 2,800 HP / 20-defense Dragon. It excludes travel time, stack ramp, geometry and human movement, and gives Magician no credit for ground areas against the flying boss. It must not be reported as a live-play result.
 
 ## Simple Effects and Future Artwork
 
@@ -53,6 +79,28 @@ Replace the presentation in `SkillVfx` and optional projectile artwork when fina
 - **Tools > Magic Game > Update Character Skills** updates existing content in place and preserves tuned combat assets. Unsaved scenes are skipped, with runtime boundary detection as a fallback. `GameBuilder` also wires skill configuration during future generation. **Build Everything** still recreates scenes as before; use the update command for existing authored levels.
 
 ## Verification
+
+### Balance round 1 — 2026-10-26
+
+Automated verification uses the saved hero/enemy assets; the combat probes do not grant HP, invulnerability, damage bonuses, kill enemies directly, or change enemy AI. They hold basic fire and use ordinary skills with their actual cooldowns. Temporary probe scripts and detailed reports are outside tracked assets in `Temp/` and `Logs/`.
+
+| Hero | Dragon clear times (game seconds) | Mean |
+|---|---|---:|
+| Tanky | 62.22 / 61.76 / 61.86 | 61.95s |
+| Shadow | 53.90 / 52.33 / 53.46 | 53.23s |
+| Magician | 56.97 / 56.89 / 56.94 | 56.93s |
+| Oracle Witch | 64.49 / 59.36 / 61.96 | 61.94s |
+| Daphne, Lunar 25 | 50.52 / 50.41 / 50.44 | 50.46s |
+
+All 15 final Dragon attempts cleared within the 45–75s target. The probes ran at **2x time scale** and report elapsed game time. Aimed runs use velocity-based projectile lead, arena positioning and projectile avoidance; these are automated combat measurements, not human playtests or proof of beginner accessibility. Earlier capped-lead runs are retained separately, including two Oracle deaths, to make the controller's influence visible.
+
+Regression suites cover the 35 hero/stage spawn combinations, full spawn HP, configured movement speed, no healing/resurrection on skill reinitialization, saved enemy/generator consistency, meaningful armor penetration/bypass, and all existing skill, UI and progression behavior. Reports are `Logs/BalanceRound1-EditMode.json`, `Logs/BalanceRound1-PlayMode.json`, `Logs/BalanceRound1-AimedProbe.jsonl` and `Logs/BalanceRound1-DaphneProbe.jsonl`. The first 15-run baseline in the aimed report uses Lunar 26; the three calibrated Daphne runs replace those rows for the table above.
+
+Final compilation passed; **35/35 Edit Mode and 39/39 Play Mode tests passed** after calibration. The Unity asset/GUID checker inspected **511 files with zero errors and zero warnings**. Source whitespace checks passed. No authored scene, artwork, core skill implementation, status rules or enemy AI files were changed.
+
+Stages 1–6 were also attempted with all five heroes: 26/30 initial attempts cleared. Shadow/Oracle/Daphne died in Stage5 and Magician died in Stage6. The four targeted repeats used the projectile and player hurtbox extents instead of a fixed projectile clearance; all four cleared at 36.92s/35.50s/38.42s/11.58s respectively. Combined with the Dragon attempts, every hero has at least one solo clear of every saved stage in this controlled probe. These repeats changed the test controller, not the enemy attack patterns or defenses. Reports retain both outcomes in `Logs/BalanceRound1-GroundProbe.jsonl` and `Logs/BalanceRound1-GroundRetest.jsonl`. Human playtesting is still required for difficulty, readability, and long-term character preference.
+
+After the Lunar calibration, Daphne also repeated Stages1–4 successfully at 3.53s/6.51s/22.80s/10.82s; Stage5's successful repeat and Stage6's initial clear already used Lunar 25. `Logs/BalanceRound1-DaphneGround.jsonl` records these final checks. The final saved numbers therefore have a successful automated solo clear for every hero/stage combination, with failed earlier attempts retained rather than discarded.
 
 Verification uses Unity **6000.6.3f1** and Unity Test Framework. Edit Mode covers damage, shields, overkill, penetration, defense types, evasion, invulnerability, buffs, healing, saved mappings, and repeatable setup. Play Mode covers every hero's skills, collision and effect cleanup, actual scenes, seven-stage progression, restart, and victory.
 

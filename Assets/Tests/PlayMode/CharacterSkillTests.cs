@@ -503,7 +503,38 @@ namespace MagicGame.Tests
             SceneManager.LoadScene("Level1");
             yield return null;
             Assert.That(PlayerController.Instance.Skills.ActiveRemaining, Is.Zero);
-            Assert.That(PlayerController.Instance.Health.CurrentHp, Is.EqualTo(100f));
+            Assert.That(PlayerController.Instance.Health.CurrentHp, Is.EqualTo(PlayerController.Instance.Skills.Config.maxHp));
+        }
+
+        [UnityTest]
+        public IEnumerator EverySavedHeroSpawnsWithBaseStatsAcrossSevenStagesWithoutSkillSetupHealing()
+        {
+            foreach (string hero in GameSession.HeroIds)
+            for (int stage = 1; stage <= 7; stage++)
+            {
+                GameSession.SelectedHeroId = hero;
+                SceneManager.LoadScene($"Level{stage}");
+                yield return null;
+                var player = PlayerController.Instance;
+                var config = player.Skills.Config;
+                Assert.That(player.CurrentCharacter.displayName, Is.EqualTo(hero));
+                Assert.That(player.Health.maxHp, Is.EqualTo(config.maxHp));
+                Assert.That(player.Health.CurrentHp, Is.EqualTo(config.maxHp));
+                Assert.That(player.moveSpeed, Is.EqualTo(config.moveSpeed));
+                player.Health.invulnerableTime = 0f;
+                player.Health.TakeDamage(new DamageInfo(10f) { guaranteed = true, bypassDefense = true });
+                float damagedHp = player.Health.CurrentHp;
+                player.Skills.Initialize(player, config);
+                Assert.That(player.Health.CurrentHp, Is.EqualTo(damagedHp), $"{hero} / Level{stage}: skill setup must not heal.");
+                Assert.That(player.Health.maxHp, Is.EqualTo(config.maxHp));
+                if (stage == 7)
+                {
+                    player.Health.TakeDamage(new DamageInfo(10000f) { guaranteed = true, bypassDefense = true });
+                    player.Skills.Initialize(player, config);
+                    Assert.That(player.Health.IsDead, Is.True);
+                    Assert.That(player.Health.CurrentHp, Is.Zero, "Skill setup must not resurrect a dead hero.");
+                }
+            }
         }
 
         [UnityTest]
@@ -657,7 +688,7 @@ namespace MagicGame.Tests
             body.position = new Vector2(0f, manager.playableBounds.center.y);
             var dragonBody = dragon.GetComponent<Rigidbody2D>();
             dragonBody.position = new Vector2(0f, (dragon.skyMinY + dragon.skyMaxY) * 0.5f);
-            dragon.Health.Status.Apply(StatusKind.Root, 1f, 3f, player);
+            dragon.Health.Status.Apply(StatusKind.Root, 1f, 5f, player);
             Physics2D.SyncTransforms();
             yield return new WaitForFixedUpdate();
             yield return null;
@@ -672,7 +703,7 @@ namespace MagicGame.Tests
             player.Skills.BasicAttack(Vector2.up);
             typeof(EnemyController).GetMethod("PerformAttack", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .Invoke(dragon, new object[] { player, 5f });
-            float deadline = Time.time + 2f;
+            float deadline = Time.time + 3.5f;
             while (Time.time < deadline && (dragon.Health.CurrentHp >= startingBossHp || player.Health.CurrentHp >= startingPlayerHp))
                 yield return null;
             Assert.That(dragon.Health.CurrentHp, Is.LessThan(startingBossHp), "Player shots must reach the flying boss.");

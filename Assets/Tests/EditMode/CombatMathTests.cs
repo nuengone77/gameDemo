@@ -153,5 +153,63 @@ namespace MagicGame.Tests
             update.Invoke(null, null);
             foreach (var path in paths) Assert.That(File.ReadAllText(path), Is.EqualTo(before[path]), path);
         }
+
+        [TestCase("Goblin")]
+        [TestCase("Skeleton")]
+        [TestCase("Witch")]
+        [TestCase("Golem")]
+        [TestCase("Dragon")]
+        public void RegeneratedEnemyStatsMatchSavedPrefabWithoutChangingAttackPattern(string name)
+        {
+            var root = PrefabUtility.LoadPrefabContents($"Assets/Game/Prefabs/{name}.prefab");
+            try
+            {
+                var enemy = root.GetComponent<EnemyController>();
+                var health = root.GetComponent<Health>();
+                string beforeEnemy = EditorJsonUtility.ToJson(enemy);
+                string beforeHealth = EditorJsonUtility.ToJson(health);
+                var builder = Type.GetType("MagicGame.EditorTools.GameBuilder, Assembly-CSharp-Editor");
+                builder.GetMethod("ApplyEnemyBalance").Invoke(null, new object[] { enemy, name });
+                Assert.That(EditorJsonUtility.ToJson(enemy), Is.EqualTo(beforeEnemy));
+                Assert.That(EditorJsonUtility.ToJson(health), Is.EqualTo(beforeHealth));
+            }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
+        }
+
+        [TestCase("New")]
+        [TestCase("Nueng")]
+        [TestCase("Peng")]
+        [TestCase("Ling")]
+        [TestCase("Nae")]
+        public void FreshHeroConfigMatchesSavedTuning(string name)
+        {
+            var saved = AssetDatabase.LoadAssetAtPath<CharacterCombatConfig>($"Assets/Game/CombatConfigs/{name}.asset");
+            var generated = ScriptableObject.CreateInstance<CharacterCombatConfig>();
+            try
+            {
+                generated.role = saved.role;
+                var setup = Type.GetType("MagicGame.EditorTools.CharacterSkillSetup, Assembly-CSharp-Editor");
+                setup.GetMethod("ApplyInitialBalance").Invoke(null, new object[] { generated });
+                foreach (var field in typeof(CharacterCombatConfig).GetFields(BindingFlags.Public | BindingFlags.Instance))
+                    Assert.That(field.GetValue(generated), Is.EqualTo(field.GetValue(saved)), $"{name}: {field.Name}");
+            }
+            finally { Object.DestroyImmediate(generated); }
+        }
+
+        [Test]
+        public void SavedGolemArmorRewardsPenetrationAndBypassWithoutMakingNormalHitsIneffective()
+        {
+            var golem = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Game/Prefabs/Golem.prefab").GetComponent<Health>();
+            var shadow = AssetDatabase.LoadAssetAtPath<CharacterCombatConfig>("Assets/Game/CombatConfigs/Nueng.asset");
+            var target = Actor();
+            target.magicDefense = golem.magicDefense;
+            float normal = target.TakeDamage(new DamageInfo(20f)).Total;
+            float penetrating = target.TakeDamage(new DamageInfo(20f) { penetration = shadow.armorPenetration }).Total;
+            float bypassing = target.TakeDamage(new DamageInfo(20f) { bypassDefense = true }).Total;
+            Assert.That(normal, Is.GreaterThan(10f));
+            Assert.That(penetrating, Is.GreaterThan(normal));
+            Assert.That(bypassing, Is.GreaterThan(penetrating));
+            Assert.That(bypassing, Is.EqualTo(20f));
+        }
     }
 }

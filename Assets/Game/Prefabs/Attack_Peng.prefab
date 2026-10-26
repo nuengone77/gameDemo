@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Projectile
   speed: 9
-  lifetime: 1.1
+  lifetime: 1.6
   spinSpeed: 0
   alignToDirection: 0
   alignAngleOffset: 0
@@ -187,3 +187,10 @@ MonoBehaviour:
   - {fileID: -431473077, guid: bbeaad1289f4c4a24a1bb1b61d58a3b6, type: 3}
   frameRate: 14
   loopFrames: 0
+  explosionRadius: 0
+  bounces: 0
+  bounceRadius: 3
+  bypassObstacles: 0
+  burnPerSecond: 0
+  burnDuration: 0
+  rootDuration: 0

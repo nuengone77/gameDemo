@@ -49,9 +49,16 @@ namespace MagicGame
                 CurrentCharacter = characters[index];
                 _animator.SetAnimSet(CurrentCharacter);
             }
+            var config = CurrentCharacter != null ? CurrentCharacter.combat : null;
+            if (config != null)
+            {
+                Health.maxHp = Mathf.Max(1f, config.maxHp);
+                Health.Heal(Health.maxHp);
+                moveSpeed = Mathf.Max(0.1f, config.moveSpeed);
+            }
             Skills = GetComponent<PlayerSkills>();
             if (Skills == null) Skills = gameObject.AddComponent<PlayerSkills>();
-            Skills.Initialize(this, CurrentCharacter != null ? CurrentCharacter.combat : null);
+            Skills.Initialize(this, config);
         }
 
         void OnDestroy()

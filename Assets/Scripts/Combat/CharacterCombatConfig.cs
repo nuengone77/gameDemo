@@ -8,7 +8,10 @@ namespace MagicGame
     public class CharacterCombatConfig : ScriptableObject
     {
         public HeroRole role;
-        [Header("Provisional balance values; all times in seconds")]
+        [Header("Base stats (applied once when the player spawns)")]
+        [Min(1)] public float maxHp = 100f;
+        [Min(0.1f)] public float moveSpeed = 4f;
+        [Header("Combat tuning; all times in seconds")]
         [Min(0)] public float basicDamage = 25f;
         [Min(0.05f)] public float basicInterval = 0.35f;
         [Min(0)] public float activeDamage = 50f;
