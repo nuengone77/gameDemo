@@ -725,6 +725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c2774bbb1f47ae9f5654973167e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.LevelManager
+  playableBounds:
+    serializedVersion: 2
+    x: -11.172183
+    y: -5.5872674
+    width: 22.498055
+    height: 13.32511
   levelNumber: 1
   levelTitle: Forest Path
   isFinalLevel: 0
@@ -775,6 +781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!68 &1676295569
 EdgeCollider2D:
   m_ObjectHideFlags: 0

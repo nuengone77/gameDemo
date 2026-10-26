@@ -113,3 +113,7 @@ InitTestScene*.unity*
 .vscode/
 *.slnx
 .claude/
+
+.agents/
+AGENTS.md
+skills-lock.json

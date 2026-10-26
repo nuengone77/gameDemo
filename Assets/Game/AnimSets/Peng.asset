@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Peng
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: Peng
+  combat: {fileID: 11400000, guid: 7446d0b5bd434d14d9e394d68a1fe285, type: 2}
   walkDown:
   - {fileID: -842625979, guid: 9064127ca89aa48c995a4ca7849a192d, type: 3}
   - {fileID: 2132272239, guid: 9064127ca89aa48c995a4ca7849a192d, type: 3}

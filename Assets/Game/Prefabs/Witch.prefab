@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1537132997633783748}
   - component: {fileID: 3323124845908068043}
   - component: {fileID: 7112535079930107773}
+  - component: {fileID: 4481408666180504055}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Untagged
@@ -205,6 +206,8 @@ MonoBehaviour:
   maxHp: 700
   invulnerableTime: 0
   destroyOnDeath: 1
+  physicalDefense: 0
+  magicDefense: 0
 --- !u!114 &7112535079930107773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +244,18 @@ MonoBehaviour:
   spreadAngle: 36
   burstEvery: 4
   burstCount: 10
+--- !u!114 &4481408666180504055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952939785821166913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fb17acfbc461745a4f620353c47b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusEffects
 --- !u!1 &8475321391033918912
 GameObject:
   m_ObjectHideFlags: 0

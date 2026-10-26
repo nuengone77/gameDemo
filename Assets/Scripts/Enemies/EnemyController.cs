@@ -72,6 +72,7 @@ namespace MagicGame
 
         void Update()
         {
+            if (GameUI.GameplayBlocked) return;
             _velocity = Vector2.zero;
             var player = PlayerController.Instance;
             if (player == null || player.Health.IsDead || Health.IsDead)
@@ -85,6 +86,13 @@ namespace MagicGame
             if (!_aggro && (dist <= detectRange || isBoss)) _aggro = true;
             if (!_aggro)
             {
+                _animator.SetMovement(Vector2.zero);
+                return;
+            }
+
+            if (Health.Status.Interrupted)
+            {
+                _windUpEnd = -1f;
                 _animator.SetMovement(Vector2.zero);
                 return;
             }
@@ -104,7 +112,7 @@ namespace MagicGame
             if (flyInSky) _velocity = FlyVelocity(player);
             else _velocity = ChaseVelocity(toPlayer, dist);
 
-            _animator.SetMovement(_velocity);
+            _animator.SetMovement(_velocity * Health.Status.MoveMultiplier);
             if (_velocity == Vector2.zero) _animator.FaceTowards(toPlayer);
 
             if (dist <= attackRange && Time.time >= _nextAttack)
@@ -137,14 +145,16 @@ namespace MagicGame
 
         void FixedUpdate()
         {
+            Vector2 velocity = Health.IsDead || GameUI.GameplayBlocked
+                ? Vector2.zero : Health.Status.ResolveVelocity(_rb, _velocity);
             if (flyInSky)
             {
-                var next = _rb.position + _velocity * Time.fixedDeltaTime;
+                var next = _rb.position + velocity * Time.fixedDeltaTime;
                 next.x = Mathf.Clamp(next.x, skyMinX, skyMaxX);
                 next.y = Mathf.Clamp(next.y, skyMinY, skyMaxY);
                 _rb.MovePosition(next);
             }
-            else _rb.linearVelocity = _velocity;
+            else _rb.linearVelocity = velocity;
         }
 
         void PerformAttack(PlayerController player, float dist)
@@ -152,16 +162,20 @@ namespace MagicGame
             _attackCount++;
             if (style == AttackStyle.Melee)
             {
-                if (dist <= attackRange * 1.2f) player.Health.TakeDamage(damage);
+                if (dist <= attackRange * 1.2f) player.Health.TakeDamage(new DamageInfo(damage * Health.Status.AttackMultiplier, Health, DamageType.Physical));
                 return;
             }
 
             if (projectilePrefab == null) return;
-            Vector2 aim = player.Center - Center;
+            // Feet can fit beside a boundary while the elevated cast point lies outside it.
+            // Leave room for the projectile collider, then aim from the corrected origin.
+            Vector2 origin = flyInSky ? CombatWorld.ClampAttackPoint(Center, ProjectileClearance())
+                : CombatWorld.GroundTarget(transform.position, Center, ProjectileClearance());
+            Vector2 aim = player.Center - origin;
             if (burstEvery > 0 && _attackCount % burstEvery == 0)
             {
                 for (int i = 0; i < burstCount; i++)
-                    Fire(Quaternion.Euler(0f, 0f, 360f * i / burstCount) * aim);
+                    Fire(origin, Quaternion.Euler(0f, 0f, 360f * i / burstCount) * aim);
                 return;
             }
 
@@ -169,14 +183,27 @@ namespace MagicGame
             for (int i = 0; i < count; i++)
             {
                 float angle = count == 1 ? 0f : Mathf.Lerp(-spreadAngle / 2f, spreadAngle / 2f, i / (float)(count - 1));
-                Fire(Quaternion.Euler(0f, 0f, angle) * aim);
+                Fire(origin, Quaternion.Euler(0f, 0f, angle) * aim);
             }
         }
 
-        void Fire(Vector2 direction)
+        float ProjectileClearance()
         {
-            var p = Instantiate(projectilePrefab, Center, Quaternion.identity);
-            p.Launch(direction, Team.Enemy, damage, projectileSpeed);
+            Vector2 scale = projectilePrefab.transform.lossyScale;
+            var collider = projectilePrefab.GetComponent<Collider2D>();
+            float radius = 0.1f;
+            if (collider is CircleCollider2D circle)
+                radius = circle.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.y));
+            else if (collider is BoxCollider2D box)
+                radius = Vector2.Scale(box.size * 0.5f, scale).magnitude;
+            return radius + 0.03f;
+        }
+
+        void Fire(Vector2 origin, Vector2 direction)
+        {
+            var p = Instantiate(projectilePrefab, origin, Quaternion.identity);
+            p.Launch(direction, Team.Enemy, new DamageInfo(damage * Health.Status.AttackMultiplier, Health,
+                displayName.Contains("Dragon") ? DamageType.Magic : DamageType.Physical), projectileSpeed);
         }
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MagicGame
 {
@@ -20,6 +19,10 @@ namespace MagicGame
         public float castHeight = 0.6f;
 
         public Health Health { get; private set; }
+        public PlayerSkills Skills { get; private set; }
+        public CharacterAnimSet CurrentCharacter { get; private set; }
+        public bool CanMove => !GameUI.GameplayBlocked && isActiveAndEnabled && Health != null && !Health.IsDead &&
+            (LevelManager.Instance == null || LevelManager.Instance.AllowsMovement);
         public Vector2 Center => (Vector2)transform.position + Vector2.up * castHeight;
 
         Rigidbody2D _rb;
@@ -38,8 +41,17 @@ namespace MagicGame
             if (characters != null && characters.Length > 0)
             {
                 int index = Mathf.Clamp(GameSession.SelectedCharacter, 0, characters.Length - 1);
-                _animator.SetAnimSet(characters[index]);
+                if (!string.IsNullOrEmpty(GameSession.SelectedHeroId))
+                {
+                    int savedIndex = System.Array.FindIndex(characters, hero => hero != null && hero.displayName == GameSession.SelectedHeroId);
+                    if (savedIndex >= 0) index = savedIndex;
+                }
+                CurrentCharacter = characters[index];
+                _animator.SetAnimSet(CurrentCharacter);
             }
+            Skills = GetComponent<PlayerSkills>();
+            if (Skills == null) Skills = gameObject.AddComponent<PlayerSkills>();
+            Skills.Initialize(this, CurrentCharacter != null ? CurrentCharacter.combat : null);
         }
 
         void OnDestroy()
@@ -49,62 +61,43 @@ namespace MagicGame
 
         void Update()
         {
-            if (Health.IsDead)
+            if (!CanMove)
             {
                 _input = Vector2.zero;
                 _animator.SetMovement(Vector2.zero);
                 return;
             }
 
-            _input = ReadMove();
-            _animator.SetMovement(_input);
+            _input = GameplayInput.ReadMove();
+            _animator.SetMovement(_input * Health.Status.MoveMultiplier);
+            if (!Skills.CanAct) return;
 
-            var keyboard = Keyboard.current;
-            var mouse = Mouse.current;
+            GameplayInput.ReadActions(this, _animator.FacingVector, out var aim, out var target,
+                out bool firing, out bool active, out bool ultimate, out bool stance);
+            if (active) Skills.TryActive(aim, target);
+            if (ultimate) Skills.TryUltimate(target);
+            if (stance) Skills.TrySwitchStance();
+            if (Health.Status.Interrupted) return;
             if (Time.time < _nextAttack) return;
 
-            if (mouse != null && mouse.leftButton.wasPressedThisFrame && Camera.main != null)
+            if (firing)
             {
-                Vector2 target = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
-                Vector2 dir = target - Center;
-                _animator.FaceTowards(dir);
-                Cast(dir);
-            }
-            else if (keyboard != null && (keyboard.spaceKey.wasPressedThisFrame || keyboard.jKey.wasPressedThisFrame))
-            {
-                Cast(_animator.FacingVector);
+                _animator.FaceTowards(aim);
+                Cast(aim);
             }
         }
 
         void FixedUpdate()
         {
-            _rb.linearVelocity = _input * moveSpeed;
-        }
-
-        static Vector2 ReadMove()
-        {
-            var k = Keyboard.current;
-            if (k == null) return Vector2.zero;
-            float x = 0f, y = 0f;
-            if (k.aKey.isPressed || k.leftArrowKey.isPressed) x -= 1f;
-            if (k.dKey.isPressed || k.rightArrowKey.isPressed) x += 1f;
-            if (k.sKey.isPressed || k.downArrowKey.isPressed) y -= 1f;
-            if (k.wKey.isPressed || k.upArrowKey.isPressed) y += 1f;
-            var v = new Vector2(x, y);
-            return v.sqrMagnitude > 1f ? v.normalized : v;
+            _rb.linearVelocity = CanMove ? Health.Status.ResolveVelocity(_rb, _input * moveSpeed) : Vector2.zero;
         }
 
         void Cast(Vector2 direction)
         {
-            var prefab = _animator.animSet != null && _animator.animSet.attackProjectile != null
-                ? _animator.animSet.attackProjectile
-                : magicRingPrefab;
-            if (prefab == null) return;
-            _nextAttack = Time.time + attackCooldown;
             _animator.FaceTowards(direction);
             _animator.PlayAttack();
-            var ring = Instantiate(prefab, Center + direction.normalized * 0.4f, Quaternion.identity);
-            ring.Launch(direction, Team.Player, ringDamage);
+            _nextAttack = Time.time + Skills.AttackInterval;
+            Skills.BasicAttack(direction);
         }
     }
 }

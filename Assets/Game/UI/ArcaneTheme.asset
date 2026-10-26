@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd44f194c95b754696ffc92a7983ec6, type: 3}
+  m_Name: ArcaneTheme
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.ArcaneTheme
+  panel: {fileID: 21300000, guid: 320ec26fe37ccc44783fc4eadd8fe5da, type: 3}
+  ring: {fileID: 21300000, guid: a7f4b523b8c509543934e5de617f29a7, type: 3}
+  disc: {fileID: 21300000, guid: f96596c6ddf2b834489567b383a0270d, type: 3}
+  village: {fileID: -856186085146145165, guid: 2e36c6f689001444fbcd8a21290b1e66, type: 3}
+  symbols:
+  - {fileID: 21300000, guid: 3cfe302174843a24b8340d779aabe9b1, type: 3}
+  - {fileID: 21300000, guid: ee220e036188c184cacb0f2842919aad, type: 3}
+  - {fileID: 21300000, guid: ed96d554ac8f91a4e84abcd04625d6b1, type: 3}
+  - {fileID: 21300000, guid: b6af160ad2f37aa4faacaaa6aee0eff1, type: 3}
+  heroes:
+  - {fileID: 11400000, guid: 05014900d940a4d4eb7d4e14e69a865d, type: 2}
+  - {fileID: 11400000, guid: d36b7c98acc834edd852fcca586d6955, type: 2}
+  - {fileID: 11400000, guid: fef6e727846e14539a66709f5f2c20b3, type: 2}
+  - {fileID: 11400000, guid: d7b0cd7e81a9641d6b95a3cde0f71164, type: 2}
+  - {fileID: 11400000, guid: c31e52d39d3ae42198dc738628e7e8a3, type: 2}
+  bodyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  titleFont: {fileID: 11400000, guid: 966b39a3fb3901d4499a552e10d37def, type: 2}

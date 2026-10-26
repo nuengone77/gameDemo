@@ -9,6 +9,8 @@ namespace MagicGame
     public class CharacterAnimSet : ScriptableObject
     {
         public string displayName;
+        public CharacterCombatConfig combat;
+        public string MenuName => combat != null ? $"{displayName} — {combat.RoleName}" : displayName;
 
         [Header("Walk (played left to right while moving)")]
         public Sprite[] walkDown;

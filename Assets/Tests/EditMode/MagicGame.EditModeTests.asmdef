@@ -1,0 +1,6 @@
+{
+    "name": "MagicGame.EditModeTests",
+    "references": ["MagicGame.Runtime"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

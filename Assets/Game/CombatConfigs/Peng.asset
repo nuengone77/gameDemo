@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a823bce22412e8c468b8fda911b2b6a7, type: 3}
+  m_Name: Peng
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.CharacterCombatConfig
+  role: 2
+  basicDamage: 25
+  basicInterval: 0.35
+  activeDamage: 50
+  ultimateDamage: 100
+  activeCooldown: 10
+  ultimateCooldown: 30
+  duration: 4
+  radius: 2
+  range: 6
+  castDelay: 0.5
+  tickInterval: 0.5
+  distanceReduction: 0.3
+  defenseDistance: 6
+  conversion: 0.1
+  shieldCapacity: 50
+  wallDefense: 0.2
+  wallWidth: 3
+  wallDistance: 1.2
+  rootDuration: 2.5
+  attackReduction: 0.3
+  armorPenetration: 0.2
+  maxStacks: 10
+  speedPerStack: 0.05
+  stackTimeout: 2
+  overdriveSpeed: 0.5
+  fanCount: 3
+  fanAngle: 30
+  dashDistance: 2
+  dashDuration: 0.2
+  bounces: 3
+  bounceRadius: 3
+  evasion: 0.15
+  trapLifetime: 8
+  trapTriggerRadius: 0.8
+  knockupDuration: 0.7
+  knockupHeight: 0.7
+  orbSpeed: 4
+  orbLifetime: 3
+  slow: 0.6
+  lunarDamage: 35
+  burnPerSecond: 5
+  burnDuration: 3
+  stanceCooldown: 1
+  transitionBuff: 0.2
+  knockbackDistance: 1.5
+  healing: 30

@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 6141912916585830798}
   - component: {fileID: 7273929372369841943}
   - component: {fileID: 2288551023784827992}
+  - component: {fileID: 498957752903649934}
+  - component: {fileID: 3764734707593834644}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -283,6 +285,8 @@ MonoBehaviour:
   maxHp: 100
   invulnerableTime: 0.4
   destroyOnDeath: 0
+  physicalDefense: 0
+  magicDefense: 0
 --- !u!114 &2288551023784827992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,3 +310,27 @@ MonoBehaviour:
   ringDamage: 25
   attackCooldown: 0.35
   castHeight: 0.5660377
+--- !u!114 &498957752903649934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440076372230328900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fb17acfbc461745a4f620353c47b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusEffects
+--- !u!114 &3764734707593834644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440076372230328900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c6b34153f141e4eb059b25317ebb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.PlayerSkills

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1852397197320526687}
   - component: {fileID: 6662468858157004623}
   - component: {fileID: 2324818795914362836}
+  - component: {fileID: 2554310732174896963}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -205,6 +206,8 @@ MonoBehaviour:
   maxHp: 600
   invulnerableTime: 0
   destroyOnDeath: 1
+  physicalDefense: 0
+  magicDefense: 0
 --- !u!114 &2324818795914362836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +244,18 @@ MonoBehaviour:
   spreadAngle: 0
   burstEvery: 0
   burstCount: 8
+--- !u!114 &2554310732174896963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238246426223820851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fb17acfbc461745a4f620353c47b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusEffects
 --- !u!1 &6045527352222856356
 GameObject:
   m_ObjectHideFlags: 0

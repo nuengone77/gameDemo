@@ -1,0 +1,6 @@
+{
+    "name": "MagicGame.Runtime",
+    "rootNamespace": "MagicGame",
+    "references": ["Unity.InputSystem", "UnityEngine.UI", "Unity.TextMeshPro"],
+    "autoReferenced": true
+}

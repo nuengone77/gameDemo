@@ -779,6 +779,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c2774bbb1f47ae9f5654973167e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.LevelManager
+  playableBounds:
+    serializedVersion: 2
+    x: -11.059201
+    y: -6.836711
+    width: 15.455101
+    height: 13.175812
   levelNumber: 3
   levelTitle: Frost Witch's Domain
   isFinalLevel: 0
@@ -921,6 +927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!68 &1210539106
 EdgeCollider2D:
   m_ObjectHideFlags: 0

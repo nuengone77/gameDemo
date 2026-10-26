@@ -67,6 +67,7 @@ namespace MagicGame.EditorTools
             CreateScenes(sets, prefabs);
             SetupStageMaps();
             if (File.Exists(DragonStageMap)) SetupDragonStage();
+            CharacterSkillSetup.UpdateExistingContent();
             AssetDatabase.SaveAssets();
             Debug.Log("[MagicGame] Build complete. Open Assets/Scenes/MainMenu.unity and press Play.");
         }
@@ -605,6 +606,7 @@ namespace MagicGame.EditorTools
             if (!HasHeroProjectile("Peng")) SetAttack("Peng", card);
             SetEnemyProjectile("Golem", boulder, GolemAttack);
             SetEnemyProjectile("Dragon", fireball);
+            CharacterSkillSetup.UpdateConfigs();
             AssetDatabase.SaveAssets();
             Debug.Log("[MagicGame] Attack effects applied");
         }
@@ -906,6 +908,7 @@ namespace MagicGame.EditorTools
 
                 var manager = new GameObject("LevelManager").AddComponent<LevelManager>();
                 manager.levelNumber = level.number;
+                manager.playableBounds = area;
                 manager.levelTitle = level.title;
                 manager.isFinalLevel = level.number == Levels.Length;
                 manager.portal = portal.GetComponent<Portal>();
@@ -915,6 +918,7 @@ namespace MagicGame.EditorTools
             }
 
             EditorBuildSettings.scenes = scenes.ToArray();
+            MobileUISetup.Setup();
             EditorSceneManager.OpenScene(menuPath);
         }
 
