@@ -28,6 +28,7 @@ namespace MagicGame
         public float bounceRadius = 3f;
         public bool bypassObstacles;
         public float burnPerSecond, burnDuration, rootDuration;
+        [System.NonSerialized] public VfxSlot rootVfx, rootHitVfx, explosionVfx;
         public DamageInfo Hit { get; private set; }
         public Team OwnerTeam => _team;
         public Vector2 Velocity => _rb != null ? _rb.linearVelocity : Vector2.zero;
@@ -114,7 +115,8 @@ namespace MagicGame
                     _spent = true;
                     ApplyHit(health);
                     foreach (var target in CombatWorld.Enemies(transform.position, explosionRadius)) ApplyHit(target);
-                    SkillVfx.Burst(transform.position, Color.magenta, explosionRadius);
+                    if (explosionVfx != null && explosionVfx.IsSet) SkillVfx.Spawn(explosionVfx, transform.position);
+                    else SkillVfx.Burst(transform.position, Color.magenta, explosionRadius);
                     Destroy(gameObject);
                     return;
                 }
@@ -133,8 +135,12 @@ namespace MagicGame
             var result = health.TakeDamage(hit);
             if (result.Total <= 0f || health.IsDead) return;
             if (burnPerSecond > 0f) health.Status.Apply(StatusKind.Burn, burnPerSecond, burnDuration, hit.source, hit.source);
-            if (rootDuration > 0f) health.Status.Apply(StatusKind.Root, 1f, rootDuration, hit.source);
-            SkillVfx.Burst(health.transform.position, Color.white, 0.25f);
+            if (rootDuration > 0f)
+            {
+                health.Status.Apply(StatusKind.Root, 1f, rootDuration, hit.source);
+                if (rootVfx != null && rootVfx.IsSet) SkillVfx.Spawn(rootVfx, health.transform.position, rootDuration, health.transform, 4000);
+                if (rootHitVfx != null && rootHitVfx.IsSet) SkillVfx.Spawn(rootHitVfx, health.transform.position + Vector3.up * 0.5f);
+            }
         }
 
         bool Bounce()

@@ -42,6 +42,7 @@ MonoBehaviour:
   fanAngle: 30
   dashDistance: 2
   dashDuration: 0.2
+  ultimateLeapHeight: 0.6
   bounces: 3
   bounceRadius: 3
   evasion: 0.15
@@ -59,3 +60,79 @@ MonoBehaviour:
   transitionBuff: 0.2
   knockbackDistance: 1.5
   healing: 30
+  eclipseFieldDamage: 4
+  eclipseFieldRadius: 2.3
+  eclipseFieldDuration: 3
+  activeVfx:
+    prefab: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+    scale: 0.6
+    tilt: 0
+    yOffset: 0
+    seconds: 1
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0
+  activeExtraVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateVfx:
+    prefab: {fileID: 5631927496442371602, guid: 6c52ee79710704a4dab242c5ba8e0408, type: 3}
+    scale: 0.8
+    tilt: 0
+    yOffset: -2
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  ultimateExtraVfx:
+    prefab: {fileID: 7761031033666763820, guid: 1eb833340b41fb444b576c4dced8d4dc, type: 3}
+    scale: 0.8
+    tilt: -55
+    yOffset: 0
+    seconds: 1
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0
+  lunarHitVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  basicHitVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateFallVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateFallOffset: {x: -1.5, y: 6}
+  ultimateHitVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0

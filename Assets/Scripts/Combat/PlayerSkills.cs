@@ -24,6 +24,17 @@ namespace MagicGame
         Rigidbody2D _body;
         float _activeReady, _ultimateReady, _stanceReady, _lastHit, _overdriveUntil;
         public event System.Action Changed;
+
+        // Frames of the hero's basic-attack projectile, reused as artwork by skill areas (Peng's cards).
+        public Sprite[] ProjectileFrames
+        {
+            get
+            {
+                var anim = _player != null ? _player.CurrentCharacter : null;
+                var frames = anim != null && anim.attackProjectile != null ? anim.attackProjectile.frames : null;
+                return frames != null && frames.Length > 0 ? frames : null;
+            }
+        }
         public float ActiveReadyAt => _activeReady;
         public float UltimateReadyAt => _ultimateReady;
         public float StanceReadyAt => _stanceReady;
@@ -168,6 +179,7 @@ namespace MagicGame
                         projectile.speed = Config.orbSpeed;
                         projectile.lifetime = Config.orbLifetime;
                         projectile.explosionRadius = Config.radius;
+                        projectile.explosionVfx = Config.basicHitVfx;
                         projectile.bypassObstacles = true;
                         break;
                     case HeroRole.Daphne:
@@ -175,10 +187,16 @@ namespace MagicGame
                         {
                             damage = lunarBind ? Config.activeDamage : Config.lunarDamage;
                             projectile.rootDuration = lunarBind ? Config.rootDuration : 0f;
+                            if (lunarBind)
+                            {
+                                projectile.rootVfx = Config.activeExtraVfx;
+                                projectile.rootHitVfx = Config.lunarHitVfx;
+                            }
                         }
                         else
                         {
                             projectile.explosionRadius = Config.radius;
+                            projectile.explosionVfx = Config.basicHitVfx;
                             projectile.burnPerSecond = Config.burnPerSecond;
                             projectile.burnDuration = Config.burnDuration;
                         }
@@ -224,11 +242,11 @@ namespace MagicGame
                     {
                         foreach (var health in AreaDamage(transform.position, Config.radius, Config.activeDamage))
                             if (!health.IsDead) health.Status.Displace(((Vector2)health.transform.position - (Vector2)transform.position).normalized * Config.knockbackDistance, 0.2f);
-                        SkillVfx.Burst(transform.position, new Color(1f, 0.5f, 0f), Config.radius);
+                        if (Config.activeVfx.IsSet) SkillVfx.Spawn(Config.activeVfx, transform.position);
+                        else SkillVfx.Burst(transform.position, new Color(1f, 0.5f, 0f), Config.radius);
                     }
                     break;
             }
-            SkillVfx.Burst(transform.position, Color.white, 0.4f);
             Changed?.Invoke();
             return true;
         }
@@ -262,27 +280,62 @@ namespace MagicGame
                     Vector2 old = transform.position;
                     _body.position = CombatWorld.SafeTeleport(_body, Config.range);
                     _body.linearVelocity = Vector2.zero;
-                    SkillVfx.Line(old, _body.position, Color.magenta, 0.5f);
+                    if (Config.ultimateExtraVfx.IsSet)
+                    {
+                        SkillVfx.Spawn(Config.ultimateExtraVfx, old);
+                        SkillVfx.Spawn(Config.ultimateExtraVfx, _body.position);
+                    }
+                    else SkillVfx.Line(old, _body.position, Color.magenta, 0.5f);
                     break;
                 case HeroRole.Daphne:
+                    int hits = 0;
                     foreach (var health in CombatWorld.Enemies(transform.position, float.PositiveInfinity, true))
                     {
+                        Vector2 at = health.transform.position;
                         health.TakeDamage(MakeHit(Config.ultimateDamage));
-                        SkillVfx.Burst(health.transform.position, IsLunar ? Color.magenta : new Color(1f, 0.5f, 0f));
+                        if (hits++ >= 32) continue;
+                        if (Config.ultimateHitVfx.IsSet) SkillVfx.Spawn(Config.ultimateHitVfx, at + Vector2.up * 0.5f);
+                        else SkillVfx.Burst(at, IsLunar ? Color.magenta : new Color(1f, 0.5f, 0f));
                     }
                     Health.Heal(Config.healing);
-                    SkillVfx.Burst(transform.position, Color.magenta, Config.radius);
-                    SkillVfx.Burst(transform.position, new Color(1f, 0.5f, 0f), Config.radius * 0.75f);
+                    if (Config.eclipseFieldDamage > 0f && Config.eclipseFieldDuration > 0f)
+                        StartCoroutine(EclipseField(transform.position));
+                    if (Config.ultimateVfx.IsSet) SkillVfx.Spawn(Config.ultimateVfx, transform.position, Config.eclipseFieldDuration);
+                    else SkillVfx.Burst(transform.position, Color.magenta, Config.radius);
+                    if (Config.ultimateExtraVfx.IsSet) SkillVfx.Spawn(Config.ultimateExtraVfx, transform.position, -1f, transform);
+                    else SkillVfx.Burst(transform.position, new Color(1f, 0.5f, 0f), Config.radius * 0.75f);
                     break;
             }
             Changed?.Invoke();
             return true;
         }
 
+        // The star field left by Eclipse: light damage to everyone inside, every tick, until it fades.
+        IEnumerator EclipseField(Vector2 point)
+        {
+            float interval = Mathf.Max(0.05f, Config.tickInterval);
+            float end = Time.time + Config.eclipseFieldDuration;
+            while (Time.time + interval <= end + 0.001f)
+            {
+                yield return new WaitForSeconds(interval);
+                if (!CanAct) yield break;
+                AreaDamage(point, Config.eclipseFieldRadius, Config.eclipseFieldDamage);
+            }
+        }
+
         IEnumerator Meteor(Vector2 point)
         {
-            SkillVfx.Ring(point, Config.radius, Color.yellow, Mathf.Max(0.1f, Config.castDelay));
-            SkillVfx.Line(point + Vector2.up * 3f, point, Color.yellow, Mathf.Max(0.1f, Config.castDelay), 0.35f);
+            if (Config.ultimateVfx.IsSet || Config.ultimateFallVfx.IsSet)
+            {
+                if (Config.ultimateVfx.IsSet) SkillVfx.Spawn(Config.ultimateVfx, point, Config.castDelay + 0.4f);
+                if (Config.ultimateFallVfx.IsSet)
+                    SkillVfx.Drop(Config.ultimateFallVfx, point + Config.ultimateFallOffset, point, Config.castDelay);
+            }
+            else
+            {
+                SkillVfx.Ring(point, Config.radius, Color.yellow, Mathf.Max(0.1f, Config.castDelay));
+                SkillVfx.Line(point + Vector2.up * 3f, point, Color.yellow, Mathf.Max(0.1f, Config.castDelay), 0.35f);
+            }
             yield return new WaitForSeconds(Config.castDelay);
             if (!CanAct) yield break;
             foreach (var health in AreaDamage(point, Config.radius, Config.ultimateDamage))
@@ -291,25 +344,61 @@ namespace MagicGame
                 health.Status.Apply(StatusKind.Root, 1f, Config.rootDuration, this);
                 health.Status.Apply(StatusKind.AttackReduction, Config.attackReduction, Config.duration, this);
             }
-            SkillVfx.Burst(point, Color.yellow, Config.radius);
+            if (Config.ultimateExtraVfx.IsSet) SkillVfx.Spawn(Config.ultimateExtraVfx, point);
+            else SkillVfx.Burst(point, Color.yellow, Config.radius);
         }
+
+        const float KunaiFallTime = 0.3f;
+        const int KunaiPerTarget = 3;
 
         IEnumerator ScreenStrike(List<Health> targets)
         {
             bool oracle = Config.role == HeroRole.OracleWitch;
             if (!oracle) Health.Status.PlayVisualLift(Config.ultimateLeapHeight, Mathf.Max(0.15f, Config.castDelay));
             int visuals = 0;
-            foreach (var health in targets)
-                if (health != null && visuals++ < 32) SkillVfx.Ring(health.transform.position, 0.45f, oracle ? Color.cyan : Color.magenta, Mathf.Max(0.1f, Config.castDelay));
-            SkillVfx.Burst(transform.position, Color.magenta, 0.8f);
-            yield return new WaitForSeconds(Config.castDelay);
+
+            // Shadow: real kunai sprites rain down so they land exactly when the damage is applied.
+            var kunai = oracle ? null : ProjectileFrames;
+            bool swords = oracle && Config.ultimateVfx.IsSet;
+            float swordLead = swords ? Mathf.Clamp(Config.ultimateVfx.impactTime, 0f, Config.castDelay) : 0f;
+            if (kunai != null)
+            {
+                float fall = Mathf.Min(KunaiFallTime, Config.castDelay);
+                yield return new WaitForSeconds(Config.castDelay - fall);
+                if (!CanAct) yield break;
+                visuals = 0;
+                foreach (var health in targets)
+                {
+                    if (health == null || health.IsDead || visuals++ >= 32) continue;
+                    // Light beam on each target as its kunai come down.
+                    if (Config.ultimateVfx.IsSet) SkillVfx.Spawn(Config.ultimateVfx, health.transform.position);
+                    for (int k = 0; k < KunaiPerTarget; k++)
+                    {
+                        Vector2 land = (Vector2)health.transform.position + new Vector2((k - (KunaiPerTarget - 1) * 0.5f) * 0.3f, 0.15f * (k % 2));
+                        // Cosmetic and self-destroying, so it is not owned: it may finish fading after the stage clears.
+                        SkillVfx.Falling(kunai, land + new Vector2(-0.6f, 3.5f), land, fall, 0.35f, -80f, 24000);
+                    }
+                }
+                yield return new WaitForSeconds(fall);
+            }
+            else if (swords)
+            {
+                // Spawn the swords early so they strike on the frame the damage is applied.
+                yield return new WaitForSeconds(Config.castDelay - swordLead);
+                if (!CanAct) yield break;
+                visuals = 0;
+                foreach (var health in targets)
+                    if (health != null && !health.IsDead && visuals++ < 32) SkillVfx.Spawn(Config.ultimateVfx, health.transform.position);
+                yield return new WaitForSeconds(swordLead);
+            }
+            else yield return new WaitForSeconds(Config.castDelay);
             if (!CanAct) yield break;
             visuals = 0;
             foreach (var health in targets)
             {
                 if (health == null || health.IsDead || !health.isActiveAndEnabled) continue;
                 health.TakeDamage(MakeHit(Config.ultimateDamage, oracle));
-                if (visuals++ < 32)
+                if (visuals++ < 32 && kunai == null && !swords)
                     SkillVfx.Line((Vector2)health.transform.position + Vector2.up * 3f, health.transform.position,
                         oracle ? Color.cyan : new Color(0.3f, 0.1f, 0.4f), 0.35f, oracle ? 0.25f : 0.1f);
             }
@@ -320,7 +409,8 @@ namespace MagicGame
             for (int i = 0; i < 5; i++)
             {
                 if (!CanAct) yield break;
-                SkillVfx.Ring(transform.position, 0.3f, new Color(0.4f, 0.2f, 0.7f), 0.25f);
+                if (Config.activeVfx.IsSet) SkillVfx.Spawn(Config.activeVfx, transform.position, 0.1f, null, 4000);
+                else SkillVfx.Ring(transform.position, 0.3f, new Color(0.4f, 0.2f, 0.7f), 0.25f);
                 yield return new WaitForSeconds(Config.dashDuration / 5f);
             }
         }
@@ -333,7 +423,6 @@ namespace MagicGame
             Health.Status.Remove(StatusKind.Attack, this);
             Health.Status.Remove(StatusKind.Movement, this);
             Health.Status.Apply(IsLunar ? StatusKind.Movement : StatusKind.Attack, Config.transitionBuff, Config.duration, this);
-            SkillVfx.Burst(transform.position, IsLunar ? Color.magenta : new Color(1f, 0.5f, 0f), 0.7f);
             Changed?.Invoke();
             return true;
         }

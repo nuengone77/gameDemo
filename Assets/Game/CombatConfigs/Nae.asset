@@ -42,6 +42,7 @@ MonoBehaviour:
   fanAngle: 30
   dashDistance: 2
   dashDuration: 0.2
+  ultimateLeapHeight: 0.6
   bounces: 3
   bounceRadius: 3
   evasion: 0.15
@@ -59,3 +60,79 @@ MonoBehaviour:
   transitionBuff: 0.2
   knockbackDistance: 1.5
   healing: 30
+  eclipseFieldDamage: 4
+  eclipseFieldRadius: 2.3
+  eclipseFieldDuration: 3
+  activeVfx:
+    prefab: {fileID: 689667626583958020, guid: dbf20596fe48245c4a0e710eb8376833, type: 3}
+    scale: 1.4
+    tilt: -55
+    yOffset: 0
+    seconds: 0.8
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0
+  activeExtraVfx:
+    prefab: {fileID: 3744133877081091469, guid: 61de6af6ccd60476d8d0e8edbc6a9bed, type: 3}
+    scale: 0.45
+    tilt: -55
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateVfx:
+    prefab: {fileID: 6108195706035121270, guid: 1b3f1087ac2644ad1b381b3a4db39b05, type: 3}
+    scale: 0.6
+    tilt: -55
+    yOffset: 0
+    seconds: 3
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateExtraVfx:
+    prefab: {fileID: 7986504087968017091, guid: e1a29a66c3a8b4634adca3aeba19816e, type: 3}
+    scale: 0.2
+    tilt: -55
+    yOffset: 0
+    seconds: 2.5
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  lunarHitVfx:
+    prefab: {fileID: 7904898002847524615, guid: b4195e21832b24b2abb172317ee0879a, type: 3}
+    scale: 0.45
+    tilt: 0
+    yOffset: 0
+    seconds: 0.8
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0
+  basicHitVfx:
+    prefab: {fileID: 2944396702758532163, guid: 5cd4800e46fac4babac0b8e90dae6163, type: 3}
+    scale: 1.4
+    tilt: 0
+    yOffset: 0
+    seconds: 1
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0
+  ultimateFallVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  ultimateFallOffset: {x: -1.5, y: 6}
+  ultimateHitVfx:
+    prefab: {fileID: 7904898002847524615, guid: a2ccf81a1d5b163448ebdf66b5e746d6, type: 3}
+    scale: 0.45
+    tilt: 0
+    yOffset: 0
+    seconds: 0.8
+    playOnce: 1
+    loopAll: 0
+    impactTime: 0

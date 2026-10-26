@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a2891cfe5924466b53a88fb3627618, type: 3}
+  m_Name: StatusVfx
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusVfxSet
+  disabled:
+    prefab: {fileID: 6097779538034126439, guid: b6d3e2e4b8df2964eb3dfce561902f3e, type: 3}
+    scale: 0.6
+    tilt: 0
+    yOffset: -0.41000003
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  burn:
+    prefab: {fileID: 7455372202216957759, guid: 5357b7f40e1451744886942913efe75f, type: 3}
+    scale: 0.25
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  slow:
+    prefab: {fileID: 3081362037621676516, guid: 83a192bcfad3846b79a3211a2f526aec, type: 3}
+    scale: 0.35
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  buff:
+    prefab: {fileID: 419411002348774512, guid: 247a3e752e93a864db063f5c85fd8391, type: 3}
+    scale: 0.55
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0

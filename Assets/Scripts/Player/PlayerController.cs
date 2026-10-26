@@ -74,8 +74,9 @@ namespace MagicGame
 
             GameplayInput.ReadActions(this, _animator.FacingVector, out var aim, out var target,
                 out bool firing, out bool active, out bool ultimate, out bool stance);
-            if (active) Skills.TryActive(aim, target);
-            if (ultimate) Skills.TryUltimate(target);
+            // Skills reuse the basic attack pose, turned toward where the skill goes.
+            if (active && Skills.TryActive(aim, target)) PlayCastPose(aim);
+            if (ultimate && Skills.TryUltimate(target)) PlayCastPose(target - (Vector2)transform.position);
             if (stance) Skills.TrySwitchStance();
             if (Health.Status.Interrupted) return;
             if (Time.time < _nextAttack) return;
@@ -90,6 +91,12 @@ namespace MagicGame
         void FixedUpdate()
         {
             _rb.linearVelocity = CanMove ? Health.Status.ResolveVelocity(_rb, _input * moveSpeed) : Vector2.zero;
+        }
+
+        void PlayCastPose(Vector2 direction)
+        {
+            _animator.FaceTowards(direction);
+            _animator.PlayAttack();
         }
 
         void Cast(Vector2 direction)

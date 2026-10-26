@@ -19,6 +19,12 @@ namespace MagicGame
             var box = gameObject.AddComponent<BoxCollider2D>();
             box.isTrigger = true;
             box.size = new Vector2(0.25f, config.wallWidth);
+            if (config.activeVfx.IsSet)
+            {
+                // The effect lives on the wall, so it disappears together with it.
+                SkillVfx.Spawn(config.activeVfx, transform.position, 0f, transform);
+                return;
+            }
             Vector2 tangent = new Vector2(-forward.y, forward.x) * config.wallWidth / 2f;
             var visual = SkillVfx.Line((Vector2)transform.position - tangent, (Vector2)transform.position + tangent,
                 new Color(0.4f, 0.9f, 1f), 0f, 0.2f);

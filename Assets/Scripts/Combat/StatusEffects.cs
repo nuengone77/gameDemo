@@ -21,6 +21,8 @@ namespace MagicGame
         SpriteRenderer _renderer, _lifted;
         bool _rendererWasEnabled;
         GameObject _indicator;
+        enum Visual { Disabled, Burn, Slow, Buff }
+        readonly GameObject[] _visuals = new GameObject[4];
         Vector2 _forcedVelocity;
         float _forcedUntil;
         float _liftStart, _liftUntil, _liftHeight;
@@ -101,6 +103,19 @@ namespace MagicGame
         void LateUpdate()
         {
             bool active = _effects.Count > 0;
+            var set = StatusVfxSet.Instance;
+            if (set != null)
+            {
+                bool player = _health != null && _health.team == Team.Player;
+                bool buffed = Has(StatusKind.Defense) || Has(StatusKind.Attack) || Has(StatusKind.AttackSpeed) || Has(StatusKind.Movement);
+                bool weakened = Has(StatusKind.Slow) || Has(StatusKind.AttackReduction);
+                ShowVisual(Visual.Disabled, set.disabled, Rooted || Interrupted, HeadHeight());
+                ShowVisual(Visual.Burn, set.burn, Has(StatusKind.Burn), 0f);
+                ShowVisual(Visual.Slow, set.slow, weakened || (!player && buffed), 0f);
+                ShowVisual(Visual.Buff, set.buff, player && buffed, 0f);
+                // Statuses without a configured effect still get the old coloured ring.
+                active &= !set.disabled.IsSet || !set.burn.IsSet || !set.slow.IsSet || !set.buff.IsSet;
+            }
             if (active && _indicator == null)
             {
                 _indicator = SkillVfx.Ring(transform.position, 0.4f, Color.white, 0f);
@@ -137,6 +152,25 @@ namespace MagicGame
             else RestoreVisual();
         }
 
+        // Keeps one looping effect per status category attached to the character while it applies.
+        void ShowVisual(Visual kind, VfxSlot slot, bool on, float yOffset)
+        {
+            var current = _visuals[(int)kind];
+            if (!on || slot == null || !slot.IsSet)
+            {
+                if (current != null) current.SetActive(false);
+                return;
+            }
+            if (current == null)
+            {
+                current = SkillVfx.Spawn(slot, (Vector2)transform.position + Vector2.up * yOffset, 0f, transform, 4000);
+                _visuals[(int)kind] = current;
+            }
+            if (current != null && !current.activeSelf) current.SetActive(true);
+        }
+
+        float HeadHeight() => _renderer != null && _renderer.sprite != null ? _renderer.sprite.bounds.max.y - 0.05f : 1.1f; // ring around the top of the head
+
         void RestoreVisual()
         {
             if (_lifted == null || !_lifted.enabled) return;
@@ -150,6 +184,7 @@ namespace MagicGame
             _liftUntil = 0f;
             RestoreVisual();
             if (_indicator != null) _indicator.SetActive(false);
+            foreach (var visual in _visuals) if (visual != null) visual.SetActive(false);
         }
         void OnDisable() => Clear();
     }

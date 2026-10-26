@@ -4,6 +4,27 @@ namespace MagicGame
 {
     public enum HeroRole { Tanky, Shadow, Magician, OracleWitch, Daphne }
 
+    // An optional effect prefab (particles etc.) shown by a skill. Empty = the simple placeholder lines.
+    [System.Serializable]
+    public class VfxSlot
+    {
+        public GameObject prefab;
+        [Tooltip("Uniform scale; third-party packs are authored for ~2 m tall 3D characters.")]
+        public float scale = 1f;
+        [Tooltip("Rotation around X, used to lay ground effects into the 3/4 view.")]
+        public float tilt;
+        public float yOffset;
+        [Tooltip("Seconds before the effect stops emitting and fades (0 = until its owner is destroyed).")]
+        public float seconds;
+        [Tooltip("Play the effect a single time even if the prefab is authored to loop (one-shot hits).")]
+        public bool playOnce;
+        [Tooltip("Make every part loop (for one-shot bursts that should keep pulsing while a skill lasts).")]
+        public bool loopAll;
+        [Tooltip("Seconds from spawn until the effect visibly lands; skills spawn it early by this much so the hit lines up with the damage.")]
+        public float impactTime;
+        public bool IsSet => prefab != null;
+    }
+
     [CreateAssetMenu(menuName = "Magic Game/Character Combat Config")]
     public class CharacterCombatConfig : ScriptableObject
     {
@@ -61,6 +82,25 @@ namespace MagicGame
         [Range(0, 1)] public float transitionBuff = 0.2f;
         [Min(0)] public float knockbackDistance = 1.5f;
         [Min(0)] public float healing = 30f;
+        [Tooltip("Eclipse leaves a star field that keeps hitting enemies inside it (light damage every Tick Interval).")]
+        [Min(0)] public float eclipseFieldDamage = 4f;
+        [Min(0.1f)] public float eclipseFieldRadius = 2.3f;
+        [Min(0)] public float eclipseFieldDuration = 3f;
+
+        [Header("Effects (optional prefabs; empty = placeholder lines)")]
+        public VfxSlot activeVfx = new();
+        public VfxSlot activeExtraVfx = new();
+        public VfxSlot ultimateVfx = new();
+        public VfxSlot ultimateExtraVfx = new();
+        [Tooltip("Daphne: burst on the target hit by Moonlight Bind.")]
+        public VfxSlot lunarHitVfx = new();
+        [Tooltip("Explosion shown where an exploding basic attack lands (Oracle orb, Daphne Solar).")]
+        public VfxSlot basicHitVfx = new();
+        [Tooltip("Tanky: the meteor that drops from the sky onto the Meteor Binding target.")]
+        public VfxSlot ultimateFallVfx = new();
+        public Vector2 ultimateFallOffset = new(-1.5f, 6f);
+        [Tooltip("Burst on every enemy hit by the ultimate (e.g. Daphne's Eclipse).")]
+        public VfxSlot ultimateHitVfx = new();
 
         public string RoleName => role == HeroRole.OracleWitch ? "Oracle Witch" : role.ToString();
     }

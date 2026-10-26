@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: 92a4214e3fa8b4ef081109ce433f53c7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7764081907057110510
+    second: 3-Smoke_gray_0
+  - first:
+      213: -2542850578016573793
+    second: 3-Smoke_gray_1
+  - first:
+      213: 3488923161625166954
+    second: 3-Smoke_gray_2
+  - first:
+      213: 8049672360040344349
+    second: 3-Smoke_gray_3
+  - first:
+      213: 2184492221774677396
+    second: 3-Smoke_gray_4
+  - first:
+      213: 7127452690043447935
+    second: 3-Smoke_gray_5
+  - first:
+      213: 5216952003490116897
+    second: 3-Smoke_gray_6
+  - first:
+      213: -4351797600120521456
+    second: 3-Smoke_gray_7
+  - first:
+      213: -5096742037777521595
+    second: 3-Smoke_gray_8
+  - first:
+      213: 4131822648938931517
+    second: 3-Smoke_gray_9
+  - first:
+      213: 7980949426588875854
+    second: 3-Smoke_gray_10
+  - first:
+      213: -3164382923117923803
+    second: 3-Smoke_gray_11
+  - first:
+      213: -2326951444642016781
+    second: 3-Smoke_gray_12
+  - first:
+      213: 6159044219733270187
+    second: 3-Smoke_gray_13
+  - first:
+      213: 4934908776945616309
+    second: 3-Smoke_gray_14
+  - first:
+      213: 5952729129475373201
+    second: 3-Smoke_gray_15
+  - first:
+      213: -4681427955465440201
+    second: 3-Smoke_gray_16
+  - first:
+      213: 2122078484890708257
+    second: 3-Smoke_gray_17
+  - first:
+      213: -2203012732313201937
+    second: 3-Smoke_gray_18
+  - first:
+      213: 44341657650268972
+    second: 3-Smoke_gray_19
+  - first:
+      213: -2594883320995419964
+    second: 3-Smoke_gray_20
+  - first:
+      213: -6047717976412891238
+    second: 3-Smoke_gray_21
+  - first:
+      213: 8644423283894128164
+    second: 3-Smoke_gray_22
+  - first:
+      213: 4204319403620438600
+    second: 3-Smoke_gray_23
+  - first:
+      213: 8963724295675445130
+    second: 3-Smoke_gray_24
+  - first:
+      213: -7907204609903643702
+    second: 3-Smoke_gray_25
+  - first:
+      213: -7341590765568099986
+    second: 3-Smoke_gray_26
+  - first:
+      213: 1137961591148277836
+    second: 3-Smoke_gray_27
+  - first:
+      213: -3159575184959795446
+    second: 3-Smoke_gray_28
+  - first:
+      213: -1210315672324448992
+    second: 3-Smoke_gray_29
+  - first:
+      213: -5610411209140338855
+    second: 3-Smoke_gray_30
+  - first:
+      213: -8128330712494071261
+    second: 3-Smoke_gray_31
+  - first:
+      213: -1052147162630537997
+    second: 3-Smoke_gray_32
+  - first:
+      213: 3361036244656536998
+    second: 3-Smoke_gray_33
+  - first:
+      213: 1712738496577614151
+    second: 3-Smoke_gray_34
+  - first:
+      213: -6204836031501202455
+    second: 3-Smoke_gray_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 3-Smoke_gray_0
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1953
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212d2d234a0704490800000000000000
+      internalID: -7764081907057110510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_1
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 1943
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f96ec643fdaf5bcd0800000000000000
+      internalID: -2542850578016573793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_2
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1943
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a640d4161252b6030800000000000000
+      internalID: 3488923161625166954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_3
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 1927
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b2c7acc5e26bf60800000000000000
+      internalID: 8049672360040344349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_4
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1932
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 495cb7d0a10e05e10800000000000000
+      internalID: 2184492221774677396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_5
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 1995
+        height: 1931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7a217f657cc9e260800000000000000
+      internalID: 7127452690043447935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_6
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 1909
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1257a42e436566840800000000000000
+      internalID: 5216952003490116897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_7
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1917
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d3b66b32f4b93c0800000000000000
+      internalID: -4351797600120521456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_8
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 1920
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 544687ece1cb449b0800000000000000
+      internalID: -5096742037777521595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_9
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1917
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d352be0dece275930800000000000000
+      internalID: 4131822648938931517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_10
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1916
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cff26f73702ce60800000000000000
+      internalID: 7980949426588875854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_11
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 1062
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5227e3e3f7ad514d0800000000000000
+      internalID: -3164382923117923803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_12
+      rect:
+        serializedVersion: 2
+        x: 2038
+        y: 1059
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1d7846df105bfd0800000000000000
+      internalID: -2326951444642016781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_13
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1032
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baedf19f512597550800000000000000
+      internalID: 6159044219733270187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_14
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 650
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b50dc8e2615c7440800000000000000
+      internalID: 4934908776945616309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_15
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 632
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 198ff76ba975c9250800000000000000
+      internalID: 5952729129475373201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 600
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73436e8e31a380fb0800000000000000
+      internalID: -4681427955465440201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_17
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 595
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 129e8658323237d10800000000000000
+      internalID: 2122078484890708257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_18
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 579
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe21fce87935d61e0800000000000000
+      internalID: -2203012732313201937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_19
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 585
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2b0ff0b0888d9000800000000000000
+      internalID: 44341657650268972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_20
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 568
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c86b7a2e5f1dfbd0800000000000000
+      internalID: -2594883320995419964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_21
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 570
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a975a2aea80321ca0800000000000000
+      internalID: -6047717976412891238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 493
+        width: 58
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e00a43d2927f770800000000000000
+      internalID: 8644423283894128164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_23
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 509
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842141fd83eb85a30800000000000000
+      internalID: 4204319403620438600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_24
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 443
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ff54c41cb856c70800000000000000
+      internalID: 8963724295675445130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_25
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 430
+        width: 48
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac3bc5c2d47f34290800000000000000
+      internalID: -7907204609903643702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_26
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 452
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e69760c981e6d1a90800000000000000
+      internalID: -7341590765568099986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c407e68b90adacf00800000000000000
+      internalID: 1137961591148277836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_28
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 385
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0f05530c1fe624d0800000000000000
+      internalID: -3159575184959795446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_29
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 366
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02d530dfe48143fe0800000000000000
+      internalID: -1210315672324448992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_30
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 307
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95ff1530bb0d322b0800000000000000
+      internalID: -5610411209140338855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_31
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 200
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 322a4e0684e523f80800000000000000
+      internalID: -8128330712494071261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_32
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 199
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fcb8f7eab50661f0800000000000000
+      internalID: -1052147162630537997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_33
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 207
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ad37ff28acc4ae20800000000000000
+      internalID: 3361036244656536998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_34
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 190
+        width: 38
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74135a1969ed4c710800000000000000
+      internalID: 1712738496577614151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-Smoke_gray_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 193
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb83d4018ef3e9a0800000000000000
+      internalID: -6204836031501202455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      3-Smoke_gray_0: -7764081907057110510
+      3-Smoke_gray_1: -2542850578016573793
+      3-Smoke_gray_10: 7980949426588875854
+      3-Smoke_gray_11: -3164382923117923803
+      3-Smoke_gray_12: -2326951444642016781
+      3-Smoke_gray_13: 6159044219733270187
+      3-Smoke_gray_14: 4934908776945616309
+      3-Smoke_gray_15: 5952729129475373201
+      3-Smoke_gray_16: -4681427955465440201
+      3-Smoke_gray_17: 2122078484890708257
+      3-Smoke_gray_18: -2203012732313201937
+      3-Smoke_gray_19: 44341657650268972
+      3-Smoke_gray_2: 3488923161625166954
+      3-Smoke_gray_20: -2594883320995419964
+      3-Smoke_gray_21: -6047717976412891238
+      3-Smoke_gray_22: 8644423283894128164
+      3-Smoke_gray_23: 4204319403620438600
+      3-Smoke_gray_24: 8963724295675445130
+      3-Smoke_gray_25: -7907204609903643702
+      3-Smoke_gray_26: -7341590765568099986
+      3-Smoke_gray_27: 1137961591148277836
+      3-Smoke_gray_28: -3159575184959795446
+      3-Smoke_gray_29: -1210315672324448992
+      3-Smoke_gray_3: 8049672360040344349
+      3-Smoke_gray_30: -5610411209140338855
+      3-Smoke_gray_31: -8128330712494071261
+      3-Smoke_gray_32: -1052147162630537997
+      3-Smoke_gray_33: 3361036244656536998
+      3-Smoke_gray_34: 1712738496577614151
+      3-Smoke_gray_35: -6204836031501202455
+      3-Smoke_gray_4: 2184492221774677396
+      3-Smoke_gray_5: 7127452690043447935
+      3-Smoke_gray_6: 5216952003490116897
+      3-Smoke_gray_7: -4351797600120521456
+      3-Smoke_gray_8: -5096742037777521595
+      3-Smoke_gray_9: 4131822648938931517
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
