@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1175180226952340865}
   - component: {fileID: 429661594028927694}
   - component: {fileID: 1566865493096104518}
+  - component: {fileID: 843668583425925977}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -206,6 +207,8 @@ MonoBehaviour:
   maxHp: 45
   invulnerableTime: 0
   destroyOnDeath: 1
+  physicalDefense: 0
+  magicDefense: 0
 --- !u!114 &429661594028927694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +254,21 @@ MonoBehaviour:
   width: 0.8
   height: 0.1
   heightOffset: 1.6153454
+  autoHeight: 1
+  gapAboveHead: 0.08
   fillColor: {r: 0.9, g: 0.2, b: 0.2, a: 1}
+--- !u!114 &843668583425925977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860379496395100847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fb17acfbc461745a4f620353c47b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusEffects
 --- !u!1 &8086272024783904707
 GameObject:
   m_ObjectHideFlags: 0

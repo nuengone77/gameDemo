@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4216813648752190614}
   - component: {fileID: 8699833012955899096}
   - component: {fileID: 425642920424307652}
+  - component: {fileID: 2495547714326908182}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -283,6 +284,8 @@ MonoBehaviour:
   maxHp: 1000
   invulnerableTime: 0
   destroyOnDeath: 1
+  physicalDefense: 0
+  magicDefense: 0
 --- !u!114 &425642920424307652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,3 +316,15 @@ MonoBehaviour:
   spreadAngle: 50
   burstEvery: 3
   burstCount: 16
+--- !u!114 &2495547714326908182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607890723490229445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fb17acfbc461745a4f620353c47b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.StatusEffects

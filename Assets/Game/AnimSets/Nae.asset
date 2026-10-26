@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nae
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: Nae
+  combat: {fileID: 11400000, guid: ebea4987fcdf37b429d8971a3f5a4c69, type: 2}
   walkDown:
   - {fileID: 1673638202, guid: f8678b7ab321641e1ab2831709409223, type: 3}
   - {fileID: -1797871488, guid: f8678b7ab321641e1ab2831709409223, type: 3}

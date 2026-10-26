@@ -359,6 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CameraFit
   mapSize: {x: 15.36, y: 10.24}
+  mapCenter: {x: 0, y: 0}
+  fillScreen: 1
+  followPlayer: 1
+  followSmoothing: 8
 --- !u!1 &534395590
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534395591}
   - component: {fileID: 534395592}
+  - component: {fileID: 534395593}
   m_Layer: 0
   m_Name: box
   m_TagString: Untagged
@@ -437,6 +442,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7553725, y: 0.75537246}
   m_EdgeRadius: 0
+--- !u!114 &534395593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534395590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1 &616363010
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +764,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c2774bbb1f47ae9f5654973167e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.LevelManager
+  playableBounds:
+    serializedVersion: 2
+    x: -5.0117946
+    y: -4.0264397
+    width: 10.00444
+    height: 7.9607716
   levelNumber: 4
   levelTitle: Golem's Domain
   isFinalLevel: 0
@@ -867,6 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426030015}
   - component: {fileID: 1426030016}
+  - component: {fileID: 1426030017}
   m_Layer: 0
   m_Name: line
   m_TagString: Untagged
@@ -965,6 +991,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1426030017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426030014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

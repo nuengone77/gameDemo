@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nueng
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: Nueng
+  combat: {fileID: 11400000, guid: 413d6c314476d4a4f9be17c700f419c0, type: 2}
   walkDown:
   - {fileID: -556152856, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}
   - {fileID: -1000596445, guid: 4ea7d2d0a57574a9ea60d364684dbf30, type: 3}

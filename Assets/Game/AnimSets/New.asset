@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: New
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: New
+  combat: {fileID: 11400000, guid: f04a2b9bc9c8efc4e8dbb3cbb03eabe6, type: 2}
   walkDown:
   - {fileID: 64965499, guid: 1ef3429e9f923487ca7f8fca2fd1c8e1, type: 3}
   - {fileID: 201653623, guid: 1ef3429e9f923487ca7f8fca2fd1c8e1, type: 3}

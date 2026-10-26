@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MagicGame
@@ -18,6 +19,16 @@ namespace MagicGame
         [Header("Sprite animation (optional, loops)")]
         public Sprite[] frames;
         public float frameRate = 12f;
+        [Header("Optional combat behavior")]
+        public float explosionRadius;
+        public int bounces;
+        public float bounceRadius = 3f;
+        public bool bypassObstacles;
+        public float burnPerSecond, burnDuration, rootDuration;
+        public DamageInfo Hit { get; private set; }
+        public Team OwnerTeam => _team;
+        public Vector2 Velocity => _rb != null ? _rb.linearVelocity : Vector2.zero;
+        readonly HashSet<Health> _hitIds = new();
 
         Team _team;
         float _damage;
@@ -29,9 +40,15 @@ namespace MagicGame
 
         public void Launch(Vector2 direction, Team team, float damage, float speedOverride = -1f)
         {
+            Launch(direction, team, new DamageInfo(damage), speedOverride);
+        }
+
+        public void Launch(Vector2 direction, Team team, DamageInfo hit, float speedOverride = -1f)
+        {
             _rb = GetComponent<Rigidbody2D>();
             _team = team;
-            _damage = damage;
+            _damage = hit.amount;
+            Hit = hit;
             if (speedOverride > 0f) speed = speedOverride;
             direction = direction.sqrMagnitude > 0f ? direction.normalized : Vector2.right;
             _rb.linearVelocity = direction * speed;
@@ -48,7 +65,7 @@ namespace MagicGame
         void Update()
         {
             _age += Time.deltaTime;
-            if (_age >= lifetime)
+            if (_age >= lifetime || !CombatWorld.Contains(transform.position))
             {
                 Destroy(gameObject);
                 return;
@@ -65,24 +82,75 @@ namespace MagicGame
         {
             if (_spent) return;
 
+            var shield = other.GetComponent<ShieldWall>();
+            if (shield != null)
+            {
+                if (shield.CanBlock(this)) Spend();
+                return;
+            }
+
+            var wall = other.GetComponent<Wall>();
+            if (wall != null)
+            {
+                if (!bypassObstacles || wall.isBoundary || !wall.allowMagicPassage) Spend();
+                return;
+            }
+
             var health = other.GetComponentInParent<Health>();
             if (health != null)
             {
                 if (health.team == _team || health.IsDead) return;
-                health.TakeDamage(_damage);
-                if (!pierce)
+                if (_hitIds.Contains(health)) return;
+                if (explosionRadius > 0f)
                 {
+                    // Mark spent before callbacks, then damage each actor only once.
                     _spent = true;
+                    ApplyHit(health);
+                    foreach (var target in CombatWorld.Enemies(transform.position, explosionRadius)) ApplyHit(target);
+                    SkillVfx.Burst(transform.position, Color.magenta, explosionRadius);
                     Destroy(gameObject);
+                    return;
                 }
+                ApplyHit(health);
+                if (bounces > 0 && Bounce()) { bounces--; return; }
+                if (!pierce) Spend();
                 return;
             }
+        }
 
-            if (other.GetComponent<Wall>() != null)
+        void ApplyHit(Health health)
+        {
+            if (!_hitIds.Add(health)) return;
+            var hit = Hit;
+            hit.amount = _damage;
+            var result = health.TakeDamage(hit);
+            if (result.Total <= 0f || health.IsDead) return;
+            if (burnPerSecond > 0f) health.Status.Apply(StatusKind.Burn, burnPerSecond, burnDuration, hit.source, hit.source);
+            if (rootDuration > 0f) health.Status.Apply(StatusKind.Root, 1f, rootDuration, hit.source);
+            SkillVfx.Burst(health.transform.position, Color.white, 0.25f);
+        }
+
+        bool Bounce()
+        {
+            Health next = null;
+            float distance = bounceRadius;
+            foreach (var health in CombatWorld.Enemies(transform.position, bounceRadius))
             {
-                _spent = true;
-                Destroy(gameObject);
+                if (_hitIds.Contains(health)) continue;
+                float candidate = Vector2.Distance(transform.position, health.transform.position);
+                if (candidate < distance) { next = health; distance = candidate; }
             }
+            if (next == null) return false;
+            Vector2 direction = (Vector2)next.transform.position + Vector2.up * 0.4f - (Vector2)transform.position;
+            _rb.linearVelocity = direction.normalized * speed;
+            if (alignToDirection) transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + alignAngleOffset);
+            return true;
+        }
+
+        public void Spend()
+        {
+            _spent = true;
+            Destroy(gameObject);
         }
     }
 }

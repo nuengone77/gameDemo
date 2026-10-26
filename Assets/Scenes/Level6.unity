@@ -293,6 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 421848316}
   - component: {fileID: 421848317}
+  - component: {fileID: 421848318}
   m_Layer: 0
   m_Name: box3
   m_TagString: Untagged
@@ -361,6 +362,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5263264, y: 0.6081959}
   m_EdgeRadius: 0
+--- !u!114 &421848318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421848315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1001 &513447450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -574,6 +589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CameraFit
   mapSize: {x: 15.36, y: 10.24}
+  mapCenter: {x: 0, y: 0}
+  fillScreen: 1
+  followPlayer: 1
+  followSmoothing: 8
 --- !u!1001 &616363010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,6 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784012335}
   - component: {fileID: 784012336}
+  - component: {fileID: 784012337}
   m_Layer: 0
   m_Name: line
   m_TagString: Untagged
@@ -885,6 +905,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &784012337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784012334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1001 &821124518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1025,6 +1059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 994231948}
   - component: {fileID: 994231949}
+  - component: {fileID: 994231950}
   m_Layer: 0
   m_Name: box1
   m_TagString: Untagged
@@ -1093,6 +1128,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5370307, y: 0.6119231}
   m_EdgeRadius: 0
+--- !u!114 &994231950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994231947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1 &1077397073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077397074}
   - component: {fileID: 1077397075}
+  - component: {fileID: 1077397076}
   m_Layer: 0
   m_Name: box2
   m_TagString: Untagged
@@ -1171,6 +1221,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5259979, y: 0.60907054}
   m_EdgeRadius: 0
+--- !u!114 &1077397076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077397073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1001 &1132514252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1362,6 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1227618947}
   - component: {fileID: 1227618948}
+  - component: {fileID: 1227618949}
   m_Layer: 0
   m_Name: box4
   m_TagString: Untagged
@@ -1430,6 +1495,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5129887, y: 0.59842896}
   m_EdgeRadius: 0
+--- !u!114 &1227618949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227618946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1001 &1254053434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1649,6 +1728,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c2774bbb1f47ae9f5654973167e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.LevelManager
+  playableBounds:
+    serializedVersion: 2
+    x: -5.585167
+    y: -5.092315
+    width: 11.086252
+    height: 8.934467
   levelNumber: 6
   levelTitle: Lava Keep
   isFinalLevel: 0

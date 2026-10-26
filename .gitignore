@@ -112,3 +112,7 @@ InitTestScene*.unity*
 .DS_Store
 .vscode/
 *.slnx
+
+.agents/
+AGENTS.md
+skills-lock.json

@@ -1,0 +1,5 @@
+{
+    "name": "MagicGame.PlayModeTests",
+    "references": ["MagicGame.Runtime", "Unity.InputSystem", "UnityEngine.UI", "Unity.TextMeshPro"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ling
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CharacterAnimSet
   displayName: Ling
+  combat: {fileID: 11400000, guid: 1e5add6582635ba44874f78ef39dbc4a, type: 2}
   walkDown:
   - {fileID: -1871053955, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}
   - {fileID: 1379949021, guid: 0025ca2abf16b430ba477db5d7ade238, type: 3}

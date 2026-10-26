@@ -6,12 +6,39 @@ using UnityEngine.SceneManagement;
 namespace MagicGame
 {
     // One per level scene: tracks enemies, opens the portal when they are all gone,
-    // handles game over / victory and draws the HUD.
+    // handles game over / victory; the shared uGUI view presents these states.
     public class LevelManager : MonoBehaviour
     {
         public static LevelManager Instance { get; private set; }
 
         static readonly List<EnemyController> s_enemies = new();
+        public static IReadOnlyList<EnemyController> Enemies => s_enemies;
+        public Rect playableBounds = new Rect(-7.68f, -5.12f, 15.36f, 10.24f);
+        public bool IsPlaying => _state == State.Playing;
+        public bool AllowsMovement => _state == State.Playing || _state == State.Cleared;
+        Vector2[] _outline;
+
+        public bool ContainsPoint(Vector2 point)
+        {
+            if (!playableBounds.Contains(point)) return false;
+            if (_outline == null || _outline.Length < 3) return true;
+            bool inside = false;
+            for (int i = 0, j = _outline.Length - 1; i < _outline.Length; j = i++)
+            {
+                var a = _outline[i];
+                var b = _outline[j];
+                if ((a.y > point.y) != (b.y > point.y) &&
+                    point.x < (b.x - a.x) * (point.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+            }
+            return inside;
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetRegistry()
+        {
+            s_enemies.Clear();
+            EnemiesChanged = null;
+        }
 
         public int levelNumber = 1;
         public string levelTitle = "Level";
@@ -19,22 +46,72 @@ namespace MagicGame
         public Portal portal;
         public string menuScene = "MainMenu";
 
-        enum State { Playing, Cleared, GameOver, Victory }
+        public enum State { Playing, Cleared, GameOver, Victory }
         State _state = State.Playing;
-        float _bannerUntil;
-        GUIStyle _big, _mid, _center, _small;
+        public State CurrentState => _state;
+        public event System.Action StateChanged;
+        public static event System.Action EnemiesChanged;
 
         public static void RegisterEnemy(EnemyController e)
         {
-            if (!s_enemies.Contains(e)) s_enemies.Add(e);
+            if (!s_enemies.Contains(e))
+            {
+                s_enemies.Add(e);
+                EnemiesChanged?.Invoke();
+            }
         }
 
-        public static void UnregisterEnemy(EnemyController e) => s_enemies.Remove(e);
+        public static void UnregisterEnemy(EnemyController e)
+        {
+            if (s_enemies.Remove(e)) EnemiesChanged?.Invoke();
+        }
+
+        void Start()
+        {
+            var player = PlayerController.Instance;
+            if (player != null && player.CurrentCharacter != null)
+                GameSession.SaveCheckpoint(SceneManager.GetActiveScene().name, player.CurrentCharacter.displayName);
+            GameUI.EnsureForScene();
+        }
+
+        public void RestartStage() => GameSession.Load(SceneManager.GetActiveScene().name);
+        public void ReturnToMenu() => GameSession.Load(menuScene);
+
+        void SetState(State state)
+        {
+            _state = state;
+            StateChanged?.Invoke();
+        }
 
         void Awake()
         {
             Instance = this;
-            _bannerUntil = Time.time + 2.5f;
+            // Compatibility for old scenes and scenes with unsaved editor changes.
+            var walls = GameObject.Find("Walls");
+            if (walls != null)
+            {
+                var left = walls.transform.Find("Left")?.GetComponent<BoxCollider2D>();
+                var right = walls.transform.Find("Right")?.GetComponent<BoxCollider2D>();
+                var top = walls.transform.Find("Top")?.GetComponent<BoxCollider2D>();
+                var bottom = walls.transform.Find("Bottom")?.GetComponent<BoxCollider2D>();
+                if (left != null && right != null && top != null && bottom != null)
+                    playableBounds = Rect.MinMaxRect(left.bounds.max.x, bottom.bounds.max.y, right.bounds.min.x, top.bounds.min.y);
+                else
+                {
+                    // Authored maps use a nearly closed EdgeCollider2D outline.
+                    foreach (var edge in walls.GetComponentsInChildren<EdgeCollider2D>())
+                    {
+                        var points = edge.points;
+                        if (points.Length < 3 || Vector2.Distance(points[0], points[points.Length - 1]) > 0.25f) continue;
+                        _outline = new Vector2[points.Length];
+                        for (int i = 0; i < points.Length; i++) _outline[i] = edge.transform.TransformPoint(points[i] + edge.offset);
+                        playableBounds = new Rect(edge.bounds.min, edge.bounds.size);
+                        break;
+                    }
+                }
+                foreach (var collider in walls.GetComponentsInChildren<Collider2D>())
+                    if (!collider.isTrigger && collider.GetComponent<Wall>() == null) collider.gameObject.AddComponent<Wall>();
+            }
         }
 
         void OnDestroy()
@@ -44,30 +121,24 @@ namespace MagicGame
 
         void Update()
         {
-            var keyboard = Keyboard.current;
+            if (GameUI.GameplayBlocked) return;
             var player = PlayerController.Instance;
 
             if (_state == State.Playing)
             {
                 if (player != null && player.Health.IsDead)
                 {
-                    _state = State.GameOver;
+                    SetState(State.GameOver);
                     player.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 0.8f);
                 }
                 else if (Time.timeSinceLevelLoad > 0.2f && s_enemies.Count == 0)
                 {
-                    _state = State.Cleared;
+                    SetState(State.Cleared);
                     if (portal != null) portal.SetOpen(true);
-                    _bannerUntil = Time.time + 2.5f;
                 }
             }
 
-            if (keyboard == null) return;
-            if (keyboard.rKey.wasPressedThisFrame && _state != State.Victory)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            if (keyboard.escapeKey.wasPressedThisFrame ||
-                (_state == State.Victory && (keyboard.enterKey.wasPressedThisFrame || keyboard.spaceKey.wasPressedThisFrame)))
-                SceneManager.LoadScene(menuScene);
+
         }
 
         public void CompleteLevel()
@@ -75,89 +146,13 @@ namespace MagicGame
             int next = SceneManager.GetActiveScene().buildIndex + 1;
             if (isFinalLevel || next >= SceneManager.sceneCountInBuildSettings)
             {
-                _state = State.Victory;
+                GameSession.ClearCheckpoint();
+                SetState(State.Victory);
                 if (PlayerController.Instance != null) PlayerController.Instance.gameObject.SetActive(false);
                 return;
             }
-            SceneManager.LoadScene(next);
+            GameSession.Load(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(next)));
         }
 
-        void OnGUI()
-        {
-            EnsureStyles();
-            float scale = Screen.height / 720f;
-            GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1f));
-            float w = Screen.width / scale;
-            const float h = 720f;
-
-            var player = PlayerController.Instance;
-            GUI.Label(new Rect(20, 12, 600, 30), $"Stage {levelNumber}: {levelTitle}", _mid);
-            if (player != null)
-            {
-                DrawBar(new Rect(20, 48, 260, 18), player.Health.Ratio, new Color(0.2f, 0.85f, 0.35f));
-                GUI.Label(new Rect(290, 44, 200, 26), $"HP {Mathf.CeilToInt(player.Health.CurrentHp)}", _small);
-            }
-            GUI.Label(new Rect(20, 72, 400, 26), $"Monsters left: {s_enemies.Count}", _small);
-            GUI.Label(new Rect(20, h - 34, 900, 26),
-                "Move: WASD / Arrows   Cast ring: Space / J / Left click   R: restart   Esc: menu", _small);
-
-            foreach (var e in s_enemies)
-            {
-                if (e == null || !e.isBoss) continue;
-                GUI.Label(new Rect(w / 2 - 250, 12, 500, 28), e.displayName, _mid);
-                DrawBar(new Rect(w / 2 - 250, 44, 500, 20), e.Health.Ratio, new Color(0.9f, 0.2f, 0.15f));
-                break;
-            }
-
-            switch (_state)
-            {
-                case State.Playing when Time.time < _bannerUntil:
-                    GUI.Label(new Rect(0, h / 2 - 60, w, 60), $"Stage {levelNumber}", _big);
-                    break;
-                case State.Cleared when Time.time < _bannerUntil:
-                    GUI.Label(new Rect(0, h / 2 - 60, w, 60), "Stage clear! Enter the portal", _big);
-                    break;
-                case State.GameOver:
-                    Dim(w, h);
-                    GUI.Label(new Rect(0, h / 2 - 70, w, 60), "Game Over", _big);
-                    GUI.Label(new Rect(0, h / 2, w, 30), "Press R to try again, Esc for menu", _center);
-                    break;
-                case State.Victory:
-                    Dim(w, h);
-                    GUI.Label(new Rect(0, h / 2 - 70, w, 60), "Victory! The dragon is defeated", _big);
-                    GUI.Label(new Rect(0, h / 2, w, 30), "Press Enter to return to the menu", _center);
-                    break;
-            }
-        }
-
-        static void Dim(float w, float h)
-        {
-            var old = GUI.color;
-            GUI.color = new Color(0f, 0f, 0f, 0.6f);
-            GUI.DrawTexture(new Rect(0, 0, w, h), Texture2D.whiteTexture);
-            GUI.color = old;
-        }
-
-        static void DrawBar(Rect r, float ratio, Color fill)
-        {
-            var old = GUI.color;
-            GUI.color = new Color(0f, 0f, 0f, 0.7f);
-            GUI.DrawTexture(r, Texture2D.whiteTexture);
-            GUI.color = fill;
-            GUI.DrawTexture(new Rect(r.x + 2, r.y + 2, (r.width - 4) * Mathf.Clamp01(ratio), r.height - 4), Texture2D.whiteTexture);
-            GUI.color = old;
-        }
-
-        void EnsureStyles()
-        {
-            if (_big != null) return;
-            _big = new GUIStyle(GUI.skin.label) { fontSize = 44, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter };
-            _big.normal.textColor = Color.white;
-            _mid = new GUIStyle(GUI.skin.label) { fontSize = 22, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleLeft };
-            _mid.normal.textColor = Color.white;
-            _center = new GUIStyle(_mid) { alignment = TextAnchor.MiddleCenter };
-            _small = new GUIStyle(GUI.skin.label) { fontSize = 16 };
-            _small.normal.textColor = Color.white;
-        }
     }
 }

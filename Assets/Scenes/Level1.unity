@@ -389,6 +389,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.CameraFit
   mapSize: {x: 15.36, y: 10.24}
+  mapCenter: {x: 0, y: 0}
+  fillScreen: 1
+  followPlayer: 1
+  followSmoothing: 8
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c2774bbb1f47ae9f5654973167e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.LevelManager
+  playableBounds:
+    serializedVersion: 2
+    x: -6.9346786
+    y: -5.086898
+    width: 12.305467
+    height: 8.856718
   levelNumber: 1
   levelTitle: Forest Path
   isFinalLevel: 0
@@ -844,6 +854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1843032501}
   - component: {fileID: 1843032502}
+  - component: {fileID: 1843032503}
   m_Layer: 0
   m_Name: line
   m_TagString: Untagged
@@ -934,6 +945,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1843032503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843032500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f56e01f56940fda9425966d932728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.Wall
+  isBoundary: 1
+  allowMagicPassage: 0
 --- !u!1001 &2049332026
 PrefabInstance:
   m_ObjectHideFlags: 0
