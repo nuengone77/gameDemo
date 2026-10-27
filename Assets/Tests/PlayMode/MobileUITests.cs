@@ -70,6 +70,407 @@ namespace MagicGame.Tests
             PlayerController.Instance.Health.invulnerableTime = 1000;
         }
 
+        static SkillJoystick Skill(SkillSlot slot) => Node("HUD" + slot).GetComponent<SkillJoystick>();
+
+        static PointerEventData SkillPointer(SkillJoystick stick, int id = 21)
+        {
+            var rect = (RectTransform)stick.transform;
+            return new PointerEventData(EventSystem.current) { pointerId = id, position = rect.TransformPoint(rect.rect.center) };
+        }
+
+        static void DragSkill(SkillJoystick stick, PointerEventData pointer, Vector2 value)
+        {
+            var rect = (RectTransform)stick.transform;
+            pointer.position = rect.TransformPoint(rect.rect.center + value * 84);
+            stick.OnDrag(pointer);
+        }
+
+        static void QuietEnemies()
+        {
+            foreach (var enemy in LevelManager.Enemies)
+            {
+                enemy.moveSpeed = enemy.damage = enemy.detectRange = enemy.attackRange = 0;
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickGroundCastFollowsMovementAndKeepsAttackAimSeparate()
+        {
+            GameSession.SelectedHeroId = "Ling";
+            yield return EnterLevel();
+            QuietEnemies();
+            var player = PlayerController.Instance;
+            player.GetComponent<Rigidbody2D>().position = Vector2.zero;
+            GameplayInput.SetAim(Vector2.left);
+            GameplayInput.ReleaseAim();
+            var stick = Skill(SkillSlot.Active);
+            var pointer = SkillPointer(stick);
+            ExecuteEvents.Execute(stick.gameObject, pointer, ExecuteEvents.pointerDownHandler);
+            DragSkill(stick, pointer, new Vector2(.575f, 0)); // Half range after the deadzone.
+            Assert.That(stick.IsAiming, Is.True);
+            Assert.That(GameplayInput.Aim, Is.EqualTo(Vector2.left));
+            Assert.That(GameplayInput.Firing, Is.False);
+            Assert.That(player.Skills.ActiveRemaining, Is.Zero);
+            var expected = CombatWorld.GroundTarget(player.transform.position,
+                (Vector2)player.transform.position + Vector2.right * player.Skills.Config.range * .5f);
+            Assert.That(Vector2.Distance(stick.PreviewCast.target, expected), Is.LessThan(.01f));
+            GameplayInput.Move = Vector2.up;
+            yield return new WaitForFixedUpdate();
+            yield return null;
+            GameplayInput.Move = Vector2.zero;
+            // Release recomputes from the caster's current position, even without another drag event.
+            ExecuteEvents.Execute(stick.gameObject, pointer, ExecuteEvents.pointerUpHandler);
+            var released = stick.PreviewCast.target;
+            ExecuteEvents.Execute(stick.gameObject, pointer, ExecuteEvents.pointerClickHandler);
+            GameplayInput.SetAim(Vector2.down);
+            GameplayInput.ReleaseAim();
+            yield return null;
+            var areas = Object.FindObjectsByType<SkillArea>(FindObjectsSortMode.None);
+            Assert.That(areas.Length, Is.EqualTo(1), "Pointer up and click must produce only one area.");
+            Assert.That(Vector2.Distance(areas[0].transform.position, released), Is.LessThan(.01f));
+            Assert.That(player.Skills.ActiveRemaining, Is.GreaterThan(0));
+            Assert.That(stick.preview.gameObject.activeSelf, Is.False);
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickCancelCanBeExitedAndWrongPointersCannotCast()
+        {
+            yield return EnterLevel();
+            var stick = Skill(SkillSlot.Ultimate);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            var wrong = SkillPointer(stick, 22);
+            stick.OnPointerDown(wrong);
+            DragSkill(stick, wrong, Vector2.left);
+            stick.OnPointerUp(wrong);
+            Assert.That(stick.IsAiming, Is.True);
+            pointer.position = stick.cancelArea.TransformPoint(stick.cancelArea.rect.center);
+            stick.OnDrag(pointer);
+            Assert.That(stick.IsCancelling, Is.True);
+            DragSkill(stick, pointer, Vector2.left);
+            Assert.That(stick.IsCancelling, Is.False);
+            pointer.position = stick.cancelArea.TransformPoint(stick.cancelArea.rect.center);
+            stick.OnPointerUp(pointer);
+            Click("HUDUltimate");
+            yield return null;
+            Assert.That(PlayerController.Instance.Skills.UltimateRemaining, Is.Zero);
+            Assert.That(SkillJoystick.Current, Is.Null);
+            Assert.That(GameplayInput.TryConsumeSkillCast(SkillSlot.Ultimate, out _), Is.False);
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickPauseAndInterruptionNeverTurnLateReleaseIntoQuickCast()
+        {
+            yield return EnterLevel();
+            var player = PlayerController.Instance;
+            var stick = Skill(SkillSlot.Ultimate);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            DragSkill(stick, pointer, Vector2.right);
+            Click("HUDPause");
+            Assert.That(stick.IsAiming, Is.False);
+            Click("PauseResume");
+            yield return null;
+            stick.OnPointerUp(pointer);
+            Click("HUDUltimate");
+            yield return null;
+            Assert.That(player.Skills.UltimateRemaining, Is.Zero);
+            stick.OnPointerDown(pointer);
+            Assert.That(stick.IsAiming, Is.True);
+            player.Health.Status.Apply(StatusKind.Knockup, .2f, .05f, player);
+            yield return null;
+            Assert.That(stick.IsAiming, Is.False);
+            yield return new WaitForSeconds(.1f);
+            stick.OnPointerUp(pointer);
+            Click("HUDUltimate");
+            yield return null;
+            Assert.That(player.Skills.UltimateRemaining, Is.Zero);
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickModesAndShadowTravelRespectTheSelectedHeroAndStance()
+        {
+            yield return EnterLevel();
+            QuietEnemies();
+            var player = PlayerController.Instance;
+            var skills = player.Skills;
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.Direction));
+            Assert.That(skills.GetTargetingMode(SkillSlot.Ultimate), Is.EqualTo(SkillTargetingMode.Ground));
+            skills.Initialize(player, GameUI.Instance.theme.heroes[1].combat);
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.Dash));
+            Assert.That(skills.GetTargetingMode(SkillSlot.Ultimate), Is.EqualTo(SkillTargetingMode.None));
+            var stick = Skill(SkillSlot.Active);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            DragSkill(stick, pointer, Vector2.right);
+            Assert.That(stick.PreviewCast.direction.x, Is.LessThan(-.99f));
+            stick.OnPointerUp(pointer);
+            Vector2 before = player.transform.position;
+            yield return null;
+            yield return new WaitForFixedUpdate();
+            Assert.That(player.GetComponent<Rigidbody2D>().position.x, Is.GreaterThan(before.x));
+            skills.Initialize(player, GameUI.Instance.theme.heroes[2].combat);
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.None));
+            Assert.That(skills.GetTargetingMode(SkillSlot.Ultimate), Is.EqualTo(SkillTargetingMode.None));
+            skills.Initialize(player, GameUI.Instance.theme.heroes[3].combat);
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.Ground));
+            Assert.That(skills.GetTargetingMode(SkillSlot.Ultimate), Is.EqualTo(SkillTargetingMode.None));
+            skills.Initialize(player, GameUI.Instance.theme.heroes[4].combat);
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.None));
+            Assert.That(skills.TrySwitchStance(), Is.True);
+            Assert.That(skills.GetTargetingMode(SkillSlot.Active), Is.EqualTo(SkillTargetingMode.Direction));
+            yield return null; // Let the event-driven cooldown UI reflect the new hero.
+            stick.OnPointerDown(pointer);
+            Assert.That(stick.IsAiming, Is.True);
+            skills.Initialize(player, GameUI.Instance.theme.heroes[4].combat);
+            stick.OnPointerUp(pointer);
+            Assert.That(GameplayInput.TryConsumeSkillCast(SkillSlot.Active, out _), Is.False);
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickQuickCastChoosesNearestVisibleLivingEnemyAndFallsBackToAim()
+        {
+            GameSession.SelectedHeroId = "Ling";
+            yield return EnterLevel();
+            QuietEnemies();
+            var player = PlayerController.Instance;
+            player.GetComponent<Rigidbody2D>().position = Vector2.zero;
+            var camera = Camera.main;
+            var enemies = LevelManager.Enemies.ToArray();
+            Assert.That(enemies.Length, Is.GreaterThanOrEqualTo(3));
+            for (int i = 0; i < enemies.Length; i++)
+                enemies[i].GetComponent<Rigidbody2D>().position = new Vector2(100 + i, 100);
+            enemies[0].GetComponent<Rigidbody2D>().position = new Vector2(2, 0);
+            enemies[1].GetComponent<Rigidbody2D>().position = new Vector2(3, 0);
+            enemies[2].GetComponent<Rigidbody2D>().position = new Vector2(1, 0);
+            enemies[2].Health.destroyOnDeath = false;
+            enemies[2].Health.TakeDamage(new DamageInfo(1e20f) { guaranteed = true, bypassDefense = true });
+            yield return null;
+            // LateUpdate has not followed the teleport yet when this coroutine resumes.
+            // Center the view explicitly so the intended enemies are visible on ultrawide screens.
+            camera.transform.position = player.transform.position + Vector3.back * 10;
+            var stick = Skill(SkillSlot.Active);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            stick.OnPointerUp(pointer);
+            Assert.That(GameplayInput.TryConsumeSkillCast(SkillSlot.Active, out var request), Is.True);
+            var expected = CombatWorld.GroundTarget(player.transform.position, enemies[0].transform.position);
+            Assert.That(Vector2.Distance(request.target, expected), Is.LessThan(.01f),
+                $"target={request.target}, expected={expected}, player={player.transform.position}, nearest={enemies[0].transform.position}, camera={camera.transform.position}, viewport={camera.WorldToViewportPoint(enemies[0].transform.position)}");
+            // Keep a live enemy in range but outside the camera viewport.
+            Vector3 oldCamera = camera.transform.position;
+            camera.transform.position = oldCamera + Vector3.right * 100;
+            GameplayInput.SetAim(Vector2.left * .3f);
+            GameplayInput.ReleaseAim();
+            var fallback = player.Skills.ResolveSkillCast(SkillSlot.Active, Vector2.zero, false);
+            expected = CombatWorld.GroundTarget(player.transform.position,
+                (Vector2)player.transform.position + Vector2.left * player.Skills.Config.range);
+            Assert.That(Vector2.Distance(fallback.target, expected), Is.LessThan(.01f));
+            camera.transform.position = oldCamera;
+            player.Skills.Initialize(player, GameUI.Instance.theme.heroes[1].combat);
+            var retreat = player.Skills.ResolveSkillCast(SkillSlot.Active, Vector2.zero, false);
+            Assert.That(retreat.direction.x, Is.GreaterThan(.99f), "Quick-cast retreats away from the enemy to the right.");
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickManualAimClampsRangeAndCanTargetSelfWithoutAutoSnap()
+        {
+            GameSession.SelectedHeroId = "Ling";
+            yield return EnterLevel();
+            var player = PlayerController.Instance;
+            var stick = Skill(SkillSlot.Active);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            DragSkill(stick, pointer, new Vector2(4, 4));
+            Assert.That(Vector2.Distance(stick.PreviewCast.target, player.transform.position),
+                Is.LessThanOrEqualTo(player.Skills.Config.range + .02f));
+            Assert.That(CombatWorld.Contains(stick.PreviewCast.target), Is.True);
+            DragSkill(stick, pointer, Vector2.zero);
+            var self = CombatWorld.GroundTarget(player.transform.position, player.transform.position);
+            Assert.That(Vector2.Distance(stick.PreviewCast.target, self), Is.LessThan(.01f));
+            stick.OnPointerUp(pointer);
+            Assert.That(GameplayInput.TryConsumeSkillCast(SkillSlot.Active, out var request), Is.True);
+            Assert.That(Vector2.Distance(request.target, self), Is.LessThan(.01f));
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickSuspensionDeathAndCooldownDiscardPendingGestures()
+        {
+            yield return EnterLevel();
+            var player = PlayerController.Instance;
+            var stick = Skill(SkillSlot.Ultimate);
+            var pointer = SkillPointer(stick);
+            stick.OnPointerDown(pointer);
+            GameUI.Instance.SendMessage("OnApplicationPause", true);
+            Assert.That(stick.IsAiming, Is.False);
+            Assert.That(stick.preview.gameObject.activeSelf, Is.False);
+            Click("PauseResume");
+            yield return null;
+            stick.OnPointerUp(pointer);
+            Click("HUDUltimate");
+            yield return null;
+            Assert.That(player.Skills.UltimateRemaining, Is.Zero);
+            player.Skills.TryUltimate(player.transform.position);
+            stick.OnPointerDown(pointer);
+            Assert.That(stick.IsAiming, Is.False, "A skill on cooldown cannot start an aim.");
+            player.Skills.Initialize(player, player.CurrentCharacter.combat);
+            GameUI.Instance.SendMessage("RefreshSkills");
+            yield return null;
+            stick.OnPointerUp(pointer);
+            Click("HUDUltimate");
+            yield return null;
+            Assert.That(player.Skills.UltimateRemaining, Is.Zero, "Holding an unavailable button must not queue a cast when it becomes ready.");
+            stick.OnPointerDown(pointer);
+            Assert.That(stick.IsAiming, Is.True);
+            player.Health.TakeDamage(new DamageInfo(1e20f) { guaranteed = true, bypassDefense = true });
+            yield return null;
+            stick.OnPointerUp(pointer);
+            Assert.That(SkillJoystick.Current, Is.Null);
+            Assert.That(GameplayInput.TryConsumeSkillCast(SkillSlot.Ultimate, out _), Is.False);
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickControlsRemainInsideSafeAreaAtMaximumSize()
+        {
+            yield return EnterLevel();
+            Node("TextSize").GetComponent<UnityEngine.UI.Slider>().value = 1.5f;
+            Node("ControlSize").GetComponent<UnityEngine.UI.Slider>().value = 1.2f;
+            Canvas.ForceUpdateCanvases();
+            var stick = Skill(SkillSlot.Ultimate);
+            var pointer = SkillPointer(stick);
+            var hits = new System.Collections.Generic.List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, hits);
+            Assert.That(hits.First().gameObject.GetComponentInParent<UnityEngine.UI.Button>(), Is.EqualTo(stick.GetComponent<UnityEngine.UI.Button>()));
+            var safe = (RectTransform)Node("SafeArea").transform;
+            var buttonRect = (RectTransform)stick.transform;
+            foreach (var press in new[] { buttonRect.rect.center, buttonRect.rect.max - Vector2.one })
+            {
+                pointer.position = buttonRect.TransformPoint(press);
+                stick.OnPointerDown(pointer);
+                foreach (var rect in new[] { stick.cancelArea, stick.ring })
+                {
+                    var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(safe, rect);
+                    Assert.That(bounds.min.x, Is.GreaterThanOrEqualTo(safe.rect.xMin - .01f));
+                    Assert.That(bounds.max.x, Is.LessThanOrEqualTo(safe.rect.xMax + .01f));
+                    Assert.That(bounds.min.y, Is.GreaterThanOrEqualTo(safe.rect.yMin - .01f));
+                    Assert.That(bounds.max.y, Is.LessThanOrEqualTo(safe.rect.yMax + .01f));
+                }
+                Assert.That(stick.preview.GetComponent<CanvasRenderer>(), Is.Not.Null, "World aim geometry requires a renderer on the authored overlay.");
+                Canvas.ForceUpdateCanvases();
+                Assert.That(stick.preview.canvasRenderer.materialCount, Is.GreaterThan(0), "The preview must submit a renderable graphic.");
+                var cancelLabel = Node("SkillCancelLabel").GetComponent<TMPro.TMP_Text>();
+                cancelLabel.ForceMeshUpdate();
+                Assert.That(cancelLabel.isTextTruncated, Is.False, "The cancel label must fit at maximum text size.");
+                SkillJoystick.CancelCurrent();
+            }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickTouchscreenAllowsMovementAndCancelsInterruptedTouch()
+        {
+            GameSession.SelectedHeroId = "Ling";
+            yield return EnterLevel();
+            QuietEnemies();
+            var background = UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior;
+            UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior = UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+            #if UNITY_EDITOR
+            var editorInput = UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode;
+            UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode = UnityEngine.InputSystem.InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+            #endif
+            var screen = UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Touchscreen>();
+            try
+            {
+                Canvas.ForceUpdateCanvases();
+                var move = (RectTransform)Node("MoveStick").transform;
+                var stick = Skill(SkillSlot.Active);
+                Vector2 movePoint = move.TransformPoint(move.rect.center + Vector2.right * 80);
+                Vector2 aimPoint = SkillPointer(stick).position;
+                QueueTouch(screen, 71, UnityEngine.InputSystem.TouchPhase.Began, movePoint);
+                QueueTouch(screen, 72, UnityEngine.InputSystem.TouchPhase.Began, aimPoint);
+                yield return null;
+                yield return null;
+                Assert.That(GameplayInput.Move.x, Is.GreaterThan(0));
+                Assert.That(stick.IsAiming, Is.True, "The Input System UI module must deliver the second finger to the skill.");
+                Assert.That(GameplayInput.Firing, Is.False);
+                var rect = (RectTransform)stick.transform;
+                aimPoint = rect.TransformPoint(rect.rect.center + Vector2.left * 84);
+                QueueTouch(screen, 72, UnityEngine.InputSystem.TouchPhase.Moved, aimPoint);
+                yield return null;
+                yield return null;
+                Assert.That(stick.PreviewCast.direction.x, Is.LessThan(-.99f));
+                QueueTouch(screen, 72, UnityEngine.InputSystem.TouchPhase.Canceled, aimPoint);
+                yield return null;
+                yield return null;
+                Assert.That(stick.IsAiming, Is.False);
+                Assert.That(PlayerController.Instance.Skills.ActiveRemaining, Is.Zero, "OS touch cancellation must never cast.");
+                Assert.That(GameplayInput.Move.x, Is.GreaterThan(0), "Cancelling the skill must preserve the movement finger.");
+                QueueTouch(screen, 71, UnityEngine.InputSystem.TouchPhase.Ended, movePoint);
+                yield return null;
+                yield return null;
+                Assert.That(GameplayInput.Move, Is.EqualTo(Vector2.zero));
+                aimPoint = SkillPointer(stick).position;
+                QueueTouch(screen, 73, UnityEngine.InputSystem.TouchPhase.Began, aimPoint);
+                yield return null;
+                yield return null;
+                QueueTouch(screen, 73, UnityEngine.InputSystem.TouchPhase.Ended, aimPoint);
+                yield return null;
+                yield return null;
+                Assert.That(PlayerController.Instance.Skills.ActiveRemaining, Is.GreaterThan(0));
+                Assert.That(Object.FindObjectsByType<SkillArea>(FindObjectsSortMode.None).Length, Is.EqualTo(1));
+            }
+            finally
+            {
+                SkillJoystick.CancelCurrent();
+                UnityEngine.InputSystem.InputSystem.RemoveDevice(screen);
+                GameplayInput.Reset();
+                UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior = background;
+                #if UNITY_EDITOR
+                UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode = editorInput;
+                #endif
+            }
+        }
+
+        static void QueueTouch(UnityEngine.InputSystem.Touchscreen screen, int id, UnityEngine.InputSystem.TouchPhase phase, Vector2 position)
+        {
+            UnityEngine.InputSystem.InputSystem.QueueStateEvent(screen,
+                new UnityEngine.InputSystem.LowLevel.TouchState { touchId = id, phase = phase, position = position });
+        }
+
+        [UnityTest]
+        public IEnumerator SkillJoystickMouseDragDoesNotFireWhenItLeavesTheButton()
+        {
+            yield return EnterLevel();
+            GameplayInput.Reset();
+            var player = PlayerController.Instance;
+            var stick = Skill(SkillSlot.Ultimate);
+            stick.OnPointerDown(SkillPointer(stick));
+            var system = EventSystem.current;
+            var mouse = UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Mouse>();
+            try
+            {
+                // No hovered UI: a held desktop mouse would normally shoot into the world.
+                system.enabled = false;
+                // The unfocused Editor can have its own input buffer active here.
+                UnityEngine.InputSystem.LowLevel.InputState.Change(mouse,
+                    new UnityEngine.InputSystem.LowLevel.MouseState().WithButton(UnityEngine.InputSystem.LowLevel.MouseButton.Left),
+                    UnityEngine.InputSystem.LowLevel.InputState.currentUpdateType);
+                mouse.MakeCurrent();
+                Assert.That(mouse.leftButton.isPressed, Is.True, "The synthetic press must reach the active input buffer.");
+                GameplayInput.ReadActions(player, player.Facing, out _, out _, out bool fire, out _, out _, out _);
+                Assert.That(fire, Is.False, "Dragging a skill into the world must not become a basic attack.");
+                SkillJoystick.CancelCurrent();
+                GameplayInput.ReadActions(player, player.Facing, out _, out _, out fire, out _, out _, out _);
+                Assert.That(fire, Is.True, "Ordinary mouse attacks must remain available outside a skill gesture.");
+            }
+            finally
+            {
+                SkillJoystick.CancelCurrent();
+                UnityEngine.InputSystem.InputSystem.RemoveDevice(mouse);
+                system.enabled = true;
+            }
+        }
+
         [UnityTest]
         public IEnumerator MenusRestoreTheirOriginAndPreventBackgroundInteraction()
         {

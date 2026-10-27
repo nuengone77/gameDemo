@@ -72,6 +72,7 @@ namespace MagicGame
             _settings = UISettings.Load();
             if (transform.Find("SafeArea") == null) BuildLayout();
             BuildProgressionLayout();
+            EnsureSkillControls();
             foreach (var rect in GetComponentsInChildren<RectTransform>(true)) _nodes[rect.name] = rect.gameObject;
             foreach (var text in GetComponentsInChildren<TMP_Text>(true)) _fontSizes[text] = text.fontSize;
             EnsureEventSystem();
@@ -166,9 +167,14 @@ namespace MagicGame
             Click("DefeatMenu", () => _level.ReturnToMenu());
             Click("VictoryMenu", () => _level.ReturnToMenu());
             Click("VictoryAgain", () => { GameSession.Load("MainMenu"); _openHeroesAfterLoad = true; });
-            Click("HUDActive", GameplayInput.RequestActive);
-            Click("HUDUltimate", GameplayInput.RequestUltimate);
-            Click("HUDStance", GameplayInput.RequestStance);
+            Click("HUDActive", () => OnSkillButtonClick(SkillSlot.Active));
+            Click("HUDUltimate", () => OnSkillButtonClick(SkillSlot.Ultimate));
+            Click("HUDStance", () =>
+            {
+                SkillJoystick.CancelCurrent();
+                GameplayInput.ClearSkillRequests();
+                GameplayInput.RequestStance();
+            });
             Click("DialogCancel", Back);
             Click("DialogConfirm", () => { var callback = _confirm; _confirm = null; Back(); callback?.Invoke(); });
             Click("TutorialSkip", EndTutorial);
@@ -218,6 +224,12 @@ namespace MagicGame
                 label.fontSizeMax = _fontSizes[label] * _settings.textSize;
             }
             N("TouchControls").GetComponent<CanvasGroup>().alpha = _settings.controlOpacity;
+            T("SkillCancelLabel").fontSizeMax = 26 * _settings.textSize;
+            foreach (var name in new[] { "ActiveCaption", "UltimateCaption", "StanceCaption" })
+            {
+                T(name).fontSizeMin = _fontSizes[T(name)] * .75f * _settings.textSize;
+                T(name).fontSizeMax = _fontSizes[T(name)] * _settings.textSize;
+            }
             ScaleTopHUD("HealthPanel", 0.815f, 0.975f);
             ScaleTopHUD("StagePanel", 0.875f, 0.975f);
             ScaleTopHUD("HUDStage", 0.925f, 0.975f);
@@ -240,6 +252,7 @@ namespace MagicGame
             T("ReducedMotionLabel").text = "Reduced UI motion: " + (_settings.reducedMotion ? "On" : "Off");
             if (_settings.reducedMotion && _stack.Count > 0) N(CurrentScreen.ToString()).GetComponent<CanvasGroup>().alpha = 1;
             FitMenuGroups();
+            PositionSkillCancel();
         }
 
         void ScaleTopHUD(string name, float bottom, float top)
@@ -268,6 +281,7 @@ namespace MagicGame
             safe.offsetMax = new Vector2(-12, -12);
             FitMenuGroups();
             ClearInput();
+            PositionSkillCancel();
         }
 
         void FitMenuGroups()
@@ -315,7 +329,8 @@ namespace MagicGame
         void UpdateMarker()
         {
             var config = _player.Skills.Config;
-            bool marker = config != null && _level.IsPlaying && (config.role == HeroRole.Tanky || config.role == HeroRole.OracleWitch);
+            bool marker = config != null && _level.IsPlaying && !Application.isMobilePlatform &&
+                SkillJoystick.Current == null && (config.role == HeroRole.Tanky || config.role == HeroRole.OracleWitch);
             N("AimMarker").SetActive(marker);
             if (!marker || Camera.main == null) return;
             var anim = _player.GetComponent<DirectionalSpriteAnimator>();
@@ -354,6 +369,7 @@ namespace MagicGame
 
         void ClearInput()
         {
+            SkillJoystick.CancelCurrent();
             GameplayInput.Reset();
             foreach (var stick in GetComponentsInChildren<TouchStick>(true)) stick.Clear();
         }
@@ -601,8 +617,8 @@ namespace MagicGame
             string[] titles = { "Find your footing", "Aim your magic", "Unleash your abilities", "The way forward" };
             string[] bodies = {
                 "Drag the left stick to move. Your adventure is paused while you read this guide.",
-                "Drag the right stick to aim and fire. Release to stop. Ground skills use its last direction and distance.",
-                "Tap Active or Ultimate above the right stick. Their timers show when they are ready. Daphne also has a Solar / Lunar stance button.",
+                "Drag the right stick to aim and fire. Release to stop. Skill aiming is separate from this attack stick.",
+                "Hold and drag an aimed skill, then release to cast. Tap to target the nearest visible enemy in range. Release over X to cancel. Shadow dashes where you drag. Timers show cooldowns; Daphne can switch Solar / Lunar stance.",
                 "Clear a stage, choose a card, then enter the portal. Defeat the dragon to loop with a stronger build. Death ends your run and banks Rebirth points."
             };
             T("TutorialStep").text = $"0{_tutorialStep + 1} / 04";
@@ -640,6 +656,7 @@ namespace MagicGame
         void OnDestroy()
         {
             if (Instance != this) return;
+            SkillJoystick.CancelCurrent();
             if (_level != null) _level.StateChanged -= OnLevelState;
             LevelManager.EnemiesChanged -= RefreshEnemies;
             Progression.Changed -= RefreshProgression;

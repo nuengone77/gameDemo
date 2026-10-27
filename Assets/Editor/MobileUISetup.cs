@@ -12,6 +12,20 @@ namespace MagicGame.EditorTools
     {
         const string Root = "Assets/Game/UI";
 
+        [MenuItem("Tools/Magic Game/Update Skill Joysticks Only")]
+        public static void UpdateSkillJoysticks()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play mode before updating UI.");
+            const string path = "Assets/Resources/UI/GameUI.prefab";
+            var root = PrefabUtility.LoadPrefabContents(path);
+            try
+            {
+                root.GetComponent<GameUI>().EnsureSkillControls();
+                PrefabUtility.SaveAsPrefabAsset(root, path);
+            }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
+        }
+
         [MenuItem("Tools/Magic Game/Set Up Mobile UI")]
         public static void Setup()
         {

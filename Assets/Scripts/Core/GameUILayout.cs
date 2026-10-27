@@ -32,6 +32,7 @@ namespace MagicGame
             BuildDialog(safe);
             BuildTutorial(safe);
             BuildProgressionLayout();
+            EnsureSkillControls();
         }
 
         RectTransform Page(string name, Transform parent, bool backdrop = true)
@@ -251,8 +252,8 @@ namespace MagicGame
             string[] titles = { "MOVE", "AIM & FIRE", "CAST YOUR MAGIC", "FOLLOW THE PORTAL", "YOUR CHECKPOINT" };
             string[] bodies = {
                 "Drag the left stick to move. You can move and attack at the same time.",
-                "Drag the right stick to aim and fire continuously. Release to stop firing. Its direction and distance remain available for your next skill.",
-                "Tap Active or Ultimate to cast. Ground-targeted abilities land at their marked destination. The marker uses the last aim direction and distance. Cooldown numbers show when each spell returns. Daphne can also switch Solar and Lunar stance.",
+                AttackHelp,
+                SkillHelp,
                 "Clear each stage and choose one of three cards before entering its portal. Defeat the dragon in Stage 7 to loop with your build at higher difficulty. Death banks Rebirth points and removes run cards; permanent upgrades and unlocked cards remain.",
                 "Continue restarts your saved stage with full health and fresh cooldowns. Your selected hero is saved with it. A new adventure replaces this checkpoint when you confirm Begin Adventure."
             };

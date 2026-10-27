@@ -52,7 +52,9 @@ existing PNGs. Normalize first only when intentionally changing the art.
 
 At the 1920×1080 reference resolution: primary buttons are 84 units high,
 secondary buttons 72, hero rows 120, ability rows 112, slider rows 156, and skill
-buttons 144 square. Theme fields expose these defaults. Menu groups use layout
+buttons 144 in diameter. Their circular mesh reuses SurfaceTile, ButtonFrame,
+and FocusFrame, wrapping the frame's rails and corner jewels around the rim.
+Theme fields expose these defaults. Menu groups use layout
 containers and grow with Text Size; list content scrolls. Action controls retain
 Control Size and opacity settings and reserve extra label space at large text.
 Both joysticks retain their original 280-unit size, position, ring/disc art,

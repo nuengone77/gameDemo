@@ -12,6 +12,7 @@ namespace MagicGame
         public static bool Firing { get; private set; }
         public static bool HasTouchAim { get; private set; }
         static bool _active, _ultimate, _stance;
+        static SkillCastRequest? _activeCast, _ultimateCast;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Reset()
@@ -19,6 +20,7 @@ namespace MagicGame
             Move = Vector2.zero;
             Aim = Vector2.down;
             Firing = HasTouchAim = _active = _ultimate = _stance = false;
+            ClearSkillRequests();
         }
 
         public static void SetAim(Vector2 value)
@@ -33,6 +35,27 @@ namespace MagicGame
         public static void RequestActive() => _active = true;
         public static void RequestUltimate() => _ultimate = true;
         public static void RequestStance() => _stance = true;
+
+        public static void RequestSkillCast(SkillCastRequest request)
+        {
+            if (request.slot == SkillSlot.Active) _activeCast = request;
+            else _ultimateCast = request;
+        }
+
+        public static bool TryConsumeSkillCast(SkillSlot slot, out SkillCastRequest request)
+        {
+            var pending = slot == SkillSlot.Active ? _activeCast : _ultimateCast;
+            request = pending.GetValueOrDefault();
+            if (slot == SkillSlot.Active) _activeCast = null;
+            else _ultimateCast = null;
+            return pending.HasValue;
+        }
+
+        public static void ClearSkillRequests()
+        {
+            _activeCast = _ultimateCast = null;
+            _active = _ultimate = _stance = false;
+        }
 
         public static Vector2 ReadMove()
         {
@@ -63,9 +86,10 @@ namespace MagicGame
             }
             var mouse = Mouse.current;
             bool overUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
-            if (!Application.isMobilePlatform && mouse != null && !Firing && !overUI && mouse.delta.ReadValue().sqrMagnitude > 0.01f)
+            bool aimingSkill = SkillJoystick.Current != null;
+            if (!aimingSkill && !Application.isMobilePlatform && mouse != null && !Firing && !overUI && mouse.delta.ReadValue().sqrMagnitude > 0.01f)
                 HasTouchAim = false;
-            if (!Application.isMobilePlatform && mouse != null && Camera.main != null && !HasTouchAim &&
+            if (!aimingSkill && !Application.isMobilePlatform && mouse != null && Camera.main != null && !HasTouchAim &&
                 !overUI)
             {
                 target = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());

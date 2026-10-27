@@ -25,6 +25,7 @@ namespace MagicGame
         public bool CanMove => !GameUI.GameplayBlocked && isActiveAndEnabled && Health != null && !Health.IsDead &&
             (LevelManager.Instance == null || LevelManager.Instance.AllowsMovement);
         public Vector2 Center => (Vector2)transform.position + Vector2.up * castHeight;
+        public Vector2 Facing => _animator.FacingVector;
 
         Rigidbody2D _rb;
         DirectionalSpriteAnimator _animator;
@@ -78,6 +79,7 @@ namespace MagicGame
         {
             if (!CanMove)
             {
+                GameplayInput.ClearSkillRequests();
                 _input = Vector2.zero;
                 _animator.SetMovement(Vector2.zero);
                 return;
@@ -85,12 +87,29 @@ namespace MagicGame
 
             _input = GameplayInput.ReadMove();
             _animator.SetMovement(_input * Health.Status.MoveMultiplier);
-            if (!Skills.CanAct) return;
+            if (!Skills.CanAct || Health.Status.Interrupted)
+            {
+                GameplayInput.ClearSkillRequests();
+                return;
+            }
 
             GameplayInput.ReadActions(this, _animator.FacingVector, out var aim, out var target,
                 out bool firing, out bool active, out bool ultimate, out bool stance);
-            if (active) Skills.TryActive(aim, target);
-            if (ultimate) Skills.TryUltimate(target);
+            if (stance)
+            {
+                SkillJoystick.CancelCurrent();
+                GameplayInput.ClearSkillRequests();
+            }
+            if (GameplayInput.TryConsumeSkillCast(SkillSlot.Active, out var activeCast))
+            {
+                if (Skills.IsCurrentCast(activeCast)) Skills.TryActive(activeCast.direction, activeCast.target);
+            }
+            else if (active) Skills.TryActive(aim, target);
+            if (GameplayInput.TryConsumeSkillCast(SkillSlot.Ultimate, out var ultimateCast))
+            {
+                if (Skills.IsCurrentCast(ultimateCast)) Skills.TryUltimate(ultimateCast.target);
+            }
+            else if (ultimate) Skills.TryUltimate(target);
             if (stance) Skills.TrySwitchStance();
             if (Health.Status.Interrupted) return;
             if (Time.time < _nextAttack) return;

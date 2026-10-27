@@ -10,6 +10,7 @@ namespace MagicGame
         public CharacterCombatConfig Config { get; private set; }
         public Health Health { get; private set; }
         public bool IsLunar { get; private set; }
+        public int TargetingRevision { get; private set; }
         public int HitStacks { get; private set; }
         public float ActiveRemaining => Mathf.Max(0f, _activeReady - Time.time);
         public float UltimateRemaining => Mathf.Max(0f, _ultimateReady - Time.time);
@@ -34,6 +35,7 @@ namespace MagicGame
 
         public void Initialize(PlayerController player, CharacterCombatConfig config)
         {
+            TargetingRevision++;
             Cleanup();
             _player = player;
             _body = GetComponent<Rigidbody2D>();
@@ -193,6 +195,63 @@ namespace MagicGame
             return projectile;
         }
 
+        public SkillTargetingMode GetTargetingMode(SkillSlot slot)
+        {
+            if (Config == null) return SkillTargetingMode.None;
+            if (slot == SkillSlot.Ultimate)
+                return Config.role == HeroRole.Tanky ? SkillTargetingMode.Ground : SkillTargetingMode.None;
+            switch (Config.role)
+            {
+                case HeroRole.Tanky: return SkillTargetingMode.Direction;
+                case HeroRole.Shadow: return SkillTargetingMode.Dash;
+                case HeroRole.OracleWitch: return SkillTargetingMode.Ground;
+                case HeroRole.Daphne: return IsLunar ? SkillTargetingMode.Direction : SkillTargetingMode.None;
+                default: return SkillTargetingMode.None;
+            }
+        }
+
+        public bool CanTarget(SkillSlot slot) => Config != null && CanAct && _player.CanMove &&
+            !Health.Status.Interrupted && (slot == SkillSlot.Active ? ActiveRemaining : UltimateRemaining) <= 0f;
+
+        public bool IsCurrentCast(SkillCastRequest request) => request.source == this &&
+            request.revision == TargetingRevision && CanTarget(request.slot);
+
+        public SkillCastRequest ResolveSkillCast(SkillSlot slot, Vector2 stick, bool manual)
+        {
+            var mode = GetTargetingMode(slot);
+            Vector2 origin = transform.position;
+            Vector2 direction = GameplayInput.HasTouchAim ? GameplayInput.Aim.normalized : _player.Facing.normalized;
+            if (direction.sqrMagnitude < 0.001f) direction = Vector2.down;
+            Vector2 target = origin + direction * Config.range;
+            if (manual)
+            {
+                if (stick.sqrMagnitude > 0.0001f) direction = stick.normalized;
+                target = origin + Vector2.ClampMagnitude(stick, 1f) * Config.range;
+                // The combat skill dashes backward; the joystick describes travel direction.
+                if (mode == SkillTargetingMode.Dash) direction = -direction;
+            }
+            else
+            {
+                Health nearest = null;
+                float closest = float.PositiveInfinity;
+                foreach (var enemy in CombatWorld.Enemies(origin, Config.range, true))
+                {
+                    float distance = ((Vector2)enemy.transform.position - origin).sqrMagnitude;
+                    if (distance >= closest) continue;
+                    nearest = enemy;
+                    closest = distance;
+                }
+                if (nearest != null)
+                {
+                    target = nearest.transform.position;
+                    Vector2 aimOrigin = Config.role == HeroRole.Daphne ? _player.Center : origin;
+                    if ((target - aimOrigin).sqrMagnitude > 0.0001f) direction = (target - aimOrigin).normalized;
+                }
+            }
+            if (mode == SkillTargetingMode.Ground) target = GroundTarget(target);
+            return new SkillCastRequest(slot, direction, target, this);
+        }
+
         public bool TryActive(Vector2 direction, Vector2 target)
         {
             if (!CanAct || Config == null || ActiveRemaining > 0f || Health.Status.Interrupted) return false;
@@ -332,6 +391,7 @@ namespace MagicGame
         {
             if (!CanAct || Config == null || Config.role != HeroRole.Daphne || StanceRemaining > 0f || Health.Status.Interrupted) return false;
             IsLunar = !IsLunar;
+            TargetingRevision++;
             _stanceReady = Time.time + Config.stanceCooldown;
             Health.Status.Remove(StatusKind.Attack, this);
             Health.Status.Remove(StatusKind.Movement, this);
