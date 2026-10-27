@@ -30,3 +30,17 @@ MonoBehaviour:
   bodyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   titleFont: {fileID: 11400000, guid: 966b39a3fb3901d4499a552e10d37def, type: 2}
   thaiFont: {fileID: 11400000, guid: 0a584575587f248db86e0f5a2066d47f, type: 2}
+  surfaceTile: {fileID: 21300000, guid: 23c79146c5541a546a6472b21cb15701, type: 3}
+  panelFrame: {fileID: 21300000, guid: 1862b4eab85655347a2111675afeffa2, type: 3}
+  buttonFrame: {fileID: 21300000, guid: 025fa2341fc89c04db84ac5e63ae259f, type: 3}
+  hudFrame: {fileID: 21300000, guid: 72f31dd9997a2f747be4510ed5c2803a, type: 3}
+  focusFrame: {fileID: 21300000, guid: 908d34c21d972d34ea380ecc49c5c47f, type: 3}
+  sliderTrack: {fileID: 21300000, guid: e12546d097d6137448ea4e645dc369da, type: 3}
+  sliderHandle: {fileID: 21300000, guid: 2019a568819c4a34880ccbb31a3af9c9, type: 3}
+  headerOrnament: {fileID: 21300000, guid: 76990022162b0294386831d94095acdf, type: 3}
+  primaryHeight: 84
+  secondaryHeight: 72
+  heroRowHeight: 120
+  abilityRowHeight: 112
+  sliderRowHeight: 156
+  actionSize: 144

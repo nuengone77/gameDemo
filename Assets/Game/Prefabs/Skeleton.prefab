@@ -204,11 +204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Health
   team: 1
-  maxHp: 45
+  maxHp: 60
   invulnerableTime: 0
   destroyOnDeath: 1
-  physicalDefense: 0
-  magicDefense: 0
+  physicalDefense: 5
+  magicDefense: 5
 --- !u!114 &429661594028927694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,12 +229,18 @@ MonoBehaviour:
   attackRange: 6
   chaseDistance: 0
   preferredDistance: 3.5
-  attackCooldown: 1.8
-  windUp: 0.35
+  attackCooldown: 2
+  windUp: 0.5
   damage: 8
   castHeight: 0.75767267
+  flyInSky: 0
+  skyMinY: 1
+  skyMaxY: 3
+  skyMinX: -10
+  skyMaxX: 10
+  swayDistance: 3
   projectilePrefab: {fileID: 1295622867103712360, guid: e754ec09d25464d6891bbd55774d8c03, type: 3}
-  projectileSpeed: 8
+  projectileSpeed: 7
   projectilesPerShot: 1
   spreadAngle: 0
   burstEvery: 0

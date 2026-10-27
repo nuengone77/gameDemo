@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Health
   team: 1
-  maxHp: 60
+  maxHp: 80
   invulnerableTime: 0
   destroyOnDeath: 1
   physicalDefense: 0
@@ -307,9 +307,9 @@ MonoBehaviour:
   attackRange: 1
   chaseDistance: 0
   preferredDistance: 0
-  attackCooldown: 1
-  windUp: 0.3
-  damage: 10
+  attackCooldown: 1.2
+  windUp: 0.4
+  damage: 8
   castHeight: 0.55
   flyInSky: 0
   skyMinY: 1

@@ -142,7 +142,7 @@ namespace MagicGame.EditorTools
             ["Nae"] = new() { height = 0.5f },
             ["New"] = new() { height = 0.6f, speed = 10f, lifetime = 1f },
             ["Nueng"] = new() { height = 0.45f, speed = 12f, lifetime = 0.9f },
-            ["Peng"] = new() { height = 0.7f, pointsRight = false },
+            ["Peng"] = new() { height = 0.7f, pointsRight = false, lifetime = 1.6f },
         };
 
         static readonly FacingDir[] AttackPoseOrder = { FacingDir.Left, FacingDir.Right, FacingDir.Up, FacingDir.Down };
@@ -592,7 +592,7 @@ namespace MagicGame.EditorTools
             var kunai = SaveAttack("Attack_NuengKunai", "character/nueng_kunai.png", 0.22f, p =>
                 { p.speed = 12f; p.lifetime = 0.9f; p.alignToDirection = true; });
             var card = SaveAttack("Attack_PengCard", "character/peg_card_spin_sheet.png", 0.7f, p =>
-                { p.speed = 9f; p.lifetime = 1.1f; p.frameRate = 16f; });
+                { p.speed = 9f; p.lifetime = 1.6f; p.frameRate = 16f; });
             var fireball = SaveAttack("Attack_DragonFireball", "monster/dragon_fireball_sheet.png", 0.8f, p =>
                 { p.speed = 6f; p.lifetime = 4f; p.frameRate = 12f; });
             var boulder = SaveAttack("Attack_GolemBoulder", "monster/golem_boulder_roll_sheet.png", GolemBoulderSize, p =>
@@ -659,8 +659,8 @@ namespace MagicGame.EditorTools
 
         static void GolemAttack(EnemyController e)
         {
-            e.damage = 25f;
-            e.projectileSpeed = 4.5f;
+            e.damage = 20f;
+            e.projectileSpeed = 4f;
             e.projectilesPerShot = 1;
             e.spreadAngle = 0f;
             e.burstEvery = 0;
@@ -716,28 +716,27 @@ namespace MagicGame.EditorTools
             pc.castHeight = CastHeight(player);
             prefabs.player = SavePrefab(player, "Player");
 
-            prefabs.goblin = SaveEnemy(sets["Goblin"], 60f, 1f, e =>
+            prefabs.goblin = SaveEnemy(sets["Goblin"], 80f, 1f, e =>
             {
                 e.displayName = "Goblin"; e.style = AttackStyle.Melee;
-                e.moveSpeed = 2.2f; e.attackRange = 1.0f; e.attackCooldown = 1f; e.windUp = 0.3f; e.damage = 10f;
+                e.moveSpeed = 2.2f; e.attackRange = 1.0f;
             });
-            prefabs.skeleton = SaveEnemy(sets["Skeleton"], 45f, 1f, e =>
+            prefabs.skeleton = SaveEnemy(sets["Skeleton"], 60f, 1f, e =>
             {
                 e.displayName = "Skeleton Archer"; e.style = AttackStyle.Ranged; e.projectilePrefab = arrow;
-                e.moveSpeed = 1.8f; e.attackRange = 6f; e.preferredDistance = 3.5f; e.attackCooldown = 1.8f;
-                e.windUp = 0.35f; e.damage = 8f; e.projectileSpeed = 8f;
+                e.moveSpeed = 1.8f; e.attackRange = 6f; e.preferredDistance = 3.5f;
             });
-            prefabs.golem = SaveEnemy(sets["Golem"], 600f, 50f, e =>
+            prefabs.golem = SaveEnemy(sets["Golem"], 1600f, 50f, e =>
             {
                 e.displayName = "Forest Golem"; e.isBoss = true; e.style = AttackStyle.Ranged; e.projectilePrefab = rock;
-                e.moveSpeed = 0.8f; e.attackRange = 9f; e.chaseDistance = 1.8f; e.attackCooldown = 2f; e.windUp = 0.6f;
+                e.moveSpeed = 0.8f; e.attackRange = 9f; e.chaseDistance = 1.8f;
                 GolemAttack(e);
             });
-            prefabs.dragon = SaveEnemy(sets["Dragon"], 1000f, 50f, e =>
+            prefabs.dragon = SaveEnemy(sets["Dragon"], 2800f, 50f, e =>
             {
                 e.displayName = "Inferno Dragon"; e.isBoss = true; e.style = AttackStyle.Ranged; e.projectilePrefab = fireball;
-                e.moveSpeed = 1.5f; e.attackRange = 12f; e.chaseDistance = 5f; e.preferredDistance = 4f; e.attackCooldown = 1.4f; e.windUp = 0.4f;
-                e.damage = 12f; e.projectileSpeed = 6f; e.projectilesPerShot = 5; e.spreadAngle = 50f; e.burstEvery = 3; e.burstCount = 16;
+                e.moveSpeed = 1.5f; e.attackRange = 12f; e.chaseDistance = 5f; e.preferredDistance = 4f;
+                e.projectilesPerShot = 5; e.spreadAngle = 50f; e.burstEvery = 3; e.burstCount = 16;
             });
 
             prefabs.witch = SaveWitch(sets["Witch"]);
@@ -793,6 +792,7 @@ namespace MagicGame.EditorTools
             var enemy = go.AddComponent<EnemyController>();
             enemy.castHeight = CastHeight(go);
             configure(enemy);
+            ApplyEnemyBalance(enemy, set.displayName);
             if (!enemy.isBoss)
             {
                 var bar = go.AddComponent<WorldHealthBar>();
@@ -800,6 +800,28 @@ namespace MagicGame.EditorTools
                 bar.width = 0.8f;
             }
             return SavePrefab(go, set.displayName);
+        }
+
+        // Shared by generation and the explicit one-time update of existing prefabs.
+        public static void ApplyEnemyBalance(EnemyController enemy, string prefabName)
+        {
+            (float hp, float defense, float damage, float interval, float windUp, float speed) stats;
+            switch (prefabName)
+            {
+                case "Goblin": stats = (80f, 0f, 8f, 1.2f, 0.4f, 0f); break;
+                case "Skeleton": stats = (60f, 5f, 8f, 2f, 0.5f, 7f); break;
+                case "Witch": stats = (1200f, 10f, 12f, 2.2f, 0.65f, 5f); break;
+                case "Golem": stats = (1600f, 35f, 20f, 2.6f, 0.8f, 4f); break;
+                case "Dragon": stats = (2800f, 20f, 18f, 3f, 0.65f, 3f); break;
+                default: throw new System.ArgumentException($"Unknown enemy prefab: {prefabName}", nameof(prefabName));
+            }
+            var health = enemy.GetComponent<Health>();
+            health.maxHp = stats.hp;
+            health.physicalDefense = health.magicDefense = stats.defense;
+            enemy.damage = stats.damage;
+            enemy.attackCooldown = stats.interval;
+            enemy.windUp = stats.windUp;
+            if (stats.speed > 0f) enemy.projectileSpeed = stats.speed;
         }
 
         static Projectile SaveProjectile(string name, Sprite sprite, Color color, Vector3 scale, float circleRadius,
@@ -1140,11 +1162,10 @@ namespace MagicGame.EditorTools
             {
                 p.speed = 6f; p.lifetime = 4f; p.frameRate = 10f; p.loopFrames = false; p.spinSpeed = 90f;
             });
-            return SaveEnemy(set, 700f, 50f, e =>
+            return SaveEnemy(set, 1200f, 50f, e =>
             {
                 e.displayName = "Frost Witch"; e.isBoss = true; e.style = AttackStyle.Ranged; e.projectilePrefab = orb;
                 e.moveSpeed = 1.3f; e.attackRange = 10f; e.chaseDistance = 4f; e.preferredDistance = 3f;
-                e.attackCooldown = 1.7f; e.windUp = 0.5f; e.damage = 14f; e.projectileSpeed = 6f;
                 e.projectilesPerShot = 3; e.spreadAngle = 36f; e.burstEvery = 4; e.burstCount = 10;
             });
         }

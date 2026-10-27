@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Nueng
   m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.CharacterCombatConfig
   role: 1
-  basicDamage: 25
-  basicInterval: 0.35
+  maxHp: 110
+  moveSpeed: 4.3
+  basicDamage: 12
+  basicInterval: 0.3
   activeDamage: 50
-  ultimateDamage: 100
-  activeCooldown: 10
+  ultimateDamage: 70
+  activeCooldown: 18
   ultimateCooldown: 30
-  duration: 4
+  duration: 2
   radius: 2
   range: 6
   castDelay: 0.5
@@ -35,9 +37,9 @@ MonoBehaviour:
   attackReduction: 0.3
   armorPenetration: 0.2
   maxStacks: 10
-  speedPerStack: 0.05
-  stackTimeout: 2
-  overdriveSpeed: 0.5
+  speedPerStack: 0.03
+  stackTimeout: 3
+  overdriveSpeed: 0.2
   fanCount: 3
   fanAngle: 30
   dashDistance: 2

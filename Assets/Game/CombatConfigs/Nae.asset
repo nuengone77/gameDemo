@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Nae
   m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.CharacterCombatConfig
   role: 4
-  basicDamage: 25
-  basicInterval: 0.35
-  activeDamage: 50
-  ultimateDamage: 100
-  activeCooldown: 10
-  ultimateCooldown: 30
-  duration: 4
-  radius: 2
+  maxHp: 120
+  moveSpeed: 4
+  basicDamage: 19
+  basicInterval: 0.42
+  activeDamage: 45
+  ultimateDamage: 60
+  activeCooldown: 9
+  ultimateCooldown: 35
+  duration: 3
+  radius: 1.4
   range: 6
   castDelay: 0.5
   tickInterval: 0.5
@@ -31,7 +33,7 @@ MonoBehaviour:
   wallDefense: 0.2
   wallWidth: 3
   wallDistance: 1.2
-  rootDuration: 2.5
+  rootDuration: 1.5
   attackReduction: 0.3
   armorPenetration: 0.2
   maxStacks: 10
@@ -53,13 +55,13 @@ MonoBehaviour:
   orbSpeed: 4
   orbLifetime: 3
   slow: 0.6
-  lunarDamage: 35
-  burnPerSecond: 5
+  lunarDamage: 25
+  burnPerSecond: 4
   burnDuration: 3
-  stanceCooldown: 1
-  transitionBuff: 0.2
+  stanceCooldown: 3
+  transitionBuff: 0.15
   knockbackDistance: 1.5
-  healing: 30
+  healing: 20
   eclipseFieldDamage: 4
   eclipseFieldRadius: 2.3
   eclipseFieldDuration: 3

@@ -20,10 +20,12 @@ namespace MagicGame
 
         public Health Health { get; private set; }
         public PlayerSkills Skills { get; private set; }
+        public PlayerProgression ProgressionBonuses { get; private set; }
         public CharacterAnimSet CurrentCharacter { get; private set; }
         public bool CanMove => !GameUI.GameplayBlocked && isActiveAndEnabled && Health != null && !Health.IsDead &&
             (LevelManager.Instance == null || LevelManager.Instance.AllowsMovement);
         public Vector2 Center => (Vector2)transform.position + Vector2.up * castHeight;
+        public Vector2 Facing => _animator.FacingVector;
 
         Rigidbody2D _rb;
         DirectionalSpriteAnimator _animator;
@@ -49,9 +51,23 @@ namespace MagicGame
                 CurrentCharacter = characters[index];
                 _animator.SetAnimSet(CurrentCharacter);
             }
+            var config = CurrentCharacter != null ? CurrentCharacter.combat : null;
+            if (config != null)
+            {
+                Health.maxHp = Mathf.Max(1f, config.maxHp);
+                Health.Heal(Health.maxHp);
+                moveSpeed = Mathf.Max(0.1f, config.moveSpeed);
+            }
             Skills = GetComponent<PlayerSkills>();
             if (Skills == null) Skills = gameObject.AddComponent<PlayerSkills>();
-            Skills.Initialize(this, CurrentCharacter != null ? CurrentCharacter.combat : null);
+            string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            if (config != null && scene.StartsWith("Level") && int.TryParse(scene.Substring(5), out int stage) && stage >= 1 && stage <= 7)
+            {
+                Progression.EnsureStage(CurrentCharacter.displayName, stage);
+                ProgressionBonuses = gameObject.AddComponent<PlayerProgression>();
+                ProgressionBonuses.Initialize(this, config);
+            }
+            else Skills.Initialize(this, config);
         }
 
         void OnDestroy()
@@ -63,6 +79,7 @@ namespace MagicGame
         {
             if (!CanMove)
             {
+                GameplayInput.ClearSkillRequests();
                 _input = Vector2.zero;
                 _animator.SetMovement(Vector2.zero);
                 return;
@@ -70,22 +87,29 @@ namespace MagicGame
 
             _input = GameplayInput.ReadMove();
             _animator.SetMovement(_input * Health.Status.MoveMultiplier);
-            if (!Skills.CanAct) return;
+            if (!Skills.CanAct || Health.Status.Interrupted)
+            {
+                GameplayInput.ClearSkillRequests();
+                return;
+            }
 
             GameplayInput.ReadActions(this, _animator.FacingVector, out var aim, out var target,
                 out bool firing, out bool active, out bool ultimate, out bool stance);
-            // Skills reuse the basic attack pose, turned toward where the skill goes.
-            if (active && Skills.TryActive(aim, target))
+            if (stance)
             {
-                PlayCastPose(aim);
-                GameAudio.PlayHero(HeroName, h => h.active);
+                SkillJoystick.CancelCurrent();
+                GameplayInput.ClearSkillRequests();
             }
-            if (ultimate && Skills.TryUltimate(target))
+            if (GameplayInput.TryConsumeSkillCast(SkillSlot.Active, out var activeCast))
             {
-                PlayCastPose(target - (Vector2)transform.position);
-                GameAudio.PlayHero(HeroName, h => h.ultimate);
-                GameAudio.DuckMusic(1.5f);
+                if (Skills.IsCurrentCast(activeCast)) CastActive(activeCast.direction, activeCast.target);
             }
+            else if (active) CastActive(aim, target);
+            if (GameplayInput.TryConsumeSkillCast(SkillSlot.Ultimate, out var ultimateCast))
+            {
+                if (Skills.IsCurrentCast(ultimateCast)) CastUltimate(ultimateCast.target);
+            }
+            else if (ultimate) CastUltimate(target);
             if (stance) Skills.TrySwitchStance();
             if (Health.Status.Interrupted) return;
             if (Time.time < _nextAttack) return;
@@ -103,6 +127,21 @@ namespace MagicGame
         }
 
         string HeroName => CurrentCharacter != null ? CurrentCharacter.name : "";
+
+        void CastActive(Vector2 direction, Vector2 target)
+        {
+            if (!Skills.TryActive(direction, target)) return;
+            PlayCastPose(direction);
+            GameAudio.PlayHero(HeroName, h => h.active);
+        }
+
+        void CastUltimate(Vector2 target)
+        {
+            if (!Skills.TryUltimate(target)) return;
+            PlayCastPose(target - (Vector2)transform.position);
+            GameAudio.PlayHero(HeroName, h => h.ultimate);
+            GameAudio.DuckMusic(1.5f);
+        }
 
         void PlayCastPose(Vector2 direction)
         {

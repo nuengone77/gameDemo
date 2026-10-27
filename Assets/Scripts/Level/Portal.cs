@@ -24,6 +24,7 @@ namespace MagicGame
 
         public void SetOpen(bool open)
         {
+            if (open && !IsOpen) GameAudio.Play(b => b.portalOpen);
             IsOpen = open;
             _trigger.enabled = open;
             if (ringRenderer != null) ringRenderer.color = open ? openColor : closedColor;

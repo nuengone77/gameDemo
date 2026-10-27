@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Peng
   m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.CharacterCombatConfig
   role: 2
-  basicDamage: 25
-  basicInterval: 0.35
+  maxHp: 115
+  moveSpeed: 4.1
+  basicDamage: 24
+  basicInterval: 0.4
   activeDamage: 50
-  ultimateDamage: 100
-  activeCooldown: 10
+  ultimateDamage: 180
+  activeCooldown: 8
   ultimateCooldown: 30
   duration: 4
-  radius: 2
+  radius: 2.4
   range: 6
   castDelay: 0.5
   tickInterval: 0.5
@@ -45,7 +47,7 @@ MonoBehaviour:
   ultimateLeapHeight: 0.6
   bounces: 3
   bounceRadius: 3
-  evasion: 0.15
+  evasion: 0.12
   trapLifetime: 8
   trapTriggerRadius: 0.8
   knockupDuration: 0.7

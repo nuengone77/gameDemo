@@ -17,6 +17,24 @@ namespace MagicGame
         [Tooltip("Thai text (the story). Built by Tools > Magic Game > Build Thai Font.")]
         public TMP_FontAsset thaiFont;
 
+        [Header("Grimoire surfaces")]
+        public Sprite surfaceTile;
+        public Sprite panelFrame;
+        public Sprite buttonFrame;
+        public Sprite hudFrame;
+        public Sprite focusFrame;
+        public Sprite sliderTrack;
+        public Sprite sliderHandle;
+        public Sprite headerOrnament;
+
+        [Header("Layout at 1920 x 1080")]
+        public float primaryHeight = 84;
+        public float secondaryHeight = 72;
+        public float heroRowHeight = 120;
+        public float abilityRowHeight = 112;
+        public float sliderRowHeight = 156;
+        public float actionSize = 144;
+
         public static readonly Color Navy = new Color32(24, 35, 55, 255);
         public static readonly Color Gold = new Color32(200, 163, 99, 255);
         public static readonly Color Paper = new Color32(243, 231, 207, 255);

@@ -27,7 +27,7 @@ namespace MagicGame.EditorTools
                 {
                     config = ScriptableObject.CreateInstance<CharacterCombatConfig>();
                     config.role = hero.role;
-                    if (hero.role == HeroRole.OracleWitch) config.basicDamage = 35f;
+                    ApplyInitialBalance(config);
                     AssetDatabase.CreateAsset(config, path);
                 }
                 // Existing designer tuning is deliberately preserved.
@@ -39,6 +39,49 @@ namespace MagicGame.EditorTools
                 }
             }
             AssetDatabase.SaveAssets();
+        }
+
+        // Initial round-one values, not an automatic reset of existing designer tuning.
+        public static void ApplyInitialBalance(CharacterCombatConfig config)
+        {
+            switch (config.role)
+            {
+                case HeroRole.Tanky:
+                    config.maxHp = 120f; config.moveSpeed = 4f;
+                    config.basicDamage = 22f; config.basicInterval = 0.4f;
+                    config.activeCooldown = 12f; config.ultimateCooldown = 30f; config.ultimateDamage = 100f;
+                    config.distanceReduction = 0.2f; config.conversion = 0.025f; config.shieldCapacity = 30f;
+                    config.wallDefense = 0.15f; config.duration = 3f; config.radius = 2.4f;
+                    config.rootDuration = 2f; config.attackReduction = 0.2f;
+                    break;
+                case HeroRole.Shadow:
+                    config.maxHp = 110f; config.moveSpeed = 4.3f;
+                    config.basicDamage = 12f; config.basicInterval = 0.3f;
+                    config.activeCooldown = 18f; config.ultimateCooldown = 30f; config.ultimateDamage = 70f;
+                    config.speedPerStack = 0.03f; config.stackTimeout = 3f;
+                    config.overdriveSpeed = 0.2f; config.duration = 2f;
+                    break;
+                case HeroRole.Magician:
+                    config.maxHp = 115f; config.moveSpeed = 4.1f;
+                    config.basicDamage = 24f; config.basicInterval = 0.4f;
+                    config.activeCooldown = 8f; config.ultimateCooldown = 30f; config.ultimateDamage = 180f;
+                    config.activeDamage = 50f; config.radius = 2.4f; config.evasion = 0.12f;
+                    break;
+                case HeroRole.OracleWitch:
+                    config.maxHp = 110f; config.moveSpeed = 4f;
+                    config.basicDamage = 48f; config.basicInterval = 0.92f;
+                    config.activeCooldown = 12f; config.ultimateCooldown = 30f; config.ultimateDamage = 75f;
+                    config.radius = 1.6f; config.slow = 0.45f; config.duration = 3.5f;
+                    break;
+                case HeroRole.Daphne:
+                    config.maxHp = 120f; config.moveSpeed = 4f;
+                    config.basicDamage = 19f; config.lunarDamage = 25f; config.basicInterval = 0.42f;
+                    config.activeCooldown = 9f; config.ultimateCooldown = 35f; config.ultimateDamage = 60f;
+                    config.activeDamage = 45f; config.radius = 1.4f; config.burnPerSecond = 4f;
+                    config.rootDuration = 1.5f; config.stanceCooldown = 3f;
+                    config.transitionBuff = 0.15f; config.duration = 3f; config.healing = 20f;
+                    break;
+            }
         }
 
         [MenuItem("Tools/Magic Game/Update Character Skills")]

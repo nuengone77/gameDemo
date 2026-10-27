@@ -75,12 +75,42 @@ namespace MagicGame
         void Start()
         {
             var player = PlayerController.Instance;
-            if (player != null && player.CurrentCharacter != null)
-                GameSession.SaveCheckpoint(SceneManager.GetActiveScene().name, player.CurrentCharacter.displayName);
+            if (Progression.HasRun)
+            {
+                var run = Progression.Run;
+                if (run.phase == RunPhase.Reward || run.phase == RunPhase.Cleared)
+                {
+                    // Restore a cleared checkpoint without replaying combat or enemy death callbacks.
+                    foreach (var enemy in new List<EnemyController>(s_enemies))
+                        if (enemy != null) enemy.gameObject.SetActive(false);
+                    _state = State.Cleared;
+                    if (portal != null) portal.SetOpen(run.phase == RunPhase.Cleared);
+                }
+                else
+                {
+                    var normal = s_enemies.FindAll(e => e != null && !e.isBoss);
+                    normal.Sort((a, b) => string.CompareOrdinal(a.name + a.transform.GetSiblingIndex(), b.name + b.transform.GetSiblingIndex()));
+                    var random = new System.Random(unchecked(run.seed + run.loop * 97 + run.stage * 13));
+                    for (int i = normal.Count - 1; i > 0; i--)
+                    { int j = random.Next(i + 1); (normal[i], normal[j]) = (normal[j], normal[i]); }
+                    var config = ProgressionConfig.Current;
+                    int eliteCount = Mathf.CeilToInt(normal.Count * Mathf.Min(config.eliteFractionCap, config.eliteFractionPerLoop * (run.loop - 1)));
+                    foreach (var enemy in s_enemies)
+                        if (enemy != null) enemy.ApplyProgression(run.loop, !enemy.isBoss && normal.IndexOf(enemy) < eliteCount);
+                }
+                Progression.Save();
+            }
             GameUI.EnsureForScene();
         }
 
-        public void RestartStage() => GameSession.Load(SceneManager.GetActiveScene().name);
+        public void RestartStage()
+        {
+            string hero = PlayerController.Instance != null && PlayerController.Instance.CurrentCharacter != null
+                ? PlayerController.Instance.CurrentCharacter.displayName : GameSession.HeroIds[GameSession.SelectedCharacter];
+            Progression.Begin(hero);
+            GameSession.SelectedHeroId = hero;
+            GameSession.Load("Level1");
+        }
         public void ReturnToMenu() => GameSession.Load(menuScene);
 
         void SetState(State state)
@@ -154,19 +184,18 @@ namespace MagicGame
             {
                 if (player != null && player.Health.IsDead)
                 {
+                    Progression.Finish();
+                    if (player.ProgressionBonuses != null) player.ProgressionBonuses.Apply();
                     SetState(State.GameOver);
                     GameAudio.PlayMusic(null);
                     GameAudio.Play(b => b.gameOver);
                 }
                 else if (Time.timeSinceLevelLoad > 0.2f && s_enemies.Count == 0)
                 {
+                    Progression.ClearStage();
                     SetState(State.Cleared);
                     GameAudio.Play(b => b.stageClear);
-                    if (portal != null)
-                    {
-                        portal.SetOpen(true);
-                        GameAudio.Play(b => b.portalOpen);
-                    }
+                    if (portal != null) portal.SetOpen(!Progression.HasRun || Progression.Run.phase == RunPhase.Cleared);
                 }
             }
 
@@ -175,18 +204,10 @@ namespace MagicGame
 
         public void CompleteLevel()
         {
-            int next = SceneManager.GetActiveScene().buildIndex + 1;
-            if (isFinalLevel || next >= SceneManager.sceneCountInBuildSettings)
-            {
-                GameSession.ClearCheckpoint();
-                SetState(State.Victory);
-                GameAudio.PlayMusic(null);
-                GameAudio.Play(b => b.victory);
-                if (PlayerController.Instance != null) PlayerController.Instance.gameObject.SetActive(false);
-                return;
-            }
+            if (_state != State.Cleared || !Progression.Advance()) return;
+            if (isFinalLevel) GameAudio.Play(b => b.victory);
             GameAudio.Play(b => b.warp);
-            GameSession.Load(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(next)));
+            GameSession.Load(Progression.Scene);
         }
 
     }

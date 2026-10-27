@@ -10,6 +10,7 @@ namespace MagicGame
         public CharacterCombatConfig Config { get; private set; }
         public Health Health { get; private set; }
         public bool IsLunar { get; private set; }
+        public int TargetingRevision { get; private set; }
         public int HitStacks { get; private set; }
         public float ActiveRemaining => Mathf.Max(0f, _activeReady - Time.time);
         public float UltimateRemaining => Mathf.Max(0f, _ultimateReady - Time.time);
@@ -18,7 +19,8 @@ namespace MagicGame
             !GameUI.GameplayBlocked &&
             (LevelManager.Instance == null || LevelManager.Instance.IsPlaying);
         public float AttackInterval => Config == null ? _player.attackCooldown : Mathf.Max(0.05f,
-            Config.basicInterval / Mathf.Min(5f, Health.Status.AttackSpeedMultiplier + HitStacks * Config.speedPerStack));
+            Config.basicInterval / Mathf.Min(5f, Health.Status.AttackSpeedMultiplier + HitStacks * Config.speedPerStack +
+                (_player.ProgressionBonuses != null ? _player.ProgressionBonuses.AttackSpeedBonus : 0)));
 
         PlayerController _player;
         Rigidbody2D _body;
@@ -42,9 +44,11 @@ namespace MagicGame
         readonly List<GameObject> _owned = new();
         readonly List<GameObject> _shields = new();
         ShieldWall _wall;
+        AudioSource _eclipseHum;
 
         public void Initialize(PlayerController player, CharacterCombatConfig config)
         {
+            TargetingRevision++;
             Cleanup();
             _player = player;
             _body = GetComponent<Rigidbody2D>();
@@ -57,7 +61,7 @@ namespace MagicGame
             Health.ClearCombatBonuses();
             Health.DamageDealt -= OnDamageDealt;
             Health.DamageDealt += OnDamageDealt;
-            if (Config == null) return;
+            if (Config == null || Health.IsDead) return;
             if (Config.role == HeroRole.Tanky)
             {
                 Health.DistanceReduction = Config.distanceReduction;
@@ -75,11 +79,18 @@ namespace MagicGame
 
         void Update()
         {
+            if (_eclipseHum != null)
+            {
+                if (Health == null || Health.IsDead) StopEclipseHum();
+                else if (GameUI.GameplayBlocked) _eclipseHum.Pause();
+                else _eclipseHum.UnPause();
+            }
             // Pausing must preserve owned effects and pending cast coroutines.
             if (GameUI.GameplayBlocked) return;
             if (!CanAct)
             {
                 if (_owned.Count > 0) Cleanup();
+                StopEclipseHum();
                 if (HitStacks > 0)
                 {
                     HitStacks = 0;
@@ -211,6 +222,63 @@ namespace MagicGame
             return projectile;
         }
 
+        public SkillTargetingMode GetTargetingMode(SkillSlot slot)
+        {
+            if (Config == null) return SkillTargetingMode.None;
+            if (slot == SkillSlot.Ultimate)
+                return Config.role == HeroRole.Tanky ? SkillTargetingMode.Ground : SkillTargetingMode.None;
+            switch (Config.role)
+            {
+                case HeroRole.Tanky: return SkillTargetingMode.Direction;
+                case HeroRole.Shadow: return SkillTargetingMode.Dash;
+                case HeroRole.OracleWitch: return SkillTargetingMode.Ground;
+                case HeroRole.Daphne: return IsLunar ? SkillTargetingMode.Direction : SkillTargetingMode.None;
+                default: return SkillTargetingMode.None;
+            }
+        }
+
+        public bool CanTarget(SkillSlot slot) => Config != null && CanAct && _player.CanMove &&
+            !Health.Status.Interrupted && (slot == SkillSlot.Active ? ActiveRemaining : UltimateRemaining) <= 0f;
+
+        public bool IsCurrentCast(SkillCastRequest request) => request.source == this &&
+            request.revision == TargetingRevision && CanTarget(request.slot);
+
+        public SkillCastRequest ResolveSkillCast(SkillSlot slot, Vector2 stick, bool manual)
+        {
+            var mode = GetTargetingMode(slot);
+            Vector2 origin = transform.position;
+            Vector2 direction = GameplayInput.HasTouchAim ? GameplayInput.Aim.normalized : _player.Facing.normalized;
+            if (direction.sqrMagnitude < 0.001f) direction = Vector2.down;
+            Vector2 target = origin + direction * Config.range;
+            if (manual)
+            {
+                if (stick.sqrMagnitude > 0.0001f) direction = stick.normalized;
+                target = origin + Vector2.ClampMagnitude(stick, 1f) * Config.range;
+                // The combat skill dashes backward; the joystick describes travel direction.
+                if (mode == SkillTargetingMode.Dash) direction = -direction;
+            }
+            else
+            {
+                Health nearest = null;
+                float closest = float.PositiveInfinity;
+                foreach (var enemy in CombatWorld.Enemies(origin, Config.range, true))
+                {
+                    float distance = ((Vector2)enemy.transform.position - origin).sqrMagnitude;
+                    if (distance >= closest) continue;
+                    nearest = enemy;
+                    closest = distance;
+                }
+                if (nearest != null)
+                {
+                    target = nearest.transform.position;
+                    Vector2 aimOrigin = Config.role == HeroRole.Daphne ? _player.Center : origin;
+                    if ((target - aimOrigin).sqrMagnitude > 0.0001f) direction = (target - aimOrigin).normalized;
+                }
+            }
+            if (mode == SkillTargetingMode.Ground) target = GroundTarget(target);
+            return new SkillCastRequest(slot, direction, target, this);
+        }
+
         public bool TryActive(Vector2 direction, Vector2 target)
         {
             if (!CanAct || Config == null || ActiveRemaining > 0f || Health.Status.Interrupted) return false;
@@ -248,6 +316,8 @@ namespace MagicGame
                     }
                     break;
             }
+            if (_player.ProgressionBonuses != null)
+                Health.AddShield(Health.maxHp * _player.ProgressionBonuses.ActiveShield);
             Changed?.Invoke();
             return true;
         }
@@ -319,9 +389,9 @@ namespace MagicGame
             var side = Vector2.right * Config.eclipseOrbSpread;
             SkillVfx.Drop(Config.eclipseSunVfx, center - side, center, merge);
             SkillVfx.Drop(Config.eclipseMoonVfx, center + side, center, merge);
-            GameAudio.PlayHeroLoop(HeroName, h => h.ultimateLoop, out var hum);
+            GameAudio.PlayHeroLoop(HeroName, h => h.ultimateLoop, out _eclipseHum);
             if (merge > 0f) yield return new WaitForSeconds(merge);
-            GameAudio.StopLoop(hum);
+            StopEclipseHum();
             if (!CanAct) yield break;
 
             Health.Heal(Config.healing);
@@ -505,6 +575,7 @@ namespace MagicGame
         {
             if (!CanAct || Config == null || Config.role != HeroRole.Daphne || StanceRemaining > 0f || Health.Status.Interrupted) return false;
             IsLunar = !IsLunar;
+            TargetingRevision++;
             _stanceReady = Time.time + Config.stanceCooldown;
             Health.Status.Remove(StatusKind.Attack, this);
             Health.Status.Remove(StatusKind.Movement, this);
@@ -524,10 +595,17 @@ namespace MagicGame
         void Cleanup()
         {
             StopAllCoroutines();
+            StopEclipseHum();
             foreach (var item in _owned) if (item != null) Destroy(item);
             _owned.Clear();
             _shields.Clear();
             _wall = null;
+        }
+
+        void StopEclipseHum()
+        {
+            GameAudio.StopLoop(_eclipseHum);
+            _eclipseHum = null;
         }
         void OnDisable()
         {
