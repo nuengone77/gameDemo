@@ -693,7 +693,20 @@ namespace MagicGame
             ShowRoot(id);
         }
 
-        void Banner(string message) { _banner = message; _bannerUntil = Time.time + 2.5f; }
+        void Banner(string message)
+        {
+            _banner = message;
+            _bannerUntil = Time.time + 2.5f;
+            // A dark outline keeps the light text readable on every map, snow included. Each font has an
+            // outlined material in Resources (so the outline shader variant ships in builds); it is picked
+            // on every banner because switching language swaps the font.
+            var label = T("HUDBanner");
+            var outlined = Resources.Load<Material>($"UI/{label.font.name} Outline");
+            if (outlined == null) return;
+            // Dynamic fonts add glyphs at runtime, so point the material at the font's current atlas.
+            outlined.mainTexture = label.font.atlasTexture;
+            label.fontSharedMaterial = outlined;
+        }
 
         void BeginTutorial()
         {

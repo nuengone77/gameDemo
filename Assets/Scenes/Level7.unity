@@ -1001,7 +1001,7 @@ MonoBehaviour:
     width: 24.302315
     height: 1.9456
   levelNumber: 7
-  levelTitle: Dragon's Lair
+  levelTitle: Where Dawn Ends
   isFinalLevel: 1
   portal: {fileID: 478326712}
   menuScene: MainMenu

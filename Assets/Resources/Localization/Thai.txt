@@ -120,13 +120,13 @@ Stage clear! Choose a blessing, then enter the portal	ผ่าน​ด่า�
 Loop {0} / Stage {1}	ลูป {0} / ด่าน {1}
 Earned: {0:N0} Rebirth points	ได้​รับ: {0:N0} แต้ม​จุติ
 # Stages and enemies
-Forest Path	เส้น​ทาง​ป่า
-Night Village	หมู่บ้าน​ยาม​ราตรี
-Frost Witch's Domain	อาณาเขต​แม่มด​น้ำ​แข็ง
-Ancient Ruins	ซาก​ปรัก​โบราณ
-Golem's Fortress	ป้อม​ปราการ​โกเล็ม
-Lava Keep	ป้อม​ลาวา
-Dragon's Lair	รัง​มังกร
+Sacred Forest of Beginnings	ป่า​ศักดิ์สิทธิ์​แห่ง​การเริ่มต้น
+Ruined Cathedral of the Wilds	ซาก​มหาวิหาร​แห่ง​พงไพร
+Realm of Winter	ดินแดน​แห่ง​เหมันต์
+Nightfall Ritual Grounds	ลาน​พิธีกรรม​รัตติกาล
+Sunset Isle Above the Clouds	เกาะ​ศิลา​อัสดง​เหนือ​เมฆา
+Cursed Crystal Tomb	สุสาน​คริสตัล​อาถรรพ์
+Where Dawn Ends	จุดจบ​แห่ง​รุ่งอรุณ
 Inferno Dragon	มังกร​นรก​เพลิง
 Dragon	มังกร
 Frost Witch	แม่มด​น้ำ​แข็ง

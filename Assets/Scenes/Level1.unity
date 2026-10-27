@@ -732,7 +732,7 @@ MonoBehaviour:
     width: 22.498055
     height: 13.32511
   levelNumber: 1
-  levelTitle: Forest Path
+  levelTitle: Sacred Forest of Beginnings
   isFinalLevel: 0
   portal: {fileID: 736659059}
   menuScene: MainMenu

@@ -786,7 +786,7 @@ MonoBehaviour:
     width: 15.455101
     height: 13.175812
   levelNumber: 3
-  levelTitle: Frost Witch's Domain
+  levelTitle: Realm of Winter
   isFinalLevel: 0
   portal: {fileID: 828216995}
   menuScene: MainMenu

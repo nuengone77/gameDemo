@@ -1306,7 +1306,7 @@ MonoBehaviour:
     width: 19.224604
     height: 10.765602
   levelNumber: 6
-  levelTitle: Lava Keep
+  levelTitle: Cursed Crystal Tomb
   isFinalLevel: 0
   portal: {fileID: 828216995}
   menuScene: MainMenu

@@ -1461,7 +1461,7 @@ MonoBehaviour:
     width: 16.972506
     height: 11.436907
   levelNumber: 2
-  levelTitle: Ancient Ruins
+  levelTitle: Ruined Cathedral of the Wilds
   isFinalLevel: 0
   portal: {fileID: 828216995}
   menuScene: MainMenu

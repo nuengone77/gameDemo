@@ -884,7 +884,7 @@ MonoBehaviour:
     width: 21.763454
     height: 12.9175415
   levelNumber: 4
-  levelTitle: Night Village
+  levelTitle: Nightfall Ritual Grounds
   isFinalLevel: 0
   portal: {fileID: 828216995}
   menuScene: MainMenu

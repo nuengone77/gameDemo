@@ -33,13 +33,13 @@ namespace MagicGame.EditorTools
 
         static readonly LevelDef[] Levels =
         {
-            new() { number = 1, title = "Forest Path",      map = "first",        walkable = R(0.04f, 0.66f, 0.06f, 0.86f), portalX = 0.39f, goblins = 3 },
-            new() { number = 2, title = "Ancient Ruins",    map = "green1",       walkable = R(0.13f, 0.87f, 0.14f, 0.80f), portalX = 0.50f, goblins = 3, skeletons = 2 },
-            new() { number = 3, title = "Frost Witch's Domain", map = "mini_boss", walkable = R(0.13f, 0.87f, 0.12f, 0.86f), portalX = 0.50f, skeletons = 2, boss = Boss.Witch },
-            new() { number = 4, title = "Night Village",    map = "Village",      walkable = R(0.10f, 0.90f, 0.10f, 0.82f), portalX = 0.50f, goblins = 4, skeletons = 3 },
-            new() { number = 5, title = "Golem's Fortress", map = "Fortress",     walkable = R(0.10f, 0.90f, 0.16f, 0.80f), portalX = 0.50f, goblins = 3, boss = Boss.Golem },
-            new() { number = 6, title = "Lava Keep",        map = "Pixelfantasy", walkable = R(0.14f, 0.86f, 0.16f, 0.80f), portalX = 0.50f, goblins = 4, skeletons = 5 },
-            new() { number = 7, title = "Dragon's Lair",    map = "final_boss",   walkable = R(0.13f, 0.87f, 0.13f, 0.83f), portalX = 0.50f, boss = Boss.Dragon },
+            new() { number = 1, title = "Sacred Forest of Beginnings",      map = "first",        walkable = R(0.04f, 0.66f, 0.06f, 0.86f), portalX = 0.39f, goblins = 3 },
+            new() { number = 2, title = "Ruined Cathedral of the Wilds",    map = "green1",       walkable = R(0.13f, 0.87f, 0.14f, 0.80f), portalX = 0.50f, goblins = 3, skeletons = 2 },
+            new() { number = 3, title = "Realm of Winter", map = "mini_boss", walkable = R(0.13f, 0.87f, 0.12f, 0.86f), portalX = 0.50f, skeletons = 2, boss = Boss.Witch },
+            new() { number = 4, title = "Nightfall Ritual Grounds",    map = "Village",      walkable = R(0.10f, 0.90f, 0.10f, 0.82f), portalX = 0.50f, goblins = 4, skeletons = 3 },
+            new() { number = 5, title = "Sunset Isle Above the Clouds", map = "Fortress",     walkable = R(0.10f, 0.90f, 0.16f, 0.80f), portalX = 0.50f, goblins = 3, boss = Boss.Golem },
+            new() { number = 6, title = "Cursed Crystal Tomb",        map = "Pixelfantasy", walkable = R(0.14f, 0.86f, 0.16f, 0.80f), portalX = 0.50f, goblins = 4, skeletons = 5 },
+            new() { number = 7, title = "Where Dawn Ends",    map = "final_boss",   walkable = R(0.13f, 0.87f, 0.13f, 0.83f), portalX = 0.50f, boss = Boss.Dragon },
         };
 
         static Rect R(float xMin, float xMax, float yMin, float yMax) => Rect.MinMaxRect(xMin, yMin, xMax, yMax);

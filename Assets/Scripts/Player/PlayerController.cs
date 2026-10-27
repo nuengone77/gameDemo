@@ -60,7 +60,6 @@ namespace MagicGame
             }
             Skills = GetComponent<PlayerSkills>();
             if (Skills == null) Skills = gameObject.AddComponent<PlayerSkills>();
-            gameObject.AddComponent<AimArrow>().Initialize(this);
             string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             if (config != null && scene.StartsWith("Level") && int.TryParse(scene.Substring(5), out int stage) && stage >= 1 && stage <= 7)
             {
