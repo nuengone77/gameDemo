@@ -10,8 +10,8 @@ namespace MagicGame
     {
         // Every label's authored English text and look, so switching language can restore or translate it.
         readonly Dictionary<TMP_Text, (string text, TMP_FontAsset font, FontStyles style, TextOverflowModes overflow, List<UnityEngine.TextCore.OTL_FeatureTag> features)> _authored = new();
-        // The game's name stays in its display font in every language.
-        static readonly HashSet<string> KeepFont = new() { "MenuTitle", "LanguageEnglishLabel" };
+        // "English" stays in the display font even in Thai mode, so players can find their way back.
+        static readonly HashSet<string> KeepFont = new() { "LanguageEnglishLabel" };
 
         // Language choice at the top of Settings; each option is written in its own language.
         void BuildLanguageSettings(Transform content)

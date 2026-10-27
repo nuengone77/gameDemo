@@ -68,7 +68,7 @@ namespace MagicGame
             var emblem = Image("MenuEmblem", page, theme.ring, ArcaneTheme.Gold, 0.46f, 0.84f, 0.08f, 0.13f);
             emblem.preserveAspect = true;
             Text("MenuEyebrow", page, theme, "FIVE HEROES  /  ONE DESTINY", 25, 0.15f, 0.79f, 0.7f, 0.045f, false, TextAlignmentOptions.Center).color = ArcaneTheme.Cyan;
-            Text("MenuTitle", page, theme, "Magic Ring Quest", 83, 0.08f, 0.66f, 0.84f, 0.115f, true, TextAlignmentOptions.Center);
+            Text("MenuTitle", page, theme, "Pannelion", 83, 0.08f, 0.66f, 0.84f, 0.115f, true, TextAlignmentOptions.Center);
             Text("MenuTagline", page, theme, "Beyond the village, an ancient power awakens.", 29, 0.1f, 0.59f, 0.8f, 0.065f, false, TextAlignmentOptions.Center);
             var panel = MenuGroup("MenuPanel", page, theme, 660, .07f);
             panel.anchorMin = panel.anchorMax = new Vector2(.5f, .58f);

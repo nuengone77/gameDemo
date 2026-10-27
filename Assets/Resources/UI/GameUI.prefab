@@ -35152,7 +35152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Magic Ring Quest
+  m_text: Pannelion
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 966b39a3fb3901d4499a552e10d37def, type: 2}
   m_sharedMaterial: {fileID: -8257331069714725796, guid: 966b39a3fb3901d4499a552e10d37def, type: 2}

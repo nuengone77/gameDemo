@@ -1,5 +1,6 @@
 # English<TAB>Thai. \n = line break. Placeholders like {0} or {1:P0} must stay as they are.
 # Menu
+Pannelion	แพนเนเลียน
 Continue	เล่น​ต่อ
 New Adventure	เริ่ม​การ​ผจญ​ภัย​ใหม่
 Story	เนื้อ​เรื่อง

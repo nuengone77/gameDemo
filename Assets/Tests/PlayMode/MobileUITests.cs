@@ -878,7 +878,9 @@ namespace MagicGame.Tests
             Assert.That(Node("SettingsBackLabel").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo(Loc.Tr("Back")));
             Assert.That(Loc.Tr("Back"), Is.Not.EqualTo("Back"));
             Assert.That(settingsLabel.font, Is.EqualTo(ui.theme.thaiFont));
-            Assert.That(Node("MenuTitle").GetComponent<TMPro.TMP_Text>().font, Is.EqualTo(ui.theme.titleFont));
+            var title = Node("MenuTitle").GetComponent<TMPro.TMP_Text>();
+            Assert.That(title.text, Is.EqualTo("แพนเนเลียน"));
+            Assert.That(title.font, Is.EqualTo(ui.theme.thaiFont));
             ui.Back();
             Click("MenuStory");
             Assert.That(Node("StoryBody").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo(Resources.Load<TextAsset>("Story/Prologue").text.Trim()));
@@ -888,6 +890,8 @@ namespace MagicGame.Tests
             Assert.That(UISettings.Load().language, Is.EqualTo(GameLanguage.English));
             Assert.That(settingsLabel.text, Is.EqualTo("Settings"));
             Assert.That(settingsLabel.font, Is.EqualTo(englishFont));
+            Assert.That(Node("MenuTitle").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo("Pannelion"));
+            Assert.That(Node("MenuTitle").GetComponent<TMPro.TMP_Text>().font, Is.EqualTo(ui.theme.titleFont));
             yield return null;
         }
 
