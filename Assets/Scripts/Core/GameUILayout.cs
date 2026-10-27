@@ -174,16 +174,16 @@ namespace MagicGame
             fill.sprite = null;
             Text("HUDHealth", health, theme, "100 / 100 HP", 22, 0.19f, 0.04f, 0.4f, 0.31f);
             Text("HUDShield", health, theme, "", 22, 0.59f, 0.04f, 0.38f, 0.31f).color = ArcaneTheme.Cyan;
-            Panel("StagePanel", page, theme, 0.32f, 0.875f, 0.36f, 0.1f, true);
-            Text("HUDStage", page, theme, "Stage 1", 29, 0.32f, 0.925f, 0.36f, 0.055f, true, TextAlignmentOptions.Center);
-            Text("HUDObjective", page, theme, "Defeat the remaining enemies", 24, 0.32f, 0.875f, 0.36f, 0.05f, false, TextAlignmentOptions.Center);
+            Panel("StagePanel", page, theme, 0.025f, 0.705f, 0.27f, 0.1f, true);
+            Text("HUDStage", page, theme, "Stage 1", 29, 0.025f, 0.755f, 0.27f, 0.05f, true, TextAlignmentOptions.Center);
+            Text("HUDObjective", page, theme, "Defeat the remaining enemies", 24, 0.025f, 0.705f, 0.27f, 0.05f, false, TextAlignmentOptions.Center);
             SizedButton("HUDPause", page, theme, "Pause", new Vector2(.975f, .975f),
                 Vector2.one, Vector2.zero, new Vector2(144, theme.secondaryHeight));
-            var boss = Panel("BossPanel", page, theme, 0.34f, 0.77f, 0.32f, 0.095f, true);
+            var boss = Panel("BossPanel", page, theme, 0.34f, 0.88f, 0.32f, 0.095f, true);
             Text("HUDBoss", boss, theme, "Inferno Dragon", 26, 0.05f, 0.43f, 0.9f, 0.5f, true, TextAlignmentOptions.Center);
             Image("BossTrack", boss, null, new Color(0.12f, 0.06f, 0.08f), 0.04f, 0.16f, 0.92f, 0.15f);
             Image("BossFill", boss, null, new Color32(222, 116, 117, 255), 0.04f, 0.16f, 0.92f, 0.15f);
-            Text("HUDSpecial", page, theme, "", 27, 0.03f, 0.75f, 0.26f, 0.05f);
+            Text("HUDSpecial", page, theme, "", 27, 0.03f, 0.645f, 0.26f, 0.05f);
             Text("HUDBanner", page, theme, "", 45, 0.2f, 0.6f, 0.6f, 0.08f, true, TextAlignmentOptions.Center);
             var controls = Rect("TouchControls", page, 0, 0, 1, 1);
             controls.gameObject.AddComponent<CanvasGroup>();

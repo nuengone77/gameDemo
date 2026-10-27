@@ -96,9 +96,6 @@ namespace MagicGame.EditorTools
             new() { hero = "Nae", path = Matthew + "AoE Stars.prefab", recolor = NaeLunar, recolorName = "Nae_EclipseStars",
                 scale = 0.6f, tilt = -55f, seconds = 3f,
                 assign = (c, v) => c.ultimateVfx = v },
-            new() { hero = "Nae", path = Hovl + "Magic circles/Healing circle.prefab", recolor = NaeSolar, recolorName = "Nae_EclipseHeal",
-                scale = 0.2f, tilt = -55f, seconds = 2.5f,
-                assign = (c, v) => c.ultimateExtraVfx = v },
             // Eclipse: Eric's glowing core as a sun (deep orange) and a moon (deep purple) that drift together.
             // Its visuals sit 2.5 units above the origin, so offset down by 2.5 * scale; looped while moving.
             new() { hero = "Nae", path = EricFree + "FX_Greenlight_shrink.prefab", recolor = EclipseSun, darken = true, recolorName = "Nae_EclipseSunDeep",

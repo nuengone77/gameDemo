@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169f2f6fdaba04f90831e807f456ccb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicGame.Projectile
-  speed: 6
-  lifetime: 4
+  speed: 3
+  lifetime: 8
   spinSpeed: 90
   alignToDirection: 0
   alignAngleOffset: 0

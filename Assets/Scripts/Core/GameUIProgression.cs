@@ -57,7 +57,7 @@ namespace MagicGame
             LayoutButton("PauseBuild", MenuContent(safe.Find("Pause/PausePanel")), theme, "View Build");
             SizedButton("DefeatRebirth", safe.Find("Defeat"), theme, "Rebirth", new Vector2(.965f, .035f),
                 new Vector2(1, 0), Vector2.zero, new Vector2(210, theme.secondaryHeight));
-            Text("HUDProgression", safe.Find("HUD"), theme, "", 24, .34f, .71f, .32f, .045f, false, TextAlignmentOptions.Center);
+            Text("HUDProgression", safe.Find("HUD"), theme, "", 24, .34f, .83f, .32f, .045f, false, TextAlignmentOptions.Center);
             UpdateProgressionCopy(safe);
         }
 

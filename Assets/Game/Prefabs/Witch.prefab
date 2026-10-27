@@ -239,7 +239,7 @@ MonoBehaviour:
   skyMaxX: 10
   swayDistance: 3
   projectilePrefab: {fileID: 8954128864738294488, guid: 453d5f4b8bb74444a8600c2602cc0732, type: 3}
-  projectileSpeed: 5
+  projectileSpeed: 2.5
   projectilesPerShot: 3
   spreadAngle: 36
   burstEvery: 4

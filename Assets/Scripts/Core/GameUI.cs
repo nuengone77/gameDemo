@@ -263,12 +263,13 @@ namespace MagicGame
                 T(name).fontSizeMax = _fontSizes[T(name)] * _settings.textSize;
             }
             ScaleTopHUD("HealthPanel", 0.815f, 0.975f);
-            ScaleTopHUD("StagePanel", 0.875f, 0.975f);
-            ScaleTopHUD("HUDStage", 0.925f, 0.975f);
-            ScaleTopHUD("HUDObjective", 0.875f, 0.925f);
-            ScaleTopHUD("BossPanel", 0.77f, 0.865f);
-            ScaleTopHUD("HUDSpecial", 0.75f, 0.8f);
-            ScaleTopHUD("HUDProgression", .71f, .755f);
+            // Loop/stage card sits under the health card, left-aligned with it.
+            ScaleTopHUD("StagePanel", 0.705f, 0.805f, 0.025f, 0.295f);
+            ScaleTopHUD("HUDStage", 0.755f, 0.805f, 0.025f, 0.295f);
+            ScaleTopHUD("HUDObjective", 0.705f, 0.755f, 0.025f, 0.295f);
+            ScaleTopHUD("BossPanel", 0.88f, 0.975f);
+            ScaleTopHUD("HUDSpecial", 0.645f, 0.695f);
+            ScaleTopHUD("HUDProgression", .83f, .875f);
             foreach (var metrics in GetComponentsInChildren<ArcaneControlSize>(true))
                 metrics.Apply(_settings.textSize);
             foreach (var name in new[] { "HUDActive", "HUDUltimate", "HUDStance" })
@@ -290,6 +291,14 @@ namespace MagicGame
             if (_settings.reducedMotion && _stack.Count > 0) N(CurrentScreen.ToString()).GetComponent<CanvasGroup>().alpha = 1;
             FitMenuGroups();
             PositionSkillCancel();
+        }
+
+        void ScaleTopHUD(string name, float bottom, float top, float left, float right)
+        {
+            var rect = (RectTransform)N(name).transform;
+            rect.anchorMin = new Vector2(left, rect.anchorMin.y);
+            rect.anchorMax = new Vector2(right, rect.anchorMax.y);
+            ScaleTopHUD(name, bottom, top);
         }
 
         void ScaleTopHUD(string name, float bottom, float top)

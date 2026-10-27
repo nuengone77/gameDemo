@@ -93,7 +93,7 @@ MonoBehaviour:
     loopAll: 0
     impactTime: 0
   ultimateExtraVfx:
-    prefab: {fileID: 7986504087968017091, guid: e1a29a66c3a8b4634adca3aeba19816e, type: 3}
+    prefab: {fileID: 0}
     scale: 0.2
     tilt: -55
     yOffset: 0

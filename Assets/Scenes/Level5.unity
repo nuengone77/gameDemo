@@ -364,7 +364,7 @@ MonoBehaviour:
   mapSize: {x: 20.210018, y: 16.384}
   mapCenter: {x: 0, y: 0}
   fillScreen: 1
-  zoom: 2
+  zoom: 1.5
   followPlayer: 1
   followSmoothing: 8
 --- !u!1 &619394800

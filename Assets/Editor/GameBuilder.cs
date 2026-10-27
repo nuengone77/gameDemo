@@ -810,7 +810,7 @@ namespace MagicGame.EditorTools
             {
                 case "Goblin": stats = (80f, 0f, 8f, 1.2f, 0.4f, 0f); break;
                 case "Skeleton": stats = (60f, 5f, 8f, 2f, 0.5f, 7f); break;
-                case "Witch": stats = (1200f, 10f, 12f, 2.2f, 0.65f, 5f); break;
+                case "Witch": stats = (1200f, 10f, 12f, 2.2f, 0.65f, 2.5f); break;
                 case "Golem": stats = (1600f, 35f, 20f, 2.6f, 0.8f, 4f); break;
                 case "Dragon": stats = (2800f, 20f, 18f, 3f, 0.65f, 3f); break;
                 default: throw new System.ArgumentException($"Unknown enemy prefab: {prefabName}", nameof(prefabName));
@@ -1160,7 +1160,7 @@ namespace MagicGame.EditorTools
         {
             var orb = SaveProjectileSheet("Attack_WitchIceOrb", TransparentVersion(WitchProjectile), 0.75f, 10, p =>
             {
-                p.speed = 6f; p.lifetime = 4f; p.frameRate = 10f; p.loopFrames = false; p.spinSpeed = 90f;
+                p.speed = 3f; p.lifetime = 8f; p.frameRate = 10f; p.loopFrames = false; p.spinSpeed = 90f;
             });
             return SaveEnemy(set, 1200f, 50f, e =>
             {
