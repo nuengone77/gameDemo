@@ -1,0 +1,261 @@
+# English<TAB>Thai. \n = line break. Placeholders like {0} or {1:P0} must stay as they are.
+# Menu
+Continue	เล่น​ต่อ
+New Adventure	เริ่ม​การ​ผจญ​ภัย​ใหม่
+Story	เนื้อ​เรื่อง
+How to Play	วิธี​เล่น
+Settings	ตั้ง​ค่า
+Rebirth & Records	จุติ​ใหม่​และ​สถิติ
+FIVE HEROES  /  ONE DESTINY	ห้า​วีรชน  /  หนึ่ง​ชะตา​กรรม
+SEVEN STAGES / ENDLESS LOOPS	เจ็ด​ด่าน / วน​ลูป​ไม่​สิ้น​สุด
+AN ADVENTURE IN SEVEN CHAPTERS	การ​ผจญ​ภัย​เจ็ด​บท
+Beyond the village, an ancient power awakens.	พ้น​เขต​หมู่บ้าน​ออก​ไป พลัง​โบราณ​กำลัง​ตื่น​ขึ้น
+Build your magic. Face a harder loop. Leave a lasting legacy.	สร้าง​พลัง​เวท​ของคุณ เผชิญ​ลูป​ที่​ยาก​ขึ้น และ​ทิ้ง​ตำนาน​ไว้​ให้​จดจำ
+Continue with {0} / Loop {1} / Stage {2}	เล่น​ต่อ​กับ {0} / ลูป {1} / ด่าน {2}
+# Story
+PANNELION  /  PROLOGUE	แพน​เน​เลียน  /  บทนำ
+Close	ปิด
+# Common
+Back	ย้อน​กลับ
+Cancel	ยกเลิก
+Confirm	ยืนยัน
+Next	ถัด​ไป
+Main Menu	เมนู​หลัก
+Hero	วีรชน
+On	เปิด
+Off	ปิด
+# Heroes
+Tanky	แทงค์
+Shadow	เงา
+Magician	นัก​มายากล
+Oracle Witch	แม่มด​พยากรณ์
+Daphne	ดาฟนี
+Choose your hero	เลือก​วีรชน​ของคุณ
+A different kind of magic. The same journey ahead.	เวทมนตร์​ต่าง​แบบ บน​เส้น​ทาง​เดียวกัน
+SELECTED	เลือก​แล้ว
+Tap to name your hero	แตะ​เพื่อ​ตั้ง​ชื่อ​วีรชน
+BASIC ATTACK	โจมตี​ปกติ
+ACTIVE SKILL	สกิล​กด
+PASSIVE SKILL	สกิล​ติดตัว
+ULTIMATE	ท่า​ไม้ตาย
+Begin Adventure	เริ่ม​ผจญ​ภัย
+Swipe the roster and abilities to explore all five heroes.	ปัด​ราย​ชื่อ​และ​สกิล​เพื่อ​ดู​วีรชน​ทั้ง​ห้า
+A resilient ranged defender. Turn damage into shields, block incoming shots, and call down an astral meteor.	ผู้​พิทักษ์​สาย​ยิง​ไกล​ที่​ทนทาน เปลี่ยน​ความ​เสีย​หาย​เป็น​โล่ ป้องกัน​กระสุน​ศัตรู และ​เรียก​อุกกาบาต​จาก​ดวงดาว
+An agile kunai fighter. Chain hits to build attack speed, dash out of danger, and strike enemies across the battlefield.	นัก​สู้​คุไน​ผู้​ว่องไว โจมตี​ต่อ​เนื่อง​เพื่อ​เร่ง​ความเร็ว​โจมตี พุ่ง​หนี​อันตราย และ​จู่โจม​ศัตรู​ทั่ว​สนามรบ
+A trickster who fights with ricocheting cards. Lay explosive traps and escape with a storm of magic.	นัก​ลวงตา​ที่​สู้​ด้วย​ไพ่​สะท้อน วาง​กับ​ดัก​ระเบิด และ​หลบ​หนี​ด้วย​พายุ​เวทมนตร์
+A powerful control mage. Slow enemies, pierce defenses with arcane orbs, and deliver guaranteed judgment.	จอม​เวท​สาย​ควบคุม​ผู้ทรง​พลัง ทำให้​ศัตรู​ช้า​ลง เจาะ​เกราะ​ด้วย​ลูก​แก้ว​เวท และ​ตัดสิน​ศัตรู​แบบ​ไม่มี​พลาด
+A celestial mage with two stances. Solar magic burns groups; Lunar magic binds a target. Eclipse damages foes and restores health.	จอม​เวท​แห่ง​ฟาก​ฟ้า​ที่​มี​สอง​ท่วงท่า เวท​สุริยะ​เผา​ศัตรู​เป็น​กลุ่ม เวท​จันทรา​ตรึง​เป้า​หมาย สุริยุปราคา​ทำความ​เสีย​หาย​ศัตรู​และ​ฟื้น​พลัง​ชีวิต
+Light Crystal Shot	ยิง​ผลึก​แสง
+Astral Shield Wall	กำแพง​โล่​ดวงดาว
+Radiant Conversion	แปร​เปลี่ยน​รัศมี
+Astral Meteor	อุกกาบาต​ดวงดาว
+Shadow Kunai	คุไน​เงา
+Shadow Overdrive	เงา​เร่ง​เครื่อง
+Relentless Assault	จู่โจม​ไม่​หยุด​ยั้ง
+Shadow Execution	ประหาร​เงา
+Ricochet Cards	ไพ่​สะท้อน
+Illusion Trap	กับ​ดัก​มายา
+Illusion Dodge	หลบ​หลีก​มายา
+Jackpot	แจ็กพอต
+Arcane Orb	ลูก​แก้ว​เวท
+Time Distortion Field	สนาม​บิดเบือน​เวลา
+Distorted Trajectory	วิถี​บิด​เบี้ยว
+Silent Judgment	คำ​พิพากษา​เงียบ​งัน
+Dual Celestial Attack	โจมตี​คู่​ฟาก​ฟ้า
+Celestial Control	ควบคุม​ฟาก​ฟ้า
+Celestial Transition	เปลี่ยน​ท่วงท่า​ฟาก​ฟ้า
+Eclipse	สุริยุปราคา
+Fire a light crystal in the aimed direction.	ยิง​ผลึก​แสง​ไป​ตาม​ทิศ​ที่​เล็ง
+Form a shield wall ahead of you. It blocks enemy projectiles and grants defense nearby.	สร้าง​กำแพง​โล่​ด้าน​หน้า กัน​กระสุน​ศัตรู​และ​เพิ่ม​พลัง​ป้องกัน​ให้​บริเวณ​ใกล้​เคียง
+Gain shield by dealing damage. Distance from an attacker also reduces incoming damage.	ได้​รับ​โล่​เมื่อ​ทำความ​เสีย​หาย และ​ยิ่ง​อยู่​ห่าง​ผู้​โจมตี ความ​เสีย​หาย​ที่​ได้​รับ​ยิ่ง​ลด​ลง
+Call a meteor at the aim marker. It damages and roots enemies, then reduces their attack.	เรียก​อุกกาบาต​ลง​ที่​จุด​เล็ง ทำความ​เสีย​หาย​และ​ตรึง​ศัตรู จาก​นั้น​ลด​พลัง​โจมตี​ของ​พวก​มัน
+Throw armor-piercing kunai. Successful hits build attack-speed stacks.	ขว้าง​คุไน​เจาะ​เกราะ ทุก​ครั้ง​ที่​โดน​จะ​สะสม​สแต็ก​ความเร็ว​โจมตี
+Dash backward from your aim direction and temporarily accelerate your attacks.	พุ่ง​ถอย​หลังสวน​ทิศ​ที่​เล็ง และ​เร่ง​ความเร็ว​โจมตี​ชั่วคราว
+Consecutive kunai hits build attack speed. Stacks expire when you stop landing hits.	คุไน​ที่​โดน​ต่อ​เนื่อง​จะ​เพิ่ม​ความเร็ว​โจมตี สแต็ก​จะ​หาย​ไป​เมื่อ​หยุด​โจมตี​โดน
+Leap and strike living enemies in the visible battlefield.	กระโจน​เข้า​ฟัน​ศัตรู​ที่​ยัง​มี​ชีวิต​ทั่ว​สนามรบ​ที่​มอง​เห็น
+Throw a magic card that ricochets between nearby enemies.	ขว้าง​ไพ่​เวท​ที่​สะท้อน​ไป​มา​ระหว่าง​ศัตรู​ใกล้​เคียง
+Leave an illusion trap at your feet. An approaching enemy triggers damage and knock-up.	วาง​กับ​ดัก​มายา​ไว้​ใต้เท้า เมื่อ​ศัตรู​เข้า​ใกล้​จะ​ระเบิด​ทำความ​เสีย​หาย​และ​กระแทก​ลอย
+Automatically evade some incoming attacks.	หลบ​การ​โจมตี​ที่​เข้า​มา​ได้​บาง​ส่วน​โดย​อัตโนมัติ
+Create a damaging card storm at your position, then teleport to a safe nearby location.	สร้าง​พายุ​ไพ่​ทำความ​เสีย​หาย​รอบ​ตัว แล้ว​วาร์ป​ไป​ยัง​จุด​ปลอดภัย​ใกล้​เคียง
+Fire a slow arcane orb that explodes on impact and bypasses designated obstacles and defenses.	ยิง​ลูก​แก้ว​เวท​ที่​เคลื่อน​ช้า ระเบิด​เมื่อ​กระทบ และ​ทะลุ​สิ่ง​กีดขวาง​ที่​กำหนด​รวม​ถึง​พลัง​ป้องกัน
+Place a slowing field at the aim marker.	วาง​สนาม​ชะลอ​เวลา​ที่​จุด​เล็ง
+Your magic bypasses defense and designated obstacles while respecting the map boundary.	เวท​ของคุณ​ทะลุ​พลัง​ป้องกัน​และ​สิ่ง​กีดขวาง​ที่​กำหนด แต่​ไม่​ออก​นอก​ขอบ​แผนที่
+Mark visible enemies and strike them with guaranteed-hit magic spears.	ทำ​เครื่องหมาย​ศัตรู​ที่​มอง​เห็น แล้ว​โจมตี​ด้วย​หอก​เวท​ที่​โดน​แน่นอน
+Solar: explosive fire with burn. Lunar: concentrated single-target magic.	สุริยะ: ไฟ​ระเบิด​พร้อม​เผา​ไหม้ จันทรา: เวท​รวม​พลัง​ใส่​เป้า​หมาย​เดียว
+Solar: a nearby ring of fire pushes enemies away. Lunar: an aimed bolt roots its target.	สุริยะ: วง​ไฟ​รอบ​ตัว​ผลัก​ศัตรู​ออก​ไป จันทรา: ลำแสง​ที่​เล็ง​ไว้​ตรึง​เป้า​หมาย
+Switching to Solar briefly grants attack power. Switching to Lunar briefly grants movement speed.	เปลี่ยน​เป็น​สุริยะ​เพิ่ม​พลัง​โจมตี​ชั่วคราว เปลี่ยน​เป็น​จันทรา​เพิ่ม​ความเร็ว​เคลื่อนที่​ชั่วคราว
+Damage enemies throughout the visible battlefield and restore your health. Your stance stays unchanged.	ทำความ​เสีย​หาย​ศัตรู​ทั่ว​สนามรบ​ที่​มอง​เห็น​และ​ฟื้น​พลัง​ชีวิต ท่วงท่า​ปัจจุบัน​ไม่​เปลี่ยน
+\n\nBase damage: {0:0.#}\nAttack interval: {1:0.##}s	\n\nความ​เสีย​หาย​พื้น​ฐาน: {0:0.#}\nระยะ​ห่าง​การ​โจมตี: {1:0.##} วิ
+\n\nCooldown: {0:0.#}s\nDuration: {1:0.#}s	\n\nคูลดาวน์: {0:0.#} วิ\nระยะ​เวลา: {1:0.#} วิ
+\n\nDamage: {0:0.#}\nCooldown: {1:0.#}s	\n\nความ​เสีย​หาย: {0:0.#}\nคูลดาวน์: {1:0.#} วิ
+\n\nMaximum stacks: {0}\nStack timeout: {1:0.#}s	\n\nสแต็ก​สูงสุด: {0}\nสแต็ก​หมด​เวลา: {1:0.#} วิ
+\n\nEvasion chance: {0:P0}	\n\nโอกาส​หลบ​หลีก: {0:P0}
+\n\nShield capacity: {0:0.#}\nDamage to shield: {1:P0}	\n\nความ​จุ​โล่: {0:0.#}\nแปลง​ความ​เสีย​หาย​เป็น​โล่: {1:P0}
+\n\nStance switch cooldown: {0:0.#}s	\n\nคูลดาวน์​เปลี่ยน​ท่วงท่า: {0:0.#} วิ
+Begin a new adventure?	เริ่ม​การ​ผจญ​ภัย​ใหม่?
+Your current run will end and its earned points will be banked. Run cards will be lost. Your selected hero begins at Stage 1.	รอบ​ปัจจุบัน​จะ​จบ​ลง​และ​แต้ม​ที่​ได้​จะ​ถูก​เก็บ​ไว้ การ์ด​ใน​รอบ​นี้​จะ​หาย​ไป วีรชน​ที่​เลือก​จะ​เริ่ม​ที่​ด่าน 1
+# HUD
+Pause	พัก
+Active	สกิล
+Ultimate	ไม้ตาย
+Solar	สุริยะ
+Lunar	จันทรา
+MOVE	เดิน
+AIM / FIRE	เล็ง / ยิง
+X\nCANCEL	X\nยกเลิก
+ULT	ไม้ตาย
+ACTIVE	สกิล
+{0} / {1:0} HP	{0} / {1:0} HP
+Shield {0}	โล่ {0}
+Hit stacks {0} / {1}	สแต็ก​โจมตี {0} / {1}
+LUNAR / Control	จันทรา / ควบคุม
+SOLAR / Burn	สุริยะ / เผา​ไหม้
+Portal open · Enter to continue	ประตู​วาร์ป​เปิด​แล้ว · เข้าไป​เพื่อ​ไป​ต่อ
+Enemies remaining: {0}	ศัตรู​ที่​เหลือ: {0}
+Defeat the remaining enemies	กำจัด​ศัตรู​ที่​เหลือ
+Stage {0} / {1}	ด่าน {0} / {1}
+Stage {0} · {1}	ด่าน {0} · {1}
+Stage clear! Choose a blessing, then enter the portal	ผ่าน​ด่าน! เลือก​พร​หนึ่ง​ใบ แล้ว​เข้า​ประตู​วาร์ป
+Loop {0} / Stage {1}	ลูป {0} / ด่าน {1}
+Earned: {0:N0} Rebirth points	ได้​รับ: {0:N0} แต้ม​จุติ
+# Stages and enemies
+Forest Path	เส้น​ทาง​ป่า
+Night Village	หมู่บ้าน​ยาม​ราตรี
+Frost Witch's Domain	อาณาเขต​แม่มด​น้ำ​แข็ง
+Ancient Ruins	ซาก​ปรัก​โบราณ
+Golem's Fortress	ป้อม​ปราการ​โกเล็ม
+Lava Keep	ป้อม​ลาวา
+Dragon's Lair	รัง​มังกร
+Inferno Dragon	มังกร​นรก​เพลิง
+Dragon	มังกร
+Frost Witch	แม่มด​น้ำ​แข็ง
+Witch	แม่มด
+Forest Golem	โกเล็ม​ป่า
+Golem	โกเล็ม
+Goblin	ก็อบลิน
+Skeleton	โครง​กระดูก
+Skeleton Archer	พล​ธนู​โครง​กระดูก
+# Pause
+TAKE A BREATH	พัก​หายใจ​สัก​ครู่
+Adventure paused	หยุด​การ​ผจญ​ภัย​ชั่วคราว
+Resume	เล่น​ต่อ
+End Run	จบ​รอบ​นี้
+View Build	ดู​บิลด์
+End this run?	จบ​รอบ​นี้?
+Bank earned points and lose this run's cards. Permanent rebirth bonuses remain.	เก็บ​แต้ม​ที่​ได้​และ​เสีย​การ์ด​ของ​รอบ​นี้ โบนัส​จุติ​ถาวร​ยัง​คง​อยู่
+# Settings
+Make it yours	ปรับ​ให้​เป็น​แบบ​คุณ
+Controls and readability. Saved automatically.	การ​ควบคุม​และ​ความ​อ่าน​ง่าย บันทึก​อัตโนมัติ
+<color=#C8A363>LANGUAGE</color>\nChoose the language for menus and the story.	<color=#C8A363>ภาษา</color>\nเลือก​ภาษา​ของ​เมนู​และ​เนื้อ​เรื่อง
+<color=#C8A363>TOUCH CONTROLS</color>\nAdjust the controls to fit your thumbs.	<color=#C8A363>ปุ่ม​สัมผัส</color>\nปรับ​ปุ่ม​ควบคุม​ให้​พอดี​กับ​นิ้ว​โป้ง​ของคุณ
+Control size	ขนาด​ปุ่ม
+Control opacity	ความ​ทึบ​ของ​ปุ่ม
+<color=#C8A363>ACCESSIBILITY</color>\nMake important information easier to read.	<color=#C8A363>การ​ช่วย​การ​เข้า​ถึง</color>\nทำให้​ข้อมูล​สำคัญ​อ่าน​ง่าย​ขึ้น
+Text size	ขนาด​ตัว​อักษร
+<color=#C8A363>SOUND</color>\nBalance music, effects and menu sounds.	<color=#C8A363>เสียง</color>\nปรับ​สมดุล​เพลง เสียง​เอฟเฟกต์ และ​เสียง​เมนู
+Master volume	ระดับ​เสียง​หลัก
+Music	เพลง
+Effects	เสียง​เอฟเฟกต์
+Menu sounds	เสียง​เมนู
+Reduced UI motion: {0}	ลด​การ​เคลื่อนไหว​ของ UI: {0}
+Reduced UI motion removes decorative rotation and menu fades. Combat effects remain visible.	การ​ลด​การ​เคลื่อนไหว​ของ UI จะ​ปิด​การ​หมุน​ประดับ​และ​การ​เฟด​ของ​เมนู เอฟเฟกต์​ใน​การ​ต่อสู้​ยัง​แสดง​ตาม​ปกติ
+Restore Defaults	คืน​ค่า​เริ่ม​ต้น
+# Help
+Your field guide	คู่มือ​นัก​ผจญ​ภัย
+Learn the magic. Find your rhythm.	เรียน​รู้​เวทมนตร์ แล้ว​หา​จังหวะ​ของคุณ
+<color=#C8A363>01 / MOVE</color>\nDrag the left stick to move. You can move and attack at the same time.	<color=#C8A363>01 / เดิน</color>\nลาก​จอย​ซ้าย​เพื่อ​เดิน เดิน​และ​โจมตี​ไป​พร้อม​กัน​ได้
+<color=#C8A363>02 / AIM & FIRE</color>\nDrag the right stick to aim and fire continuously. Release to stop firing. Skill aiming is independent of the attack stick.	<color=#C8A363>02 / เล็ง​และ​ยิง</color>\nลาก​จอย​ขวา​เพื่อ​เล็ง​และ​ยิง​ต่อ​เนื่อง ปล่อย​เพื่อ​หยุด​ยิง การ​เล็ง​สกิล​แยก​จาก​จอย​โจมตี
+<color=#C8A363>03 / CAST YOUR MAGIC</color>\nHold and drag an aimed Active or Ultimate, then release to cast. Drag farther to place a ground skill farther away. Tap without dragging to target the nearest visible enemy in range; with no target, use your last aim or facing direction. Drag onto X and release to cancel without spending cooldown. Shadow dashes where you drag. Area and screen-wide skills remain tap buttons. Daphne can also switch Solar and Lunar stance.	<color=#C8A363>03 / ร่าย​เวทมนตร์</color>\nกด​ค้าง​แล้ว​ลาก​ปุ่ม​สกิล​หรือ​ไม้ตาย​เพื่อ​เล็ง จาก​นั้น​ปล่อย​เพื่อ​ร่าย ยิ่ง​ลาก​ไกล สกิล​ที่​วาง​บน​พื้น​ยิ่ง​ไป​ไกล แตะ​โดย​ไม่​ลาก​เพื่อ​เล็ง​ศัตรู​ที่​ใกล้​ที่สุด​ใน​ระยะ ถ้า​ไม่มี​เป้า​หมาย​จะ​ใช้​ทิศ​ที่​เล็ง​ล่าสุด​หรือ​ทิศ​ที่​หัน​อยู่ ลาก​ไป​ที่ X แล้ว​ปล่อย​เพื่อ​ยกเลิก​โดย​ไม่​เสีย​คูลดาวน์ เงา​จะ​พุ่ง​ไป​ตาม​ทิศ​ที่​ลาก สกิล​วง​กว้าง​และ​สกิล​ทั้ง​จอย​ัง​เป็น​ปุ่ม​แตะ ดาฟนี​สลับ​ท่วงท่า​สุริยะ​และ​จันทรา​ได้​ด้วย
+<color=#C8A363>04 / FOLLOW THE PORTAL</color>\nClear a stage and choose a card before entering its portal. Defeat the dragon to loop at higher difficulty. Death banks Rebirth points and removes run cards.	<color=#C8A363>04 / ตาม​ประตู​วาร์ป</color>\nผ่าน​ด่าน​และ​เลือก​การ์ด​ก่อน​เข้า​ประตู​วาร์ป ปราบ​มังกร​เพื่อ​วน​ลูป​ที่​ยาก​ขึ้น เมื่อ​ตาย แต้ม​จุติ​จะ​ถูก​เก็บ​ไว้​และ​การ์ด​ของ​รอบ​นี้​จะ​หาย​ไป
+<color=#C8A363>05 / YOUR LEGACY</color>\nContinue restores your hero, loop, build and pending card choices. Battles restart with full health. End Run banks earned points; a new adventure starts at Loop 1. Spend points on permanent, hero-specific Rebirth upgrades.	<color=#C8A363>05 / ตำนาน​ของคุณ</color>\nเล่น​ต่อ​จะ​คืน​วีรชน ลูป บิลด์ และ​การ์ด​ที่​ยัง​ไม่​ได้​เลือก การ​ต่อสู้​เริ่ม​ใหม่​ด้วย​พลัง​ชีวิต​เต็ม จบ​รอบ​เพื่อ​เก็บ​แต้ม​ที่​ได้ การ​ผจญ​ภัย​ใหม่​จะ​เริ่ม​ที่​ลูป 1 ใช้​แต้ม​อัปเกรด​จุติ​ถาวร​เฉพาะ​ของ​แต่ละ​วีรชน
+Replay control guide	ดู​คู่มือ​การ​ควบคุม​อีก​ครั้ง
+DESKTOP: WASD / arrows to move; hold Space, J, or click to attack; Q active; E ultimate; Tab stance; Esc pause/back.	คอมพิวเตอร์: WASD / ลูก​ศร เพื่อ​เดิน กด Space, J ค้าง หรือ​คลิก​เพื่อ​โจมตี Q สกิล E ไม้ตาย Tab เปลี่ยน​ท่วงท่า Esc พัก/ย้อน​กลับ
+# Outcome
+A FALLEN HERO	วีรชน​ผู้​ล่วง​ลับ
+Your cards fade. Your legacy remains.	การ์ด​ของคุณ​จาง​หาย แต่​ตำนาน​ยัง​คง​อยู่
+New Run	เริ่ม​รอบ​ใหม่
+Rebirth	จุติ​ใหม่
+THE REALM IS SAFE	อาณาจักร​ปลอดภัย​แล้ว
+The dragon is defeated.	มังกร​พ่าย​แพ้​แล้ว
+Play Again	เล่น​อีก​ครั้ง
+{0} · Stage {1} / {2}	{0} · ด่าน {1} / {2}
+{0} / Loop {1} / Stage {2}\nBanked {3:N0} Rebirth points	{0} / ลูป {1} / ด่าน {2}\nเก็บ​ได้ {3:N0} แต้ม​จุติ
+# Tutorial
+Skip Guide	ข้าม​คู่มือ
+Let's Begin	เริ่ม​กัน​เลย
+Find your footing	ตั้ง​หลัก​ให้​มั่น
+Aim your magic	เล็ง​เวทมนตร์​ของคุณ
+Unleash your abilities	ปลด​ปล่อย​พลัง​ของคุณ
+The way forward	เส้น​ทาง​ข้าง​หน้า
+Drag the left stick to move. Your adventure is paused while you read this guide.	ลาก​จอย​ซ้าย​เพื่อ​เดิน การ​ผจญ​ภัย​จะ​หยุด​ไว้​ระหว่าง​อ่าน​คู่มือ​นี้
+Drag the right stick to aim and fire. Release to stop. Skill aiming is separate from this attack stick.	ลาก​จอย​ขวา​เพื่อ​เล็ง​และ​ยิง ปล่อย​เพื่อ​หยุด การ​เล็ง​สกิล​แยก​จาก​จอย​โจมตี​นี้
+Hold and drag an aimed skill, then release to cast. Tap to target the nearest visible enemy in range. Release over X to cancel. Shadow dashes where you drag. Timers show cooldowns; Daphne can switch Solar / Lunar stance.	กด​ค้าง​แล้ว​ลาก​สกิล​เพื่อ​เล็ง จาก​นั้น​ปล่อย​เพื่อ​ร่าย แตะ​เพื่อ​เล็ง​ศัตรู​ที่​ใกล้​ที่สุด​ใน​ระยะ ปล่อย​บน X เพื่อ​ยกเลิก เงา​จะ​พุ่ง​ไป​ตาม​ทิศ​ที่​ลาก ตัวเลข​บอก​เวลา​คูลดาวน์ ดาฟนี​สลับ​ท่วงท่า​สุริยะ / จันทรา​ได้
+Clear a stage, choose a card, then enter the portal. Defeat the dragon to loop with a stronger build. Death ends your run and banks Rebirth points.	ผ่าน​ด่าน เลือก​การ์ด แล้ว​เข้า​ประตู​วาร์ป ปราบ​มังกร​เพื่อ​วน​ลูป​ด้วย​บิลด์​ที่​แกร่ง​ขึ้น เมื่อ​ตาย รอบ​จะ​จบ​และ​แต้ม​จุติ​จะ​ถูก​เก็บ​ไว้
+# Cards, rebirth and build
+Choose your blessing	เลือก​พร​ของคุณ
+Choose your first blessing	เลือก​พร​แรก​ของคุณ
+Stage cleared / Choose a blessing	ผ่าน​ด่าน​แล้ว / เลือก​พร​หนึ่ง​ใบ
+Save & Main Menu	บันทึก​และ​กลับ​เมนู​หลัก
+Loop {0} / Stage {1} / Earned: {2:N0} points\n	ลูป {0} / ด่าน {1} / ได้​รับ: {2:N0} แต้ม\n
+The dragon has fallen. Your build continues into a harder loop.	มังกร​ล้ม​ลง​แล้ว บิลด์​ของคุณ​จะ​ไป​ต่อ​ใน​ลูป​ที่​ยาก​ขึ้น
+Choose one. This blessing lasts until your run ends.	เลือก​หนึ่ง​ใบ พร​นี้​อยู่​จนกว่า​รอบ​จะ​จบ
+Evergreen	ไม่​จำ​กัด​เลเวล
+Max {0}	สูงสุด {0}
+Next gain: +{0:0.##} armor\n	ครั้ง​ต่อ​ไป​ได้: เกราะ +{0:0.##}\n
+Next gain: +{0:P1}\n	ครั้ง​ต่อ​ไป​ได้: +{0:P1}\n
+Level {0} -> {1} / {2}	เลเวล {0} -> {1} / {2}
+Level {0}	เลเวล {0}
+Permanent growth belongs to each hero. Every rebirth costs more.	การ​เติบโต​ถาวร​เป็น​ของ​วีรชน​แต่ละ​คน ทุก​การ​จุติ​จะ​ใช้​แต้ม​มาก​ขึ้น
+Rebirth {0}\nPoints: {1:N0} / Next cost: {2:N0}\n	จุติ {0} ครั้ง\nแต้ม: {1:N0} / ครั้ง​ต่อ​ไป​ใช้: {2:N0}\n
+Permanent HP +{0:P1} / Damage +{1:P1} / Armor +{2:0.##}\nBest: {3}\n	ถาวร HP +{0:P1} / ความ​เสีย​หาย +{1:P1} / เกราะ +{2:0.##}\nดี​ที่สุด: {3}\n
+No stages cleared yet	ยัง​ไม่​ผ่าน​ด่าน​ใด
+Finish this hero's active run before upgrading.	จบ​รอบ​ที่​กำลัง​เล่น​ของ​วีรชน​นี้​ก่อน​อัปเกรด
+Choose one permanent upgrade.	เลือก​อัปเกรด​ถาวร​หนึ่ง​อย่าง
+HP +{0:P2}	HP +{0:P2}
+Damage +{0:P2}	ความ​เสีย​หาย +{0:P2}
+Armor +{0:0.##}	เกราะ +{0:0.##}
+CARD UNLOCKS	ปลด​ล็อก​การ์ด
+Unlocked	ปลด​ล็อก​แล้ว
+Clear Stage {0}	ผ่าน​ด่าน {0}
+Your build	บิลด์​ของคุณ
+Cards last for this run. Rebirth bonuses last between runs.	การ์ด​อยู่​ถึง​จบ​รอบ​นี้ โบนัส​จุติ​อยู่​ข้าม​รอบ
+HP {0:0} / Armor {1:0.#} physical, {2:0.#} magic	HP {0:0} / เกราะ​กายภาพ {1:0.#} เกราะ​เวท {2:0.#}
+Basic damage {0:0.#} / Attack interval {1:0.00}s\n	ความ​เสีย​หาย​พื้น​ฐาน {0:0.#} / ระยะ​ห่าง​การ​โจมตี {1:0.00} วิ\n
+Active {0:0.#} damage / {1:0.#}s cooldown\nUltimate {2:0.#} damage / {3:0.#}s cooldown\n	สกิล ความ​เสีย​หาย {0:0.#} / คูลดาวน์ {1:0.#} วิ\nไม้ตาย ความ​เสีย​หาย {2:0.#} / คูลดาวน์ {3:0.#} วิ\n
+No cards yet.	ยัง​ไม่มี​การ์ด
+Vitality	พลัง​ชีวิต
++10% maximum HP. Repeats grant less; no level limit.	HP สูงสุด +10% เลือก​ซ้ำ​จะ​ได้​น้อย​ลง ไม่​จำ​กัด​เลเวล
+Arcane Power	พลัง​เวท​ลี้ลับ
++8% all damage. Repeats grant less; no level limit.	ความ​เสีย​หาย​ทั้งหมด +8% เลือก​ซ้ำ​จะ​ได้​น้อย​ลง ไม่​จำ​กัด​เลเวล
+Quick Hands	มือไว
++6% attack speed. Repeats grant less; combat speed limits apply.	ความเร็ว​โจมตี +6% เลือก​ซ้ำ​จะ​ได้​น้อย​ลง และ​มี​เพดาน​ความเร็ว​ใน​การ​ต่อสู้
+Warding	ปราการ​เวท
++8 physical and magic armor. Repeats grant less; no level limit.	เกราะ​กายภาพ​และ​เกราะ​เวท +8 เลือก​ซ้ำ​จะ​ได้​น้อย​ลง ไม่​จำ​กัด​เลเวล
+Spell Rhythm	จังหวะ​เวท
+Active cooldown -5% per level.	คูลดาวน์​สกิล -5% ต่อ​เลเวล
+Astral Rhythm	จังหวะ​ดวงดาว
+Ultimate cooldown -5% per level.	คูลดาวน์​ไม้ตาย -5% ต่อ​เลเวล
+Fleet Foot	ฝีเท้า​ไว
++6% movement speed per level.	ความเร็ว​เคลื่อนที่ +6% ต่อ​เลเวล
+Wide Magic	เวท​วง​กว้าง
++10% area radius per level.	รัศมี​พื้นที่ +10% ต่อ​เลเวล
+Spellcraft	ศาสตร์​เวท
++12% active and ultimate damage per level.	ความ​เสีย​หาย​สกิล​และ​ไม้ตาย +12% ต่อ​เลเวล
+Spellguard	โล่​เวท
+Successful active casts grant 8% maximum HP as shield per level. Card shield capacity: 24% maximum HP.	ร่าย​สกิล​สำเร็จ​จะ​ได้​โล่ 8% ของ HP สูง​สุด​ต่อ​เลเวล โล่​จาก​การ์ด​สูงสุด 24% ของ HP สูงสุด
+Astral Reservoir	คลัง​พลัง​ดวงดาว
++20% shield capacity and +0.5 percentage points damage-to-shield conversion per level.	ความ​จุ​โล่ +20% และ​อัตรา​แปลง​ความ​เสีย​หาย​เป็น​โล่ +0.5 จุด​เปอร์เซ็นต์​ต่อ​เลเวล
+Endless Pursuit	ไล่​ล่า​ไม่​สิ้น​สุด
++2 maximum hit stacks and +0.3s stack timeout per level.	สแต็ก​โจมตี​สูงสุด +2 และ​เวลา​หมด​สแต็ก +0.3 วิ ต่อ​เลเวล
+Extra Trick	กลเม็ด​พิเศษ
+Basic cards bounce to one additional target per level.	ไพ่​โจมตี​ปกติ​สะท้อน​ไป​เป้า​หมาย​เพิ่ม 1 ตัว​ต่อ​เลเวล
+Frozen Hour	ชั่วโมง​เยือก​แข็ง
++20% slow-field duration per level.	ระยะ​เวลา​สนาม​ชะลอ +20% ต่อ​เลเวล
+Celestial Renewal	ฟื้นฟู​แห่ง​ฟาก​ฟ้า
++15% ultimate healing and -0.1s stance cooldown per level.	การ​ฟื้น​พลัง​จาก​ไม้ตาย +15% และ​คูลดาวน์​เปลี่ยน​ท่วงท่า -0.1 วิ ต่อ​เลเวล
+Witch's Hourglass	นาฬิกา​ทราย​แม่มด
++20% skill effect duration per level. Unlocked by the Frost Witch.	ระยะ​เวลา​ผล​ของ​สกิล +20% ต่อ​เลเวล ปลด​ล็อก​เมื่อ​ปราบ​แม่มด​น้ำ​แข็ง
+Golem's Bargain	ข้อ​แลก​เปลี่ยน​โกเล็ม
++15 physical and magic armor, but -3% movement speed per level.	เกราะ​กายภาพ​และ​เกราะ​เวท +15 แต่​ความเร็ว​เคลื่อนที่ -3% ต่อ​เลเวล
+Dragon's Bargain	ข้อ​แลก​เปลี่ยน​มังกร
++15% all damage, but -5% maximum HP per level.	ความ​เสีย​หาย​ทั้งหมด +15% แต่ HP สูงสุด -5% ต่อ​เลเวล

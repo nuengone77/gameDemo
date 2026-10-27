@@ -52,6 +52,11 @@ namespace MagicGame
         [Range(0, 1)] public float wallDefense = 0.2f;
         [Min(0.1f)] public float wallWidth = 3f;
         [Min(0.1f)] public float wallDistance = 1.2f;
+        [Tooltip("Small shields circling the hero; empty = cyan rings.")]
+        public Sprite shieldOrbSprite;
+        [Min(0.05f)] public float shieldOrbHeight = 0.36f;
+        [Tooltip("The Astral Shield Wall, drawn wallWidth long; empty = a cyan line.")]
+        public Sprite shieldWallSprite;
         [Min(0)] public float rootDuration = 2.5f;
         [Range(0, 1)] public float attackReduction = 0.3f;
         [Header("Shadow")]

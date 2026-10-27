@@ -42,7 +42,7 @@ namespace MagicGame.EditorTools
         static readonly Slot[] Slots =
         {
             // New (Tanky)
-            // New's shield wall keeps the original line placeholder (activeVfx is cleared in Apply).
+            // New's shield wall and orbiting shields are sprites (shieldWallSprite / shieldOrbSprite, set in Apply).
             // Meteor Binding: gold warning circle on the ground + Eric's fireball dropping from the sky onto it.
             new() { hero = "New", path = EricFree + "FX_Magic Door_Gold.prefab", scale = 1.35f, tilt = -55f,
                 assign = (c, v) => c.ultimateVfx = v },
@@ -112,6 +112,25 @@ namespace MagicGame.EditorTools
                 assign = (c, v) => c.eclipseWaveVfx = v },
         };
 
+        const string TankyArt = "Assets/Art/Characters/Player/New/";
+
+        // New's orbiting shields and Astral Shield Wall are painted sprites drawn far smaller than their source,
+        // so they are capped in size and mipmapped to stay smooth instead of shimmering.
+        static Sprite ImportShieldArt(string path, int maxSize)
+        {
+            var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null) { Debug.LogWarning("[MagicGame] Missing " + path); return null; }
+            importer.textureType = TextureImporterType.Sprite;
+            importer.spriteImportMode = SpriteImportMode.Single;
+            importer.alphaIsTransparency = true;
+            importer.mipmapEnabled = true;
+            importer.filterMode = FilterMode.Trilinear;
+            importer.maxTextureSize = maxSize;
+            importer.textureCompression = TextureImporterCompression.Compressed;
+            importer.SaveAndReimport();
+            return AssetDatabase.LoadAssetAtPath<Sprite>(path);
+        }
+
         [MenuItem("Tools/Magic Game/Apply Skill VFX")]
         public static void Apply()
         {
@@ -121,6 +140,8 @@ namespace MagicGame.EditorTools
             if (tanky != null)
             {
                 tanky.activeVfx = new VfxSlot();
+                tanky.shieldOrbSprite = ImportShieldArt(TankyArt + "real_armorr.png", 256);
+                tanky.shieldWallSprite = ImportShieldArt(TankyArt + "TowerDefeneNew.png", 1024);
                 EditorUtility.SetDirty(tanky);
             }
             foreach (var slot in Slots)

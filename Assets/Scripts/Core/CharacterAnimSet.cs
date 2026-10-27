@@ -8,9 +8,10 @@ namespace MagicGame
     [CreateAssetMenu(menuName = "Magic Game/Character Anim Set")]
     public class CharacterAnimSet : ScriptableObject
     {
+        [Tooltip("Save and progression ID only; never shown, since players will name their heroes. The UI shows the role.")]
         public string displayName;
         public CharacterCombatConfig combat;
-        public string MenuName => combat != null ? $"{displayName} — {combat.RoleName}" : displayName;
+        public string MenuName => combat != null ? combat.RoleName : "Hero";
 
         [Header("Walk (played left to right while moving)")]
         public Sprite[] walkDown;

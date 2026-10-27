@@ -10,7 +10,7 @@ namespace MagicGame.EditorTools
 {
     // Tools > Magic Game > Build Thai Font
     // Bakes Sarabun (OFL) into a static TMP font asset holding the Thai block, ASCII and every character
-    // of the story, and assigns it to the UI theme. Static, so playing the game never rewrites the asset.
+    // of the story, and assigns it to the UI theme (used for the story and for the whole UI in Thai). Static, so playing the game never rewrites the asset.
     public static class ThaiFontSetup
     {
         const string Root = "Assets/Game/UI";
@@ -43,6 +43,11 @@ namespace MagicGame.EditorTools
             font.atlasPopulationMode = AtlasPopulationMode.Static;
             KeepFeaturesForBakedGlyphs(font);
             AssetDatabase.CreateAsset(font, AssetPath);
+            // Headings shown in Thai use faux bold; the default bold spacing pulls Thai letters apart.
+            var settings = new SerializedObject(font);
+            settings.FindProperty("boldSpacing").floatValue = 1f;
+            settings.FindProperty("boldStyle").floatValue = 0.5f;
+            settings.ApplyModifiedPropertiesWithoutUndo();
             font.material.name = font.name + " Material";
             AssetDatabase.AddObjectToAsset(font.material, font);
             foreach (var atlas in font.atlasTextures)

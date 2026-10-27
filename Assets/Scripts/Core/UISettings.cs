@@ -15,6 +15,7 @@ namespace MagicGame
         public float musicVolume = 0.7f;
         public float sfxVolume = 0.85f;
         public float uiVolume = 0.8f;
+        public GameLanguage language = GameLanguage.English;
 
         public static UISettings Load()
         {
@@ -29,6 +30,8 @@ namespace MagicGame
             settings.musicVolume = Clamp(settings.musicVolume, 0f, 1f, 0.7f);
             settings.sfxVolume = Clamp(settings.sfxVolume, 0f, 1f, 0.85f);
             settings.uiVolume = Clamp(settings.uiVolume, 0f, 1f, 0.8f);
+            if (!Enum.IsDefined(typeof(GameLanguage), settings.language)) settings.language = GameLanguage.English;
+            Loc.Current = settings.language;
             return settings;
         }
 

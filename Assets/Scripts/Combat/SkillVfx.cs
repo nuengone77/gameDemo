@@ -112,6 +112,17 @@ namespace MagicGame
             return go;
         }
 
+        // A still sprite scaled to `height` world units, for effects that follow something (the caller moves it).
+        public static GameObject StillSprite(Vector2 point, Sprite sprite, float height)
+        {
+            var go = new GameObject("SkillSprite");
+            go.transform.position = point;
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+            go.transform.localScale = Vector3.one * height / Mathf.Max(0.01f, sprite.bounds.size.y);
+            return go;
+        }
+
         static GameObject Create(Vector2 point, Color color, float seconds)
         {
             if (seconds > 0f && s_transientCount >= 96) return null;

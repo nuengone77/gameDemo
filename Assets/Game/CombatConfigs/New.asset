@@ -33,6 +33,9 @@ MonoBehaviour:
   wallDefense: 0.15
   wallWidth: 3
   wallDistance: 1.2
+  shieldOrbSprite: {fileID: 21300000, guid: b0282512c8d804f3e8ff47cdeeec50c8, type: 3}
+  shieldOrbHeight: 0.36
+  shieldWallSprite: {fileID: 21300000, guid: 29f00768d6bf34ed58f1e2dfe627c01e, type: 3}
   rootDuration: 2
   attackReduction: 0.2
   armorPenetration: 0.2
@@ -168,5 +171,6 @@ MonoBehaviour:
   eclipseMergeTime: 1.2
   eclipseOrbSpread: 2.5
   eclipseWaveSpeed: 9
+  eclipseWaveVfxMaxRadius: 3
+  eclipseWaveEdge: {r: 0.42, g: 0.1, b: 0.85, a: 0.95}
   eclipseWaveRingRadius: 1.1
-  eclipseWaveRingHeight: 1

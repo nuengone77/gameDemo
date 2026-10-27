@@ -10,7 +10,7 @@ namespace MagicGame.Tests
 {
     public class MobileUITests
     {
-        string _checkpoint, _settings, _heroId, _progression;
+        string _checkpoint, _settings, _heroId, _progression, _heroNames;
         int _tutorial, _selected;
         const string SettingsKey = "MagicGame.UISettings.v1";
 
@@ -22,6 +22,9 @@ namespace MagicGame.Tests
             PlayerPrefs.DeleteKey(Progression.SaveKey);
             Progression.Reload();
             _settings = PlayerPrefs.GetString(SettingsKey, "");
+            _heroNames = PlayerPrefs.GetString(HeroNames.SaveKey, "");
+            PlayerPrefs.DeleteKey(HeroNames.SaveKey);
+            HeroNames.Reload();
             _tutorial = PlayerPrefs.GetInt(GameSession.TutorialKey, 0);
             _selected = GameSession.SelectedCharacter;
             _heroId = GameSession.SelectedHeroId;
@@ -47,6 +50,9 @@ namespace MagicGame.Tests
             else PlayerPrefs.DeleteKey(GameSession.CheckpointKey);
             if (_settings.Length > 0) PlayerPrefs.SetString(SettingsKey, _settings);
             else PlayerPrefs.DeleteKey(SettingsKey);
+            if (_heroNames.Length > 0) PlayerPrefs.SetString(HeroNames.SaveKey, _heroNames);
+            else PlayerPrefs.DeleteKey(HeroNames.SaveKey);
+            HeroNames.Reload();
             PlayerPrefs.SetInt(GameSession.TutorialKey, _tutorial);
             GameSession.SelectedCharacter = _selected;
             GameSession.SelectedHeroId = _heroId;
@@ -834,7 +840,7 @@ namespace MagicGame.Tests
             Click("MenuStory");
             Assert.That(ui.CurrentScreen, Is.EqualTo(GameUI.ScreenId.Story));
             var body = Node("StoryBody").GetComponent<TMPro.TMP_Text>();
-            Assert.That(body.text, Is.EqualTo(Resources.Load<TextAsset>("Story/Prologue").text.Trim()));
+            Assert.That(body.text, Is.EqualTo(Resources.Load<TextAsset>("Story/Prologue_en").text.Trim()));
             Assert.That(body.font, Is.EqualTo(ui.theme.thaiFont));
             Click("StoryClose");
             Click("MenuRebirth");
@@ -856,6 +862,68 @@ namespace MagicGame.Tests
             ui.Back();
             Click("MenuStory");
             Assert.That(ui.CurrentScreen, Is.EqualTo(GameUI.ScreenId.Story));
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator LanguageSwitchTranslatesUIAndStoryThenRestoresEnglish()
+        {
+            var ui = GameUI.Instance;
+            var settingsLabel = Node("MenuSettingsLabel").GetComponent<TMPro.TMP_Text>();
+            var englishFont = settingsLabel.font;
+            Click("MenuSettings");
+            Assert.That(Node("LanguageRow").transform.GetSiblingIndex(), Is.EqualTo(1));
+            Click("LanguageThai");
+            Assert.That(UISettings.Load().language, Is.EqualTo(GameLanguage.Thai));
+            Assert.That(Node("SettingsBackLabel").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo(Loc.Tr("Back")));
+            Assert.That(Loc.Tr("Back"), Is.Not.EqualTo("Back"));
+            Assert.That(settingsLabel.font, Is.EqualTo(ui.theme.thaiFont));
+            Assert.That(Node("MenuTitle").GetComponent<TMPro.TMP_Text>().font, Is.EqualTo(ui.theme.titleFont));
+            ui.Back();
+            Click("MenuStory");
+            Assert.That(Node("StoryBody").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo(Resources.Load<TextAsset>("Story/Prologue").text.Trim()));
+            Click("StoryClose");
+            Click("MenuSettings");
+            Click("LanguageEnglish");
+            Assert.That(UISettings.Load().language, Is.EqualTo(GameLanguage.English));
+            Assert.That(settingsLabel.text, Is.EqualTo("Settings"));
+            Assert.That(settingsLabel.font, Is.EqualTo(englishFont));
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator NamingAHeroShowsTheNameWithItsRoleAndClearingRestoresTheRole()
+        {
+            var ui = GameUI.Instance;
+            ui.SelectHero(4);
+            Click("MenuNew");
+            var hero = ui.theme.heroes[4];
+            var field = Node("HeroNameInput").GetComponent<TMPro.TMP_InputField>();
+            var rosterName = Node("HeroName4").GetComponent<TMPro.TMP_Text>();
+            Assert.That(field.text, Is.Empty);
+            Assert.That(rosterName.text, Is.EqualTo(hero.MenuName));
+            Assert.That(Node("HeroRole4").activeSelf, Is.False);
+
+            field.text = "  Luna   Star  ";
+            field.onEndEdit.Invoke(field.text);
+            Assert.That(HeroNames.Get(hero.displayName), Is.EqualTo("Luna Star"));
+            Assert.That(field.text, Is.EqualTo("Luna Star"));
+            Assert.That(rosterName.text, Is.EqualTo("Luna Star"));
+            Assert.That(Node("HeroRole4").activeSelf, Is.True);
+            Assert.That(Node("RebirthHero4Label").GetComponent<TMPro.TMP_Text>().text, Is.EqualTo("Luna Star"));
+            Assert.That(field.onValidateInput("", 0, '\uD83D'), Is.EqualTo('\0'));
+
+            // A Thai name needs the Thai font even while the game is in English.
+            field.text = "จันทรา";
+            field.onEndEdit.Invoke(field.text);
+            Assert.That(rosterName.font, Is.EqualTo(ui.theme.thaiFont));
+
+            field.text = "";
+            field.onEndEdit.Invoke(field.text);
+            Assert.That(HeroNames.Get(hero.displayName), Is.Empty);
+            Assert.That(rosterName.text, Is.EqualTo(hero.MenuName));
+            Assert.That(rosterName.font, Is.Not.EqualTo(ui.theme.thaiFont));
+            Assert.That(Node("HeroRole4").activeSelf, Is.False);
             yield return null;
         }
 

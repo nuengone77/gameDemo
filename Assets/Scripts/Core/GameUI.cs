@@ -73,8 +73,11 @@ namespace MagicGame
             if (transform.Find("SafeArea") == null) BuildLayout();
             EnsureAudioSettings(); // the saved prefab predates the audio sliders
             EnsureStory();
+            EnsureLanguageSettings();
+            EnsureHeroNameInput();
             BuildProgressionLayout();
             EnsureSkillControls();
+            RecordAuthoredText();
             foreach (var rect in GetComponentsInChildren<RectTransform>(true)) _nodes[rect.name] = rect.gameObject;
             foreach (var text in GetComponentsInChildren<TMP_Text>(true)) _fontSizes[text] = text.fontSize;
             EnsureEventSystem();
@@ -89,6 +92,7 @@ namespace MagicGame
             _level = LevelManager.Instance;
             _player = PlayerController.Instance;
             _started = true;
+            ApplyLanguage();
             Progression.Changed += RefreshProgression;
             if (_level == null)
             {
@@ -104,14 +108,14 @@ namespace MagicGame
                 _player.Health.Changed += RefreshHealth;
                 _player.Skills.Changed += RefreshSkills;
                 I("HUDPortrait").sprite = _player.CurrentCharacter != null ? _player.CurrentCharacter.PreviewSprite : null;
-                T("HUDHero").text = _player.CurrentCharacter != null ? _player.CurrentCharacter.MenuName : "Hero";
+                SetFitted("HUDHero", _player.CurrentCharacter != null ? HeroLabel(_player.CurrentCharacter) : L("Hero"));
                 RefreshHealth(_player.Health);
                 RefreshSkills();
             }
-            T("HUDStage").text = $"Stage {_level.levelNumber} / {_level.levelTitle}";
+            T("HUDStage").text = LF("Stage {0} / {1}", _level.levelNumber, L(_level.levelTitle));
             ShowRoot(ScreenId.HUD);
             RefreshEnemies();
-            Banner($"Stage {_level.levelNumber} · {_level.levelTitle}");
+            Banner(LF("Stage {0} · {1}", _level.levelNumber, L(_level.levelTitle)));
             if (_level.levelNumber == 1 && PlayerPrefs.GetInt(GameSession.TutorialKey, 0) == 0) BeginTutorial();
             else PresentCards();
             RefreshProgression();
@@ -132,6 +136,8 @@ namespace MagicGame
 
         GameObject N(string name) => _nodes[name];
         TMP_Text T(string name) => N(name).GetComponent<TMP_Text>();
+        static string L(string english) => Loc.Tr(english);
+        static string LF(string englishFormat, params object[] args) => Loc.F(englishFormat, args);
         UnityEngine.UI.Image I(string name) => N(name).GetComponent<UnityEngine.UI.Image>();
         UnityEngine.UI.Button B(string name) => N(name).GetComponent<UnityEngine.UI.Button>();
         void Click(string name, Action action) => B(name).onClick.AddListener(() =>
@@ -162,14 +168,14 @@ namespace MagicGame
             Click("HeroesBegin", () =>
             {
                 if (Progression.HasRun || GameSession.TryGetCheckpoint(out _))
-                    Confirm("Begin a new adventure?", "Your current run will end and its earned points will be banked. Run cards will be lost. Your selected hero begins at Stage 1.", StartAdventure);
+                    Confirm(L("Begin a new adventure?"), L("Your current run will end and its earned points will be banked. Run cards will be lost. Your selected hero begins at Stage 1."), StartAdventure);
                 else StartAdventure();
             });
             Click("HUDPause", () => Push(ScreenId.Pause));
             Click("PauseResume", Back);
             Click("PauseHelp", () => Push(ScreenId.Help));
             Click("PauseSettings", () => Push(ScreenId.Settings));
-            Click("PauseRestart", () => Confirm("End this run?", "Bank earned points and lose this run's cards. Permanent rebirth bonuses remain.", () => { Progression.Finish(true); _level.ReturnToMenu(); }));
+            Click("PauseRestart", () => Confirm(L("End this run?"), L("Bank earned points and lose this run's cards. Permanent rebirth bonuses remain."), () => { Progression.Finish(true); _level.ReturnToMenu(); }));
             Click("PauseMenu", () => _level.ReturnToMenu());
             Click("DefeatRetry", () => _level.RestartStage());
             Click("DefeatMenu", () => _level.ReturnToMenu());
@@ -189,7 +195,10 @@ namespace MagicGame
             Click("TutorialNext", () => { if (++_tutorialStep >= 4) EndTutorial(); else RefreshTutorial(); });
             Click("HelpReplay", BeginTutorial);
             Click("ReducedMotion", () => { _settings.reducedMotion = !_settings.reducedMotion; SaveSettings(); });
-            Click("SettingsDefaults", () => { _settings = new UISettings(); SyncSliders(); SaveSettings(); });
+            Click("SettingsDefaults", () => { _settings = new UISettings { language = _settings.language }; SyncSliders(); SaveSettings(); });
+            Click("LanguageEnglish", () => SetLanguage(GameLanguage.English));
+            Click("LanguageThai", () => SetLanguage(GameLanguage.Thai));
+            WireHeroNameInput();
             Slider("ControlSize", value => _settings.controlSize = value);
             Slider("ControlOpacity", value => _settings.controlOpacity = value);
             Slider("TextSize", value => _settings.textSize = value);
@@ -277,7 +286,7 @@ namespace MagicGame
             T("SfxVolumeValue").text = $"{_settings.sfxVolume:P0}";
             T("UiVolumeValue").text = $"{_settings.uiVolume:P0}";
             GameAudio.ApplyVolumes(_settings);
-            T("ReducedMotionLabel").text = "Reduced UI motion: " + (_settings.reducedMotion ? "On" : "Off");
+            T("ReducedMotionLabel").text = LF("Reduced UI motion: {0}", L(_settings.reducedMotion ? "On" : "Off"));
             if (_settings.reducedMotion && _stack.Count > 0) N(CurrentScreen.ToString()).GetComponent<CanvasGroup>().alpha = 1;
             FitMenuGroups();
             PositionSkillCancel();
@@ -352,9 +361,11 @@ namespace MagicGame
         {
             if (!_started) return;
             if (_screenSize.x != Screen.width || _screenSize.y != Screen.height || _safeArea != Screen.safeArea) ApplySafeArea();
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) Back();
+            // While a name is being typed, Escape belongs to the text field (it cancels the edit).
+            bool typing = EditingText();
+            if (!typing && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) Back();
             var gamepad = Gamepad.current;
-            if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame) Back();
+            if (!typing && gamepad != null && gamepad.buttonEast.wasPressedThisFrame) Back();
             if (_openHeroesAfterLoad && _level == null)
             {
                 _openHeroesAfterLoad = false;
@@ -385,7 +396,7 @@ namespace MagicGame
             var rect = (RectTransform)N("AimMarker").transform;
             RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)rect.parent, screen, null, out var local);
             rect.anchoredPosition = local;
-            T("AimMarkerLabel").text = config.role == HeroRole.Tanky ? "ULT" : "ACTIVE";
+            T("AimMarkerLabel").text = L(config.role == HeroRole.Tanky ? "ULT" : "ACTIVE");
         }
 
         void KeepSelectionVisible()
@@ -500,7 +511,7 @@ namespace MagicGame
         {
             bool hasSave = Progression.HasRun;
             N("MenuContinue").SetActive(hasSave);
-            T("MenuTagline").text = hasSave ? $"Continue with {Progression.Run.hero} / Loop {Progression.Run.loop} / Stage {Progression.Run.stage}" : "Build your magic. Face a harder loop. Leave a lasting legacy.";
+            RefreshTagline();
             N("MenuCheckpoint").SetActive(false);
             // The layout group collapses the hidden Continue row without enlarging New Adventure.
             var colors = B("MenuNew").colors;
@@ -508,6 +519,12 @@ namespace MagicGame
             B("MenuNew").colors = colors;
             FitMenuGroups();
             if (!hasSave && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(N("MenuNew"));
+        }
+
+        void RefreshTagline()
+        {
+            bool hasSave = Progression.HasRun;
+            SetFitted("MenuTagline", hasSave ? LF("Continue with {0} / Loop {1} / Stage {2}", HeroTitle(Progression.Run.hero), Progression.Run.loop, Progression.Run.stage) : L("Build your magic. Face a harder loop. Leave a lasting legacy."));
         }
 
         void Continue()
@@ -530,29 +547,35 @@ namespace MagicGame
 
         public void SelectHero(int index)
         {
+            GameAudio.Play(b => b.uiSelect, true);
+            ShowHero(index);
+        }
+
+        void ShowHero(int index)
+        {
             index = Mathf.Clamp(index, 0, theme.heroes.Length - 1);
             GameSession.SelectedCharacter = index;
-            GameAudio.Play(b => b.uiSelect, true);
             var hero = theme.heroes[index];
             GameSession.SelectedHeroId = hero.displayName;
             I("SelectedHero").sprite = hero.PreviewSprite;
-            T("SelectedName").text = hero.displayName;
-            T("SelectedRole").text = hero.combat.RoleName;
+            T("SelectedName").text = L(hero.MenuName);
+            T("SelectedRole").text = L(hero.MenuName);
+            N("HeroNameInput").GetComponent<TMPro.TMP_InputField>().SetTextWithoutNotify(HeroNames.Get(hero.displayName));
             T("SelectedRole").color = ArcaneTheme.HeroColors[index];
-            T("HeroSummary").text = Summaries[(int)hero.combat.role];
+            T("HeroSummary").text = L(Summaries[(int)hero.combat.role]);
             for (int i = 0; i < theme.heroes.Length; i++)
                 T("HeroName" + i).color = i == index ? ArcaneTheme.Cyan : ArcaneTheme.Paper;
-            for (int i = 0; i < 4; i++) T("HeroAbilityTitle" + i).text = AbilityNames[(int)hero.combat.role][i];
+            for (int i = 0; i < 4; i++) T("HeroAbilityTitle" + i).text = L(AbilityNames[(int)hero.combat.role][i]);
         }
 
         void ShowAbility(int index)
         {
             var config = theme.heroes[GameSession.SelectedCharacter].combat;
             string body = AbilityDescription(config, index);
-            T("DialogTitle").text = AbilityNames[(int)config.role][index];
+            T("DialogTitle").text = L(AbilityNames[(int)config.role][index]);
             T("DialogBody").text = body;
             N("DialogConfirm").SetActive(false);
-            T("DialogCancelLabel").text = "Back";
+            T("DialogCancelLabel").text = L("Back");
             Push(ScreenId.Dialog);
         }
 
@@ -565,21 +588,23 @@ namespace MagicGame
                 new[] { "Fire a slow arcane orb that explodes on impact and bypasses designated obstacles and defenses.", "Place a slowing field at the aim marker.", "Your magic bypasses defense and designated obstacles while respecting the map boundary.", "Mark visible enemies and strike them with guaranteed-hit magic spears." },
                 new[] { "Solar: explosive fire with burn. Lunar: concentrated single-target magic.", "Solar: a nearby ring of fire pushes enemies away. Lunar: an aimed bolt roots its target.", "Switching to Solar briefly grants attack power. Switching to Lunar briefly grants movement speed.", "Damage enemies throughout the visible battlefield and restore your health. Your stance stays unchanged." }
             };
-            var text = descriptions[(int)config.role][index];
-            if (index == 0) text += $"\n\nBase damage: {config.basicDamage:0.#}\nAttack interval: {config.basicInterval:0.##}s";
-            if (index == 1) text += $"\n\nCooldown: {config.activeCooldown:0.#}s\nDuration: {config.duration:0.#}s";
-            if (index == 3) text += $"\n\nDamage: {config.ultimateDamage:0.#}\nCooldown: {config.ultimateCooldown:0.#}s";
-            if (index == 2 && config.role == HeroRole.Shadow) text += $"\n\nMaximum stacks: {config.maxStacks}\nStack timeout: {config.stackTimeout:0.#}s";
-            if (index == 2 && config.role == HeroRole.Magician) text += $"\n\nEvasion chance: {config.evasion:P0}";
-            if (index == 2 && config.role == HeroRole.Tanky) text += $"\n\nShield capacity: {config.shieldCapacity:0.#}\nDamage to shield: {config.conversion:P0}";
-            if (index == 2 && config.role == HeroRole.Daphne) text += $"\n\nStance switch cooldown: {config.stanceCooldown:0.#}s";
+            var text = Loc.Tr(descriptions[(int)config.role][index]);
+            if (index == 0) text += Loc.F("\n\nBase damage: {0:0.#}\nAttack interval: {1:0.##}s", config.basicDamage, config.basicInterval);
+            if (index == 1) text += Loc.F("\n\nCooldown: {0:0.#}s\nDuration: {1:0.#}s", config.activeCooldown, config.duration);
+            if (index == 3) text += Loc.F("\n\nDamage: {0:0.#}\nCooldown: {1:0.#}s", config.ultimateDamage, config.ultimateCooldown);
+            if (index == 2 && config.role == HeroRole.Shadow) text += Loc.F("\n\nMaximum stacks: {0}\nStack timeout: {1:0.#}s", config.maxStacks, config.stackTimeout);
+            if (index == 2 && config.role == HeroRole.Magician) text += Loc.F("\n\nEvasion chance: {0:P0}", config.evasion);
+            if (index == 2 && config.role == HeroRole.Tanky) text += Loc.F("\n\nShield capacity: {0:0.#}\nDamage to shield: {1:P0}", config.shieldCapacity, config.conversion);
+            if (index == 2 && config.role == HeroRole.Daphne) text += Loc.F("\n\nStance switch cooldown: {0:0.#}s", config.stanceCooldown);
             return text;
         }
 
-        // The prologue lives in Resources/Story/Prologue.txt (zero-width spaces mark where Thai lines may wrap).
+        // The prologue lives in Resources/Story/Prologue.txt (Thai; zero-width spaces mark where lines may wrap)
+        // and Prologue_en.txt (English).
         void OpenStory()
         {
-            var story = Resources.Load<TextAsset>("Story/Prologue");
+            var story = Resources.Load<TextAsset>(Loc.IsThai ? "Story/Prologue" : "Story/Prologue_en");
+            T("StoryTitle").text = Loc.IsThai ? "เนื้อเรื่อง" : "Story";
             T("StoryBody").text = story != null ? story.text.Trim() : "";
             N("StoryScroll").GetComponent<UnityEngine.UI.ScrollRect>().verticalNormalizedPosition = 1f;
             Push(ScreenId.Story);
@@ -590,15 +615,15 @@ namespace MagicGame
             _confirm = callback;
             T("DialogTitle").text = title;
             T("DialogBody").text = body;
-            T("DialogCancelLabel").text = "Cancel";
+            T("DialogCancelLabel").text = L("Cancel");
             N("DialogConfirm").SetActive(true);
             Push(ScreenId.Dialog);
         }
 
         void RefreshHealth(Health health)
         {
-            T("HUDHealth").text = $"{Mathf.CeilToInt(health.CurrentHp)} / {health.maxHp:0} HP";
-            T("HUDShield").text = health.ShieldHp > 0 ? $"Shield {Mathf.CeilToInt(health.ShieldHp)}" : "";
+            T("HUDHealth").text = LF("{0} / {1:0} HP", Mathf.CeilToInt(health.CurrentHp), health.maxHp);
+            T("HUDShield").text = health.ShieldHp > 0 ? LF("Shield {0}", Mathf.CeilToInt(health.ShieldHp)) : "";
             SetBar("HealthFill", 0.2f, 0.74f, health.Ratio);
         }
 
@@ -617,23 +642,23 @@ namespace MagicGame
             if (config == null) return;
             _activeReady = skills.ActiveReadyAt; _ultimateReady = skills.UltimateReadyAt; _stanceReady = skills.StanceReadyAt;
             N("HUDStance").SetActive(config.role == HeroRole.Daphne);
-            T("HUDSpecial").text = config.role == HeroRole.Shadow ? $"Hit stacks {skills.HitStacks} / {config.maxStacks}" :
-                config.role == HeroRole.Daphne ? (skills.IsLunar ? "LUNAR / Control" : "SOLAR / Burn") : "";
-            T("StanceCaption").text = skills.IsLunar ? "Lunar" : "Solar";
+            T("HUDSpecial").text = config.role == HeroRole.Shadow ? LF("Hit stacks {0} / {1}", skills.HitStacks, config.maxStacks) :
+                config.role == HeroRole.Daphne ? L(skills.IsLunar ? "LUNAR / Control" : "SOLAR / Burn") : "";
+            T("StanceCaption").text = L(skills.IsLunar ? "Lunar" : "Solar");
             I("StanceSymbol").color = skills.IsLunar ? ArcaneTheme.HeroColors[1] : ArcaneTheme.HeroColors[4];
         }
 
         void RefreshEnemies()
         {
             if (_level == null) return;
-            T("HUDObjective").text = _level.CurrentState == LevelManager.State.Cleared ? "Portal open · Enter to continue" : $"Enemies remaining: {LevelManager.Enemies.Count}";
+            T("HUDObjective").text = _level.CurrentState == LevelManager.State.Cleared ? L("Portal open · Enter to continue") : LF("Enemies remaining: {0}", LevelManager.Enemies.Count);
             if (_boss != null) _boss.Changed -= RefreshBoss;
             _boss = null;
             foreach (var enemy in LevelManager.Enemies)
             {
                 if (enemy == null || !enemy.isBoss || enemy.Health == null || enemy.Health.IsDead) continue;
                 _boss = enemy.Health;
-                T("HUDBoss").text = enemy.displayName;
+                T("HUDBoss").text = L(enemy.displayName);
                 _boss.Changed += RefreshBoss;
                 RefreshBoss(_boss);
                 break;
@@ -646,15 +671,15 @@ namespace MagicGame
         void OnLevelState()
         {
             RefreshEnemies();
-            if (_level.CurrentState == LevelManager.State.Cleared) { Banner("Stage clear! Choose a blessing, then enter the portal"); PresentCards(); return; }
+            if (_level.CurrentState == LevelManager.State.Cleared) { Banner(L("Stage clear! Choose a blessing, then enter the portal")); PresentCards(); return; }
             if (_level.CurrentState != LevelManager.State.GameOver && _level.CurrentState != LevelManager.State.Victory) return;
             var id = _level.CurrentState == LevelManager.State.GameOver ? ScreenId.Defeat : ScreenId.Victory;
             if (_player != null && _player.CurrentCharacter != null) I(id + "Portrait").sprite = _player.CurrentCharacter.PreviewSprite;
-            T(id + "Stage").text = $"{(_player != null && _player.CurrentCharacter != null ? _player.CurrentCharacter.displayName : "Hero")} · Stage {_level.levelNumber} / {_level.levelTitle}";
+            SetFitted(id + "Stage", LF("{0} · Stage {1} / {2}", _player != null && _player.CurrentCharacter != null ? HeroTitle(_player.CurrentCharacter.displayName) : L("Hero"), _level.levelNumber, L(_level.levelTitle)));
             if (id == ScreenId.Defeat && Progression.Data.lastResult != null)
             {
                 var result = Progression.Data.lastResult;
-                T("DefeatStage").text = $"{result.hero} / Loop {result.loop} / Stage {result.stage}\nBanked {result.earned:N0} Rebirth points";
+                SetFitted("DefeatStage", LF("{0} / Loop {1} / Stage {2}\nBanked {3:N0} Rebirth points", HeroTitle(result.hero), result.loop, result.stage, result.earned));
             }
             ShowRoot(id);
         }
@@ -678,10 +703,10 @@ namespace MagicGame
                 "Clear a stage, choose a card, then enter the portal. Defeat the dragon to loop with a stronger build. Death ends your run and banks Rebirth points."
             };
             T("TutorialStep").text = $"0{_tutorialStep + 1} / 04";
-            T("TutorialTitle").text = titles[_tutorialStep];
-            T("TutorialBody").text = bodies[_tutorialStep];
+            T("TutorialTitle").text = L(titles[_tutorialStep]);
+            T("TutorialBody").text = L(bodies[_tutorialStep]);
             I("TutorialIcon").sprite = theme.symbols[_tutorialStep];
-            T("TutorialNextLabel").text = _tutorialStep == 3 ? "Let's Begin" : "Next";
+            T("TutorialNextLabel").text = L(_tutorialStep == 3 ? "Let's Begin" : "Next");
         }
 
         void EndTutorial()

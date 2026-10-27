@@ -122,6 +122,15 @@ namespace MagicGame.Tests
             Assert.That(health.CurrentHp, Is.Zero);
         }
 
+        [TestCase("  Luna   Star  ", "Luna Star")]
+        [TestCase("Ace😀Card", "AceCard")]
+        [TestCase("ดวงจันทร์ผู้ส่องแสงแห่งราตรี", "ดวงจันทร์ผู้ส่องแสง")]
+        [TestCase("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrst")]
+        public void HeroNamesKeepLatinAndThaiWithinTheLimitWithoutSplittingThaiSyllables(string typed, string kept)
+        {
+            Assert.That(HeroNames.Clean(typed), Is.EqualTo(kept));
+        }
+
         [TestCase("New", HeroRole.Tanky)]
         [TestCase("Nueng", HeroRole.Shadow)]
         [TestCase("Peng", HeroRole.Magician)]
@@ -133,7 +142,8 @@ namespace MagicGame.Tests
             Assert.That(set, Is.Not.Null);
             Assert.That(set.combat, Is.Not.Null);
             Assert.That(set.combat.role, Is.EqualTo(role));
-            Assert.That(set.MenuName, Does.Contain(name));
+            Assert.That(set.MenuName, Is.EqualTo(set.combat.RoleName));
+            Assert.That(set.MenuName, Does.Not.Contain(name));
             Assert.That(set.attackProjectile, Is.Not.Null);
         }
 
@@ -193,7 +203,7 @@ namespace MagicGame.Tests
                 foreach (var field in typeof(CharacterCombatConfig).GetFields(BindingFlags.Public | BindingFlags.Instance))
                 {
                     // Presentation is assigned by SkillVfxSetup after the initial balance pass.
-                    if (field.FieldType == typeof(VfxSlot) ||
+                    if (field.FieldType == typeof(VfxSlot) || field.FieldType == typeof(Sprite) ||
                         (field.Name.StartsWith("eclipse") && !field.Name.StartsWith("eclipseField"))) continue;
                     Assert.That(field.GetValue(generated), Is.EqualTo(field.GetValue(saved)), $"{name}: {field.Name}");
                 }

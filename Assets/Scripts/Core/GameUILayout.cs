@@ -137,13 +137,14 @@ namespace MagicGame
                 Size((RectTransform)button.transform, new Vector2(0, theme.heroRowHeight), layout: true);
                 var preview = Image("HeroPortrait" + i, button.transform, hero.PreviewSprite, Color.white, 0.025f, 0.05f, 0.23f, 0.9f);
                 preview.preserveAspect = true;
-                Text("HeroName" + i, button.transform, theme, hero.displayName, 30, 0.29f, 0.48f, 0.68f, 0.45f, true);
+                Text("HeroName" + i, button.transform, theme, hero.MenuName, 30, 0.29f, 0.48f, 0.68f, 0.45f, true);
                 Text("HeroRole" + i, button.transform, theme, hero.combat.RoleName, 23, 0.29f, 0.05f, 0.68f, 0.4f).color = ArcaneTheme.HeroColors[i];
             }
             Image("HeroHalo", page, theme.ring, new Color(0.78f, 0.64f, 0.39f, 0.3f), 0.3f, 0.24f, 0.24f, 0.43f).preserveAspect = true;
             Image("SelectedHero", page, theme.heroes[0].PreviewSprite, Color.white, 0.33f, 0.25f, 0.18f, 0.42f).preserveAspect = true;
             Text("SelectedName", page, theme, "New", 47, 0.3f, 0.68f, 0.24f, 0.075f, true, TextAlignmentOptions.Center);
             Text("SelectedRole", page, theme, "Tanky", 28, 0.3f, 0.61f, 0.24f, 0.06f, false, TextAlignmentOptions.Center);
+            BuildHeroNameInput(page);
             Text("HeroSelectedBadge", page, theme, "SELECTED", 23, 0.3f, 0.16f, 0.24f, 0.05f, false, TextAlignmentOptions.Center).color = ArcaneTheme.Cyan;
             var detail = Panel("HeroDetails", page, theme, 0.565f, 0.15f, 0.4f, 0.61f);
             var content = Scroll("HeroSummaryScroll", detail, 0.025f, 0.035f, 0.95f, 0.93f);
@@ -250,6 +251,7 @@ namespace MagicGame
             Header(page, "Settings", "Make it yours", "Controls and readability. Saved automatically.");
             var panel = Panel("SettingsPanel", page, theme, 0.2f, 0.16f, 0.6f, 0.6f);
             var content = Scroll("SettingsScroll", panel, 0.035f, 0.025f, 0.93f, 0.95f);
+            BuildLanguageSettings(content);
             Paragraph("SettingsIntro", content, theme, "<color=#C8A363>TOUCH CONTROLS</color>\nAdjust the controls to fit your thumbs.");
             BuildSlider(content, "ControlSize", "Control size", 0.8f, 1.2f, 1f);
             BuildSlider(content, "ControlOpacity", "Control opacity", 0.3f, 1f, 0.65f);

@@ -69,7 +69,9 @@ namespace MagicGame
                 Health.ShieldCapacity = Config.shieldCapacity;
                 for (int i = 0; i < 4; i++)
                 {
-                    var visual = SkillVfx.Ring(transform.position, 0.14f, Color.cyan, 0f);
+                    var visual = Config.shieldOrbSprite != null
+                        ? SkillVfx.StillSprite(transform.position, Config.shieldOrbSprite, Config.shieldOrbHeight)
+                        : SkillVfx.Ring(transform.position, 0.14f, Color.cyan, 0f);
                     _shields.Add(visual);
                     _owned.Add(visual);
                 }
@@ -108,6 +110,9 @@ namespace MagicGame
             {
                 if (_shields[i] == null) continue;
                 Vector2 point;
+                // A drawn wall replaces the orbiting shields while it stands; the line placeholder gathers them along it.
+                bool drawnWall = _wall != null && Config.shieldWallSprite != null;
+                if (_shields[i].activeSelf == drawnWall) _shields[i].SetActive(!drawnWall);
                 if (_wall != null)
                 {
                     Vector2 tangent = new Vector2(-_wall.forward.y, _wall.forward.x);
@@ -118,7 +123,10 @@ namespace MagicGame
                     float angle = Time.time * 1.5f + i * Mathf.PI * 0.5f;
                     point = _player.Center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 0.65f;
                 }
+                // Only the position follows the orbit, so each shield stays upright as drawn.
                 _shields[i].transform.position = point;
+                if (_shields[i].TryGetComponent<SpriteRenderer>(out var shieldSprite))
+                    shieldSprite.sortingOrder = -Mathf.RoundToInt(point.y * 100f);
             }
         }
 
