@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "art_direction_brief": "Docs/Art/Grimoire/README.md",
+  "assets": [
+    {
+      "id": "surface-tile",
+      "role": "repeatable navy leather",
+      "path": "Assets/Art/UI/Grimoire/SurfaceTile.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "256x256",
+        "alpha": false,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": true
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/SurfaceSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "panel-frame",
+      "role": "large grimoire binding",
+      "path": "Assets/Art/UI/Grimoire/PanelFrame.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "256x256",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          44,
+          44,
+          44,
+          44
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "button-frame",
+      "role": "action/card binding",
+      "path": "Assets/Art/UI/Grimoire/ButtonFrame.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "128x128",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          22,
+          22,
+          22,
+          22
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "hud-frame",
+      "role": "light combat binding",
+      "path": "Assets/Art/UI/Grimoire/HUDFrame.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "96x96",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          17,
+          17,
+          17,
+          17
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "focus-frame",
+      "role": "normal, primary, hover, selected, pressed and disabled outline",
+      "path": "Assets/Art/UI/Grimoire/FocusFrame.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "64x64",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "authored",
+        "url_or_tool": "GrimoireArtImporter",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Assets/Editor/GrimoireArtImporter.cs",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "slider-track",
+      "role": "slider rail",
+      "path": "Assets/Art/UI/Grimoire/SliderTrack.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "64x12",
+        "alpha": false,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          6,
+          4,
+          6,
+          4
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "slider-handle",
+      "role": "slider gem",
+      "path": "Assets/Art/UI/Grimoire/SliderHandle.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "24x24",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    },
+    {
+      "id": "header-ornament",
+      "role": "heading gem",
+      "path": "Assets/Art/UI/Grimoire/HeaderOrnament.png",
+      "status": "validated",
+      "technical": {
+        "dimensions": "24x24",
+        "alpha": true,
+        "anchor": "center",
+        "frames": 1,
+        "filtering": "nearest",
+        "border": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pixels_per_unit": 100,
+        "mipmaps": false,
+        "compression": "uncompressed",
+        "repeat": false
+      },
+      "visual_locks": [
+        "midnight navy",
+        "aged gold",
+        "cyan gems",
+        "pixel clusters",
+        "upper-left light"
+      ],
+      "source": {
+        "kind": "generated-and-normalized",
+        "url_or_tool": "built-in image_gen",
+        "creator": "Codex",
+        "created_at": "2026-10-27",
+        "source_record": "Docs/Art/Grimoire/FrameSource.png",
+        "prompt_or_source_record": "Docs/Art/Grimoire/prompts.md"
+      },
+      "verification": {
+        "report": "Logs/Grimoire-ArtReport.json",
+        "screenshots": "Logs/UI/Grimoire/",
+        "native_scale_reviewed": true,
+        "in_engine_reviewed": true,
+        "technical_checks_passed": true,
+        "review_record": "Docs/GRIMOIRE_UI_CHANGES.md"
+      }
+    }
+  ]
+}

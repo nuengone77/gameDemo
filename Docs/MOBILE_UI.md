@@ -4,6 +4,15 @@ The game uses a shared uGUI prefab with a storybook fantasy theme. Open
 `Assets/Scenes/MainMenu.unity` and press Play. Android is configured for both
 landscape orientations; keyboard and mouse remain available in the Editor.
 
+The grimoire skin uses tiled navy leather, sliced antique-gold frames, and cyan
+gem accents. Menu actions use compact layout rows that expand with text size;
+Rebirth and View Build sit inside their menu groups. The existing twin sticks
+retain their original art and geometry. Art sources, exact generation prompts,
+normalization, sprite sizes, and authoring defaults are documented in
+[`Art/Grimoire/README.md`](Art/Grimoire/README.md).
+The implementation record and validation results are in
+[`GRIMOIRE_UI_CHANGES.md`](GRIMOIRE_UI_CHANGES.md).
+
 ## Screens
 
 Main Menu leads to hero selection, How to Play, and Settings. A valid checkpoint

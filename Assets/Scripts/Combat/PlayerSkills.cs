@@ -18,7 +18,8 @@ namespace MagicGame
             !GameUI.GameplayBlocked &&
             (LevelManager.Instance == null || LevelManager.Instance.IsPlaying);
         public float AttackInterval => Config == null ? _player.attackCooldown : Mathf.Max(0.05f,
-            Config.basicInterval / Mathf.Min(5f, Health.Status.AttackSpeedMultiplier + HitStacks * Config.speedPerStack));
+            Config.basicInterval / Mathf.Min(5f, Health.Status.AttackSpeedMultiplier + HitStacks * Config.speedPerStack +
+                (_player.ProgressionBonuses != null ? _player.ProgressionBonuses.AttackSpeedBonus : 0)));
 
         PlayerController _player;
         Rigidbody2D _body;
@@ -45,7 +46,7 @@ namespace MagicGame
             Health.ClearCombatBonuses();
             Health.DamageDealt -= OnDamageDealt;
             Health.DamageDealt += OnDamageDealt;
-            if (Config == null) return;
+            if (Config == null || Health.IsDead) return;
             if (Config.role == HeroRole.Tanky)
             {
                 Health.DistanceReduction = Config.distanceReduction;
@@ -228,6 +229,8 @@ namespace MagicGame
                     }
                     break;
             }
+            if (_player.ProgressionBonuses != null)
+                Health.AddShield(Health.maxHp * _player.ProgressionBonuses.ActiveShield);
             SkillVfx.Burst(transform.position, Color.white, 0.4f);
             Changed?.Invoke();
             return true;

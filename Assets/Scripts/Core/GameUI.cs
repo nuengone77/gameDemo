@@ -13,7 +13,7 @@ namespace MagicGame
     public partial class GameUI : MonoBehaviour
     {
         public ArcaneTheme theme;
-        public enum ScreenId { Menu, Heroes, HUD, Pause, Settings, Help, Defeat, Victory, Dialog, Tutorial }
+        public enum ScreenId { Menu, Heroes, HUD, Pause, Settings, Help, Defeat, Victory, Dialog, Tutorial, Cards, Rebirth, Build }
         public static GameUI Instance { get; private set; }
         public static bool GameplayBlocked => Instance != null && Instance._level != null &&
             Instance._stack.Count > 0 && Instance.CurrentScreen != ScreenId.HUD;
@@ -71,10 +71,12 @@ namespace MagicGame
             GameplayInput.Reset();
             _settings = UISettings.Load();
             if (transform.Find("SafeArea") == null) BuildLayout();
+            BuildProgressionLayout();
             foreach (var rect in GetComponentsInChildren<RectTransform>(true)) _nodes[rect.name] = rect.gameObject;
             foreach (var text in GetComponentsInChildren<TMP_Text>(true)) _fontSizes[text] = text.fontSize;
             EnsureEventSystem();
             WireButtons();
+            WireProgressionButtons();
             ApplySafeArea();
             ApplySettings();
         }
@@ -84,8 +86,10 @@ namespace MagicGame
             _level = LevelManager.Instance;
             _player = PlayerController.Instance;
             _started = true;
+            Progression.Changed += RefreshProgression;
             if (_level == null)
             {
+                Progression.MigrateLegacy();
                 ShowRoot(ScreenId.Menu);
                 RefreshMenu();
                 return;
@@ -106,6 +110,8 @@ namespace MagicGame
             RefreshEnemies();
             Banner($"Stage {_level.levelNumber} · {_level.levelTitle}");
             if (_level.levelNumber == 1 && PlayerPrefs.GetInt(GameSession.TutorialKey, 0) == 0) BeginTutorial();
+            else PresentCards();
+            RefreshProgression();
         }
 
         void EnsureEventSystem()
@@ -146,15 +152,15 @@ namespace MagicGame
             }
             Click("HeroesBegin", () =>
             {
-                if (GameSession.TryGetCheckpoint(out _))
-                    Confirm("Begin a new adventure?", "Your saved adventure will be replaced. Your selected hero will begin at Stage 1.", StartAdventure);
+                if (Progression.HasRun || GameSession.TryGetCheckpoint(out _))
+                    Confirm("Begin a new adventure?", "Your current run will end and its earned points will be banked. Run cards will be lost. Your selected hero begins at Stage 1.", StartAdventure);
                 else StartAdventure();
             });
             Click("HUDPause", () => Push(ScreenId.Pause));
             Click("PauseResume", Back);
             Click("PauseHelp", () => Push(ScreenId.Help));
             Click("PauseSettings", () => Push(ScreenId.Settings));
-            Click("PauseRestart", () => Confirm("Restart this stage?", "This battle will restart with full health and fresh cooldowns. Your stage checkpoint is kept.", () => _level.RestartStage()));
+            Click("PauseRestart", () => Confirm("End this run?", "Bank earned points and lose this run's cards. Permanent rebirth bonuses remain.", () => { Progression.Finish(true); _level.ReturnToMenu(); }));
             Click("PauseMenu", () => _level.ReturnToMenu());
             Click("DefeatRetry", () => _level.RestartStage());
             Click("DefeatMenu", () => _level.ReturnToMenu());
@@ -199,6 +205,18 @@ namespace MagicGame
                 // Large display headings remain fixed; body text and control labels honor the text setting.
                 pair.Key.fontSize = pair.Value >= 45 ? pair.Value : pair.Value * _settings.textSize;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                var card = T("CardChoice" + i + "Label");
+                card.fontSizeMin = 22 * _settings.textSize;
+                card.fontSizeMax = 28 * _settings.textSize;
+            }
+            foreach (var name in new[] { "RebirthSubtitle", "BuildSubtitle", "HUDProgression", "HUDHealth", "MoveStickCaption", "AimStickCaption" })
+            {
+                var label = T(name);
+                label.fontSizeMin = _fontSizes[label];
+                label.fontSizeMax = _fontSizes[label] * _settings.textSize;
+            }
             N("TouchControls").GetComponent<CanvasGroup>().alpha = _settings.controlOpacity;
             ScaleTopHUD("HealthPanel", 0.815f, 0.975f);
             ScaleTopHUD("StagePanel", 0.875f, 0.975f);
@@ -206,10 +224,11 @@ namespace MagicGame
             ScaleTopHUD("HUDObjective", 0.875f, 0.925f);
             ScaleTopHUD("BossPanel", 0.77f, 0.865f);
             ScaleTopHUD("HUDSpecial", 0.75f, 0.8f);
-            for (int i = 0; i < theme.heroes.Length; i++)
-                N("Hero" + i).GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 144 * _settings.textSize;
-            for (int i = 0; i < 4; i++)
-                N("HeroAbility" + i).GetComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 144 * _settings.textSize;
+            ScaleTopHUD("HUDProgression", .71f, .755f);
+            foreach (var metrics in GetComponentsInChildren<ArcaneControlSize>(true))
+                metrics.Apply(_settings.textSize);
+            foreach (var name in new[] { "HUDActive", "HUDUltimate", "HUDStance" })
+                ((RectTransform)N(name).transform).sizeDelta = Vector2.one * theme.actionSize * Mathf.Max(1, _settings.textSize * .82f);
             foreach (var name in new[] { "MoveStick", "AimStick", "HUDActive", "HUDUltimate", "HUDStance" })
             {
                 var rect = (RectTransform)N(name).transform;
@@ -220,6 +239,7 @@ namespace MagicGame
             T("TextSizeValue").text = $"{_settings.textSize:P0}";
             T("ReducedMotionLabel").text = "Reduced UI motion: " + (_settings.reducedMotion ? "On" : "Off");
             if (_settings.reducedMotion && _stack.Count > 0) N(CurrentScreen.ToString()).GetComponent<CanvasGroup>().alpha = 1;
+            FitMenuGroups();
         }
 
         void ScaleTopHUD(string name, float bottom, float top)
@@ -238,11 +258,34 @@ namespace MagicGame
             _screenSize = new Vector2Int(Screen.width, Screen.height);
             _safeArea = Screen.safeArea;
             var safe = (RectTransform)N("SafeArea").transform;
-            safe.anchorMin = new Vector2(_safeArea.xMin / Mathf.Max(1, Screen.width), _safeArea.yMin / Mathf.Max(1, Screen.height));
-            safe.anchorMax = new Vector2(_safeArea.xMax / Mathf.Max(1, Screen.width), _safeArea.yMax / Mathf.Max(1, Screen.height));
+            // Game view/device resize can briefly report the previous safe-area dimensions.
+            var min = new Vector2(Mathf.Clamp01(_safeArea.xMin / Mathf.Max(1, _screenSize.x)), Mathf.Clamp01(_safeArea.yMin / Mathf.Max(1, _screenSize.y)));
+            var max = new Vector2(Mathf.Clamp01(_safeArea.xMax / Mathf.Max(1, _screenSize.x)), Mathf.Clamp01(_safeArea.yMax / Mathf.Max(1, _screenSize.y)));
+            bool valid = max.x > min.x && max.y > min.y;
+            safe.anchorMin = valid ? min : Vector2.zero;
+            safe.anchorMax = valid ? max : Vector2.one;
             safe.offsetMin = new Vector2(12, 12);
             safe.offsetMax = new Vector2(-12, -12);
+            FitMenuGroups();
             ClearInput();
+        }
+
+        void FitMenuGroups()
+        {
+            var safe = (RectTransform)N("SafeArea").transform;
+            Canvas.ForceUpdateCanvases();
+            foreach (var name in new[] { "MenuPanel", "PausePanel" })
+            {
+                var panel = (RectTransform)N(name).transform;
+                if (!panel.gameObject.activeInHierarchy) continue;
+                var scroll = panel.GetComponentInChildren<UnityEngine.UI.ScrollRect>();
+                if (scroll == null) continue; // Older authored prefabs remain usable.
+                UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(scroll.content);
+                float available = Mathf.Max(theme.secondaryHeight + 64, safe.rect.height * panel.anchorMin.y - 64);
+                float preferred = UnityEngine.UI.LayoutUtility.GetPreferredHeight(scroll.content);
+                panel.sizeDelta = new Vector2(Mathf.Min(660 + (name == "PausePanel" ? 80 : 0), safe.rect.width - 48), Mathf.Min(preferred, available));
+            }
+            Canvas.ForceUpdateCanvases();
         }
 
         void Update()
@@ -333,6 +376,7 @@ namespace MagicGame
         public void Back()
         {
             if (_stack.Count == 0) return;
+            if (CurrentScreen == ScreenId.Cards) return;
             if (CurrentScreen == ScreenId.Tutorial) { EndTutorial(); return; }
             if (CurrentScreen == ScreenId.HUD) { Push(ScreenId.Pause); return; }
             if (CurrentScreen == ScreenId.Defeat || CurrentScreen == ScreenId.Victory) { _level.ReturnToMenu(); return; }
@@ -360,6 +404,7 @@ namespace MagicGame
             }
             // Stack order, rather than enum order, determines modal layering.
             foreach (var id in _stack) N(id.ToString()).transform.SetAsLastSibling();
+            FitMenuGroups();
             N("VillageBackdrop").SetActive(_level == null);
             N("BackdropWash").SetActive(_level == null);
             Time.timeScale = GameplayBlocked ? 0 : 1;
@@ -391,24 +436,25 @@ namespace MagicGame
 
         void RefreshMenu()
         {
-            bool hasSave = GameSession.TryGetCheckpoint(out var checkpoint);
+            bool hasSave = Progression.HasRun;
             N("MenuContinue").SetActive(hasSave);
-            T("MenuTagline").text = hasSave ? $"Continue with {checkpoint.hero} · Stage {checkpoint.scene.Substring(5)}" : "Beyond the village, an ancient power awakens.";
+            T("MenuTagline").text = hasSave ? $"Continue with {Progression.Run.hero} / Loop {Progression.Run.loop} / Stage {Progression.Run.stage}" : "Build your magic. Face a harder loop. Leave a lasting legacy.";
             N("MenuCheckpoint").SetActive(false);
-            // Leave one clear primary action for first-time players.
-            var rect = (RectTransform)N("MenuNew").transform;
-            rect.anchorMin = new Vector2(0.07f, hasSave ? 0.36f : 0.55f);
-            rect.anchorMax = new Vector2(0.93f, hasSave ? 0.64f : 0.9f);
+            // The layout group collapses the hidden Continue row without enlarging New Adventure.
+            var colors = B("MenuNew").colors;
+            colors.normalColor = hasSave ? new Color(.78f, .64f, .39f, .28f) : ArcaneTheme.Cyan;
+            B("MenuNew").colors = colors;
+            FitMenuGroups();
             if (!hasSave && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(N("MenuNew"));
         }
 
         void Continue()
         {
-            if (!GameSession.TryGetCheckpoint(out var checkpoint)) { RefreshMenu(); return; }
+            if (!Progression.HasRun && !Progression.MigrateLegacy()) { RefreshMenu(); return; }
             for (int i = 0; i < theme.heroes.Length; i++)
-                if (theme.heroes[i].displayName == checkpoint.hero) GameSession.SelectedCharacter = i;
-            GameSession.SelectedHeroId = checkpoint.hero;
-            GameSession.Load(checkpoint.scene);
+                if (theme.heroes[i].displayName == Progression.Run.hero) GameSession.SelectedCharacter = i;
+            GameSession.SelectedHeroId = Progression.Run.hero;
+            GameSession.Load(Progression.Scene);
         }
 
         void StartAdventure()
@@ -416,7 +462,7 @@ namespace MagicGame
             GameSession.ClearCheckpoint();
             var hero = theme.heroes[GameSession.SelectedCharacter];
             GameSession.SelectedHeroId = hero.displayName;
-            GameSession.SaveCheckpoint("Level1", hero.displayName);
+            Progression.Begin(hero.displayName);
             GameSession.Load("Level1");
         }
 
@@ -528,11 +574,16 @@ namespace MagicGame
         void OnLevelState()
         {
             RefreshEnemies();
-            if (_level.CurrentState == LevelManager.State.Cleared) { Banner("Stage clear! Enter the portal"); return; }
+            if (_level.CurrentState == LevelManager.State.Cleared) { Banner("Stage clear! Choose a blessing, then enter the portal"); PresentCards(); return; }
             if (_level.CurrentState != LevelManager.State.GameOver && _level.CurrentState != LevelManager.State.Victory) return;
             var id = _level.CurrentState == LevelManager.State.GameOver ? ScreenId.Defeat : ScreenId.Victory;
             if (_player != null && _player.CurrentCharacter != null) I(id + "Portrait").sprite = _player.CurrentCharacter.PreviewSprite;
             T(id + "Stage").text = $"{(_player != null && _player.CurrentCharacter != null ? _player.CurrentCharacter.displayName : "Hero")} · Stage {_level.levelNumber} / {_level.levelTitle}";
+            if (id == ScreenId.Defeat && Progression.Data.lastResult != null)
+            {
+                var result = Progression.Data.lastResult;
+                T("DefeatStage").text = $"{result.hero} / Loop {result.loop} / Stage {result.stage}\nBanked {result.earned:N0} Rebirth points";
+            }
             ShowRoot(id);
         }
 
@@ -552,7 +603,7 @@ namespace MagicGame
                 "Drag the left stick to move. Your adventure is paused while you read this guide.",
                 "Drag the right stick to aim and fire. Release to stop. Ground skills use its last direction and distance.",
                 "Tap Active or Ultimate above the right stick. Their timers show when they are ready. Daphne also has a Solar / Lunar stance button.",
-                "Defeat every enemy to open the portal, then walk into it. Your stage and hero are saved; Continue restarts that stage."
+                "Clear a stage, choose a card, then enter the portal. Defeat the dragon to loop with a stronger build. Death ends your run and banks Rebirth points."
             };
             T("TutorialStep").text = $"0{_tutorialStep + 1} / 04";
             T("TutorialTitle").text = titles[_tutorialStep];
@@ -570,6 +621,7 @@ namespace MagicGame
                 _stack.RemoveAt(_stack.Count - 1);
                 RefreshStack();
             }
+            PresentCards();
         }
 
         void OnApplicationPause(bool paused)
@@ -590,6 +642,7 @@ namespace MagicGame
             if (Instance != this) return;
             if (_level != null) _level.StateChanged -= OnLevelState;
             LevelManager.EnemiesChanged -= RefreshEnemies;
+            Progression.Changed -= RefreshProgression;
             if (_player != null)
             {
                 _player.Health.Changed -= RefreshHealth;

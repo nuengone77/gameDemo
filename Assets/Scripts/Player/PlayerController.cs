@@ -20,6 +20,7 @@ namespace MagicGame
 
         public Health Health { get; private set; }
         public PlayerSkills Skills { get; private set; }
+        public PlayerProgression ProgressionBonuses { get; private set; }
         public CharacterAnimSet CurrentCharacter { get; private set; }
         public bool CanMove => !GameUI.GameplayBlocked && isActiveAndEnabled && Health != null && !Health.IsDead &&
             (LevelManager.Instance == null || LevelManager.Instance.AllowsMovement);
@@ -58,7 +59,14 @@ namespace MagicGame
             }
             Skills = GetComponent<PlayerSkills>();
             if (Skills == null) Skills = gameObject.AddComponent<PlayerSkills>();
-            Skills.Initialize(this, config);
+            string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            if (config != null && scene.StartsWith("Level") && int.TryParse(scene.Substring(5), out int stage) && stage >= 1 && stage <= 7)
+            {
+                Progression.EnsureStage(CurrentCharacter.displayName, stage);
+                ProgressionBonuses = gameObject.AddComponent<PlayerProgression>();
+                ProgressionBonuses.Initialize(this, config);
+            }
+            else Skills.Initialize(this, config);
         }
 
         void OnDestroy()

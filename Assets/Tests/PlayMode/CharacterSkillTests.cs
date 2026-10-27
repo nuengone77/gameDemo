@@ -14,14 +14,29 @@ namespace MagicGame.Tests
         readonly List<Object> _owned = new();
         PlayerController _player;
         CharacterCombatConfig _config;
-        string _savedCheckpoint, _savedHero;
+        string _savedCheckpoint, _savedHero, _savedProgression;
         int _savedTutorial, _savedSelection;
+        InputSettings.BackgroundBehavior _savedBackgroundBehavior;
+        #if UNITY_EDITOR
+        InputSettings.EditorInputBehaviorInPlayMode _savedEditorInputBehavior;
+        #endif
 
         [UnitySetUp]
         public IEnumerator Setup()
         {
+            // Synthetic keyboard events must reach the test player even when automation
+            // leaves focus on another Editor window. Restore the user's settings afterward.
+            _savedBackgroundBehavior = InputSystem.settings.backgroundBehavior;
+            InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+            #if UNITY_EDITOR
+            _savedEditorInputBehavior = InputSystem.settings.editorInputBehaviorInPlayMode;
+            InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+            #endif
             // Combat tests start past onboarding and must not replace a contributor's adventure.
             _savedCheckpoint = PlayerPrefs.GetString(GameSession.CheckpointKey, "");
+            _savedProgression = PlayerPrefs.GetString(Progression.SaveKey, "");
+            PlayerPrefs.DeleteKey(Progression.SaveKey);
+            Progression.Reload();
             _savedTutorial = PlayerPrefs.GetInt(GameSession.TutorialKey, 0);
             _savedSelection = GameSession.SelectedCharacter;
             _savedHero = GameSession.SelectedHeroId;
@@ -111,8 +126,15 @@ namespace MagicGame.Tests
         [UnityTearDown]
         public IEnumerator Teardown()
         {
+            InputSystem.settings.backgroundBehavior = _savedBackgroundBehavior;
+            #if UNITY_EDITOR
+            InputSystem.settings.editorInputBehaviorInPlayMode = _savedEditorInputBehavior;
+            #endif
             foreach (var item in _owned) if (item != null) Object.Destroy(item);
             _owned.Clear();
+            if (_savedProgression.Length > 0) PlayerPrefs.SetString(Progression.SaveKey, _savedProgression);
+            else PlayerPrefs.DeleteKey(Progression.SaveKey);
+            Progression.Reload();
             foreach (var visual in Object.FindObjectsByType<SkillVfx>()) Object.Destroy(visual.gameObject);
             if (_savedCheckpoint.Length > 0) PlayerPrefs.SetString(GameSession.CheckpointKey, _savedCheckpoint);
             else PlayerPrefs.DeleteKey(GameSession.CheckpointKey);
@@ -458,6 +480,7 @@ namespace MagicGame.Tests
                 SceneManager.LoadScene("Level1");
                 yield return null;
                 var player = PlayerController.Instance;
+                if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
                 Assert.That(player, Is.Not.Null);
                 Assert.That(player.Skills.Config.role, Is.EqualTo(expected[i]));
                 Assert.That(player.Skills.CanAct, Is.True);
@@ -473,11 +496,12 @@ namespace MagicGame.Tests
         }
 
         [UnityTest]
-        public IEnumerator SevenLevelsStillClearTransitionAndFinishWithVictory()
+        public IEnumerator SevenLevelsClearTransitionAndLoopWithBuild()
         {
             GameSession.SelectedCharacter = 2;
             SceneManager.LoadScene("Level1");
             yield return null;
+            if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
             for (int level = 1; level <= 7; level++)
             {
                 var manager = LevelManager.Instance;
@@ -493,13 +517,16 @@ namespace MagicGame.Tests
                 }
                 foreach (var enemy in new List<EnemyController>(LevelManager.Enemies))
                     enemy.Health.TakeDamage(new DamageInfo(10000f) { guaranteed = true, bypassDefense = true });
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSecondsRealtime(0.25f);
                 Assert.That(manager.IsPlaying, Is.False);
+                Assert.That(GameUI.Instance.CurrentScreen, Is.EqualTo(GameUI.ScreenId.Cards));
+                GameUI.Instance.SelectCard(0);
                 manager.CompleteLevel();
                 yield return null;
             }
-            Assert.That(PlayerController.Instance.gameObject.activeSelf, Is.False);
-            Assert.That(PlayerController.Instance.CanMove, Is.False);
+            Assert.That(Progression.Run.loop, Is.EqualTo(2));
+            Assert.That(PlayerController.Instance.gameObject.activeSelf, Is.True);
+            Assert.That(PlayerController.Instance.CanMove, Is.True);
             SceneManager.LoadScene("Level1");
             yield return null;
             Assert.That(PlayerController.Instance.Skills.ActiveRemaining, Is.Zero);
@@ -516,6 +543,7 @@ namespace MagicGame.Tests
                 SceneManager.LoadScene($"Level{stage}");
                 yield return null;
                 var player = PlayerController.Instance;
+                if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
                 var config = player.Skills.Config;
                 Assert.That(player.CurrentCharacter.displayName, Is.EqualTo(hero));
                 Assert.That(player.Health.maxHp, Is.EqualTo(config.maxHp));
@@ -572,11 +600,14 @@ namespace MagicGame.Tests
             GameSession.SelectedCharacter = 2;
             SceneManager.LoadScene("Level1");
             yield return null;
+            if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
             foreach (var enemy in new List<EnemyController>(LevelManager.Enemies))
                 enemy.Health.TakeDamage(new DamageInfo(10000f) { guaranteed = true, bypassDefense = true });
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSecondsRealtime(0.3f);
             var manager = LevelManager.Instance;
             var player = PlayerController.Instance;
+            Assert.That(GameUI.Instance.CurrentScreen, Is.EqualTo(GameUI.ScreenId.Cards));
+            GameUI.Instance.SelectCard(0);
             Assert.That(manager.IsPlaying, Is.False);
             Assert.That(manager.portal.IsOpen, Is.True);
             Assert.That(player.CanMove, Is.True);
@@ -611,6 +642,7 @@ namespace MagicGame.Tests
                 SceneManager.LoadScene($"Level{stage}");
                 yield return null;
                 var player = PlayerController.Instance;
+                if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
                 player.Health.maxHp = 10000f;
                 player.Health.Heal(10000f);
                 player.Health.invulnerableTime = 0f;
@@ -670,6 +702,7 @@ namespace MagicGame.Tests
             SceneManager.LoadScene("Level7");
             yield return null;
             yield return null;
+            if (GameUI.Instance.CurrentScreen == GameUI.ScreenId.Cards) GameUI.Instance.SelectCard(0);
             var player = PlayerController.Instance;
             var manager = LevelManager.Instance;
             var dragon = new List<EnemyController>(LevelManager.Enemies).Find(e => e.flyInSky);

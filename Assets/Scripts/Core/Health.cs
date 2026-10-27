@@ -108,6 +108,13 @@ namespace MagicGame
             }
         }
 
+        public void SetCurrentHp(float amount)
+        {
+            if (IsDead) return;
+            CurrentHp = Mathf.Clamp(amount, 0f, maxHp);
+            Changed?.Invoke(this);
+        }
+
         public void ClearCombatBonuses()
         {
             ShieldHp = 0f;

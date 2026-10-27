@@ -79,16 +79,26 @@ namespace MagicGame.EditorTools
             });
             theme.heroes = GameSession.HeroIds.Select(id => AssetDatabase.LoadAssetAtPath<CharacterAnimSet>($"Assets/Game/AnimSets/{id}.asset")).ToArray();
             theme.village = LoadSprite("Assets/Art/Maps/Game Start Screen.png");
+            GrimoireArtImporter.Assign(theme);
             EditorUtility.SetDirty(theme);
-            var root = new GameObject("Arcane Game UI", typeof(RectTransform));
+            var previousScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            var authoringScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(authoringScene);
+            GameObject root = null;
             try
             {
+                root = new GameObject("Arcane Game UI", typeof(RectTransform));
                 var ui = root.AddComponent<GameUI>();
                 ui.theme = theme;
                 ui.BuildLayout();
                 PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/UI/GameUI.prefab");
             }
-            finally { UnityEngine.Object.DestroyImmediate(root); }
+            finally
+            {
+                if (root != null) UnityEngine.Object.DestroyImmediate(root);
+                EditorSceneManager.CloseScene(authoringScene, true);
+                UnityEngine.SceneManagement.SceneManager.SetActiveScene(previousScene);
+            }
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
             PlayerSettings.allowedAutorotateToPortrait = false;
             PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;

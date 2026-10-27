@@ -45,6 +45,31 @@ namespace MagicGame
         public int burstCount = 12;
 
         public Health Health { get; private set; }
+        public bool IsElite { get; private set; }
+        bool _progressionApplied;
+
+        public void ApplyProgression(int loop, bool elite)
+        {
+            if (_progressionApplied) return;
+            _progressionApplied = true;
+            var config = ProgressionConfig.Current;
+            int extra = Mathf.Max(0, loop - 1);
+            IsElite = elite && !isBoss;
+            Health.maxHp = Mathf.Max(1, ProgressionConfig.Safe(Health.maxHp * Mathf.Pow(config.enemyHpGrowth, extra) * (IsElite ? config.eliteHp : 1)));
+            Health.SetCurrentHp(Health.maxHp);
+            damage = ProgressionConfig.Safe(damage * Mathf.Pow(config.enemyDamageGrowth, extra) * (IsElite ? config.eliteDamage : 1));
+            moveSpeed *= (1 + Mathf.Min(config.enemySpeedCap, config.enemySpeedPerLoop * extra)) * (IsElite ? config.eliteSpeed : 1);
+            attackCooldown *= 1 - Mathf.Min(config.enemyCooldownCap, config.enemyCooldownPerLoop * extra);
+            if (IsElite)
+            {
+                displayName = "Elite " + displayName;
+                transform.localScale *= 1.1f;
+                var renderer = GetComponent<SpriteRenderer>();
+                if (renderer != null) renderer.color = new Color(1f, .65f, .85f);
+                var ring = SkillVfx.Ring(transform.position, .45f, new Color(1f, .5f, .8f), 0);
+                ring.transform.SetParent(transform, true);
+            }
+        }
 
         Rigidbody2D _rb;
         DirectionalSpriteAnimator _animator;
