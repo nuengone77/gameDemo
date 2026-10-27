@@ -173,7 +173,7 @@ namespace MagicGame.EditorTools
         // Effects shown while a character has a status (see StatusEffects / StatusVfxSet).
         public static void BuildStatusVfx()
         {
-            string[] packPrefabs = { Status + "Stun.prefab", Status + "Aura Burn.prefab", Status + "Aura Buff.prefab" };
+            string[] packPrefabs = { Status + "Stun.prefab", Status + "Aura Burn.prefab", Status + "Aura Buff.prefab", EliteAura };
             ConvertMaterials(packPrefabs);
 
             const string path = "Assets/Resources/StatusVfx.asset";
@@ -189,10 +189,13 @@ namespace MagicGame.EditorTools
             set.burn = new VfxSlot { prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Status + "Aura Burn.prefab"), scale = BURN_SCALE, loopAll = true };
             set.slow = new VfxSlot { prefab = VfxRecolor.MakeCopy(Status + "Aura .prefab", "Status_SlowAura", SlowIce), scale = SLOW_SCALE, loopAll = true };
             set.buff = new VfxSlot { prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Status + "Aura Buff.prefab"), scale = BUFF_SCALE, loopAll = true };
+            set.elite = new VfxSlot { prefab = AssetDatabase.LoadAssetAtPath<GameObject>(EliteAura), scale = ELITE_SCALE, loopAll = true };
             EditorUtility.SetDirty(set);
         }
 
-        const float STUN_SCALE = 0.6f, BURN_SCALE = 0.25f, SLOW_SCALE = 0.35f, BUFF_SCALE = 0.55f;
+        const float STUN_SCALE = 0.6f, BURN_SCALE = 0.25f, SLOW_SCALE = 0.35f, BUFF_SCALE = 0.55f, ELITE_SCALE = 0.4f;
+        // Gold glow around elite enemies (chosen by the user from the auras in the packs).
+        const string EliteAura = Hovl + "Character auras/Buff.prefab";
 
         // Only the materials these prefabs actually use; everything else in the packs is left alone.
         public static int ConvertMaterials() => ConvertMaterials(Slots.Select(s => s.path));

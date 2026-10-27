@@ -15,6 +15,8 @@ namespace MagicGame
         public VfxSlot slow = new();
         [Tooltip("Player buffs: defense, attack, attack speed, movement.")]
         public VfxSlot buff = new();
+        [Tooltip("Always on around elite enemies (tougher monsters that appear from loop 2).")]
+        public VfxSlot elite = new();
 
         static StatusVfxSet s_instance;
         static bool s_loaded;

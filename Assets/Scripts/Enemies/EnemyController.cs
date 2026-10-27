@@ -65,9 +65,15 @@ namespace MagicGame
                 displayName = "Elite " + displayName;
                 transform.localScale *= 1.1f;
                 var renderer = GetComponent<SpriteRenderer>();
-                if (renderer != null) renderer.color = new Color(1f, .65f, .85f);
-                var ring = SkillVfx.Ring(transform.position, .45f, new Color(1f, .5f, .8f), 0);
-                ring.transform.SetParent(transform, true);
+                var aura = StatusVfxSet.Instance != null ? StatusVfxSet.Instance.elite : null;
+                if (aura != null && aura.IsSet) SkillVfx.Spawn(aura, transform.position, 0f, transform, 4000);
+                else
+                {
+                    // No aura configured: fall back to a pink tint and ring.
+                    if (renderer != null) renderer.color = new Color(1f, .65f, .85f);
+                    var ring = SkillVfx.Ring(transform.position, .45f, new Color(1f, .5f, .8f), 0);
+                    ring.transform.SetParent(transform, true);
+                }
             }
         }
 

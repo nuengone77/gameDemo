@@ -48,3 +48,12 @@ MonoBehaviour:
     playOnce: 0
     loopAll: 1
     impactTime: 0
+  elite:
+    prefab: {fileID: 7155335147208632822, guid: 97c43495f80a3244fad1301dfafbe252, type: 3}
+    scale: 0.4
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
