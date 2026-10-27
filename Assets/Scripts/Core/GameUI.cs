@@ -13,7 +13,7 @@ namespace MagicGame
     public partial class GameUI : MonoBehaviour
     {
         public ArcaneTheme theme;
-        public enum ScreenId { Menu, Heroes, HUD, Pause, Settings, Help, Defeat, Victory, Dialog, Tutorial }
+        public enum ScreenId { Menu, Heroes, HUD, Pause, Settings, Help, Defeat, Victory, Dialog, Tutorial, Story }
         public static GameUI Instance { get; private set; }
         public static bool GameplayBlocked => Instance != null && Instance._level != null &&
             Instance._stack.Count > 0 && Instance.CurrentScreen != ScreenId.HUD;
@@ -71,6 +71,8 @@ namespace MagicGame
             GameplayInput.Reset();
             _settings = UISettings.Load();
             if (transform.Find("SafeArea") == null) BuildLayout();
+            EnsureAudioSettings(); // the saved prefab predates the audio sliders
+            EnsureStory();
             foreach (var rect in GetComponentsInChildren<RectTransform>(true)) _nodes[rect.name] = rect.gameObject;
             foreach (var text in GetComponentsInChildren<TMP_Text>(true)) _fontSizes[text] = text.fontSize;
             EnsureEventSystem();
@@ -125,7 +127,11 @@ namespace MagicGame
         TMP_Text T(string name) => N(name).GetComponent<TMP_Text>();
         UnityEngine.UI.Image I(string name) => N(name).GetComponent<UnityEngine.UI.Image>();
         UnityEngine.UI.Button B(string name) => N(name).GetComponent<UnityEngine.UI.Button>();
-        void Click(string name, Action action) => B(name).onClick.AddListener(() => action());
+        void Click(string name, Action action) => B(name).onClick.AddListener(() =>
+        {
+            GameAudio.Play(b => b.uiClick, true);
+            action();
+        });
 
         void WireButtons()
         {
@@ -133,6 +139,8 @@ namespace MagicGame
             Click("MenuNew", () => { SelectHero(GameSession.SelectedCharacter); Push(ScreenId.Heroes); });
             Click("MenuHelp", () => Push(ScreenId.Help));
             Click("MenuSettings", () => Push(ScreenId.Settings));
+            Click("MenuStory", OpenStory);
+            Click("StoryClose", Back);
             foreach (var id in new[] { "Heroes", "Settings", "Help" }) Click(id + "Back", Back);
             for (int i = 0; i < theme.heroes.Length; i++)
             {
@@ -173,6 +181,10 @@ namespace MagicGame
             Slider("ControlSize", value => _settings.controlSize = value);
             Slider("ControlOpacity", value => _settings.controlOpacity = value);
             Slider("TextSize", value => _settings.textSize = value);
+            Slider("MasterVolume", value => _settings.masterVolume = value);
+            Slider("MusicVolume", value => _settings.musicVolume = value);
+            Slider("SfxVolume", value => _settings.sfxVolume = value);
+            Slider("UiVolume", value => _settings.uiVolume = value);
             SyncSliders();
         }
 
@@ -188,6 +200,10 @@ namespace MagicGame
             N("ControlSize").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.controlSize);
             N("ControlOpacity").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.controlOpacity);
             N("TextSize").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.textSize);
+            N("MasterVolume").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.masterVolume);
+            N("MusicVolume").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.musicVolume);
+            N("SfxVolume").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.sfxVolume);
+            N("UiVolume").GetComponent<UnityEngine.UI.Slider>().SetValueWithoutNotify(_settings.uiVolume);
         }
 
         void SaveSettings() { _settings.Save(); ApplySettings(); }
@@ -218,6 +234,11 @@ namespace MagicGame
             T("ControlSizeValue").text = $"{_settings.controlSize:P0}";
             T("ControlOpacityValue").text = $"{_settings.controlOpacity:P0}";
             T("TextSizeValue").text = $"{_settings.textSize:P0}";
+            T("MasterVolumeValue").text = $"{_settings.masterVolume:P0}";
+            T("MusicVolumeValue").text = $"{_settings.musicVolume:P0}";
+            T("SfxVolumeValue").text = $"{_settings.sfxVolume:P0}";
+            T("UiVolumeValue").text = $"{_settings.uiVolume:P0}";
+            GameAudio.ApplyVolumes(_settings);
             T("ReducedMotionLabel").text = "Reduced UI motion: " + (_settings.reducedMotion ? "On" : "Off");
             if (_settings.reducedMotion && _stack.Count > 0) N(CurrentScreen.ToString()).GetComponent<CanvasGroup>().alpha = 1;
         }
@@ -348,7 +369,7 @@ namespace MagicGame
             foreach (ScreenId id in Enum.GetValues(typeof(ScreenId)))
             {
                 var node = N(id.ToString());
-                bool modalParent = (CurrentScreen == ScreenId.Dialog || CurrentScreen == ScreenId.Tutorial) &&
+                bool modalParent = (CurrentScreen == ScreenId.Dialog || CurrentScreen == ScreenId.Tutorial || CurrentScreen == ScreenId.Story) &&
                     _stack.Count > 1 && _stack[_stack.Count - 2] == id;
                 bool visible = id == CurrentScreen || modalParent || (id == ScreenId.HUD && _stack.Contains(id));
                 node.SetActive(visible);
@@ -424,6 +445,7 @@ namespace MagicGame
         {
             index = Mathf.Clamp(index, 0, theme.heroes.Length - 1);
             GameSession.SelectedCharacter = index;
+            GameAudio.Play(b => b.uiSelect, true);
             var hero = theme.heroes[index];
             GameSession.SelectedHeroId = hero.displayName;
             I("SelectedHero").sprite = hero.PreviewSprite;
@@ -465,6 +487,15 @@ namespace MagicGame
             if (index == 2 && config.role == HeroRole.Tanky) text += $"\n\nShield capacity: {config.shieldCapacity:0.#}\nDamage to shield: {config.conversion:P0}";
             if (index == 2 && config.role == HeroRole.Daphne) text += $"\n\nStance switch cooldown: {config.stanceCooldown:0.#}s";
             return text;
+        }
+
+        // The prologue lives in Resources/Story/Prologue.txt (zero-width spaces mark where Thai lines may wrap).
+        void OpenStory()
+        {
+            var story = Resources.Load<TextAsset>("Story/Prologue");
+            T("StoryBody").text = story != null ? story.text.Trim() : "";
+            N("StoryScroll").GetComponent<UnityEngine.UI.ScrollRect>().verticalNormalizedPosition = 1f;
+            Push(ScreenId.Story);
         }
 
         void Confirm(string title, string body, Action callback)

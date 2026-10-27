@@ -136,3 +136,35 @@ MonoBehaviour:
     playOnce: 0
     loopAll: 0
     impactTime: 0
+  eclipseSunVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  eclipseMoonVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  eclipseWaveVfx:
+    prefab: {fileID: 0}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  eclipseMergeTime: 1.2
+  eclipseOrbSpread: 2.5
+  eclipseWaveSpeed: 9
+  eclipseWaveRingRadius: 1.1
+  eclipseWaveRingHeight: 1

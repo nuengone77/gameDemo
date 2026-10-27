@@ -29,3 +29,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c31e52d39d3ae42198dc738628e7e8a3, type: 2}
   bodyFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   titleFont: {fileID: 11400000, guid: 966b39a3fb3901d4499a552e10d37def, type: 2}
+  thaiFont: {fileID: 11400000, guid: 0a584575587f248db86e0f5a2066d47f, type: 2}

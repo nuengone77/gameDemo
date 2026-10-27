@@ -75,8 +75,17 @@ namespace MagicGame
             GameplayInput.ReadActions(this, _animator.FacingVector, out var aim, out var target,
                 out bool firing, out bool active, out bool ultimate, out bool stance);
             // Skills reuse the basic attack pose, turned toward where the skill goes.
-            if (active && Skills.TryActive(aim, target)) PlayCastPose(aim);
-            if (ultimate && Skills.TryUltimate(target)) PlayCastPose(target - (Vector2)transform.position);
+            if (active && Skills.TryActive(aim, target))
+            {
+                PlayCastPose(aim);
+                GameAudio.PlayHero(HeroName, h => h.active);
+            }
+            if (ultimate && Skills.TryUltimate(target))
+            {
+                PlayCastPose(target - (Vector2)transform.position);
+                GameAudio.PlayHero(HeroName, h => h.ultimate);
+                GameAudio.DuckMusic(1.5f);
+            }
             if (stance) Skills.TrySwitchStance();
             if (Health.Status.Interrupted) return;
             if (Time.time < _nextAttack) return;
@@ -93,6 +102,8 @@ namespace MagicGame
             _rb.linearVelocity = CanMove ? Health.Status.ResolveVelocity(_rb, _input * moveSpeed) : Vector2.zero;
         }
 
+        string HeroName => CurrentCharacter != null ? CurrentCharacter.name : "";
+
         void PlayCastPose(Vector2 direction)
         {
             _animator.FaceTowards(direction);
@@ -105,6 +116,7 @@ namespace MagicGame
             _animator.PlayAttack();
             _nextAttack = Time.time + Skills.AttackInterval;
             Skills.BasicAttack(direction);
+            GameAudio.PlayHero(HeroName, h => h.basic);
         }
     }
 }

@@ -11,6 +11,10 @@ namespace MagicGame
         public float controlOpacity = 0.65f;
         public float textSize = 1f;
         public bool reducedMotion;
+        public float masterVolume = 0.9f;
+        public float musicVolume = 0.7f;
+        public float sfxVolume = 0.85f;
+        public float uiVolume = 0.8f;
 
         public static UISettings Load()
         {
@@ -21,6 +25,10 @@ namespace MagicGame
             settings.controlSize = Clamp(settings.controlSize, 0.8f, 1.2f, 1f);
             settings.controlOpacity = Clamp(settings.controlOpacity, 0.3f, 1f, 0.65f);
             settings.textSize = Clamp(settings.textSize, 1f, 1.5f, 1f);
+            settings.masterVolume = Clamp(settings.masterVolume, 0f, 1f, 0.9f);
+            settings.musicVolume = Clamp(settings.musicVolume, 0f, 1f, 0.7f);
+            settings.sfxVolume = Clamp(settings.sfxVolume, 0f, 1f, 0.85f);
+            settings.uiVolume = Clamp(settings.uiVolume, 0f, 1f, 0.8f);
             return settings;
         }
 

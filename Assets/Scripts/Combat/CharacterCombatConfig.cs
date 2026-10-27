@@ -102,6 +102,23 @@ namespace MagicGame
         [Tooltip("Burst on every enemy hit by the ultimate (e.g. Daphne's Eclipse).")]
         public VfxSlot ultimateHitVfx = new();
 
+        [Header("Daphne: Eclipse (a sun and a moon orb merge, then a ring sweeps out over the screen)")]
+        public VfxSlot eclipseSunVfx = new();
+        public VfxSlot eclipseMoonVfx = new();
+        [Tooltip("Ring that grows from the merge point; every enemy on the map is hit as it reaches them.")]
+        public VfxSlot eclipseWaveVfx = new();
+        [Min(0)] public float eclipseMergeTime = 1.2f;
+        [Tooltip("How far left/right of Daphne the two orbs start.")]
+        [Min(0)] public float eclipseOrbSpread = 2.5f;
+        [Tooltip("World units per second the ring grows; it keeps growing until it has left the whole map.")]
+        [Min(0.1f)] public float eclipseWaveSpeed = 9f;
+        [Tooltip("The wave prefab grows with the ring up to this radius, then fades there (larger, its sparks smear into streaks).")]
+        [Min(0.1f)] public float eclipseWaveVfxMaxRadius = 3f;
+        [Tooltip("Solid edge drawn exactly on the damage radius, all the way off the map.")]
+        public Color eclipseWaveEdge = new(0.42f, 0.1f, 0.85f, 0.95f);
+        [Tooltip("Radius of the wave prefab's ring at scale 1 (sizes it to match the damage radius).")]
+        public float eclipseWaveRingRadius = 0.72f;
+
         public string RoleName => role == HeroRole.OracleWitch ? "Oracle Witch" : role.ToString();
     }
 }

@@ -35,6 +35,7 @@ namespace MagicGame
                 return frames != null && frames.Length > 0 ? frames : null;
             }
         }
+        public string HeroName => _player != null && _player.CurrentCharacter != null ? _player.CurrentCharacter.name : "";
         public float ActiveReadyAt => _activeReady;
         public float UltimateReadyAt => _ultimateReady;
         public float StanceReadyAt => _stanceReady;
@@ -288,22 +289,7 @@ namespace MagicGame
                     else SkillVfx.Line(old, _body.position, Color.magenta, 0.5f);
                     break;
                 case HeroRole.Daphne:
-                    int hits = 0;
-                    foreach (var health in CombatWorld.Enemies(transform.position, float.PositiveInfinity, true))
-                    {
-                        Vector2 at = health.transform.position;
-                        health.TakeDamage(MakeHit(Config.ultimateDamage));
-                        if (hits++ >= 32) continue;
-                        if (Config.ultimateHitVfx.IsSet) SkillVfx.Spawn(Config.ultimateHitVfx, at + Vector2.up * 0.5f);
-                        else SkillVfx.Burst(at, IsLunar ? Color.magenta : new Color(1f, 0.5f, 0f));
-                    }
-                    Health.Heal(Config.healing);
-                    if (Config.eclipseFieldDamage > 0f && Config.eclipseFieldDuration > 0f)
-                        StartCoroutine(EclipseField(transform.position));
-                    if (Config.ultimateVfx.IsSet) SkillVfx.Spawn(Config.ultimateVfx, transform.position, Config.eclipseFieldDuration);
-                    else SkillVfx.Burst(transform.position, Color.magenta, Config.radius);
-                    if (Config.ultimateExtraVfx.IsSet) SkillVfx.Spawn(Config.ultimateExtraVfx, transform.position, -1f, transform);
-                    else SkillVfx.Burst(transform.position, new Color(1f, 0.5f, 0f), Config.radius * 0.75f);
+                    StartCoroutine(Eclipse());
                     break;
             }
             Changed?.Invoke();
@@ -321,6 +307,103 @@ namespace MagicGame
                 if (!CanAct) yield break;
                 AreaDamage(point, Config.eclipseFieldRadius, Config.eclipseFieldDamage);
             }
+        }
+
+        // Eclipse: the sun and moon orbs drift together over Daphne; once merged she heals, the star field
+        // is left behind and a ring sweeps out until it has left the map, hitting each enemy as it arrives.
+        IEnumerator Eclipse()
+        {
+            Vector2 ground = transform.position;
+            Vector2 center = ground + Vector2.up * EclipseOrbHeight;
+            float merge = Config.eclipseMergeTime;
+            var side = Vector2.right * Config.eclipseOrbSpread;
+            SkillVfx.Drop(Config.eclipseSunVfx, center - side, center, merge);
+            SkillVfx.Drop(Config.eclipseMoonVfx, center + side, center, merge);
+            GameAudio.PlayHeroLoop(HeroName, h => h.ultimateLoop, out var hum);
+            if (merge > 0f) yield return new WaitForSeconds(merge);
+            GameAudio.StopLoop(hum);
+            if (!CanAct) yield break;
+
+            Health.Heal(Config.healing);
+            if (Config.eclipseFieldDamage > 0f && Config.eclipseFieldDuration > 0f) StartCoroutine(EclipseField(ground));
+            if (Config.ultimateVfx.IsSet) SkillVfx.Spawn(Config.ultimateVfx, ground, Config.eclipseFieldDuration);
+            if (Config.ultimateExtraVfx.IsSet) SkillVfx.Spawn(Config.ultimateExtraVfx, transform.position, -1f, transform);
+
+            var targets = CombatWorld.Enemies(center, float.PositiveInfinity);
+            var hit = new HashSet<Health>();
+            float reach = MapReach(center);
+            float sweep = reach / Config.eclipseWaveSpeed;
+            GameAudio.PlayHero(HeroName, h => h.ultimateImpact);
+            float vfxRadius = Mathf.Min(reach, Config.eclipseWaveVfxMaxRadius);
+            var wave = SkillVfx.Spawn(Config.eclipseWaveVfx, center, vfxRadius / Config.eclipseWaveSpeed);
+            if (wave != null)
+            {
+                var distortion = wave.transform.GetChild(0).Find("Distortion"); // Built-in grab-pass layer; renders as a grey disc in URP
+                if (distortion != null) distortion.gameObject.SetActive(false);
+            }
+            // A crisp edge on the damage radius: a soft outer glow plus a solid core line.
+            var glow = EdgeLine(center, new Color(Config.eclipseWaveEdge.r, Config.eclipseWaveEdge.g, Config.eclipseWaveEdge.b, Config.eclipseWaveEdge.a * 0.35f), 0.7f);
+            var edge = EdgeLine(center, Config.eclipseWaveEdge, 0.22f);
+
+            int visuals = 0;
+            for (float t = 0f; ; t += Time.deltaTime)
+            {
+                float radius = Mathf.Min(reach, t * Config.eclipseWaveSpeed);
+                if (wave != null) wave.transform.localScale = Vector3.one * Mathf.Max(0.01f, Mathf.Min(radius, vfxRadius) / Config.eclipseWaveRingRadius);
+                SetCircle(glow, radius);
+                SetCircle(edge, radius);
+                // The ring always finishes its sweep (even once the stage clears); it only hurts while Daphne can act.
+                foreach (var health in targets)
+                {
+                    if (!CanAct) break;
+                    if (health == null || health.IsDead || !health.isActiveAndEnabled || hit.Contains(health)) continue;
+                    Vector2 at = health.transform.position;
+                    if (Vector2.Distance(at, center) > radius) continue;
+                    hit.Add(health);
+                    health.TakeDamage(MakeHit(Config.ultimateDamage));
+                    if (visuals++ >= 32) continue;
+                    if (Config.ultimateHitVfx.IsSet) SkillVfx.Spawn(Config.ultimateHitVfx, at + Vector2.up * 0.5f);
+                    else SkillVfx.Burst(at, IsLunar ? Color.magenta : new Color(1f, 0.5f, 0f));
+                }
+                if (radius >= reach)
+                {
+                    Destroy(glow.gameObject);
+                    Destroy(edge.gameObject);
+                    yield break;
+                }
+                yield return null;
+            }
+        }
+
+        const int EdgePoints = 128;
+
+        static LineRenderer EdgeLine(Vector2 center, Color color, float width)
+        {
+            var line = SkillVfx.Ring(center, 0.01f, color, 0f).GetComponent<LineRenderer>();
+            line.positionCount = EdgePoints;
+            line.startWidth = line.endWidth = width;
+            return line;
+        }
+
+        static void SetCircle(LineRenderer line, float radius)
+        {
+            for (int i = 0; i < EdgePoints; i++)
+            {
+                float angle = Mathf.PI * 2f * i / EdgePoints;
+                line.SetPosition(i, new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)) * radius);
+            }
+        }
+
+        const float EclipseOrbHeight = 0.8f;
+
+        // Distance from a point to the farthest corner of the map: once the ring is this big it has left the map.
+        static float MapReach(Vector2 point)
+        {
+            var map = CombatWorld.AttackBounds;
+            float far = 0f;
+            foreach (var corner in new[] { map.min, map.max, new Vector2(map.xMin, map.yMax), new Vector2(map.xMax, map.yMin) })
+                far = Mathf.Max(far, Vector2.Distance(point, corner));
+            return far + 1f;
         }
 
         IEnumerator Meteor(Vector2 point)
@@ -344,6 +427,7 @@ namespace MagicGame
                 health.Status.Apply(StatusKind.Root, 1f, Config.rootDuration, this);
                 health.Status.Apply(StatusKind.AttackReduction, Config.attackReduction, Config.duration, this);
             }
+            GameAudio.PlayHero(HeroName, h => h.ultimateImpact);
             if (Config.ultimateExtraVfx.IsSet) SkillVfx.Spawn(Config.ultimateExtraVfx, point);
             else SkillVfx.Burst(point, Color.yellow, Config.radius);
         }
@@ -380,6 +464,7 @@ namespace MagicGame
                     }
                 }
                 yield return new WaitForSeconds(fall);
+                if (CanAct) GameAudio.PlayHero(HeroName, h => h.ultimateImpact);
             }
             else if (swords)
             {
@@ -390,6 +475,7 @@ namespace MagicGame
                 foreach (var health in targets)
                     if (health != null && !health.IsDead && visuals++ < 32) SkillVfx.Spawn(Config.ultimateVfx, health.transform.position);
                 yield return new WaitForSeconds(swordLead);
+                if (CanAct) GameAudio.PlayHero(HeroName, h => h.ultimateImpact);
             }
             else yield return new WaitForSeconds(Config.castDelay);
             if (!CanAct) yield break;

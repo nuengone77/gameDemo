@@ -14,6 +14,8 @@ namespace MagicGame
         public CharacterAnimSet[] heroes;
         public TMP_FontAsset bodyFont;
         public TMP_FontAsset titleFont;
+        [Tooltip("Thai text (the story). Built by Tools > Magic Game > Build Thai Font.")]
+        public TMP_FontAsset thaiFont;
 
         public static readonly Color Navy = new Color32(24, 35, 55, 255);
         public static readonly Color Gold = new Color32(200, 163, 99, 255);

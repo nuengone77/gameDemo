@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static MagicGame.ArcaneWidgets;
@@ -27,6 +28,7 @@ namespace MagicGame
             BuildPause(safe);
             BuildSettings(safe);
             BuildHelp(safe);
+            BuildStory(safe);
             BuildOutcome(safe, "Defeat", "A FALLEN HERO", "Your story is not over.", "Retry Stage", "DefeatRetry");
             BuildOutcome(safe, "Victory", "THE REALM IS SAFE", "The dragon is defeated.", "Play Again", "VictoryAgain");
             BuildDialog(safe);
@@ -60,10 +62,59 @@ namespace MagicGame
             var panel = Panel("MenuPanel", page, theme, 0.33f, 0.06f, 0.34f, 0.47f);
             Button("MenuContinue", panel, theme, "Continue", 0.07f, 0.69f, 0.86f, 0.28f, true);
             Button("MenuNew", panel, theme, "New Adventure", 0.07f, 0.36f, 0.86f, 0.28f);
-            Button("MenuHelp", panel, theme, "How to Play", 0.07f, 0.03f, 0.415f, 0.28f);
-            Button("MenuSettings", panel, theme, "Settings", 0.515f, 0.03f, 0.415f, 0.28f);
+            Button("MenuStory", panel, theme, "Story", StoryRow[0], 0.03f, StoryRowWidth, 0.28f);
+            Button("MenuHelp", panel, theme, "How to Play", StoryRow[1], 0.03f, StoryRowWidth, 0.28f);
+            Button("MenuSettings", panel, theme, "Settings", StoryRow[2], 0.03f, StoryRowWidth, 0.28f);
             Text("MenuCheckpoint", panel, theme, "", 22, 0.06f, 0.645f, 0.88f, 0.055f, false, TextAlignmentOptions.Center);
             Text("MenuFooter", page, theme, "AN ADVENTURE IN SEVEN CHAPTERS", 23, 0.15f, 0.005f, 0.7f, 0.045f, false, TextAlignmentOptions.Center);
+        }
+
+        // Bottom row of the menu panel: Story, How to Play, Settings.
+        static readonly float[] StoryRow = { 0.07f, 0.365f, 0.66f };
+        const float StoryRowWidth = 0.27f;
+
+        void BuildStory(Transform safe)
+        {
+            var page = Page("Story", safe);
+            var panel = Panel("StoryPanel", page, theme, 0.17f, 0.07f, 0.66f, 0.86f);
+            Text("StoryEyebrow", panel, theme, "PANNELION  /  PROLOGUE", 24, 0.05f, 0.9f, 0.9f, 0.06f, false, TextAlignmentOptions.Center).color = ArcaneTheme.Cyan;
+            var title = Text("StoryTitle", panel, theme, "เนื้อเรื่อง", 50, 0.05f, 0.8f, 0.9f, 0.1f, true, TextAlignmentOptions.Center);
+            UseThaiFont(title);
+            Image("StoryRule", panel, null, ArcaneTheme.Gold, 0.08f, 0.79f, 0.84f, 0.002f);
+            var content = Scroll("StoryScroll", panel, 0.06f, 0.17f, 0.88f, 0.6f);
+            var body = Paragraph("StoryBody", content, theme, "", 32);
+            UseThaiFont(body);
+            body.color = ArcaneTheme.Paper;
+            body.paragraphSpacing = 24;
+            Button("StoryClose", panel, theme, "Close", 0.33f, 0.035f, 0.34f, 0.11f, true);
+        }
+
+        // Thai needs the mark features so tone marks stack above upper vowels instead of overlapping them.
+        void UseThaiFont(TMP_Text label)
+        {
+            if (theme.thaiFont == null) return;
+            label.font = theme.thaiFont;
+            label.fontFeatures = new System.Collections.Generic.List<UnityEngine.TextCore.OTL_FeatureTag>
+                { UnityEngine.TextCore.OTL_FeatureTag.kern, UnityEngine.TextCore.OTL_FeatureTag.mark, UnityEngine.TextCore.OTL_FeatureTag.mkmk };
+        }
+
+        // Adds the Story button and page to a GameUI prefab built before they existed.
+        void EnsureStory()
+        {
+            var safe = transform.Find("SafeArea");
+            var panel = safe != null ? safe.GetComponentsInChildren<RectTransform>(true).FirstOrDefault(r => r.name == "MenuPanel") : null;
+            if (panel == null || panel.Find("MenuStory") != null) return;
+            void Place(string name, int slot)
+            {
+                var rect = (RectTransform)panel.Find(name);
+                if (rect == null) return;
+                rect.anchorMin = new Vector2(StoryRow[slot], rect.anchorMin.y);
+                rect.anchorMax = new Vector2(StoryRow[slot] + StoryRowWidth, rect.anchorMax.y);
+            }
+            Place("MenuHelp", 1);
+            Place("MenuSettings", 2);
+            Button("MenuStory", panel, theme, "Story", StoryRow[0], 0.03f, StoryRowWidth, 0.28f);
+            BuildStory(safe);
         }
 
         void BuildHeroes(Transform safe)
@@ -193,10 +244,32 @@ namespace MagicGame
             BuildSlider(content, "ControlOpacity", "Control opacity", 0.3f, 1f, 0.65f);
             Paragraph("SettingsAccess", content, theme, "<color=#C8A363>ACCESSIBILITY</color>\nMake important information easier to read.");
             BuildSlider(content, "TextSize", "Text size", 1f, 1.5f, 1f);
+            BuildAudioSliders(content);
             var motion = Button("ReducedMotion", content, theme, "Reduced UI motion: Off", 0, 0, 1, 1);
             motion.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 144;
             Paragraph("SettingsMotionInfo", content, theme, "Reduced UI motion removes decorative rotation and menu fades. Combat effects remain visible.", 26);
             Button("SettingsDefaults", page, theme, "Restore Defaults", 0.35f, 0.025f, 0.3f, 0.13f);
+        }
+
+        void BuildAudioSliders(Transform content)
+        {
+            Paragraph("SettingsAudio", content, theme, "<color=#C8A363>SOUND</color>\nBalance music, effects and menu sounds.");
+            BuildSlider(content, "MasterVolume", "Master volume", 0f, 1f, 0.9f);
+            BuildSlider(content, "MusicVolume", "Music", 0f, 1f, 0.7f);
+            BuildSlider(content, "SfxVolume", "Effects", 0f, 1f, 0.85f);
+            BuildSlider(content, "UiVolume", "Menu sounds", 0f, 1f, 0.8f);
+        }
+
+        // Adds the sound section to a GameUI prefab built before it existed (placed under Text size).
+        void EnsureAudioSettings()
+        {
+            var content = transform.Find("SafeArea")?.GetComponentsInChildren<RectTransform>(true)
+                .FirstOrDefault(r => r.name == "TextSizeRow")?.parent;
+            if (content == null || content.Find("MasterVolumeRow") != null) return;
+            int index = content.Find("TextSizeRow").GetSiblingIndex() + 1;
+            int before = content.childCount;
+            BuildAudioSliders(content);
+            for (int i = before; i < content.childCount; i++) content.GetChild(i).SetSiblingIndex(index++);
         }
 
         void BuildSlider(Transform parent, string name, string caption, float min, float max, float value)

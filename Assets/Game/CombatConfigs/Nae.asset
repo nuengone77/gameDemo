@@ -136,3 +136,36 @@ MonoBehaviour:
     playOnce: 1
     loopAll: 0
     impactTime: 0
+  eclipseSunVfx:
+    prefab: {fileID: 5631927496442371602, guid: 956d9accf6496458fb495dcf02bc2aba, type: 3}
+    scale: 0.7
+    tilt: 0
+    yOffset: -1.75
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  eclipseMoonVfx:
+    prefab: {fileID: 5631927496442371602, guid: 089e54d0c68994ed1b4b402828e56fb5, type: 3}
+    scale: 0.7
+    tilt: 0
+    yOffset: -1.75
+    seconds: 0
+    playOnce: 0
+    loopAll: 1
+    impactTime: 0
+  eclipseWaveVfx:
+    prefab: {fileID: 5607819269926399345, guid: c68ef4e9b3a324447a773e6d549e5604, type: 3}
+    scale: 1
+    tilt: 0
+    yOffset: 0
+    seconds: 0
+    playOnce: 0
+    loopAll: 0
+    impactTime: 0
+  eclipseMergeTime: 1.2
+  eclipseOrbSpread: 2.5
+  eclipseWaveSpeed: 9
+  eclipseWaveEdge: {r: 0.42, g: 0.1, b: 0.85, a: 0.95}
+  eclipseWaveRingRadius: 0.72
+  eclipseWaveRingHeight: 1

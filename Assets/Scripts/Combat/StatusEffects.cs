@@ -46,6 +46,8 @@ namespace MagicGame
             var effect = _effects.Find(e => e.kind == kind && e.source == source);
             if (effect == null)
             {
+                if (kind == StatusKind.Burn && !Has(StatusKind.Burn)) GameAudio.Play(b => b.burn);
+                if ((kind == StatusKind.Root || kind == StatusKind.Knockup) && !Rooted && !Interrupted) GameAudio.Play(b => b.rooted);
                 effect = new Effect { kind = kind, source = source, nextTick = Time.time + 1f, start = Time.time };
                 _effects.Add(effect);
             }

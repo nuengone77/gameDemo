@@ -155,11 +155,18 @@ namespace MagicGame
                 if (player != null && player.Health.IsDead)
                 {
                     SetState(State.GameOver);
+                    GameAudio.PlayMusic(null);
+                    GameAudio.Play(b => b.gameOver);
                 }
                 else if (Time.timeSinceLevelLoad > 0.2f && s_enemies.Count == 0)
                 {
                     SetState(State.Cleared);
-                    if (portal != null) portal.SetOpen(true);
+                    GameAudio.Play(b => b.stageClear);
+                    if (portal != null)
+                    {
+                        portal.SetOpen(true);
+                        GameAudio.Play(b => b.portalOpen);
+                    }
                 }
             }
 
@@ -173,9 +180,12 @@ namespace MagicGame
             {
                 GameSession.ClearCheckpoint();
                 SetState(State.Victory);
+                GameAudio.PlayMusic(null);
+                GameAudio.Play(b => b.victory);
                 if (PlayerController.Instance != null) PlayerController.Instance.gameObject.SetActive(false);
                 return;
             }
+            GameAudio.Play(b => b.warp);
             GameSession.Load(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(next)));
         }
 

@@ -20,6 +20,7 @@ namespace MagicGame
         const float StormFps = 12f;
         Sprite[] _cardFrames;
         readonly List<SpriteRenderer> _stormCards = new();
+        AudioSource _loop;
 
         public void Initialize(PlayerSkills owner, SkillAreaKind kind, CharacterCombatConfig config)
         {
@@ -40,6 +41,7 @@ namespace MagicGame
                     kind == SkillAreaKind.Slow ? Color.cyan : Color.magenta, 0f);
                 visual.transform.SetParent(transform, true);
             }
+            if (kind == SkillAreaKind.Storm) GameAudio.PlayHeroLoop(owner.HeroName, h => h.ultimateLoop, out _loop);
         }
 
         // One card frame lying on the ground, drawn above the map but under the characters.
@@ -88,6 +90,7 @@ namespace MagicGame
 
         void Update()
         {
+            if (_loop != null) { if (GameUI.GameplayBlocked) _loop.Pause(); else _loop.UnPause(); }
             if (GameUI.GameplayBlocked) return;
             if (_owner == null || !_owner.CanAct) { Destroy(gameObject); return; }
             if (_kind == SkillAreaKind.Storm)
@@ -111,6 +114,7 @@ namespace MagicGame
                 if (CombatWorld.Enemies(transform.position, _config.trapTriggerRadius).Count == 0) return;
                 foreach (var health in _owner.AreaDamage(transform.position, _config.radius, _config.activeDamage))
                     if (!health.IsDead) health.Status.Apply(StatusKind.Knockup, _config.knockupHeight, _config.knockupDuration, this);
+                GameAudio.PlayHero(_owner.HeroName, h => h.activeImpact);
                 if (_config.activeVfx.IsSet) SkillVfx.Spawn(_config.activeVfx, transform.position);
                 else SkillVfx.Burst(transform.position, Color.magenta, _config.radius);
                 Destroy(gameObject);
@@ -131,6 +135,7 @@ namespace MagicGame
         void OnDestroy()
         {
             foreach (var target in _slowed) if (target != null) target.Status.Remove(StatusKind.Slow, this);
+            GameAudio.StopLoop(_loop);
         }
     }
 }

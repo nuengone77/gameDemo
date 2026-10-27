@@ -1,0 +1,305 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d63b30aa196e4a8393c6bd3f014b72c, type: 3}
+  m_Name: SoundBank
+  m_EditorClassIdentifier: MagicGame.Runtime::MagicGame.SoundBank
+  mixer: {fileID: 24100000, guid: dda2698f26df545d2bac6e90c64a6e08, type: 2}
+  musicGroup: {fileID: -1824798109409566981, guid: dda2698f26df545d2bac6e90c64a6e08, type: 2}
+  sfxGroup: {fileID: -2050345223868966068, guid: dda2698f26df545d2bac6e90c64a6e08, type: 2}
+  uiGroup: {fileID: -5853370015038394499, guid: dda2698f26df545d2bac6e90c64a6e08, type: 2}
+  heroes:
+  - hero: Ling
+    basic:
+      clips:
+      - {fileID: 8300000, guid: 15078aa666db14f6581f4b6637d6b220, type: 3}
+      volume: 0.7
+      pitchJitter: 0.06
+      minInterval: 0.05
+    active:
+      clips:
+      - {fileID: 8300000, guid: 385c8cfbe5f994afa8f006a106e12a8c, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.2
+    ultimate:
+      clips: []
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    activeImpact:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+    ultimateImpact:
+      clips:
+      - {fileID: 8300000, guid: e3a60b74a844e43988d0b5d829640cc0, type: 3}
+      volume: 0.9
+      pitchJitter: 0
+      minInterval: 0.5
+    ultimateLoop:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+  - hero: Nae
+    basic:
+      clips:
+      - {fileID: 8300000, guid: 4f5106900cd6d4b4582084cb71309c0b, type: 3}
+      volume: 0.7
+      pitchJitter: 0.06
+      minInterval: 0.05
+    active:
+      clips:
+      - {fileID: 8300000, guid: f6c562f500a0a40d1adf60c24464f68c, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.2
+    ultimate:
+      clips: []
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    activeImpact:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+    ultimateImpact:
+      clips:
+      - {fileID: 8300000, guid: 8141eaf0b075a4e88a2ed4f63fc25ebf, type: 3}
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    ultimateLoop:
+      clips:
+      - {fileID: 8300000, guid: 4fadb9c43c0ff418ebd0c9d25a954fc2, type: 3}
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0
+  - hero: New
+    basic:
+      clips:
+      - {fileID: 8300000, guid: 888456e1ad05a4fd680bc66386fa4604, type: 3}
+      volume: 0.7
+      pitchJitter: 0.06
+      minInterval: 0.05
+    active:
+      clips:
+      - {fileID: 8300000, guid: 5a3bef56c84da47ec84f8e34b199fafa, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.2
+    ultimate:
+      clips: []
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    activeImpact:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+    ultimateImpact:
+      clips:
+      - {fileID: 8300000, guid: b5e41dd84da9b4740bb5d728f905ca7d, type: 3}
+      volume: 1
+      pitchJitter: 0.03
+      minInterval: 0.3
+    ultimateLoop:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+  - hero: Nueng
+    basic:
+      clips:
+      - {fileID: 8300000, guid: 58196f1bd27384ed8a73fe63c4a1ba81, type: 3}
+      volume: 0.7
+      pitchJitter: 0.06
+      minInterval: 0.05
+    active:
+      clips:
+      - {fileID: 8300000, guid: 9640c562fa4324a70b4eb3cf47a677a8, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.2
+    ultimate:
+      clips: []
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    activeImpact:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+    ultimateImpact:
+      clips:
+      - {fileID: 8300000, guid: 937623444515a458f87367ea5d2289f9, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.3
+    ultimateLoop:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+  - hero: Peng
+    basic:
+      clips:
+      - {fileID: 8300000, guid: c0794f329b93741d49b4557a71451158, type: 3}
+      volume: 0.7
+      pitchJitter: 0.06
+      minInterval: 0.05
+    active:
+      clips:
+      - {fileID: 8300000, guid: 075f9e90796fa479cb6a1f4b7b33659e, type: 3}
+      volume: 0.9
+      pitchJitter: 0.03
+      minInterval: 0.2
+    ultimate:
+      clips: []
+      volume: 1
+      pitchJitter: 0
+      minInterval: 0.5
+    activeImpact:
+      clips:
+      - {fileID: 8300000, guid: 60b7956335abb4d0094b9672b8959d4f, type: 3}
+      volume: 0.85
+      pitchJitter: 0.05
+      minInterval: 0.1
+    ultimateImpact:
+      clips: []
+      volume: 1
+      pitchJitter: 0.05
+      minInterval: 0.04
+    ultimateLoop:
+      clips:
+      - {fileID: 8300000, guid: 0a2e7c99cfd014136b0a75901916830e, type: 3}
+      volume: 0.7
+      pitchJitter: 0
+      minInterval: 0
+  playerHurt:
+    clips:
+    - {fileID: 8300000, guid: 8258bcb85150245ec9e7551f63b52291, type: 3}
+    volume: 0.8
+    pitchJitter: 0.08
+    minInterval: 0.15
+  playerDeath:
+    clips:
+    - {fileID: 8300000, guid: 971a2c0ac93f44ce5a183b29dec37bfd, type: 3}
+    volume: 1
+    pitchJitter: 0
+    minInterval: 1
+  enemyHit:
+    clips:
+    - {fileID: 8300000, guid: 8e0c5bcc14bab42db87f7725aef7cc02, type: 3}
+    volume: 0.6
+    pitchJitter: 0.1
+    minInterval: 0.05
+  enemyDeath:
+    clips:
+    - {fileID: 8300000, guid: e39922bc8658941cd9d08b4ec9359188, type: 3}
+    volume: 0.8
+    pitchJitter: 0.08
+    minInterval: 0.08
+  enemyMelee:
+    clips:
+    - {fileID: 8300000, guid: e33b3e5b8b5ed4f808b23793bbf6e14d, type: 3}
+    volume: 0.6
+    pitchJitter: 0.1
+    minInterval: 0.1
+  skeletonArrow:
+    clips:
+    - {fileID: 8300000, guid: 2ca71e7dde220422b8022171009a3bf6, type: 3}
+    volume: 0.6
+    pitchJitter: 0.08
+    minInterval: 0.08
+  golemRock:
+    clips:
+    - {fileID: 8300000, guid: bd01691de2a354fab9fc58b826357f18, type: 3}
+    volume: 0.9
+    pitchJitter: 0.05
+    minInterval: 0.2
+  dragonFire:
+    clips:
+    - {fileID: 8300000, guid: 41bff4eb691304e4aa0d4277e5a3cd9a, type: 3}
+    volume: 0.8
+    pitchJitter: 0.05
+    minInterval: 0.15
+  witchCast:
+    clips:
+    - {fileID: 8300000, guid: 9fa5ef18154944ba8948a7fce857459d, type: 3}
+    volume: 0.7
+    pitchJitter: 0.05
+    minInterval: 0.15
+  burn:
+    clips:
+    - {fileID: 8300000, guid: 51ce98fc38d7b4687ad8828d3d44a526, type: 3}
+    volume: 0.5
+    pitchJitter: 0.1
+    minInterval: 0.15
+  rooted:
+    clips:
+    - {fileID: 8300000, guid: f5d65e1ec68184d3298f58c53cf973e2, type: 3}
+    volume: 0.6
+    pitchJitter: 0.05
+    minInterval: 0.15
+  portalOpen:
+    clips:
+    - {fileID: 8300000, guid: fc99b16e5b4ac486dbc9a65941f49c4d, type: 3}
+    volume: 0.8
+    pitchJitter: 0
+    minInterval: 0.5
+  warp:
+    clips:
+    - {fileID: 8300000, guid: 0a7d1508f200b4ce98bf5ec1145f8224, type: 3}
+    volume: 0.9
+    pitchJitter: 0
+    minInterval: 0.5
+  stageClear:
+    clips:
+    - {fileID: 8300000, guid: cc0ca0fa010fd471d9fec594be1411f6, type: 3}
+    volume: 0.8
+    pitchJitter: 0
+    minInterval: 0.5
+  gameOver:
+    clips:
+    - {fileID: 8300000, guid: 5e30bba0bc21b420d95f4108ec829c7e, type: 3}
+    volume: 1
+    pitchJitter: 0
+    minInterval: 1
+  victory:
+    clips:
+    - {fileID: 8300000, guid: 2bc0160870e624fd18037471f563bf75, type: 3}
+    volume: 1
+    pitchJitter: 0
+    minInterval: 1
+  uiClick:
+    clips:
+    - {fileID: 8300000, guid: 90c403efc66b24e748e6422992fae92c, type: 3}
+    volume: 0.7
+    pitchJitter: 0.03
+    minInterval: 0.03
+  uiSelect:
+    clips:
+    - {fileID: 8300000, guid: 9963cb1de65474a72972373c3a36feef, type: 3}
+    volume: 0.8
+    pitchJitter: 0
+    minInterval: 0.05
+  menuMusic: {fileID: 8300000, guid: c492655f1ae514393920d67459938f96, type: 3}
+  stageMusic: {fileID: 8300000, guid: de35aa4ff435d4c4ab008611d288fb45, type: 3}
+  bossMusic: {fileID: 8300000, guid: e1bef78b1213a4b61899d5d695e316a2, type: 3}
+  musicVolume: 0.7
+  musicFadeSeconds: 1.5
+  ultimateDuckDb: -10

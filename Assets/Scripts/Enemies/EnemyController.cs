@@ -157,9 +157,21 @@ namespace MagicGame
             else _rb.linearVelocity = velocity;
         }
 
+        // Picked by name so the bank stays readable; unknown ranged enemies fall back to the arrow.
+        void PlayAttackSound()
+        {
+            if (style == AttackStyle.Melee) { GameAudio.Play(b => b.enemyMelee); return; }
+            string n = displayName.ToLowerInvariant();
+            if (n.Contains("golem")) GameAudio.Play(b => b.golemRock);
+            else if (n.Contains("dragon")) GameAudio.Play(b => b.dragonFire);
+            else if (n.Contains("witch")) GameAudio.Play(b => b.witchCast);
+            else GameAudio.Play(b => b.skeletonArrow);
+        }
+
         void PerformAttack(PlayerController player, float dist)
         {
             _attackCount++;
+            PlayAttackSound();
             if (style == AttackStyle.Melee)
             {
                 if (dist <= attackRange * 1.2f) player.Health.TakeDamage(new DamageInfo(damage * Health.Status.AttackMultiplier, Health, DamageType.Physical));

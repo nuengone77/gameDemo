@@ -21,6 +21,9 @@ namespace MagicGame.EditorTools
         static readonly Color NuengBlack = new(0.05f, 0.03f, 0.08f, 1f);
         static readonly Color NaeSolar = new(1f, 0.55f, 0.12f, 1f);
         static readonly Color NaeLunar = new(0.72f, 0.38f, 1f, 1f);
+        // Deeper versions for the Eclipse, drawn as solid colour (darken) so they read on bright grass.
+        static readonly Color EclipseSun = new(1f, 0.42f, 0.02f, 1f);
+        static readonly Color EclipseMoon = new(0.42f, 0.1f, 0.85f, 1f);
 
         // slot setter, prefab path, world scale, tilt (degrees around X to lay ground effects into the 3/4 view)
         class Slot
@@ -33,6 +36,8 @@ namespace MagicGame.EditorTools
             public Color? recolor;      // set = use a recolored copy (VfxRecolor) instead of the pack prefab
             public string recolorName;
         }
+
+        const float EclipseOrbScale = 0.7f;
 
         static readonly Slot[] Slots =
         {
@@ -94,6 +99,17 @@ namespace MagicGame.EditorTools
             new() { hero = "Nae", path = Hovl + "Magic circles/Healing circle.prefab", recolor = NaeSolar, recolorName = "Nae_EclipseHeal",
                 scale = 0.2f, tilt = -55f, seconds = 2.5f,
                 assign = (c, v) => c.ultimateExtraVfx = v },
+            // Eclipse: Eric's glowing core as a sun (deep orange) and a moon (deep purple) that drift together.
+            // Its visuals sit 2.5 units above the origin, so offset down by 2.5 * scale; looped while moving.
+            new() { hero = "Nae", path = EricFree + "FX_Greenlight_shrink.prefab", recolor = EclipseSun, darken = true, recolorName = "Nae_EclipseSunDeep",
+                scale = EclipseOrbScale, yOffset = -2.5f * EclipseOrbScale, loopAll = true,
+                assign = (c, v) => c.eclipseSunVfx = v },
+            new() { hero = "Nae", path = EricFree + "FX_Greenlight_shrink.prefab", recolor = EclipseMoon, darken = true, recolorName = "Nae_EclipseMoonDeep",
+                scale = EclipseOrbScale, yOffset = -2.5f * EclipseOrbScale, loopAll = true,
+                assign = (c, v) => c.eclipseMoonVfx = v },
+            // The merged eclipse's damage ring: Hovl's blue portal in deep purple, scaled up at runtime.
+            new() { hero = "Nae", path = Hovl + "Portals/Portal blue.prefab", recolor = EclipseMoon, darken = true, recolorName = "Nae_EclipseWave",
+                assign = (c, v) => c.eclipseWaveVfx = v },
         };
 
         [MenuItem("Tools/Magic Game/Apply Skill VFX")]
@@ -169,6 +185,7 @@ namespace MagicGame.EditorTools
                 .Where(p => p.EndsWith(".mat")).Distinct()
                 .Select(AssetDatabase.LoadAssetAtPath<Material>)
                 .Where(m => m != null && m.shader != null && m.shader.name.StartsWith("Particles/Standard"))
+                .Where(m => !m.name.Contains("Distortion")) // grab-pass layers have no URP equivalent; hidden at runtime
                 .ToList();
             foreach (var material in materials)
             {

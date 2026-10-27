@@ -25,8 +25,11 @@ namespace MagicGame.EditorTools
             EnsureFolder($"{Root}/Materials");
             EnsureFolder($"{Root}/Textures");
 
+            // An existing copy is kept as it is: the combat configs reference it by GUID and it may have been
+            // tuned since. Delete the copy to regenerate it.
             string path = $"{Root}/{name}.prefab";
-            AssetDatabase.DeleteAsset(path);
+            var made = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (made != null) return made;
             AssetDatabase.CopyAsset(sourcePrefab, path);
 
             var root = PrefabUtility.LoadPrefabContents(path);
@@ -80,6 +83,7 @@ namespace MagicGame.EditorTools
             // Built-in particle shaders don't draw in URP; upgrade the copy (moves _MainTex to _BaseMap).
             if (copy.shader.name.StartsWith("Particles/Standard"))
                 MaterialUpgrader.Upgrade(copy, new ParticleUpgrader(copy.shader.name), MaterialUpgrader.UpgradeFlags.None);
+            if (s_darken && copy.shader.name.StartsWith("Universal Render Pipeline/Particles")) MakeAlphaBlended(copy);
             foreach (var property in new[] { "_MainTex", "_BaseMap" })
             {
                 if (!copy.HasProperty(property)) continue;
@@ -97,6 +101,23 @@ namespace MagicGame.EditorTools
             AssetDatabase.DeleteAsset(path);
             AssetDatabase.CreateAsset(copy, path);
             return copy;
+        }
+
+        // URP particle material switched from additive to plain transparent alpha blending.
+        static void MakeAlphaBlended(Material material)
+        {
+            material.SetFloat("_Surface", 1f);
+            material.SetFloat("_Blend", 0f);
+            material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetFloat("_SrcBlendAlpha", (float)UnityEngine.Rendering.BlendMode.One);
+            material.SetFloat("_DstBlendAlpha", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetFloat("_ZWrite", 0f);
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.DisableKeyword("_ALPHAMODULATE_ON");
+            material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            material.SetOverrideTag("RenderType", "Transparent");
+            material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
         }
 
         // Grayscale copy keeping each pixel's brightest channel and its alpha.

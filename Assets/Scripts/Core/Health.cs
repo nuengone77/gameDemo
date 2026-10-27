@@ -79,6 +79,7 @@ namespace MagicGame
             CurrentHp = Mathf.Max(0f, CurrentHp - hpDamage);
             _invulnerableUntil = Time.time + invulnerableTime;
             Damaged?.Invoke(this);
+            if (CurrentHp > 0f) GameAudio.Play(b => team == Team.Player ? b.playerHurt : b.enemyHit);
             Changed?.Invoke(this);
             var result = new DamageResult(hpDamage, shieldDamage);
             if (hit.source != null) hit.source.DamageDealt?.Invoke(this, hit, result);
@@ -118,6 +119,7 @@ namespace MagicGame
         void Die()
         {
             IsDead = true;
+            GameAudio.Play(b => team == Team.Player ? b.playerDeath : b.enemyDeath);
             if (Status != null) Status.Clear();
             Died?.Invoke(this);
             if (destroyOnDeath) Destroy(gameObject);
